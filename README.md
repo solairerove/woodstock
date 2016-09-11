@@ -6,4 +6,3 @@
 * [Project Lombok](https://projectlombok.org/)
 * Gradle
 * YAML
-* Groovy
