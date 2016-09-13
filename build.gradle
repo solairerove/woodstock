@@ -13,11 +13,15 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'woodstock'
-    version = '0.0.0'
+    version = '0.0.1'
 }
 
 repositories {
     mavenCentral()
+}
+
+bootRun {
+    addResources = true
 }
 
 sourceCompatibility = 1.8
@@ -27,6 +31,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-jetty")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
