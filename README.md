@@ -1,12 +1,14 @@
 # Woodstock: 
 
-* Spring Boot
-* [MongoDB](https://hub.docker.com/_/mongo/)
-* AngularJS
-* [Project Lombok](https://projectlombok.org/)
-* Gradle
+___
 
-##### How start:
+#### How start:
 
 * `gradle build && java -jar build/libs/woodstock-*.jar`
 * `gradle bootRun`
+
+____
+
+#### Api:
+
+* `api/model` - return random generated model
