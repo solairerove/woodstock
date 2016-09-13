@@ -3,16 +3,8 @@
 .idea/
 classes/
 
-# File-based project format:
-*.iml
-
 # IntelliJ
 /out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
-
-#Maven
-
-lib/
-target/
