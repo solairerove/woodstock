@@ -13,7 +13,7 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'woodstock'
-    version = '0.0.3'
+    version = '0.0.4'
 }
 
 repositories {
@@ -28,8 +28,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-jetty")
+
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
 
     compile("org.projectlombok:lombok:1.16.10")
     compile("org.apache.commons:commons-lang3:3.4")
