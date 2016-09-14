@@ -1,15 +1,17 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
+
+import java.io.Serializable;
 
 /**
  * Created by krivitski-no on 9/14/16.
  */
-public class Person {
+@Data
+public class Person implements Serializable {
 
     @Id private String id;
-    @Getter @Setter private String firstName;
-    @Getter @Setter private String lastName;
+    private String firstName;
+    private String lastName;
 }
