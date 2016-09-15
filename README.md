@@ -15,4 +15,3 @@ ____
 #### Api doc:
 
 * `api/persons` - all persons
-* `api/persons/firstName` - people by name

@@ -22,11 +22,11 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public List<Person> findAll() {
-        return personRepository.findAll();
+    public Person findOnePersonById(String id) {
+        return personRepository.findOnePersonById(id);
     }
 
-    public List<Person> findByFirstName(String name) {
-        return personRepository.findByFirstName(name);
+    public List<Person> findAll() {
+        return personRepository.findAll();
     }
 }
