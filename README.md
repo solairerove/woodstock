@@ -1,8 +1,10 @@
 # Woodstock
 
+*You should see [hrms](https://github.com/vlsidlyarevich/unity) module. There will be some integration in future.*
+
 ___
 
-#### How start:
+#### How to start:
 
 * [MongoDB](https://github.com/solairerove/docker/tree/master/db/mongodb)
 * `gradle build && java -jar build/libs/woodstock-*.jar`
