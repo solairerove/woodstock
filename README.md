@@ -14,4 +14,4 @@ ____
 
 #### Api doc:
 
-* `api/persons` - all persons
+* Fuck this shit about document. Download *[Insomnia](https://insomnia.rest/download/#ubuntu)* and import *[woodstock.json](https://goo.gl/wZeKf1)*

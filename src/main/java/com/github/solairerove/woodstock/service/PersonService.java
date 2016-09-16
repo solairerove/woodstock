@@ -22,8 +22,31 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Person findOnePersonById(String id) {
+    public String createPerson(Person person) {
+        personRepository.save(person);
+        return person.getId();
+    }
+
+    public Person getPerson(String id) {
         return personRepository.findOnePersonById(id);
+    }
+
+    public Person updatePerson(String id, Person person) {
+        if (personRepository.exists(id)) {
+            person.setId(id);
+            createPerson(person);
+        }
+        return person;
+    }
+
+    public String deletePerson(String id) {
+        personRepository.delete(id);
+        return id;
+    }
+
+    public String deletePerson(Person person) {
+        personRepository.delete(person);
+        return person.getId();
     }
 
     public List<Person> findAll() {

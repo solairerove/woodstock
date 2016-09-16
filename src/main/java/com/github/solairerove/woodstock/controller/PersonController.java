@@ -2,7 +2,6 @@ package com.github.solairerove.woodstock.controller;
 
 import com.github.solairerove.woodstock.domain.Person;
 import com.github.solairerove.woodstock.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
@@ -10,9 +9,7 @@ import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by krivitski-no on 9/14/16.
@@ -23,10 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonController {
 
     private final PersonService personService;
-
     private final EntityLinks entityLinks;
 
-    @Autowired
     public PersonController(EntityLinks entityLinks, PersonService personService) {
         this.entityLinks = entityLinks;
         this.personService = personService;
@@ -42,9 +37,29 @@ public class PersonController {
 
     @RequestMapping(path = "/{id}")
     public ResponseEntity<?> getPerson(@PathVariable String id) {
-        Resource<Person> resource = new Resource<>(this.personService.findOnePersonById(id));
+        Resource<Person> resource = new Resource<>(this.personService.getPerson(id));
         resource.add(this.entityLinks.linkToSingleResource(Person.class, id));
 
         return new ResponseEntity<>(resource, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> createPerson(@RequestBody Person person) {
+        return new ResponseEntity<>(personService.createPerson(person), HttpStatus.CREATED);
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updatePerson(@PathVariable String id, @RequestBody Person person) {
+        return new ResponseEntity<>(personService.updatePerson(id, person), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deletePerson(@PathVariable String id) {
+        return new ResponseEntity<>(personService.deletePerson(id), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public ResponseEntity<?> deletePerson(@RequestBody(required = false) Person person) {
+        return new ResponseEntity<>(personService.deletePerson(person), HttpStatus.OK);
     }
 }
