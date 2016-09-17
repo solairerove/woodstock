@@ -31,8 +31,7 @@ public class PersonController {
 
     @RequestMapping
     public ResponseEntity<?> getAllPersons(Pageable pageable, PagedResourcesAssembler assembler) {
-        Page<Person> persons = personService.findAll(pageable);
-        return new ResponseEntity<>(assembler.toResource(persons), HttpStatus.OK);
+        return new ResponseEntity<>(assembler.toResource(personService.findAll(pageable)), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}")
