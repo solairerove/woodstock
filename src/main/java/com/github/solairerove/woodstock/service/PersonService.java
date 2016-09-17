@@ -3,10 +3,10 @@ package com.github.solairerove.woodstock.service;
 import com.github.solairerove.woodstock.domain.Person;
 import com.github.solairerove.woodstock.resource.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Created by krivitski-no on 9/14/16.
@@ -15,12 +15,8 @@ import java.util.List;
 @Transactional
 public class PersonService {
 
-    private final PersonRepository personRepository;
-
     @Autowired
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
+    private PersonRepository personRepository;
 
     public String createPerson(Person person) {
         personRepository.save(person);
@@ -49,7 +45,7 @@ public class PersonService {
         return person.getId();
     }
 
-    public List<Person> findAll() {
-        return personRepository.findAll();
+    public Page<Person> findAll(Pageable pageable) {
+        return personRepository.findAll(pageable);
     }
 }

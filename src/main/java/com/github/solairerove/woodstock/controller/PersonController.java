@@ -2,10 +2,11 @@ package com.github.solairerove.woodstock.controller;
 
 import com.github.solairerove.woodstock.domain.Person;
 import com.github.solairerove.woodstock.service.PersonService;
-import org.springframework.hateoas.EntityLinks;
-import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.Resources;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,20 +20,19 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/persons", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PersonController {
 
-    private final PersonService personService;
+    @Autowired
+    private PersonService personService;
+
     private final EntityLinks entityLinks;
 
-    public PersonController(EntityLinks entityLinks, PersonService personService) {
+    public PersonController(EntityLinks entityLinks) {
         this.entityLinks = entityLinks;
-        this.personService = personService;
     }
 
     @RequestMapping
-    public ResponseEntity<?> getAllPersons() {
-        Resources<Person> resources = new Resources<>(this.personService.findAll());
-        resources.add(this.entityLinks.linkToCollectionResource(Person.class));
-
-        return new ResponseEntity<>(resources, HttpStatus.OK);
+    public ResponseEntity<?> getAllPersons(Pageable pageable, PagedResourcesAssembler assembler) {
+        Page<Person> persons = personService.findAll(pageable);
+        return new ResponseEntity<>(assembler.toResource(persons), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}")
