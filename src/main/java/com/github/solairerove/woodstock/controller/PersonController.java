@@ -23,14 +23,14 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    private final EntityLinks entityLinks;
+    @Autowired
+    private PagedResourcesAssembler<Person> assembler;
 
-    public PersonController(EntityLinks entityLinks) {
-        this.entityLinks = entityLinks;
-    }
+    @Autowired
+    private EntityLinks entityLinks;
 
     @RequestMapping
-    public ResponseEntity<?> getAllPersons(Pageable pageable, PagedResourcesAssembler assembler) {
+    public ResponseEntity<?> getAllPersons(Pageable pageable) {
         return new ResponseEntity<>(assembler.toResource(personService.findAll(pageable)), HttpStatus.OK);
     }
 
