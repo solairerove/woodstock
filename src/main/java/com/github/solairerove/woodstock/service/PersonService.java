@@ -29,6 +29,7 @@ public class PersonService {
 
     public Person updatePerson(String id, Person person) {
         if (personRepository.exists(id)) {
+            person.setId(id);
             createPerson(person);
         }
         return person;
