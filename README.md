@@ -7,8 +7,7 @@ ___
 #### How to start:
 
 * [MongoDB](https://github.com/solairerove/docker/tree/master/db/mongodb)
-* `gradle build && java -jar build/libs/woodstock-*.jar`
-* `gradle bootRun`
+* `mvn clean install && java -jar target/*.jar`
 
 ____
 
