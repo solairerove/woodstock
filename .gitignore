@@ -28,3 +28,23 @@ buildNumber.properties
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
+### Node template
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+bower_components
+
