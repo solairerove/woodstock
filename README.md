@@ -1,4 +1,5 @@
 # Woodstock
+[![Build Status](https://travis-ci.org/solairerove/woodstock.svg?branch=master)](https://travis-ci.org/solairerove/woodstock)
 
 *You should see [hrms](https://github.com/vlsidlyarevich/unity) module. There will be some integration in future.*
 
