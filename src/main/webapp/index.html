@@ -13,14 +13,20 @@
 </head>
 
 <body>
-<p>Some text</p>
-<p>2 + 2 = {{2 + 2}}</p>
+
+
+<div ng-view></div>
+
 </body>
 
 <!-- inject:js -->
 <script src="resources/vendor/js/angular/angular.js"></script>
 <script src="resources/vendor/js/angular-resource/angular-resource.js"></script>
+<script src="resources/vendor/js/angular-route/angular-route.js"></script>
 <script src="app/app.module.js"></script>
+<script src="app/route.js"></script>
 <script src="app/service/person.service.js"></script>
+<script src="app/components/person-list/person-list.controller.js"></script>
+<script src="app/components/person-list/route.js"></script>
 <!-- endinject -->
 </html>
