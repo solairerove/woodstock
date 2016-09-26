@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" ng-app="woodstock">
 <head>
     <meta charset="UTF-8">
-    <title>AngularJS Hello World!!!</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Woodstock</title>
 
     <!-- inject:css -->
-    
+
     <!-- endinject -->
 </head>
 
-<body ng-app>
-<p>1 + 2 = {{1 + 2}}</p>
+<body>
+<p>Some text</p>
+<p>2 + 2 = {{2 + 2}}</p>
 </body>
 
 <!-- inject:js -->
 <script src="resources/vendor/js/angular/angular.js"></script>
+<script src="resources/vendor/js/angular-resource/angular-resource.js"></script>
+<script src="app/app.module.js"></script>
+<script src="app/service/person.service.js"></script>
 <!-- endinject -->
 </html>
