@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 @Document
-public class Person implements Serializable {
+public class Profile implements Serializable {
 
     @Id
     private String id;
