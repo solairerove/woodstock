@@ -1,5 +1,7 @@
-<ul>
-    <li ng-repeat="person in persons">
-        <a>{{person}}</a>
-    </li>
-</ul>
+<table border="1">
+    <tr ng-repeat="person in persons">
+        <td>{{person.id}}</td>
+        <td>{{person.firstName}}</td>
+        <td>{{person.lastName}}</td>
+    </tr>
+</table>
