@@ -37,7 +37,7 @@ public class ProfileController {
 
     @RequestMapping(path = "/{id}")
     public ResponseEntity<?> getProfile(@PathVariable String id) {
-        Resource<Profile> resource = new Resource<>(this.profileService.getProfile(id));
+        Resource<Profile> resource = new Resource<>(profileService.getProfile(id));
         resource.add(this.entityLinks.linkToSingleResource(Profile.class, id));
 
         return new ResponseEntity<>(resource, HttpStatus.OK);
