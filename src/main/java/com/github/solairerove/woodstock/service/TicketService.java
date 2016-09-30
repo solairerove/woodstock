@@ -1,7 +1,7 @@
 package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Ticket;
-import com.github.solairerove.woodstock.resource.TicketRepository;
+import com.github.solairerove.woodstock.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

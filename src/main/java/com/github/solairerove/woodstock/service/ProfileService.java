@@ -1,12 +1,11 @@
 package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Profile;
-import com.github.solairerove.woodstock.resource.ProfileRepository;
+import com.github.solairerove.woodstock.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by krivitski-no on 9/14/16.

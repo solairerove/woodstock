@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.resource;
+package com.github.solairerove.woodstock.repository;
 
 import com.github.solairerove.woodstock.domain.Profile;
 import org.springframework.data.mongodb.repository.MongoRepository;

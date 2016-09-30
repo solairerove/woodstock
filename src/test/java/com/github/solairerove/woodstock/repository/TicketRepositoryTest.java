@@ -1,7 +1,7 @@
 package com.github.solairerove.woodstock.repository;
 
 import com.github.solairerove.woodstock.Application;
-import com.github.solairerove.woodstock.domain.Profile;
+import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.utils.EntityUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,21 +12,21 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
- * Created by krivitski-no on 9/28/16.
+ * Created by krivitski-no on 9/30/16.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @SpringBootTest(classes = Application.class)
-public class ProfileRepositoryTest {
+public class TicketRepositoryTest {
 
     @Autowired
-    private ProfileRepository profileRepository;
+    private TicketRepository ticketRepository;
 
     @Test
-    public void findOneProfileByIdTest() {
-        Profile saved = EntityUtils.generateProfile();
-        profileRepository.save(saved);
+    public void findOneTicketByIdTest() {
+        Ticket saved = EntityUtils.generateTicket();
+        ticketRepository.save(saved);
 
-        Assert.assertEquals(saved, profileRepository.findOneProfileById(saved.getId()));
+        Assert.assertEquals(saved, ticketRepository.findOneTicketById(saved.getId()));
     }
 }
