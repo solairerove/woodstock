@@ -13,7 +13,7 @@ public class EntityUtils {
     private static final int MAX_STRING_LENGTH = 25;
 
     private static String getRandomString() {
-        return RandomStringUtils.random(MAX_STRING_LENGTH);
+        return RandomStringUtils.random(MAX_STRING_LENGTH, true, true);
     }
 
     public static Profile generateProfile() {
