@@ -19,6 +19,9 @@ public class Profile implements Serializable {
     private String firstName;
     private String lastName;
 
+    public Profile() {
+    }
+
     public Profile(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;

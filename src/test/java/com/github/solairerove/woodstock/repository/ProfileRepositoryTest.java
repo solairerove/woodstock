@@ -24,7 +24,6 @@ public class ProfileRepositoryTest {
     private ProfileRepository profileRepository;
 
     @Test
-    @Ignore
     public void findOneProfileByIdTest() {
         Profile saved = new Profile("Tony", "Stark");
         profileRepository.save(saved);

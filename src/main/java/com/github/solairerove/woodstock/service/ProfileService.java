@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by krivitski-no on 9/14/16.
  */
 @Service
-@Transactional
 public class ProfileService {
 
     @Autowired

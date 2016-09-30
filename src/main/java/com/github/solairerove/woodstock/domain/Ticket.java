@@ -17,4 +17,11 @@ public class Ticket implements Serializable{
     private String id;
 
     private String value;
+
+    public Ticket() {
+    }
+
+    public Ticket(String value) {
+        this.value = value;
+    }
 }
