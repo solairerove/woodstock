@@ -28,8 +28,8 @@ public class Task implements Serializable {
 
     public Task(String question, Collection<? extends Ticket> tickets) {
         this.question = question;
-        this.enable = true;
-        this.correct = false;
+        this.enable = Boolean.TRUE;
+        this.correct = Boolean.FALSE;
         this.tickets = tickets;
     }
 
