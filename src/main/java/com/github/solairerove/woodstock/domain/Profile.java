@@ -12,10 +12,8 @@ import java.io.Serializable;
 @Data
 @Document
 public class Profile implements Serializable {
-
     @Id
     private String id;
-
     private String firstName;
     private String lastName;
 

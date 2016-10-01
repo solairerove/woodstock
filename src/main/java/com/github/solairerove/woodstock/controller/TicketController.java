@@ -1,6 +1,7 @@
 package com.github.solairerove.woodstock.controller;
 
 import com.github.solairerove.woodstock.domain.Ticket;
+import com.github.solairerove.woodstock.dto.TicketDTO;
 import com.github.solairerove.woodstock.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 @ExposesResourceFor(Ticket.class)
 @RequestMapping(value = "/api/tickets", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TicketController {
-
     @Autowired
     private TicketService ticketService;
 
@@ -44,8 +44,8 @@ public class TicketController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> createTicket(@RequestBody Ticket ticket) {
-        return new ResponseEntity<>(ticketService.createTicket(ticket), HttpStatus.CREATED);
+    public ResponseEntity<?> createTicket(@RequestBody TicketDTO ticketDTO) {
+        return new ResponseEntity<>(ticketService.createTicket(ticketDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
@@ -61,5 +61,10 @@ public class TicketController {
     @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteTicket(@RequestBody(required = false) Ticket ticket) {
         return new ResponseEntity<>(ticketService.deleteTicket(ticket), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteAll() {
+        return new ResponseEntity<>(ticketService.deleteAll(), HttpStatus.ACCEPTED);
     }
 }

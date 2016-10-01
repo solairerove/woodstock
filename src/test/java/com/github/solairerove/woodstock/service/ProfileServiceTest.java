@@ -85,7 +85,7 @@ public class ProfileServiceTest {
     @Test
     public void findAllTest() {
         Collection<Profile> profiles = new ArrayList<>();
-        for(int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
+        for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
             profiles.add(EntityUtils.generateProfile());
         }
         profileRepository.save(profiles);

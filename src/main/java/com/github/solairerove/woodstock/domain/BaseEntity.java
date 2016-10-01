@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * Created by krivitski-no on 10/1/16.
@@ -12,11 +13,10 @@ import java.io.Serializable;
 @Data
 @Document
 public class BaseEntity implements Serializable {
-
     @Id
     private String id;
-    private Boolean enable;
-    private Boolean correct;
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 
     public BaseEntity() {
     }

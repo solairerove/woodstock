@@ -14,14 +14,12 @@ import java.util.Collection;
 @Data
 @Document
 public class Task implements Serializable {
-
     @Id
     private String id;
-
     private String question;
     private Boolean enable;
     private Boolean correct;
-    private Collection<? extends Ticket> tickets = new ArrayList<>();
+    private Iterable<? extends Ticket> tickets = new ArrayList<>();
 
     public Task() {
     }
