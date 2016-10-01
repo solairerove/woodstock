@@ -17,11 +17,21 @@ public class Ticket implements Serializable{
     private String id;
 
     private String value;
+    private Boolean enable;
+    private Boolean correct;
 
     public Ticket() {
     }
 
     public Ticket(String value) {
         this.value = value;
+        this.enable = Boolean.TRUE;
+        this.correct = Boolean.FALSE;
+    }
+
+    public Ticket(String value, Boolean enable, Boolean correct) {
+        this.value = value;
+        this.enable = enable;
+        this.correct = correct;
     }
 }
