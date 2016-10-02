@@ -22,8 +22,6 @@ import java.util.Collection;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProfileServiceTest {
-    private static final int NUMBER_OF_ENTITIES_IN_COLLECTION = 10;
-
     @Autowired
     private ProfileService profileService;
 
@@ -84,13 +82,9 @@ public class ProfileServiceTest {
 
     @Test
     public void findAllTest() {
-        Collection<Profile> profiles = new ArrayList<>();
-        for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
-            profiles.add(EntityUtils.generateProfile());
-        }
-        profileRepository.save(profiles);
+        profileRepository.save(EntityUtils.generateProfileCollection());
+        int count = EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
 
-        Assert.assertEquals(NUMBER_OF_ENTITIES_IN_COLLECTION,
-                profileService.findAll(new PageRequest(0, NUMBER_OF_ENTITIES_IN_COLLECTION)).getTotalElements());
+        Assert.assertEquals(count, profileService.findAll(new PageRequest(0, count)).getTotalElements());
     }
 }

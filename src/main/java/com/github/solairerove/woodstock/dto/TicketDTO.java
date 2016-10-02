@@ -10,4 +10,11 @@ import java.io.Serializable;
 @Data
 public class TicketDTO implements Serializable {
     private String value;
+
+    public TicketDTO() {
+    }
+
+    public TicketDTO(String value) {
+        this.value = value;
+    }
 }

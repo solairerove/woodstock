@@ -24,4 +24,9 @@ public class LoggingAspect {
     public void profileControllerLog(JoinPoint joinPoint) {
         LOGGER.info("Profile controller: " + joinPoint.getSignature().getName());
     }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.TicketService.*(..)))")
+    public void ticketServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Ticket service: " + joinPoint.getSignature().getName());
+    }
 }
