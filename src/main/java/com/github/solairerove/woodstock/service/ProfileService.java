@@ -1,11 +1,15 @@
 package com.github.solairerove.woodstock.service;
 
+import com.github.solairerove.woodstock.domain.BaseEntity;
 import com.github.solairerove.woodstock.domain.Profile;
+import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 /**
  * Created by krivitski-no on 9/14/16.
@@ -15,7 +19,11 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    public String createProfile(Profile profile) {
+    public String createProfile(ProfileDTO profileDTO) {
+        Profile profile = new Profile();
+        profile.setFirstName(profileDTO.getFirstName());
+        profile.setLastName(profileDTO.getLastName());
+        profile.setCreatedDate(LocalDateTime.now());
         profileRepository.save(profile);
         return profile.getId();
     }
@@ -24,12 +32,15 @@ public class ProfileService {
         return profileRepository.findOneProfileById(id);
     }
 
-    public Profile updateProfile(String id, Profile profile) {
+    public String updateProfile(String id, ProfileDTO profileDTO) {
         if (profileRepository.exists(id)) {
-            profile.setId(id);
-            createProfile(profile);
+            Profile profile = profileRepository.findOne(id);
+            profile.setFirstName(profileDTO.getFirstName());
+            profile.setLastName(profileDTO.getLastName());
+            profile.setUpdatedDate(LocalDateTime.now());
+            profileRepository.save(profile);
         }
-        return profile;
+        return id;
     }
 
     public String deleteProfile(String id) {
@@ -37,9 +48,10 @@ public class ProfileService {
         return id;
     }
 
-    public String deleteProfile(Profile profile) {
-        profileRepository.delete(profile);
-        return profile.getId();
+    public Iterable<? extends BaseEntity> deleteAll() {
+        Iterable<? extends Profile> tickets = profileRepository.findAll();
+        profileRepository.deleteAll();
+        return tickets;
     }
 
     public Page<Profile> findAll(Pageable pageable) {

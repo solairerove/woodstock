@@ -2,6 +2,7 @@ package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.Application;
 import com.github.solairerove.woodstock.domain.Profile;
+import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.repository.ProfileRepository;
 import com.github.solairerove.woodstock.utils.EntityUtils;
 import org.junit.Assert;
@@ -35,10 +36,11 @@ public class ProfileServiceTest {
 
     @Test
     public void createProfileTest() {
-        Profile saved = EntityUtils.generateProfile();
-        profileService.createProfile(saved);
+        ProfileDTO saved = EntityUtils.generateProfileDTO();
+        String id = profileService.createProfile(saved);
 
-        Assert.assertEquals(saved, profileRepository.findOne(saved.getId()));
+        Assert.assertEquals(saved.getFirstName(), profileRepository.findOne(id).getFirstName());
+        Assert.assertEquals(saved.getLastName(), profileRepository.findOne(id).getLastName());
     }
 
     @Test
@@ -52,12 +54,19 @@ public class ProfileServiceTest {
     @Test
     public void updateProfileTest() {
         Profile saved = EntityUtils.generateProfile();
-        Profile updated = EntityUtils.generateProfile();
         profileRepository.save(saved);
+        String id = saved.getId();
 
-        profileService.updateProfile(saved.getId(), updated);
+        ProfileDTO profileDTO = EntityUtils.generateProfileDTO();
+        String firstName = EntityUtils.getRandomString();
+        String lastName = EntityUtils.getRandomString();
+        profileDTO.setFirstName(firstName);
+        profileDTO.setLastName(lastName);
 
-        Assert.assertEquals(updated.getFirstName(), profileRepository.findOne(saved.getId()).getFirstName());
+        profileService.updateProfile(id, profileDTO);
+
+        Assert.assertEquals(firstName, profileRepository.findOne(id).getFirstName());
+        Assert.assertEquals(lastName, profileRepository.findOne(id).getLastName());
     }
 
     @Test
@@ -71,13 +80,12 @@ public class ProfileServiceTest {
     }
 
     @Test
-    public void deleteProfileByEntityTest() {
-        Profile saved = EntityUtils.generateProfile();
-        profileRepository.save(saved);
+    public void deleteAll() {
+        profileRepository.save(EntityUtils.generateProfileCollection());
 
-        profileService.deleteProfile(saved);
+        profileService.deleteAll();
 
-        Assert.assertEquals(profileRepository.findOne(saved.getId()), null);
+        Assert.assertEquals(0, profileRepository.count());
     }
 
     @Test

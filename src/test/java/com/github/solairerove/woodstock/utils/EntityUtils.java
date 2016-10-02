@@ -2,6 +2,7 @@ package com.github.solairerove.woodstock.utils;
 
 import com.github.solairerove.woodstock.domain.Profile;
 import com.github.solairerove.woodstock.domain.Ticket;
+import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.dto.TicketDTO;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,10 @@ public class EntityUtils {
 
     public static Profile generateProfile() {
         return new Profile(getRandomString(), getRandomString());
+    }
+
+    public static ProfileDTO generateProfileDTO() {
+        return new ProfileDTO(getRandomString(), getRandomString());
     }
 
     public static Iterable<Profile> generateProfileCollection() {

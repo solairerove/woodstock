@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +15,6 @@ import java.time.LocalDateTime;
  * Created by krivitski-no on 9/28/16.
  */
 @Service
-@Transactional
 public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
@@ -34,7 +32,7 @@ public class TicketService {
 
     public String updateTicket(String id, TicketDTO ticketDTO) {
         if (ticketRepository.exists(id)) {
-            Ticket ticket = ticketRepository.findOneTicketById(id);
+            Ticket ticket = ticketRepository.findOne(id);
             ticket.setValue(ticketDTO.getValue());
             ticket.setUpdatedDate(LocalDateTime.now());
             ticketRepository.save(ticket);

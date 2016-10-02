@@ -1,6 +1,7 @@
 package com.github.solairerove.woodstock.controller;
 
 import com.github.solairerove.woodstock.domain.Profile;
+import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -43,22 +44,22 @@ public class ProfileController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> createProfile(@RequestBody Profile profile) {
-        return new ResponseEntity<>(profileService.createProfile(profile), HttpStatus.CREATED);
+    public ResponseEntity<?> createProfile(@RequestBody ProfileDTO profileDTO) {
+        return new ResponseEntity<>(profileService.createProfile(profileDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateProfile(@PathVariable String id, @RequestBody Profile profile) {
-        return new ResponseEntity<>(profileService.updateProfile(id, profile), HttpStatus.OK);
+    public ResponseEntity<?> updateProfile(@PathVariable String id, @RequestBody ProfileDTO profileDTO) {
+        return new ResponseEntity<>(profileService.updateProfile(id, profileDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteProfile(@PathVariable String id) {
         return new ResponseEntity<>(profileService.deleteProfile(id), HttpStatus.OK);
     }
-
-    @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteProfile(@RequestBody(required = false) Profile profile) {
-        return new ResponseEntity<>(profileService.deleteProfile(profile), HttpStatus.OK);
+    @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteAll() {
+        return new ResponseEntity<>(profileService.deleteAll(), HttpStatus.ACCEPTED);
     }
+
 }
