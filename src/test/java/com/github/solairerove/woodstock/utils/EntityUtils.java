@@ -1,8 +1,10 @@
 package com.github.solairerove.woodstock.utils;
 
 import com.github.solairerove.woodstock.domain.Profile;
+import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.dto.ProfileDTO;
+import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.dto.TicketDTO;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Component;
@@ -33,7 +35,7 @@ public class EntityUtils {
 
     public static Iterable<Profile> generateProfileCollection() {
         Collection<Profile> profiles = new ArrayList<>();
-        for(int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
+        for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
             profiles.add(generateProfile());
         }
         return profiles;
@@ -43,15 +45,31 @@ public class EntityUtils {
         return new Ticket(getRandomString());
     }
 
+    public static TicketDTO generateTicketDTO() {
+        return new TicketDTO(getRandomString());
+    }
+
     public static Iterable<Ticket> generateTicketCollection() {
         Collection<Ticket> tickets = new ArrayList<>();
-        for(int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
+        for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
             tickets.add(generateTicket());
         }
         return tickets;
     }
 
-    public static TicketDTO generateTicketDTO() {
-        return new TicketDTO(getRandomString());
+    public static Task generateTask() {
+        return new Task(getRandomString());
+    }
+
+    public static TaskDTO generateTaskDTO() {
+        return new TaskDTO(getRandomString());
+    }
+
+    public static Iterable<Task> generateTaskCollection() {
+        Collection<Task> tasks = new ArrayList<>();
+        for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
+            tasks.add(generateTask());
+        }
+        return tasks;
     }
 }

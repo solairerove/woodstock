@@ -29,4 +29,14 @@ public class LoggingAspect {
     public void ticketServiceLog(JoinPoint joinPoint) {
         LOGGER.info("Ticket service: " + joinPoint.getSignature().getName());
     }
+
+    @Before("execution(* com.github.solairerove.woodstock.controller.TicketController.*(..)))")
+    public void ticketControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Ticket controller: " + joinPoint.getSignature().getName());
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.TaskService.*(..)))")
+    public void taskServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Task service: " + joinPoint.getSignature().getName());
+    }
 }

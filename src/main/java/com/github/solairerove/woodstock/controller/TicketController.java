@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @ExposesResourceFor(Ticket.class)
 @RequestMapping(value = "/api/tickets", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//@RequestMapping(value = "/api/tasks/{id}/tickets", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TicketController {
     @Autowired
     private TicketService ticketService;

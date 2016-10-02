@@ -10,11 +10,16 @@ import java.util.Collection;
  */
 @Data
 public class Task extends Block {
-
     private String question;
     private Iterable<? extends Ticket> tickets = new ArrayList<>();
 
     public Task() {
+    }
+
+    public Task(String question) {
+        this.question = question;
+        super.setEnable(Boolean.TRUE);
+        super.setCorrect(Boolean.FALSE);
     }
 
     public Task(String question, Collection<? extends Ticket> tickets) {

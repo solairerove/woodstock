@@ -22,10 +22,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(classes = Application.class)
 public class TicketServiceTest {
     @Autowired
-    private TicketRepository ticketRepository;
+    private TicketService ticketService;
 
     @Autowired
-    private TicketService ticketService;
+    private TicketRepository ticketRepository;
 
     @Before
     public void setUp() {
