@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @ExposesResourceFor(Profile.class)
-@RequestMapping(value = "/api/profiles", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/profiles", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class ProfileController {
     @Autowired
     private ProfileService profileService;
