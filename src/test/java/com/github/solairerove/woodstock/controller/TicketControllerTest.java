@@ -2,9 +2,9 @@ package com.github.solairerove.woodstock.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.solairerove.woodstock.Application;
-import com.github.solairerove.woodstock.domain.Profile;
-import com.github.solairerove.woodstock.dto.ProfileDTO;
-import com.github.solairerove.woodstock.repository.ProfileRepository;
+import com.github.solairerove.woodstock.domain.Ticket;
+import com.github.solairerove.woodstock.dto.TicketDTO;
+import com.github.solairerove.woodstock.repository.TicketRepository;
 import com.github.solairerove.woodstock.utils.EntityUtils;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,32 +25,32 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
 /**
- * Created by krivitski-no on 9/28/16.
+ * Created by krivitski-no on 10/2/16.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @SpringBootTest(classes = Application.class)
-public class ProfileControllerTest {
-    private static final String API_PATH = "/api/profiles";
-    private static final String COLLECTION_JSON_PATH = "_embedded.profileList";
+public class TicketControllerTest {
+    private static final String API_PATH = "/api/tickets";
+    private static final String COLLECTION_JSON_PATH = "_embedded.ticketList";
 
     @Autowired
     private WebApplicationContext context;
 
     @Autowired
-    private ProfileRepository profileRepository;
+    private TicketRepository ticketRepository;
 
     private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
-        profileRepository.deleteAll();
+        ticketRepository.deleteAll();
     }
 
     @Test
-    public void getAllProfilesTest() throws Exception {
-        profileRepository.save(EntityUtils.generateProfileCollection());
+    public void getAllTicketsTest() throws Exception {
+        ticketRepository.save(EntityUtils.generateTicketCollection());
 
         mockMvc.perform(MockMvcRequestBuilders.get(API_PATH)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -62,10 +62,10 @@ public class ProfileControllerTest {
     }
 
     @Test
-    public void getProfileTest() throws Exception {
-        Profile profile = EntityUtils.generateProfile();
-        profileRepository.save(profile);
-        String id = profile.getId();
+    public void getTicketTest() throws Exception {
+        Ticket ticket = EntityUtils.generateTicket();
+        ticketRepository.save(ticket);
+        String id = ticket.getId();
 
         mockMvc.perform(MockMvcRequestBuilders.get(API_PATH + "/" + id)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -77,13 +77,13 @@ public class ProfileControllerTest {
     }
 
     @Test
-    public void createProfileTest() throws Exception {
+    public void createTicketTest() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        ProfileDTO profileDTO = EntityUtils.generateProfileDTO();
+        TicketDTO ticketDTO = EntityUtils.generateTicketDTO();
 
         mockMvc.perform(MockMvcRequestBuilders.post(API_PATH)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
-                .content(objectMapper.writeValueAsString(profileDTO))
+                .content(objectMapper.writeValueAsString(ticketDTO))
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andDo(MockMvcResultHandlers.print())
@@ -91,17 +91,17 @@ public class ProfileControllerTest {
     }
 
     @Test
-    public void updateProfileTest() throws Exception {
-        Profile profile = EntityUtils.generateProfile();
-        profileRepository.save(profile);
-        String id = profile.getId();
+    public void updateTicketTest() throws Exception {
+        Ticket ticket = EntityUtils.generateTicket();
+        ticketRepository.save(ticket);
+        String id = ticket.getId();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        ProfileDTO profileDTO = EntityUtils.generateProfileDTO();
+        TicketDTO ticketDTO = EntityUtils.generateTicketDTO();
 
         mockMvc.perform(MockMvcRequestBuilders.put(API_PATH + "/" + id)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
-                .content(objectMapper.writeValueAsString(profileDTO))
+                .content(objectMapper.writeValueAsString(ticketDTO))
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print())
@@ -110,10 +110,10 @@ public class ProfileControllerTest {
     }
 
     @Test
-    public void deleteProfileTest() throws Exception {
-        Profile profile = EntityUtils.generateProfile();
-        profileRepository.save(profile);
-        String id = profile.getId();
+    public void deleteTicketTest() throws Exception {
+        Ticket ticket = EntityUtils.generateTicket();
+        ticketRepository.save(ticket);
+        String id = ticket.getId();
 
         mockMvc.perform(MockMvcRequestBuilders.delete(API_PATH + "/" + id)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -126,7 +126,7 @@ public class ProfileControllerTest {
 
     @Test
     public void deleteAllTest() throws Exception {
-        profileRepository.save(EntityUtils.generateProfileCollection());
+        ticketRepository.save(EntityUtils.generateTicketCollection());
 
         mockMvc.perform(MockMvcRequestBuilders.delete(API_PATH + "/" + "delete_all")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
