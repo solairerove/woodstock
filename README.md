@@ -13,6 +13,13 @@ ___
 
 ____
 
+#### Jacoco test coverage:
+
+* `mvn clean test jacoco:report`
+* `target/site/jacoco/index.html`
+
+___
+
 #### Api doc:
 
 * Fuck this shit about documentation. Download *[Insomnia](https://insomnia.rest/download/#ubuntu)* and import *[woodstock.json](https://goo.gl/wZeKf1)*
