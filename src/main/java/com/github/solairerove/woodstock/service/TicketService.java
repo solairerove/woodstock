@@ -32,23 +32,19 @@ public class TicketService {
         return ticketRepository.findOneTicketById(id);
     }
 
-    public Ticket updateTicket(String id, Ticket ticket) {
+    public String updateTicket(String id, TicketDTO ticketDTO) {
         if (ticketRepository.exists(id)) {
-            ticket.setId(id);
+            Ticket ticket = ticketRepository.findOneTicketById(id);
+            ticket.setValue(ticketDTO.getValue());
             ticket.setUpdatedDate(LocalDateTime.now());
             ticketRepository.save(ticket);
         }
-        return ticket;
+        return id;
     }
 
     public String deleteTicket(String id) {
         ticketRepository.delete(id);
         return id;
-    }
-
-    public String deleteTicket(Ticket ticket) {
-        ticketRepository.delete(ticket);
-        return ticket.getId();
     }
 
     public Iterable<? extends Block> deleteAll() {

@@ -49,18 +49,13 @@ public class TicketController {
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateTicket(@PathVariable String id, @RequestBody Ticket ticket) {
-        return new ResponseEntity<>(ticketService.updateTicket(id, ticket), HttpStatus.OK);
+    public ResponseEntity<?> updateTicket(@PathVariable String id, @RequestBody TicketDTO ticketDTO) {
+        return new ResponseEntity<>(ticketService.updateTicket(id, ticketDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteTicket(@PathVariable String id) {
         return new ResponseEntity<>(ticketService.deleteTicket(id), HttpStatus.OK);
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteTicket(@RequestBody(required = false) Ticket ticket) {
-        return new ResponseEntity<>(ticketService.deleteTicket(ticket), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
