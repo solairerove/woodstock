@@ -1,10 +1,7 @@
 package com.github.solairerove.woodstock.domain;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -12,13 +9,9 @@ import java.util.Collection;
  * Created by krivitski-no on 10/1/16.
  */
 @Data
-@Document
-public class Task implements Serializable {
-    @Id
-    private String id;
+public class Task extends Block {
+
     private String question;
-    private Boolean enable;
-    private Boolean correct;
     private Iterable<? extends Ticket> tickets = new ArrayList<>();
 
     public Task() {
@@ -26,15 +19,15 @@ public class Task implements Serializable {
 
     public Task(String question, Collection<? extends Ticket> tickets) {
         this.question = question;
-        this.enable = Boolean.TRUE;
-        this.correct = Boolean.FALSE;
         this.tickets = tickets;
+        super.setEnable(Boolean.TRUE);
+        super.setCorrect(Boolean.FALSE);
     }
 
-    public Task(String question, Boolean enable, Boolean correct, Collection<? extends Ticket> tickets) {
+    public Task(String question, Collection<? extends Ticket> tickets, Boolean enable, Boolean correct) {
         this.question = question;
-        this.enable = enable;
-        this.correct = correct;
         this.tickets = tickets;
+        super.setEnable(enable);
+        super.setCorrect(correct);
     }
 }
