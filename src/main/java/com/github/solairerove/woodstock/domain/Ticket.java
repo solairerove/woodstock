@@ -10,6 +10,7 @@ public class Ticket extends Block {
     private String value;
 
     public Ticket() {
+        // default contructor
     }
 
     public Ticket(String value) {

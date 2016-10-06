@@ -11,6 +11,7 @@ public class Profile extends BaseEntity {
     private String lastName;
 
     public Profile() {
+        // default contructor
     }
 
     public Profile(String firstName, String lastName) {

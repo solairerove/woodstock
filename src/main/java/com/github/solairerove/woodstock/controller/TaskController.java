@@ -31,12 +31,12 @@ public class TaskController {
     private EntityLinks entityLinks;
 
     @RequestMapping
-    public ResponseEntity<?> getAllTasks(Pageable pageable) {
+    public ResponseEntity getAllTasks(Pageable pageable) {
         return new ResponseEntity<>(assembler.toResource(taskService.findAll(pageable)), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}")
-    public ResponseEntity<?> getTask(@PathVariable String id) {
+    public ResponseEntity getTask(@PathVariable String id) {
         Resource<Task> resource = new Resource<>(taskService.getTask(id));
         resource.add(this.entityLinks.linkToSingleResource(Task.class, id));
 
@@ -44,22 +44,22 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> createTask(@RequestBody TaskDTO taskDTO) {
+    public ResponseEntity createTask(@RequestBody TaskDTO taskDTO) {
         return new ResponseEntity<>(taskService.createTask(taskDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateTask(@PathVariable String id, @RequestBody TaskDTO taskDTO) {
+    public ResponseEntity updateTask(@PathVariable String id, @RequestBody TaskDTO taskDTO) {
         return new ResponseEntity<>(taskService.updateTask(id, taskDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteTask(@PathVariable String id) {
+    public ResponseEntity deleteTask(@PathVariable String id) {
         return new ResponseEntity<>(taskService.deleteTask(id), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteAll() {
+    public ResponseEntity deleteAll() {
         return new ResponseEntity<>(taskService.deleteAll(), HttpStatus.ACCEPTED);
     }
 }

@@ -31,12 +31,12 @@ public class TicketController {
     private EntityLinks entityLinks;
 
     @RequestMapping
-    public ResponseEntity<?> getAllTickets(Pageable pageable) {
+    public ResponseEntity getAllTickets(Pageable pageable) {
         return new ResponseEntity<>(assembler.toResource(ticketService.findAll(pageable)), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}")
-    public ResponseEntity<?> getTicket(@PathVariable String id) {
+    public ResponseEntity getTicket(@PathVariable String id) {
         Resource<Ticket> resource = new Resource<>(ticketService.getTicket(id));
         resource.add(this.entityLinks.linkToSingleResource(Ticket.class, id));
 
@@ -44,22 +44,22 @@ public class TicketController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> createTicket(@RequestBody TicketDTO ticketDTO) {
+    public ResponseEntity createTicket(@RequestBody TicketDTO ticketDTO) {
         return new ResponseEntity<>(ticketService.createTicket(ticketDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateTicket(@PathVariable String id, @RequestBody TicketDTO ticketDTO) {
+    public ResponseEntity updateTicket(@PathVariable String id, @RequestBody TicketDTO ticketDTO) {
         return new ResponseEntity<>(ticketService.updateTicket(id, ticketDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteTicket(@PathVariable String id) {
+    public ResponseEntity deleteTicket(@PathVariable String id) {
         return new ResponseEntity<>(ticketService.deleteTicket(id), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteAll() {
+    public ResponseEntity deleteAll() {
         return new ResponseEntity<>(ticketService.deleteAll(), HttpStatus.ACCEPTED);
     }
 }

@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.service;
 
-import com.github.solairerove.woodstock.domain.BaseEntity;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.repository.TaskRepository;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  * Created by krivitski-no on 10/2/16.
@@ -45,8 +45,8 @@ public class TaskService {
         return id;
     }
 
-    public Iterable<? extends BaseEntity> deleteAll() {
-        Iterable<? extends Task> tickets = taskRepository.findAll();
+    public Collection<Task> deleteAll() {
+        Collection<Task> tickets = taskRepository.findAll();
         taskRepository.deleteAll();
         return tickets;
     }

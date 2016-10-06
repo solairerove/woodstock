@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.service;
 
-import com.github.solairerove.woodstock.domain.Block;
 import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.dto.TicketDTO;
 import com.github.solairerove.woodstock.repository.TicketRepository;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  * Created by krivitski-no on 9/28/16.
@@ -45,8 +45,8 @@ public class TicketService {
         return id;
     }
 
-    public Iterable<? extends Block> deleteAll() {
-        Iterable<? extends Ticket> tickets = ticketRepository.findAll();
+    public Collection<Ticket> deleteAll() {
+        Collection<Ticket> tickets = ticketRepository.findAll();
         ticketRepository.deleteAll();
         return tickets;
     }

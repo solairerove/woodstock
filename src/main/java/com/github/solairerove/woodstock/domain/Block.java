@@ -11,5 +11,6 @@ public class Block extends BaseEntity {
     private Boolean correct;
 
     public Block() {
+        // default contructor
     }
 }

@@ -31,12 +31,12 @@ public class ProfileController {
     private EntityLinks entityLinks;
 
     @RequestMapping
-    public ResponseEntity<?> getAllProfiles(Pageable pageable) {
+    public ResponseEntity getAllProfiles(Pageable pageable) {
         return new ResponseEntity<>(assembler.toResource(profileService.findAll(pageable)), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}")
-    public ResponseEntity<?> getProfile(@PathVariable String id) {
+    public ResponseEntity getProfile(@PathVariable String id) {
         Resource<Profile> resource = new Resource<>(profileService.getProfile(id));
         resource.add(this.entityLinks.linkToSingleResource(Profile.class, id));
 
@@ -44,21 +44,21 @@ public class ProfileController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> createProfile(@RequestBody ProfileDTO profileDTO) {
+    public ResponseEntity createProfile(@RequestBody ProfileDTO profileDTO) {
         return new ResponseEntity<>(profileService.createProfile(profileDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateProfile(@PathVariable String id, @RequestBody ProfileDTO profileDTO) {
+    public ResponseEntity updateProfile(@PathVariable String id, @RequestBody ProfileDTO profileDTO) {
         return new ResponseEntity<>(profileService.updateProfile(id, profileDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteProfile(@PathVariable String id) {
+    public ResponseEntity deleteProfile(@PathVariable String id) {
         return new ResponseEntity<>(profileService.deleteProfile(id), HttpStatus.OK);
     }
     @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteAll() {
+    public ResponseEntity deleteAll() {
         return new ResponseEntity<>(profileService.deleteAll(), HttpStatus.ACCEPTED);
     }
 

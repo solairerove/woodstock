@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.service;
 
-import com.github.solairerove.woodstock.domain.BaseEntity;
 import com.github.solairerove.woodstock.domain.Profile;
 import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.repository.ProfileRepository;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  * Created by krivitski-no on 9/14/16.
@@ -48,8 +48,8 @@ public class ProfileService {
         return id;
     }
 
-    public Iterable<? extends BaseEntity> deleteAll() {
-        Iterable<? extends Profile> tickets = profileRepository.findAll();
+    public Iterable<Profile> deleteAll() {
+        Collection<Profile> tickets = profileRepository.findAll();
         profileRepository.deleteAll();
         return tickets;
     }

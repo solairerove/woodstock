@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by krivitski-no on 10/2/16.
@@ -13,18 +13,13 @@ import java.util.Collection;
 @Data
 public class TaskDTO implements Serializable {
     private String question;
-    private Iterable<? extends Ticket> tickets = new ArrayList<>();
+    private List<Ticket> tickets = new ArrayList<>();
 
     public TaskDTO() {
-
+        // default contructor
     }
 
     public TaskDTO(String question) {
         this.question = question;
-    }
-
-    public TaskDTO(String question, Collection<? extends Ticket> tickets) {
-        this.question = question;
-        this.tickets = tickets;
     }
 }

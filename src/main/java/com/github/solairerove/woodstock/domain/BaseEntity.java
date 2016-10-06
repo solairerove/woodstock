@@ -15,9 +15,10 @@ import java.time.LocalDateTime;
 public class BaseEntity implements Serializable {
     @Id
     private String id;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private transient LocalDateTime createdDate;
+    private transient LocalDateTime updatedDate;
 
     public BaseEntity() {
+        // default contructor
     }
 }

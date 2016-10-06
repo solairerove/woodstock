@@ -12,6 +12,7 @@ public class TicketDTO implements Serializable {
     private String value;
 
     public TicketDTO() {
+        // default contructor
     }
 
     public TicketDTO(String value) {

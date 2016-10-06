@@ -13,6 +13,7 @@ public class ProfileDTO implements Serializable {
     private String lastName;
 
     public ProfileDTO() {
+        // default contructor
     }
 
     public ProfileDTO(String firstName, String lastName) {
