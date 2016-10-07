@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.hateoas.EntityLinks;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -35,7 +34,7 @@ public class TicketServiceTest {
     @Test
     public void createTicketTest() {
         TicketDTO saved = EntityUtils.generateTicketDTO();
-        String id = ticketService.createTicket(saved);
+        String id = ticketService.create(saved);
 
         Assert.assertEquals(saved.getValue(), ticketRepository.findOne(id).getValue());
     }
@@ -45,7 +44,7 @@ public class TicketServiceTest {
         Ticket saved = EntityUtils.generateTicket();
         ticketRepository.save(saved);
 
-        Assert.assertEquals(saved, ticketService.getTicket(saved.getId()));
+        Assert.assertEquals(saved, ticketService.get(saved.getId()));
     }
 
     @Test
@@ -58,7 +57,7 @@ public class TicketServiceTest {
         String value = EntityUtils.getRandomString();
         ticketDTO.setValue(value);
 
-        ticketService.updateTicket(id, ticketDTO);
+        ticketService.update(id, ticketDTO);
 
         Assert.assertEquals(value, ticketRepository.findOne(id).getValue());
     }
@@ -69,7 +68,7 @@ public class TicketServiceTest {
         ticketRepository.save(saved);
         String id = saved.getId();
 
-        ticketService.deleteTicket(id);
+        ticketService.delete(id);
 
         Assert.assertEquals(null, ticketRepository.findOne(id));
     }

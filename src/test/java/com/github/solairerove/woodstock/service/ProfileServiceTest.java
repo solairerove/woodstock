@@ -34,7 +34,7 @@ public class ProfileServiceTest {
     @Test
     public void createProfileTest() {
         ProfileDTO saved = EntityUtils.generateProfileDTO();
-        String id = profileService.createProfile(saved);
+        String id = profileService.create(saved);
 
         Assert.assertEquals(saved.getFirstName(), profileRepository.findOne(id).getFirstName());
         Assert.assertEquals(saved.getLastName(), profileRepository.findOne(id).getLastName());
@@ -45,7 +45,7 @@ public class ProfileServiceTest {
         Profile saved = EntityUtils.generateProfile();
         profileRepository.save(saved);
 
-        Assert.assertEquals(saved, profileService.getProfile(saved.getId()));
+        Assert.assertEquals(saved, profileService.get(saved.getId()));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class ProfileServiceTest {
         profileDTO.setFirstName(firstName);
         profileDTO.setLastName(lastName);
 
-        profileService.updateProfile(id, profileDTO);
+        profileService.update(id, profileDTO);
 
         Assert.assertEquals(firstName, profileRepository.findOne(id).getFirstName());
         Assert.assertEquals(lastName, profileRepository.findOne(id).getLastName());
@@ -71,7 +71,7 @@ public class ProfileServiceTest {
         Profile saved = EntityUtils.generateProfile();
         profileRepository.save(saved);
 
-        profileService.deleteProfile(saved.getId());
+        profileService.delete(saved.getId());
 
         Assert.assertEquals(profileRepository.findOne(saved.getId()), null);
     }

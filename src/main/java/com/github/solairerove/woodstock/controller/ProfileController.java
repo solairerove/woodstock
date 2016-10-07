@@ -37,7 +37,7 @@ public class ProfileController {
 
     @RequestMapping(path = "/{id}")
     public ResponseEntity getProfile(@PathVariable String id) {
-        Resource<Profile> resource = new Resource<>(profileService.getProfile(id));
+        Resource<Profile> resource = new Resource<>(profileService.get(id));
         resource.add(this.entityLinks.linkToSingleResource(Profile.class, id));
 
         return new ResponseEntity<>(resource, HttpStatus.OK);
@@ -45,17 +45,17 @@ public class ProfileController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createProfile(@RequestBody ProfileDTO profileDTO) {
-        return new ResponseEntity<>(profileService.createProfile(profileDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(profileService.create(profileDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity updateProfile(@PathVariable String id, @RequestBody ProfileDTO profileDTO) {
-        return new ResponseEntity<>(profileService.updateProfile(id, profileDTO), HttpStatus.OK);
+        return new ResponseEntity<>(profileService.update(id, profileDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteProfile(@PathVariable String id) {
-        return new ResponseEntity<>(profileService.deleteProfile(id), HttpStatus.OK);
+        return new ResponseEntity<>(profileService.delete(id), HttpStatus.OK);
     }
     @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
     public ResponseEntity deleteAll() {

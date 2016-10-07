@@ -21,7 +21,7 @@ public class TicketServiceImpl implements TicketService {
     private TicketRepository ticketRepository;
 
     @Override
-    public String createTicket(TicketDTO ticketDTO) {
+    public String create(TicketDTO ticketDTO) {
         Ticket ticket = new Ticket(ticketDTO.getValue());
         ticket.setCreatedDate(LocalDateTime.now());
         ticketRepository.save(ticket);
@@ -29,12 +29,12 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Ticket getTicket(String id) {
+    public Ticket get(String id) {
         return ticketRepository.findOneTicketById(id);
     }
 
     @Override
-    public String updateTicket(String id, TicketDTO ticketDTO) {
+    public String update(String id, TicketDTO ticketDTO) {
         if (ticketRepository.exists(id)) {
             Ticket ticket = ticketRepository.findOne(id);
             ticket.setValue(ticketDTO.getValue());
@@ -45,7 +45,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public String deleteTicket(String id) {
+    public String delete(String id) {
         ticketRepository.delete(id);
         return id;
     }

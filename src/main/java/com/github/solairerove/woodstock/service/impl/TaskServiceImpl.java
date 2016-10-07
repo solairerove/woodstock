@@ -21,7 +21,7 @@ public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
 
     @Override
-    public String createTask(TaskDTO taskDTO) {
+    public String create(TaskDTO taskDTO) {
         Task task = new Task(taskDTO.getQuestion());
         task.setCreatedDate(LocalDateTime.now());
         taskRepository.save(task);
@@ -29,12 +29,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getTask(String id) {
+    public Task get(String id) {
         return taskRepository.findOne(id);
     }
 
     @Override
-    public String updateTask(String id, TaskDTO taskDTO) {
+    public String update(String id, TaskDTO taskDTO) {
         if (taskRepository.exists(id)) {
             Task task = taskRepository.findOne(id);
             task.setQuestion(taskDTO.getQuestion());
@@ -45,7 +45,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public String deleteTask(String id) {
+    public String delete(String id) {
         taskRepository.delete(id);
         return id;
     }

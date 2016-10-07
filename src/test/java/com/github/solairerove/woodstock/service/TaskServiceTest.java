@@ -34,7 +34,7 @@ public class TaskServiceTest {
     @Test
     public void createTaskTest() {
         TaskDTO saved = EntityUtils.generateTaskDTO();
-        String id = taskService.createTask(saved);
+        String id = taskService.create(saved);
 
         Assert.assertEquals(saved.getQuestion(), taskRepository.findOne(id).getQuestion());
     }
@@ -44,7 +44,7 @@ public class TaskServiceTest {
         Task saved = EntityUtils.generateTask();
         taskRepository.save(saved);
 
-        Assert.assertEquals(saved.getQuestion(), taskService.getTask(saved.getId()).getQuestion());
+        Assert.assertEquals(saved.getQuestion(), taskService.get(saved.getId()).getQuestion());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class TaskServiceTest {
         String question = EntityUtils.getRandomString();
         ticketDTO.setQuestion(question);
 
-        taskService.updateTask(id, ticketDTO);
+        taskService.update(id, ticketDTO);
 
         Assert.assertEquals(question, taskRepository.findOne(id).getQuestion());
     }
@@ -68,7 +68,7 @@ public class TaskServiceTest {
         taskRepository.save(saved);
         String id = saved.getId();
 
-        taskService.deleteTask(id);
+        taskService.delete(id);
 
         Assert.assertEquals(null, taskRepository.findOne(id));
     }

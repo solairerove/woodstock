@@ -21,7 +21,7 @@ public class ProfileServiceImpl implements ProfileService {
     private ProfileRepository profileRepository;
 
     @Override
-    public String createProfile(ProfileDTO profileDTO) {
+    public String create(ProfileDTO profileDTO) {
         Profile profile = new Profile();
         profile.setFirstName(profileDTO.getFirstName());
         profile.setLastName(profileDTO.getLastName());
@@ -31,12 +31,12 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public Profile getProfile(String id) {
+    public Profile get(String id) {
         return profileRepository.findOneProfileById(id);
     }
 
     @Override
-    public String updateProfile(String id, ProfileDTO profileDTO) {
+    public String update(String id, ProfileDTO profileDTO) {
         if (profileRepository.exists(id)) {
             Profile profile = profileRepository.findOne(id);
             profile.setFirstName(profileDTO.getFirstName());
@@ -48,7 +48,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public String deleteProfile(String id) {
+    public String delete(String id) {
         profileRepository.delete(id);
         return id;
     }

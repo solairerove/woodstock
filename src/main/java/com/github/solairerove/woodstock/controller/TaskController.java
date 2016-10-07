@@ -37,7 +37,7 @@ public class TaskController {
 
     @RequestMapping(path = "/{id}")
     public ResponseEntity getTask(@PathVariable String id) {
-        Resource<Task> resource = new Resource<>(taskService.getTask(id));
+        Resource<Task> resource = new Resource<>(taskService.get(id));
         resource.add(this.entityLinks.linkToSingleResource(Task.class, id));
 
         return new ResponseEntity<>(resource, HttpStatus.OK);
@@ -45,17 +45,17 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTask(@RequestBody TaskDTO taskDTO) {
-        return new ResponseEntity<>(taskService.createTask(taskDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(taskService.create(taskDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity updateTask(@PathVariable String id, @RequestBody TaskDTO taskDTO) {
-        return new ResponseEntity<>(taskService.updateTask(id, taskDTO), HttpStatus.OK);
+        return new ResponseEntity<>(taskService.update(id, taskDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteTask(@PathVariable String id) {
-        return new ResponseEntity<>(taskService.deleteTask(id), HttpStatus.OK);
+        return new ResponseEntity<>(taskService.delete(id), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)

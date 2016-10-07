@@ -37,7 +37,7 @@ public class TicketController {
 
     @RequestMapping(path = "/{id}")
     public ResponseEntity getTicket(@PathVariable String id) {
-        Resource<Ticket> resource = new Resource<>(ticketService.getTicket(id));
+        Resource<Ticket> resource = new Resource<>(ticketService.get(id));
         resource.add(this.entityLinks.linkToSingleResource(Ticket.class, id));
 
         return new ResponseEntity<>(resource, HttpStatus.OK);
@@ -45,17 +45,17 @@ public class TicketController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTicket(@RequestBody TicketDTO ticketDTO) {
-        return new ResponseEntity<>(ticketService.createTicket(ticketDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(ticketService.create(ticketDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity updateTicket(@PathVariable String id, @RequestBody TicketDTO ticketDTO) {
-        return new ResponseEntity<>(ticketService.updateTicket(id, ticketDTO), HttpStatus.OK);
+        return new ResponseEntity<>(ticketService.update(id, ticketDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteTicket(@PathVariable String id) {
-        return new ResponseEntity<>(ticketService.deleteTicket(id), HttpStatus.OK);
+        return new ResponseEntity<>(ticketService.delete(id), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
