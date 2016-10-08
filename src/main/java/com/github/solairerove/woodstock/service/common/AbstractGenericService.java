@@ -14,20 +14,20 @@ import java.util.List;
  * Created by krivitski-no on 10/8/16.
  */
 @Service
-public abstract class AbstractGenericService<T extends BaseEntity, REPO extends MongoRepository<T, ID>, ID extends Serializable>
-        implements GenericService<T, ID> {
+public abstract class AbstractGenericService<T extends BaseEntity, R extends MongoRepository<T, I>, I extends Serializable>
+        implements GenericService<T, I> {
     @Autowired
-    protected REPO repo;
+    protected R repo;
 
     @Override
-    public T get(ID id) {
-        return repo.findOne(id);
+    public T get(I i) {
+        return repo.findOne(i);
     }
 
     @Override
-    public ID delete(ID id) {
-        repo.delete(id);
-        return id;
+    public I delete(I i) {
+        repo.delete(i);
+        return i;
     }
 
     @Override

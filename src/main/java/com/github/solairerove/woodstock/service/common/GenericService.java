@@ -10,10 +10,10 @@ import java.util.List;
 /**
  * Created by krivitski-no on 10/8/16.
  */
-public interface GenericService<T extends BaseEntity, ID extends Serializable> {
-    T get(ID id);
+public interface GenericService<T extends BaseEntity, I extends Serializable> {
+    T get(I i);
 
-    ID delete(ID id);
+    I delete(I i);
 
     List<T> deleteAll();
 
