@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
+    @Before("execution(* com.github.solairerove.woodstock.service.common.GenericService.*(..)))")
+    public void genericServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Generic service: " + joinPoint.getSignature().getName());
+    }
+
     @Before("execution(* com.github.solairerove.woodstock.service.ProfileService.*(..)))")
     public void profileServiceLog(JoinPoint joinPoint) {
         LOGGER.info("Profile service: " + joinPoint.getSignature().getName());
@@ -38,5 +43,10 @@ public class LoggingAspect {
     @Before("execution(* com.github.solairerove.woodstock.service.TaskService.*(..)))")
     public void taskServiceLog(JoinPoint joinPoint) {
         LOGGER.info("Task service: " + joinPoint.getSignature().getName());
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.controller.TaskController.*(..)))")
+    public void taskControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Task controller: " + joinPoint.getSignature().getName());
     }
 }

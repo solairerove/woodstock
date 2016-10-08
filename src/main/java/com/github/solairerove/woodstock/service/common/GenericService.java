@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.service;
+package com.github.solairerove.woodstock.service.common;
 
 import com.github.solairerove.woodstock.domain.BaseEntity;
 import org.springframework.data.domain.Page;
@@ -8,16 +8,12 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by krivitski-no on 10/7/16.
+ * Created by krivitski-no on 10/8/16.
  */
-public interface BaseService<T extends BaseEntity, S extends Serializable> {
-    String create(S s);
+public interface GenericService<T extends BaseEntity, ID extends Serializable> {
+    T get(ID id);
 
-    T get(String id);
-
-    String update(String id, S s);
-
-    String delete(String id);
+    ID delete(ID id);
 
     List<T> deleteAll();
 

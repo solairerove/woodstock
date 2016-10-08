@@ -22,4 +22,18 @@ public class Task extends Block {
         super.setEnable(Boolean.TRUE);
         super.setCorrect(Boolean.FALSE);
     }
+
+    public Task(String question, List<Ticket> tickets) {
+        this.question = question;
+        this.tickets = tickets;
+        super.setEnable(Boolean.TRUE);
+        super.setCorrect(Boolean.FALSE);
+    }
+
+    public Task(String question, List<Ticket> tickets, Boolean enable, Boolean correct) {
+        this.question = question;
+        this.tickets = tickets;
+        super.setEnable(enable);
+        super.setCorrect(correct);
+    }
 }
