@@ -9,5 +9,5 @@ import com.github.solairerove.woodstock.service.common.GenericService;
  */
 public interface ProfileService extends GenericService<Profile, String> {
 
-    String update(String id, ProfileDTO profileDTO);
+    Profile update(String id, ProfileDTO profileDTO);
 }

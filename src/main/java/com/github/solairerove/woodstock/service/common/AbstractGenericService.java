@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -26,6 +27,7 @@ public abstract class AbstractGenericService<T extends BaseEntity, R extends Mon
 
     @Override
     public T create(T t) {
+        t.setCreatedDate(LocalDateTime.now());
         return repo.save(t);
     }
 

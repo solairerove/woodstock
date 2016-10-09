@@ -5,6 +5,7 @@ import com.github.solairerove.woodstock.dto.TicketDTO;
 import com.github.solairerove.woodstock.repository.TicketRepository;
 import com.github.solairerove.woodstock.service.TicketService;
 import com.github.solairerove.woodstock.service.common.AbstractGenericService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,16 +17,16 @@ import java.time.LocalDateTime;
 public class TicketServiceImpl extends AbstractGenericService<Ticket, TicketRepository, String>
         implements TicketService {
 
+    @Autowired
     public TicketServiceImpl(TicketRepository repo) {
         super(repo);
     }
 
     @Override
-    public String update(String id, TicketDTO ticketDTO) {
+    public Ticket update(String id, TicketDTO ticketDTO) {
         Ticket ticket = repo.findOne(id);
         ticket.setValue(ticketDTO.getValue());
         ticket.setUpdatedDate(LocalDateTime.now());
-        repo.save(ticket);
-        return id;
+        return repo.save(ticket);
     }
 }

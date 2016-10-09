@@ -21,11 +21,10 @@ public class TaskServiceImpl extends AbstractGenericService<Task, TaskRepository
     }
 
     @Override
-    public String update(String id, TaskDTO taskDTO) {
+    public Task update(String id, TaskDTO taskDTO) {
         Task task = repo.findOne(id);
         task.setQuestion(taskDTO.getQuestion());
         task.setUpdatedDate(LocalDateTime.now());
-        repo.save(task);
-        return id;
+        return repo.save(task);
     }
 }

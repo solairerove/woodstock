@@ -14,8 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 /**
  * Created by krivitski-no on 9/14/16.
  */
@@ -53,7 +51,6 @@ public class ProfileController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createProfile(@RequestBody ProfileDTO profileDTO) {
         Profile profile = new Profile(profileDTO.getFirstName(), profileDTO.getLastName());
-        profile.setCreatedDate(LocalDateTime.now());
         return new ResponseEntity<>(profileService.create(profile), HttpStatus.CREATED);
     }
 

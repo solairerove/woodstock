@@ -14,8 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 /**
  * Created by krivitski-no on 9/28/16.
  */
@@ -53,7 +51,6 @@ public class TicketController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTicket(@RequestBody TicketDTO ticketDTO) {
         Ticket ticket = new Ticket(ticketDTO.getValue());
-        ticket.setCreatedDate(LocalDateTime.now());
         return new ResponseEntity<>(ticketService.create(ticket), HttpStatus.CREATED);
     }
 

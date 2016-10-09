@@ -9,5 +9,5 @@ import com.github.solairerove.woodstock.service.common.GenericService;
  */
 public interface TaskService extends GenericService<Task, String> {
 
-    String update(String id, TaskDTO taskDTO);
+    Task update(String id, TaskDTO taskDTO);
 }

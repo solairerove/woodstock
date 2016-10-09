@@ -9,5 +9,5 @@ import com.github.solairerove.woodstock.service.common.GenericService;
  */
 public interface TicketService extends GenericService<Ticket, String> {
 
-    String update(String id, TicketDTO ticketDTO);
+    Ticket update(String id, TicketDTO ticketDTO);
 }

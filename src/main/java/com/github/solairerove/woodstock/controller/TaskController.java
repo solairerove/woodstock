@@ -14,8 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 /**
  * Created by krivitski-no on 10/3/16.
  */
@@ -53,7 +51,6 @@ public class TaskController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTask(@RequestBody TaskDTO taskDTO) {
         Task task = new Task(taskDTO.getQuestion());
-        task.setCreatedDate(LocalDateTime.now());
         return new ResponseEntity<>(taskService.create(task), HttpStatus.CREATED);
     }
 
