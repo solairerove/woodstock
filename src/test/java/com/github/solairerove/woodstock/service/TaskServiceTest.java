@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class TaskServiceTest {
+
     @Autowired
     private TaskService taskService;
 
@@ -33,8 +34,8 @@ public class TaskServiceTest {
 
     @Test
     public void createTaskTest() {
-        TaskDTO saved = EntityUtils.generateTaskDTO();
-        String id = taskService.create(saved);
+        Task saved = EntityUtils.generateTask();
+        String id = taskService.create(saved).getId();
 
         Assert.assertEquals(saved.getQuestion(), taskRepository.findOne(id).getQuestion());
     }

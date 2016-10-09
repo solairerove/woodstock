@@ -31,6 +31,7 @@ import static org.hamcrest.Matchers.is;
 @WebAppConfiguration
 @SpringBootTest(classes = Application.class)
 public class ProfileControllerTest {
+
     private static final String API_PATH = "/api/profiles";
     private static final String COLLECTION_JSON_PATH = "_embedded.profileList";
 

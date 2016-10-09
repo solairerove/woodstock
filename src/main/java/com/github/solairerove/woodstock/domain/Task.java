@@ -10,11 +10,12 @@ import java.util.List;
  */
 @Data
 public class Task extends Block {
+
     private String question;
     private List<Ticket> tickets = new ArrayList<>();
 
     public Task() {
-        // default contructor
+        // why JPA? why...
     }
 
     public Task(String question) {

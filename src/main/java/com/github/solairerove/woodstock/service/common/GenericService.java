@@ -11,6 +11,9 @@ import java.util.List;
  * Created by krivitski-no on 10/8/16.
  */
 public interface GenericService<T extends BaseEntity, I extends Serializable> {
+
+    T create(T t);
+
     T get(I i);
 
     I delete(I i);

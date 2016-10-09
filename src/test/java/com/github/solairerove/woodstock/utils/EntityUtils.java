@@ -17,6 +17,7 @@ import java.util.Collection;
  */
 @Component
 public class EntityUtils {
+
     public static final int NUMBER_OF_ENTITIES_IN_COLLECTION = 10;
 
     private static final int MAX_STRING_LENGTH = 25;

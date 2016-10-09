@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class TicketServiceTest {
+
     @Autowired
     private TicketService ticketService;
 
@@ -33,8 +34,8 @@ public class TicketServiceTest {
 
     @Test
     public void createTicketTest() {
-        TicketDTO saved = EntityUtils.generateTicketDTO();
-        String id = ticketService.create(saved);
+        Ticket saved = EntityUtils.generateTicket();
+        String id = ticketService.create(saved).getId();
 
         Assert.assertEquals(saved.getValue(), ticketRepository.findOne(id).getValue());
     }

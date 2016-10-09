@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by krivitski-no on 9/28/16.
  */
@@ -21,14 +23,19 @@ import org.springframework.web.bind.annotation.*;
 @ExposesResourceFor(Ticket.class)
 @RequestMapping(value = "/api/tickets", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TicketController {
-    @Autowired
-    private TicketService ticketService;
+
+    private final TicketService ticketService;
+
+    private final PagedResourcesAssembler<Ticket> assembler;
+
+    private final EntityLinks entityLinks;
 
     @Autowired
-    private PagedResourcesAssembler<Ticket> assembler;
-
-    @Autowired
-    private EntityLinks entityLinks;
+    public TicketController(PagedResourcesAssembler<Ticket> assembler, TicketService ticketService, EntityLinks entityLinks) {
+        this.assembler = assembler;
+        this.ticketService = ticketService;
+        this.entityLinks = entityLinks;
+    }
 
     @RequestMapping
     public ResponseEntity getAllTickets(Pageable pageable) {
@@ -45,7 +52,9 @@ public class TicketController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTicket(@RequestBody TicketDTO ticketDTO) {
-        return new ResponseEntity<>(ticketService.create(ticketDTO), HttpStatus.CREATED);
+        Ticket ticket = new Ticket(ticketDTO.getValue());
+        ticket.setCreatedDate(LocalDateTime.now());
+        return new ResponseEntity<>(ticketService.create(ticket), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)

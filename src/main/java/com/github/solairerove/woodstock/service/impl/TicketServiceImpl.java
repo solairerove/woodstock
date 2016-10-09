@@ -15,12 +15,9 @@ import java.time.LocalDateTime;
 @Service
 public class TicketServiceImpl extends AbstractGenericService<Ticket, TicketRepository, String>
         implements TicketService {
-    @Override
-    public String create(TicketDTO ticketDTO) {
-        Ticket ticket = new Ticket(ticketDTO.getValue());
-        ticket.setCreatedDate(LocalDateTime.now());
-        repo.save(ticket);
-        return ticket.getId();
+
+    public TicketServiceImpl(TicketRepository repo) {
+        super(repo);
     }
 
     @Override

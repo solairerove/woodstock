@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProfileServiceTest {
+
     @Autowired
     private ProfileService profileService;
 
@@ -33,8 +34,8 @@ public class ProfileServiceTest {
 
     @Test
     public void createProfileTest() {
-        ProfileDTO saved = EntityUtils.generateProfileDTO();
-        String id = profileService.create(saved);
+        Profile saved = EntityUtils.generateProfile();
+        String id = profileService.create(saved).getId();
 
         Assert.assertEquals(saved.getFirstName(), profileRepository.findOne(id).getFirstName());
         Assert.assertEquals(saved.getLastName(), profileRepository.findOne(id).getLastName());

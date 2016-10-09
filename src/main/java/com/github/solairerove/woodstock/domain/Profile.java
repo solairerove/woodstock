@@ -7,11 +7,12 @@ import lombok.Data;
  */
 @Data
 public class Profile extends BaseEntity {
+
     private String firstName;
     private String lastName;
 
     public Profile() {
-        // default contructor
+        // why JPA? why...
     }
 
     public Profile(String firstName, String lastName) {

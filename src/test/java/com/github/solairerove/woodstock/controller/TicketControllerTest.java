@@ -31,6 +31,7 @@ import static org.hamcrest.Matchers.is;
 @WebAppConfiguration
 @SpringBootTest(classes = Application.class)
 public class TicketControllerTest {
+
     private static final String API_PATH = "/api/tickets";
     private static final String COLLECTION_JSON_PATH = "_embedded.ticketList";
 

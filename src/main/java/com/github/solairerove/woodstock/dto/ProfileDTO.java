@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 @Data
 public class ProfileDTO implements Serializable {
+
     private String firstName;
     private String lastName;
 

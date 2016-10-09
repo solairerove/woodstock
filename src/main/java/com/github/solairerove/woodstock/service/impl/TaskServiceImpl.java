@@ -15,12 +15,9 @@ import java.time.LocalDateTime;
 @Service
 public class TaskServiceImpl extends AbstractGenericService<Task, TaskRepository, String>
         implements TaskService {
-    @Override
-    public String create(TaskDTO taskDTO) {
-        Task task = new Task(taskDTO.getQuestion());
-        task.setCreatedDate(LocalDateTime.now());
-        repo.save(task);
-        return task.getId();
+
+    public TaskServiceImpl(TaskRepository repo) {
+        super(repo);
     }
 
     @Override

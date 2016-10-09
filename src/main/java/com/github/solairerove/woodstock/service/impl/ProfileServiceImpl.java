@@ -15,12 +15,9 @@ import java.time.LocalDateTime;
 @Service
 public class ProfileServiceImpl extends AbstractGenericService<Profile, ProfileRepository, String>
         implements ProfileService {
-    @Override
-    public String create(ProfileDTO profileDTO) {
-        Profile profile = new Profile(profileDTO.getFirstName(), profileDTO.getLastName());
-        profile.setCreatedDate(LocalDateTime.now());
-        repo.save(profile);
-        return profile.getId();
+
+    public ProfileServiceImpl(ProfileRepository repo) {
+        super(repo);
     }
 
     @Override

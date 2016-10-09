@@ -7,10 +7,11 @@ import lombok.Data;
  */
 @Data
 public class Ticket extends Block {
+
     private String value;
 
     public Ticket() {
-        // default contructor
+        // why JPA? why...
     }
 
     public Ticket(String value) {

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
     @Before("execution(* com.github.solairerove.woodstock.service.common.GenericService.*(..)))")

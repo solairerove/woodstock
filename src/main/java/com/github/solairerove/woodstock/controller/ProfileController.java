@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by krivitski-no on 9/14/16.
  */
@@ -21,14 +23,19 @@ import org.springframework.web.bind.annotation.*;
 @ExposesResourceFor(Profile.class)
 @RequestMapping(value = "/api/profiles", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class ProfileController {
-    @Autowired
-    private ProfileService profileService;
+
+    private final ProfileService profileService;
+
+    private final PagedResourcesAssembler<Profile> assembler;
+
+    private final EntityLinks entityLinks;
 
     @Autowired
-    private PagedResourcesAssembler<Profile> assembler;
-
-    @Autowired
-    private EntityLinks entityLinks;
+    public ProfileController(ProfileService profileService, PagedResourcesAssembler<Profile> assembler, EntityLinks entityLinks) {
+        this.profileService = profileService;
+        this.assembler = assembler;
+        this.entityLinks = entityLinks;
+    }
 
     @RequestMapping
     public ResponseEntity getAllProfiles(Pageable pageable) {
@@ -45,7 +52,9 @@ public class ProfileController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createProfile(@RequestBody ProfileDTO profileDTO) {
-        return new ResponseEntity<>(profileService.create(profileDTO), HttpStatus.CREATED);
+        Profile profile = new Profile(profileDTO.getFirstName(), profileDTO.getLastName());
+        profile.setCreatedDate(LocalDateTime.now());
+        return new ResponseEntity<>(profileService.create(profile), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
@@ -61,5 +70,4 @@ public class ProfileController {
     public ResponseEntity deleteAll() {
         return new ResponseEntity<>(profileService.deleteAll(), HttpStatus.ACCEPTED);
     }
-
 }

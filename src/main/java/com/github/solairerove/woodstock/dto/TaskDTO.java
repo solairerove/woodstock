@@ -12,6 +12,7 @@ import java.util.List;
  */
 @Data
 public class TaskDTO implements Serializable {
+
     private String question;
     private List<Ticket> tickets = new ArrayList<>();
 

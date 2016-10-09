@@ -16,8 +16,18 @@ import java.util.List;
 @Service
 public abstract class AbstractGenericService<T extends BaseEntity, R extends MongoRepository<T, I>, I extends Serializable>
         implements GenericService<T, I> {
+
+    protected final R repo;
+
     @Autowired
-    protected R repo;
+    public AbstractGenericService(R repo) {
+        this.repo = repo;
+    }
+
+    @Override
+    public T create(T t) {
+        return repo.save(t);
+    }
 
     @Override
     public T get(I i) {

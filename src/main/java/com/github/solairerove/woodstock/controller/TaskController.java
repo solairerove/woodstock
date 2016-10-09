@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by krivitski-no on 10/3/16.
  */
@@ -21,14 +23,19 @@ import org.springframework.web.bind.annotation.*;
 @ExposesResourceFor(Task.class)
 @RequestMapping(value = "/api/tasks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TaskController {
-    @Autowired
-    private TaskService taskService;
+
+    private final TaskService taskService;
+
+    private final PagedResourcesAssembler<Task> assembler;
+
+    private final EntityLinks entityLinks;
 
     @Autowired
-    private PagedResourcesAssembler<Task> assembler;
-
-    @Autowired
-    private EntityLinks entityLinks;
+    public TaskController(TaskService taskService, EntityLinks entityLinks, PagedResourcesAssembler<Task> assembler) {
+        this.taskService = taskService;
+        this.entityLinks = entityLinks;
+        this.assembler = assembler;
+    }
 
     @RequestMapping
     public ResponseEntity getAllTasks(Pageable pageable) {
@@ -45,7 +52,9 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTask(@RequestBody TaskDTO taskDTO) {
-        return new ResponseEntity<>(taskService.create(taskDTO), HttpStatus.CREATED);
+        Task task = new Task(taskDTO.getQuestion());
+        task.setCreatedDate(LocalDateTime.now());
+        return new ResponseEntity<>(taskService.create(task), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)

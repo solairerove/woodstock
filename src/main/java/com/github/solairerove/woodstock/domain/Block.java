@@ -7,10 +7,11 @@ import lombok.Data;
  */
 @Data
 public class Block extends BaseEntity {
+
     private Boolean enable;
     private Boolean correct;
 
     public Block() {
-        // default contructor
+        // why JPA? why...
     }
 }

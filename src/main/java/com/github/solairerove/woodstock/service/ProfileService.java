@@ -8,7 +8,6 @@ import com.github.solairerove.woodstock.service.common.GenericService;
  * Created by krivitski-no on 9/14/16.
  */
 public interface ProfileService extends GenericService<Profile, String> {
-    String create(ProfileDTO profileDTO);
 
     String update(String id, ProfileDTO profileDTO);
 }

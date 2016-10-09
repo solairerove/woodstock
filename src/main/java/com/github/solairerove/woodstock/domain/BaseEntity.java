@@ -13,12 +13,13 @@ import java.time.LocalDateTime;
 @Data
 @Document
 public class BaseEntity implements Serializable {
+
     @Id
     private String id;
     private transient LocalDateTime createdDate;
     private transient LocalDateTime updatedDate;
 
     public BaseEntity() {
-        // default contructor
+        // why JPA? why...
     }
 }

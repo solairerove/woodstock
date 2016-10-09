@@ -31,6 +31,7 @@ import static org.hamcrest.Matchers.is;
 @WebAppConfiguration
 @SpringBootTest(classes = Application.class)
 public class TaskControllerTest {
+
     private static final String API_PATH = "/api/tasks";
     private static final String COLLECTION_JSON_PATH = "_embedded.taskList";
 

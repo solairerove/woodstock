@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.Query;
  * Created by krivitski-no on 9/28/16.
  */
 public interface TicketRepository extends MongoRepository<Ticket, String> {
+
     @Query("{ 'id' : ?0 }")
     Ticket findOneTicketById(String id);
 }
