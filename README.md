@@ -23,4 +23,5 @@ ___
 
 #### Api doc:
 
+* There will be some curl examples...
 * Fuck this shit about documentation. Download *[Insomnia](https://insomnia.rest/download/#ubuntu)* and import *[woodstock.json](https://goo.gl/wZeKf1)*
