@@ -38,6 +38,8 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+    networks:
+      - woodnet
 #    volumes:
 #      - /opt/docker/woodstock/mongo:/data/db
 
@@ -47,6 +49,8 @@ services:
     ports:
       - "8090:8080"
       - "50000:50000"
+    networks:
+      - woodnet
 #    volumes:
 #      - /opt/docker/woodstock/jenkins:/var/jenkins_home
 
