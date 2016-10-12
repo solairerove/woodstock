@@ -1,18 +1,15 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by krivitski-no on 10/1/16.
  */
-@Data
 public class Task extends Block {
 
     private String question;
-    private List<Ticket> tickets = new ArrayList<>();
+    private List<Ticket> tickets;
 
     public Task() {
         // why JPA? why...
@@ -36,5 +33,24 @@ public class Task extends Block {
         this.tickets = tickets;
         super.setEnable(enable);
         super.setCorrect(correct);
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public List<Ticket> getTickets() {
+        if(tickets == null) {
+            tickets = new ArrayList<>();
+        }
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

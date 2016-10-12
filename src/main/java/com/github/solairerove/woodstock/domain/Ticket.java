@@ -1,11 +1,8 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-
 /**
  * Created by krivitski-no on 9/28/16.
  */
-@Data
 public class Ticket extends Block {
 
     private String value;
@@ -24,5 +21,13 @@ public class Ticket extends Block {
         this.value = value;
         super.setEnable(enable);
         super.setCorrect(correct);
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }

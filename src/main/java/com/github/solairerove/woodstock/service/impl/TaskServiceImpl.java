@@ -24,7 +24,7 @@ public class TaskServiceImpl extends AbstractGenericService<Task, TaskRepository
     public Task update(String id, TaskDTO taskDTO) {
         Task task = repo.findOne(id);
         task.setQuestion(taskDTO.getQuestion());
-        task.setUpdatedDate(LocalDateTime.now());
+        task.setUpdatedDate(LocalDateTime.now().toString());
         return repo.save(task);
     }
 }

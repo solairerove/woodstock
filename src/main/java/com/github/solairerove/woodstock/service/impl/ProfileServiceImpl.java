@@ -27,7 +27,7 @@ public class ProfileServiceImpl extends AbstractGenericService<Profile, ProfileR
         Profile profile = repo.findOne(id);
         profile.setFirstName(profileDTO.getFirstName());
         profile.setLastName(profileDTO.getLastName());
-        profile.setUpdatedDate(LocalDateTime.now());
+        profile.setUpdatedDate(LocalDateTime.now().toString());
         return repo.save(profile);
     }
 }

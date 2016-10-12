@@ -1,11 +1,8 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-
 /**
  * Created by krivitski-no on 10/1/16.
  */
-@Data
 public class Block extends BaseEntity {
 
     private Boolean enable;
@@ -13,5 +10,21 @@ public class Block extends BaseEntity {
 
     public Block() {
         // why JPA? why...
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
+
+    public Boolean getCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(Boolean correct) {
+        this.correct = correct;
     }
 }

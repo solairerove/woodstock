@@ -26,7 +26,7 @@ public class TicketServiceImpl extends AbstractGenericService<Ticket, TicketRepo
     public Ticket update(String id, TicketDTO ticketDTO) {
         Ticket ticket = repo.findOne(id);
         ticket.setValue(ticketDTO.getValue());
-        ticket.setUpdatedDate(LocalDateTime.now());
+        ticket.setUpdatedDate(LocalDateTime.now().toString());
         return repo.save(ticket);
     }
 }

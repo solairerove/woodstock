@@ -27,7 +27,7 @@ public abstract class AbstractGenericService<T extends BaseEntity, R extends Mon
 
     @Override
     public T create(T t) {
-        t.setCreatedDate(LocalDateTime.now());
+        t.setCreatedDate(LocalDateTime.now().toString());
         return repo.save(t);
     }
 
