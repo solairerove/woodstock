@@ -12,7 +12,11 @@ import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by krivitski-no on 10/3/16.
@@ -50,8 +54,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTask(@RequestBody TaskDTO taskDTO) {
-        Task task = new Task(taskDTO.getQuestion());
-        return new ResponseEntity<>(taskService.create(task), HttpStatus.CREATED);
+        return new ResponseEntity<>(taskService.create(taskDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)

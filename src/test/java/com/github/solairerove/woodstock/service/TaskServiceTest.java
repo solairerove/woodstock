@@ -34,7 +34,7 @@ public class TaskServiceTest {
 
     @Test
     public void createTaskTest() {
-        Task saved = EntityUtils.generateTask();
+        TaskDTO saved = EntityUtils.generateTaskDTO();
         String id = taskService.create(saved).getId();
 
         Assert.assertEquals(saved.getQuestion(), taskRepository.findOne(id).getQuestion());

@@ -34,7 +34,7 @@ public class TicketServiceTest {
 
     @Test
     public void createTicketTest() {
-        Ticket saved = EntityUtils.generateTicket();
+        TicketDTO saved = EntityUtils.generateTicketDTO();
         String id = ticketService.create(saved).getId();
 
         Assert.assertEquals(saved.getValue(), ticketRepository.findOne(id).getValue());

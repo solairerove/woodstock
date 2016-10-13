@@ -34,7 +34,7 @@ public class ProfileServiceTest {
 
     @Test
     public void createProfileTest() {
-        Profile saved = EntityUtils.generateProfile();
+        ProfileDTO saved = EntityUtils.generateProfileDTO();
         String id = profileService.create(saved).getId();
 
         Assert.assertEquals(saved.getFirstName(), profileRepository.findOne(id).getFirstName());
