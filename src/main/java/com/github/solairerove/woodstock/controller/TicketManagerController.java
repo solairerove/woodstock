@@ -32,12 +32,12 @@ public class TicketManagerController {
     }
 
     @RequestMapping
-    public ResponseEntity get(@PathVariable String taskId) {
+    public ResponseEntity getAll(@PathVariable String taskId) {
         return new ResponseEntity<>(ticketManagerService.get(taskId), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{ticketId}", method = RequestMethod.DELETE)
-    public ResponseEntity get(@PathVariable String taskId, @PathVariable String ticketId) {
+    public ResponseEntity delete(@PathVariable String taskId, @PathVariable String ticketId) {
         return new ResponseEntity<>(ticketManagerService.delete(taskId, ticketId), HttpStatus.ACCEPTED);
     }
 }
