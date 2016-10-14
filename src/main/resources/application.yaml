@@ -1,8 +1,7 @@
 spring:
   data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: woodstock
+    neo4j:
+      uri: http://neo4j:docker@localhost:7474
+
 server:
   port: 9090
