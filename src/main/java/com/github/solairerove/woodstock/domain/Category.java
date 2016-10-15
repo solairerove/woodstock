@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by krivitski-no on 10/14/16.
  */
-@NodeEntity
+@NodeEntity(label = "Category")
 public class Category implements Serializable {
 
     @GraphId
