@@ -1,7 +1,4 @@
-#spring:
-#  data:
-#    mongodb:
-#      host: localhost
-#      port: 27017
-#      database: woodstock_test
-#
+spring:
+  data:
+    neo4j:
+      uri: http://neo4j:test@localhost:7473
