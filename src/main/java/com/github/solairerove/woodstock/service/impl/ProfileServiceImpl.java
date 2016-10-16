@@ -35,7 +35,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public Profile get(Long id) {
-        return repository.findOne(id);
+        return repository.getProfileFromId(id);
     }
 
     @Override
