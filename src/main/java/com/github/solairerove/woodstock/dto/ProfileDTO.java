@@ -11,14 +11,6 @@ import java.io.Serializable;
 public class ProfileDTO implements Serializable {
 
     private String firstName;
+
     private String lastName;
-
-    public ProfileDTO() {
-        // default contructor
-    }
-
-    public ProfileDTO(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 }

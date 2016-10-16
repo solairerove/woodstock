@@ -1,36 +1,28 @@
 package com.github.solairerove.woodstock.domain;
 
+import lombok.Data;
+import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
+
+import java.io.Serializable;
 
 /**
  * Created by krivitski-no on 9/28/16.
  */
+@Data
 @NodeEntity(label = "Ticket")
-public class Ticket extends Block {
+public class Ticket implements Serializable {
+
+    @GraphId
+    private Long id;
 
     private String value;
 
-    public Ticket() {
-        // why JPA? why...
-    }
+    private Boolean enable;
 
-    public Ticket(String value) {
-        this.value = value;
-        super.setEnable(Boolean.TRUE);
-        super.setCorrect(Boolean.FALSE);
-    }
+    private Boolean correct;
 
-    public Ticket(String value, Boolean enable, Boolean correct) {
-        this.value = value;
-        super.setEnable(enable);
-        super.setCorrect(correct);
-    }
+    private String createdDate;
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
+    private String updatedDate;
 }

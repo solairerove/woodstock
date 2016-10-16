@@ -11,12 +11,4 @@ import java.io.Serializable;
 public class CategoryDTO implements Serializable {
 
     private String name;
-
-    public CategoryDTO() {
-        // why JPA? why...
-    }
-
-    public CategoryDTO(String name) {
-        this.name = name;
-    }
 }

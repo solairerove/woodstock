@@ -32,7 +32,8 @@ public class TicketManagerServiceImpl implements TicketManagerService {
 
     @Override
     public Ticket create(Long taskId, TicketDTO ticketDTO) {
-        Ticket ticket = new Ticket(ticketDTO.getValue());
+        Ticket ticket = new Ticket();
+        ticket.setValue(ticketDTO.getValue());
         ticket.setCreatedDate(LocalDateTime.now().toString());
         ticketRepository.save(ticket);
 

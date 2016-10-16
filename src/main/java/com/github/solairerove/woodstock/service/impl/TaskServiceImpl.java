@@ -28,7 +28,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task create(TaskDTO taskDTO) {
-        Task task = new Task(taskDTO.getQuestion());
+        Task task = new Task();
+        task.setQuestion(taskDTO.getQuestion());
         task.setCreatedDate(LocalDateTime.now().toString());
         return repository.save(task);
     }

@@ -5,26 +5,34 @@ import com.github.solairerove.woodstock.Application;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.repository.TaskRepository;
-import com.github.solairerove.woodstock.utils.EntityUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import static com.github.solairerove.woodstock.utils.EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTask;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTaskCollection;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTaskDTO;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by krivitski-no on 10/3/16.
@@ -59,90 +67,90 @@ public class TaskControllerTest {
 
     @Test
     public void getAllTasksTest() throws Exception {
-        taskRepository.save(EntityUtils.generateTaskCollection());
+        taskRepository.save(generateTaskCollection());
 
-        mockMvc.perform(MockMvcRequestBuilders.get(API_PATH)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$." + COLLECTION_JSON_PATH, hasSize(EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION)))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+        mockMvc.perform(get(API_PATH)
+                .accept(APPLICATION_JSON_UTF8)
+                .contentType(APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$." + COLLECTION_JSON_PATH, hasSize(NUMBER_OF_ENTITIES_IN_COLLECTION)))
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8));
     }
 
     @Test
     public void getTaskTest() throws Exception {
-        Task task = EntityUtils.generateTask();
+        Task task = generateTask();
         taskRepository.save(task);
         Long id = task.getId();
 
-        mockMvc.perform(MockMvcRequestBuilders.get(API_PATH + "/" + id)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", is(id.intValue())))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+        mockMvc.perform(get(API_PATH + "/" + id)
+                .accept(APPLICATION_JSON_UTF8)
+                .contentType(APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$.id", is(id.intValue())))
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8));
     }
 
     @Test
     public void createTaskTest() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        TaskDTO taskDTO = EntityUtils.generateTaskDTO();
+        TaskDTO taskDTO = generateTaskDTO();
 
-        mockMvc.perform(MockMvcRequestBuilders.post(API_PATH)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
+        mockMvc.perform(post(API_PATH)
+                .accept(APPLICATION_JSON_UTF8)
                 .content(objectMapper.writeValueAsString(taskDTO))
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+                .contentType(APPLICATION_JSON_UTF8))
+                .andExpect(status().isCreated())
+                .andDo(print())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8));
     }
 
     @Test
     public void updateTaskTest() throws Exception {
-        Task task = EntityUtils.generateTask();
+        Task task = generateTask();
         taskRepository.save(task);
         Long id = task.getId();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        TaskDTO taskDTO = EntityUtils.generateTaskDTO();
+        TaskDTO taskDTO = generateTaskDTO();
 
-        mockMvc.perform(MockMvcRequestBuilders.put(API_PATH + "/" + id)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
+        mockMvc.perform(put(API_PATH + "/" + id)
+                .accept(APPLICATION_JSON_UTF8)
                 .content(objectMapper.writeValueAsString(taskDTO))
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", is(id.intValue())))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+                .contentType(APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$.id", is(id.intValue())))
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8));
     }
 
     @Test
     public void deleteTaskTest() throws Exception {
-        Task task = EntityUtils.generateTask();
+        Task task = generateTask();
         taskRepository.save(task);
         Long id = task.getId();
 
-        mockMvc.perform(MockMvcRequestBuilders.delete(API_PATH + "/" + id)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", is(id.intValue())))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+        mockMvc.perform(delete(API_PATH + "/" + id)
+                .accept(APPLICATION_JSON_UTF8)
+                .contentType(APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$", is(id.intValue())))
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8));
     }
 
     @Test
     public void deleteAllTest() throws Exception {
-        taskRepository.save(EntityUtils.generateTaskCollection());
+        taskRepository.save(generateTaskCollection());
 
-        mockMvc.perform(MockMvcRequestBuilders.delete(API_PATH + "/" + "delete_all")
-                .accept(MediaType.APPLICATION_JSON_UTF8)
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(MockMvcResultMatchers.status().isAccepted())
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION)))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8));
+        mockMvc.perform(delete(API_PATH + "/" + "delete_all")
+                .accept(APPLICATION_JSON_UTF8)
+                .contentType(APPLICATION_JSON_UTF8))
+                .andExpect(status().isAccepted())
+                .andDo(print())
+                .andExpect(jsonPath("$", hasSize(NUMBER_OF_ENTITIES_IN_COLLECTION)))
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8));
     }
 }

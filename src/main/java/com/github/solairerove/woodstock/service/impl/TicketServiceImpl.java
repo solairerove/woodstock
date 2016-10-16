@@ -28,7 +28,8 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Ticket create(TicketDTO ticketDTO) {
-        Ticket ticket = new Ticket(ticketDTO.getValue());
+        Ticket ticket = new Ticket();
+        ticket.setValue(ticketDTO.getValue());
         ticket.setCreatedDate(LocalDateTime.now().toString());
         return repository.save(ticket);
     }

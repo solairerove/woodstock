@@ -27,11 +27,19 @@ public class EntityUtils {
     }
 
     public static Profile generateProfile() {
-        return new Profile(getRandomString(), getRandomString());
+        Profile profile = new Profile();
+        profile.setFirstName(getRandomString());
+        profile.setLastName(getRandomString());
+
+        return profile;
     }
 
     public static ProfileDTO generateProfileDTO() {
-        return new ProfileDTO(getRandomString(), getRandomString());
+        ProfileDTO profileDTO = new ProfileDTO();
+        profileDTO.setFirstName(getRandomString());
+        profileDTO.setLastName(getRandomString());
+
+        return profileDTO;
     }
 
     public static Iterable<Profile> generateProfileCollection() {
@@ -43,11 +51,17 @@ public class EntityUtils {
     }
 
     public static Ticket generateTicket() {
-        return new Ticket(getRandomString());
+        Ticket ticket = new Ticket();
+        ticket.setValue(getRandomString());
+
+        return ticket;
     }
 
     public static TicketDTO generateTicketDTO() {
-        return new TicketDTO(getRandomString());
+        TicketDTO ticketDTO = new TicketDTO();
+        ticketDTO.setValue(getRandomString());
+
+        return ticketDTO;
     }
 
     public static Iterable<Ticket> generateTicketCollection() {
@@ -59,11 +73,17 @@ public class EntityUtils {
     }
 
     public static Task generateTask() {
-        return new Task(getRandomString());
+        Task task = new Task();
+        task.setQuestion(getRandomString());
+
+        return task;
     }
 
     public static TaskDTO generateTaskDTO() {
-        return new TaskDTO(getRandomString());
+        TaskDTO taskDTO = new TaskDTO();
+        taskDTO.setQuestion(getRandomString());
+
+        return taskDTO;
     }
 
     public static Iterable<Task> generateTaskCollection() {

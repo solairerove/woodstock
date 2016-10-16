@@ -28,7 +28,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public Profile create(ProfileDTO profileDTO) {
-        Profile profile = new Profile(profileDTO.getFirstName(), profileDTO.getLastName());
+        Profile profile = new Profile();
+        profile.setFirstName(profileDTO.getFirstName());
+        profile.setLastName(profileDTO.getLastName());
         profile.setCreatedDate(LocalDateTime.now().toString());
         return repository.save(profile);
     }

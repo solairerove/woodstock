@@ -11,12 +11,4 @@ import java.io.Serializable;
 public class TaskDTO implements Serializable {
 
     private String question;
-
-    public TaskDTO() {
-        // default contructor
-    }
-
-    public TaskDTO(String question) {
-        this.question = question;
-    }
 }

@@ -4,9 +4,7 @@ import com.github.solairerove.woodstock.Application;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.repository.TaskRepository;
-import com.github.solairerove.woodstock.utils.EntityUtils;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +13,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import static com.github.solairerove.woodstock.utils.EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTask;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTaskCollection;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTaskDTO;
+import static com.github.solairerove.woodstock.utils.EntityUtils.getRandomString;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by krivitski-no on 10/2/16.
@@ -42,60 +47,60 @@ public class TaskServiceTest {
 
     @Test
     public void createTaskTest() {
-        TaskDTO saved = EntityUtils.generateTaskDTO();
+        TaskDTO saved = generateTaskDTO();
         Long id = taskService.create(saved).getId();
 
-        Assert.assertEquals(saved.getQuestion(), taskRepository.findOne(id).getQuestion());
+        assertEquals(saved.getQuestion(), taskRepository.findOne(id).getQuestion());
     }
 
     @Test
     public void getTaskTest() {
-        Task saved = EntityUtils.generateTask();
+        Task saved = generateTask();
         taskRepository.save(saved);
 
-        Assert.assertEquals(saved.getQuestion(), taskService.get(saved.getId()).getQuestion());
+        assertEquals(saved.getQuestion(), taskService.get(saved.getId()).getQuestion());
     }
 
     @Test
     public void updateTaskTest() {
-        Task saved = EntityUtils.generateTask();
+        Task saved = generateTask();
         taskRepository.save(saved);
         Long id = saved.getId();
 
-        TaskDTO ticketDTO = EntityUtils.generateTaskDTO();
-        String question = EntityUtils.getRandomString();
+        TaskDTO ticketDTO = generateTaskDTO();
+        String question = getRandomString();
         ticketDTO.setQuestion(question);
 
         taskService.update(id, ticketDTO);
 
-        Assert.assertEquals(question, taskRepository.findOne(id).getQuestion());
+        assertEquals(question, taskRepository.findOne(id).getQuestion());
     }
 
     @Test
     public void deleteTaskTest() {
-        Task saved = EntityUtils.generateTask();
+        Task saved = generateTask();
         taskRepository.save(saved);
         Long id = saved.getId();
 
         taskService.delete(id);
 
-        Assert.assertEquals(null, taskRepository.findOne(id));
+        assertEquals(null, taskRepository.findOne(id));
     }
 
     @Test
     public void deleteAll() {
-        taskRepository.save(EntityUtils.generateTaskCollection());
+        taskRepository.save(generateTaskCollection());
 
         taskService.deleteAll();
 
-        Assert.assertEquals(0, taskRepository.count());
+        assertEquals(0, taskRepository.count());
     }
 
     @Test
     public void findAllTest() {
-        taskRepository.save(EntityUtils.generateTaskCollection());
-        int count = EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
+        taskRepository.save(generateTaskCollection());
+        int count = NUMBER_OF_ENTITIES_IN_COLLECTION;
 
-        Assert.assertEquals(count, taskService.findAll(new PageRequest(0, count)).getNumberOfElements());
+        assertEquals(count, taskService.findAll(new PageRequest(0, count)).getNumberOfElements());
     }
 }

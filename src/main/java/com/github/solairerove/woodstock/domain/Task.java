@@ -1,62 +1,41 @@
 package com.github.solairerove.woodstock.domain;
 
+import lombok.Data;
+import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by krivitski-no on 10/1/16.
  */
+@Data
 @NodeEntity(label = "Task")
-public class Task extends Block {
+public class Task implements Serializable {
+
+    @GraphId
+    private Long id;
 
     private String question;
 
     @Relationship(type = "HAS_IN", direction = Relationship.OUTGOING)
     private List<Ticket> tickets;
 
-    public Task() {
-        // why JPA? why...
-    }
+    private Boolean enable;
 
-    public Task(String question) {
-        this.question = question;
-        super.setEnable(Boolean.TRUE);
-        super.setCorrect(Boolean.FALSE);
-    }
+    private Boolean correct;
 
-    public Task(String question, List<Ticket> tickets) {
-        this.question = question;
-        this.tickets = tickets;
-        super.setEnable(Boolean.TRUE);
-        super.setCorrect(Boolean.FALSE);
-    }
+    private String createdDate;
 
-    public Task(String question, List<Ticket> tickets, Boolean enable, Boolean correct) {
-        this.question = question;
-        this.tickets = tickets;
-        super.setEnable(enable);
-        super.setCorrect(correct);
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
+    private String updatedDate;
 
     public List<Ticket> getTickets() {
-        if(tickets == null) {
+        if (tickets == null) {
             tickets = new ArrayList<>();
         }
         return tickets;
-    }
-
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
     }
 }

@@ -4,9 +4,7 @@ import com.github.solairerove.woodstock.Application;
 import com.github.solairerove.woodstock.domain.Profile;
 import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.repository.ProfileRepository;
-import com.github.solairerove.woodstock.utils.EntityUtils;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +13,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import static com.github.solairerove.woodstock.utils.EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateProfile;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateProfileCollection;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateProfileDTO;
+import static com.github.solairerove.woodstock.utils.EntityUtils.getRandomString;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by krivitski-no on 9/28/16.
@@ -43,63 +48,63 @@ public class ProfileServiceTest {
 
     @Test
     public void createProfileTest() {
-        ProfileDTO saved = EntityUtils.generateProfileDTO();
+        ProfileDTO saved = generateProfileDTO();
         Long id = profileService.create(saved).getId();
 
-        Assert.assertEquals(saved.getFirstName(), profileRepository.findOne(id).getFirstName());
-        Assert.assertEquals(saved.getLastName(), profileRepository.findOne(id).getLastName());
+        assertEquals(saved.getFirstName(), profileRepository.findOne(id).getFirstName());
+        assertEquals(saved.getLastName(), profileRepository.findOne(id).getLastName());
     }
 
     @Test
     public void getProfileTest() {
-        Profile saved = EntityUtils.generateProfile();
+        Profile saved = generateProfile();
         profileRepository.save(saved);
 
-        Assert.assertEquals(saved, profileService.get(saved.getId()));
+        assertEquals(saved, profileService.get(saved.getId()));
     }
 
     @Test
     public void updateProfileTest() {
-        Profile saved = EntityUtils.generateProfile();
+        Profile saved = generateProfile();
         profileRepository.save(saved);
         Long id = saved.getId();
 
-        ProfileDTO profileDTO = EntityUtils.generateProfileDTO();
-        String firstName = EntityUtils.getRandomString();
-        String lastName = EntityUtils.getRandomString();
+        ProfileDTO profileDTO = generateProfileDTO();
+        String firstName = getRandomString();
+        String lastName = getRandomString();
         profileDTO.setFirstName(firstName);
         profileDTO.setLastName(lastName);
 
         profileService.update(id, profileDTO);
 
-        Assert.assertEquals(firstName, profileRepository.findOne(id).getFirstName());
-        Assert.assertEquals(lastName, profileRepository.findOne(id).getLastName());
+        assertEquals(firstName, profileRepository.findOne(id).getFirstName());
+        assertEquals(lastName, profileRepository.findOne(id).getLastName());
     }
 
     @Test
     public void deleteProfileTest() {
-        Profile saved = EntityUtils.generateProfile();
+        Profile saved = generateProfile();
         profileRepository.save(saved);
 
         profileService.delete(saved.getId());
 
-        Assert.assertEquals(profileRepository.findOne(saved.getId()), null);
+        assertEquals(profileRepository.findOne(saved.getId()), null);
     }
 
     @Test
     public void deleteAll() {
-        profileRepository.save(EntityUtils.generateProfileCollection());
+        profileRepository.save(generateProfileCollection());
 
         profileService.deleteAll();
 
-        Assert.assertEquals(0, profileRepository.count());
+        assertEquals(0, profileRepository.count());
     }
 
     @Test
     public void findAllTest() {
-        profileRepository.save(EntityUtils.generateProfileCollection());
-        int count = EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
+        profileRepository.save(generateProfileCollection());
+        int count = NUMBER_OF_ENTITIES_IN_COLLECTION;
 
-        Assert.assertEquals(count, profileService.findAll(new PageRequest(0, count)).getNumberOfElements());
+        assertEquals(count, profileService.findAll(new PageRequest(0, count)).getNumberOfElements());
     }
 }
