@@ -1,6 +1,7 @@
 package com.github.solairerove.woodstock.domain;
 
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
 public class Task extends Block {
 
     private String question;
+
+    @Relationship(type = "HAS_IN", direction = Relationship.OUTGOING)
     private List<Ticket> tickets;
 
     public Task() {
