@@ -52,16 +52,19 @@ public class TicketController {
         return new ResponseEntity<>(resource, HttpStatus.OK);
     }
 
+    @Deprecated
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createTicket(@RequestBody TicketDTO ticketDTO) {
         return new ResponseEntity<>(ticketService.create(ticketDTO), HttpStatus.CREATED);
     }
 
+    @Deprecated
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity updateTicket(@PathVariable Long id, @RequestBody TicketDTO ticketDTO) {
         return new ResponseEntity<>(ticketService.update(id, ticketDTO), HttpStatus.OK);
     }
 
+    @Deprecated
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteTicket(@PathVariable Long id) {
         return new ResponseEntity<>(ticketService.delete(id), HttpStatus.OK);

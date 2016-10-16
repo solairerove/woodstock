@@ -21,7 +21,7 @@ public class Task implements Serializable {
 
     private String question;
 
-    @Relationship(type = "HAS_IN", direction = Relationship.OUTGOING)
+    @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Ticket> tickets;
 
     private Boolean enable;

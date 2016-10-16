@@ -11,4 +11,6 @@ public interface CategoryService {
     Category create(CategoryDTO categoryDTO);
 
     Category get(Long id);
+
+    Iterable<Category> deleteAll();
 }

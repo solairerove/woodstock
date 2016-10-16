@@ -33,4 +33,11 @@ public class CategoryServiceImpl implements CategoryService {
     public Category get(Long id) {
         return repository.findOne(id);
     }
+
+    @Override
+    public Iterable<Category> deleteAll() {
+        Iterable<Category> categories = repository.findAll();
+        repository.deleteAll();
+        return categories;
+    }
 }

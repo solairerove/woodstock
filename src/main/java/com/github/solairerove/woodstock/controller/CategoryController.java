@@ -35,4 +35,9 @@ public class CategoryController {
     public ResponseEntity create(@RequestBody CategoryDTO categoryDTO) {
         return new ResponseEntity<>(service.create(categoryDTO), HttpStatus.CREATED);
     }
+
+    @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
+    public ResponseEntity deleteAll() {
+        return new ResponseEntity<>(service.deleteAll(), HttpStatus.ACCEPTED);
+    }
 }

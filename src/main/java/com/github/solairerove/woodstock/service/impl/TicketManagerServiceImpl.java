@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * Created by krivitski-no on 10/12/16.
@@ -46,8 +45,8 @@ public class TicketManagerServiceImpl implements TicketManagerService {
     }
 
     @Override
-    public List<Ticket> get(Long taskId) {
-        return taskRepository.findOne(taskId).getTickets();
+    public Iterable<Ticket> get(Long taskId) {
+        return ticketRepository.getTicketsThatHasInTaskFromId(taskId);
     }
 
     @Override
