@@ -34,7 +34,6 @@ public class TicketManagerServiceImpl implements TicketManagerService {
         Ticket ticket = new Ticket();
         ticket.setValue(ticketDTO.getValue());
         ticket.setCreatedDate(LocalDateTime.now().toString());
-        ticketRepository.save(ticket);
 
         Task task = taskRepository.findOne(taskId);
         task.getTickets().add(ticket);
