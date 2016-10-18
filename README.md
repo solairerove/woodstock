@@ -7,7 +7,7 @@ ___
 #### How to start:
 
 * `docker-compose up`
-* `mvn clean install && java -jar target/*.jar`
+* `mvn spring-boot:run`
 ___
 
 #### Jacoco test coverage:
