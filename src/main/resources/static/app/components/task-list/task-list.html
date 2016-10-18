@@ -1,0 +1,11 @@
+<table border="1">
+    <tr ng-repeat="task in tasks">
+        <td>{{task.id}}</td>
+        <td>{{task.question}}</td>
+        <td>{{task.enable}}</td>
+        <td>{{task.correct}}</td>
+        <td>{{task.createdDate}}</td>
+        <td>{{task.updatedDate}}</td>
+        <td><a href="#/tasks/{{task.id}}">View</a></td>
+    </tr>
+</table>
