@@ -8,6 +8,7 @@ ___
 
 * `docker-compose up`
 * `mvn spring-boot:run`
+* `mvn clean install -DskipTests=true && jar -jar target/*.jar`
 ___
 
 #### Jacoco test coverage:
@@ -18,7 +19,7 @@ ___
 
 #### Sonar analyze:
 
-* `[settings.xml](https://goo.gl/4XsqqY)` - in .m2/
+* [settings.xml](https://www.dropbox.com/s/d30qle3uocvf4mz/settings.xml?dl=0) - in .m2/
 * `configure sonar`
 * `mvn clean install`
 * `mvn sonar:sonar`
@@ -26,5 +27,4 @@ ___
 
 #### Api doc:
 
-* There will be some curl examples...
-* Fuck this shit about documentation. Download *[Insomnia](https://insomnia.rest/download/#ubuntu)* and import *[woodstock.json](https://goo.gl/wZeKf1)*
+* There will be some curl examples
