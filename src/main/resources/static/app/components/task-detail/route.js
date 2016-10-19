@@ -6,4 +6,8 @@ woodstock.config(['$locationProvider', '$routeProvider', function ($locationProv
             templateUrl: '/app/components/task-detail/task-detail.html',
             controller: 'TaskDetailController'
         })
+        .when('tasks/:id/tickets', {
+            templateUrl: '/app/components/ticket-list/ticket-list.html',
+            controller: 'TicketListController'
+        })
 }]);
