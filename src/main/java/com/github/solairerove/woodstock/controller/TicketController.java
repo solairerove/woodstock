@@ -44,6 +44,7 @@ public class TicketController {
         return new ResponseEntity<>(assembler.toResource(ticketService.findAll(pageable)), HttpStatus.OK);
     }
 
+    @Deprecated
     @RequestMapping(path = "/{id}")
     public ResponseEntity getTicket(@PathVariable Long id) {
         Resource<Ticket> resource = new Resource<>(ticketService.get(id));

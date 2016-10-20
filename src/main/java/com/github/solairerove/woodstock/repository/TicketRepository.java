@@ -14,4 +14,7 @@ public interface TicketRepository extends GraphRepository<Ticket> {
 
     @Query("MATCH (task:Task)<-[:HAS_IN]-(tickets) WHERE id(task)={id} RETURN tickets")
     Iterable<Ticket> getTicketsThatHasInTaskFromId(@Param("id") Long id);
+
+    @Query("MATCH (task:Task)<-[:HAS_IN]-(ticket) WHERE id(task)={taskId} AND id(ticket)={ticketId} RETURN ticket")
+    Ticket getTicketThatHasInTaskFromId(@Param("taskId") Long taskId, @Param("ticketId") Long ticketId);
 }

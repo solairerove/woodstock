@@ -10,7 +10,9 @@ public interface TicketManagerService {
 
     Ticket create(Long taskId, TicketDTO ticketDTO);
 
-    Iterable<Ticket> get(Long taskId);
+    Ticket get(Long taskId, Long ticketId);
 
-    Ticket delete (Long taskId, Long ticketId);
+    Iterable<Ticket> getAll(Long taskId);
+
+    Ticket delete(Long taskId, Long ticketId);
 }

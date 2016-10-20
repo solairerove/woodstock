@@ -31,9 +31,14 @@ public class TicketManagerController {
         return new ResponseEntity<>(ticketManagerService.create(taskId, ticketDTO), HttpStatus.CREATED);
     }
 
+    @RequestMapping(path = "/{ticketId}")
+    public ResponseEntity get(@PathVariable Long taskId, @PathVariable Long ticketId) {
+        return new ResponseEntity<>(ticketManagerService.get(taskId, ticketId), HttpStatus.OK);
+    }
+
     @RequestMapping
     public ResponseEntity getAll(@PathVariable Long taskId) {
-        return new ResponseEntity<>(ticketManagerService.get(taskId), HttpStatus.OK);
+        return new ResponseEntity<>(ticketManagerService.getAll(taskId), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{ticketId}", method = RequestMethod.DELETE)

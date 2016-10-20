@@ -44,7 +44,12 @@ public class TicketManagerServiceImpl implements TicketManagerService {
     }
 
     @Override
-    public Iterable<Ticket> get(Long taskId) {
+    public Ticket get(Long taskId, Long ticketId) {
+        return ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
+    }
+
+    @Override
+    public Iterable<Ticket> getAll(Long taskId) {
         return ticketRepository.getTicketsThatHasInTaskFromId(taskId);
     }
 
