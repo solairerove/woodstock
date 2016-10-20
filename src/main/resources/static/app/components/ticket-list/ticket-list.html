@@ -2,6 +2,7 @@
     <tr ng-repeat="ticket in tickets">
         <td>{{ticket.id}}</td>
         <td>{{ticket.value}}</td>
+        <td><a href="#/tasks/{{taskId}}/tickets/{{ticket.id}}">View</a></td>
     </tr>
 </table>
 
