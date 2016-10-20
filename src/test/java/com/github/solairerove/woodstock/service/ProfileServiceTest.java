@@ -30,43 +30,43 @@ import static org.junit.Assert.assertEquals;
 public class ProfileServiceTest {
 
     @Autowired
-    private ProfileService profileService;
+    private ProfileRepository repository;
 
     @Autowired
-    private ProfileRepository profileRepository;
+    private ProfileService service;
 
 
     @Before
     public void setUp() {
-        profileRepository.deleteAll();
+        repository.deleteAll();
     }
 
     @After
     public void clear() {
-        profileRepository.deleteAll();
+        repository.deleteAll();
     }
 
     @Test
     public void createProfileTest() {
         ProfileDTO saved = generateProfileDTO();
-        Long id = profileService.create(saved).getId();
+        Long id = service.create(saved).getId();
 
-        assertEquals(saved.getFirstName(), profileRepository.findOne(id).getFirstName());
-        assertEquals(saved.getLastName(), profileRepository.findOne(id).getLastName());
+        assertEquals(saved.getFirstName(), repository.findOne(id).getFirstName());
+        assertEquals(saved.getLastName(), repository.findOne(id).getLastName());
     }
 
     @Test
     public void getProfileTest() {
         Profile saved = generateProfile();
-        profileRepository.save(saved);
+        repository.save(saved);
 
-        assertEquals(saved, profileService.get(saved.getId()));
+        assertEquals(saved, service.get(saved.getId()));
     }
 
     @Test
     public void updateProfileTest() {
         Profile saved = generateProfile();
-        profileRepository.save(saved);
+        repository.save(saved);
         Long id = saved.getId();
 
         ProfileDTO profileDTO = generateProfileDTO();
@@ -75,36 +75,36 @@ public class ProfileServiceTest {
         profileDTO.setFirstName(firstName);
         profileDTO.setLastName(lastName);
 
-        profileService.update(id, profileDTO);
+        service.update(id, profileDTO);
 
-        assertEquals(firstName, profileRepository.findOne(id).getFirstName());
-        assertEquals(lastName, profileRepository.findOne(id).getLastName());
+        assertEquals(firstName, repository.findOne(id).getFirstName());
+        assertEquals(lastName, repository.findOne(id).getLastName());
     }
 
     @Test
     public void deleteProfileTest() {
         Profile saved = generateProfile();
-        profileRepository.save(saved);
+        repository.save(saved);
 
-        profileService.delete(saved.getId());
+        service.delete(saved.getId());
 
-        assertEquals(profileRepository.findOne(saved.getId()), null);
+        assertEquals(repository.findOne(saved.getId()), null);
     }
 
     @Test
     public void deleteAll() {
-        profileRepository.save(generateProfileCollection());
+        repository.save(generateProfileCollection());
 
-        profileService.deleteAll();
+        service.deleteAll();
 
-        assertEquals(0, profileRepository.count());
+        assertEquals(0, repository.count());
     }
 
     @Test
     public void findAllTest() {
-        profileRepository.save(generateProfileCollection());
+        repository.save(generateProfileCollection());
         int count = NUMBER_OF_ENTITIES_IN_COLLECTION;
 
-        assertEquals(count, profileService.findAll(new PageRequest(0, count)).getNumberOfElements());
+        assertEquals(count, service.findAll(new PageRequest(0, count)).getNumberOfElements());
     }
 }

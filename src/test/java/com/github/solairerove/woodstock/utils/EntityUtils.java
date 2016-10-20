@@ -1,8 +1,10 @@
 package com.github.solairerove.woodstock.utils;
 
+import com.github.solairerove.woodstock.domain.Category;
 import com.github.solairerove.woodstock.domain.Profile;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.domain.Ticket;
+import com.github.solairerove.woodstock.dto.CategoryDTO;
 import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.dto.TicketDTO;
@@ -91,6 +93,30 @@ public class EntityUtils {
         for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
             tasks.add(generateTask());
         }
+
         return tasks;
+    }
+
+    public static Category generateCategory() {
+        Category category = new Category();
+        category.setName(getRandomString());
+
+        return category;
+    }
+
+    public static CategoryDTO generateCategoryDTO() {
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setName(getRandomString());
+
+        return categoryDTO;
+    }
+
+    public static Iterable<Category> generateCategoryCollection() {
+        Collection<Category> categories = new ArrayList<>();
+        for(int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
+            categories.add(generateCategory());
+        }
+
+        return categories;
     }
 }
