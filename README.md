@@ -30,4 +30,4 @@ ___
 
 #### Api doc:
 
-* There will be some curl examples
+* `curl --request GET --url http://localhost:9090/api/tasks --header 'content-type: application/json'`
