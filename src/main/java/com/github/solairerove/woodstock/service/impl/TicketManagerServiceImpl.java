@@ -55,11 +55,8 @@ public class TicketManagerServiceImpl implements TicketManagerService {
 
     @Override
     public Ticket delete(Long taskId, Long ticketId) {
-        Task task = taskRepository.findOne(taskId);
-        Ticket ticket = ticketRepository.findOne(ticketId);
-        task.getTickets().remove(ticket);
-        taskRepository.save(task);
-        ticketRepository.delete(ticketId);
+        Ticket ticket = ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
+        ticketRepository.deleteTicketThatHasInTaskFromId(taskId, ticketId);
         return ticket;
     }
 }
