@@ -12,9 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by krivitski-no on 10/2/16.
- */
 @Service
 @Transactional
 public class TaskServiceImpl implements TaskService {

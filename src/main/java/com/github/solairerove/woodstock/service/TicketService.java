@@ -5,9 +5,6 @@ import com.github.solairerove.woodstock.dto.TicketDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-/**
- * Created by krivitski-no on 9/28/16.
- */
 public interface TicketService {
 
     Ticket create(TicketDTO ticketDTO);

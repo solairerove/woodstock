@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by krivitski-no on 10/12/16.
- */
 @RestController
 @RequestMapping(value = "/api/tasks/{taskId}/tickets", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TicketManagerController {

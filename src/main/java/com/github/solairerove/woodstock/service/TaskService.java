@@ -5,9 +5,6 @@ import com.github.solairerove.woodstock.dto.TaskDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-/**
- * Created by krivitski-no on 10/2/16.
- */
 public interface TaskService {
 
     Task create(TaskDTO taskDTO);

@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by krivitski-no on 10/14/16.
- */
 @RestController
 @RequestMapping(path = "/api/categories", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class CategoryController {

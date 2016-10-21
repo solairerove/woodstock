@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by krivitski-no on 9/30/16.
- */
 @Component
 public class EntityUtils {
 

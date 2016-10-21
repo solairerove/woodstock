@@ -6,9 +6,6 @@ import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-/**
- * Created by krivitski-no on 9/28/16.
- */
 @Repository
 public interface TicketRepository extends GraphRepository<Ticket> {
 

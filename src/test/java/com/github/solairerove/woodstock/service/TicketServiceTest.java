@@ -21,9 +21,6 @@ import static com.github.solairerove.woodstock.utils.EntityUtils.generateTicketD
 import static com.github.solairerove.woodstock.utils.EntityUtils.getRandomString;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by krivitski-no on 10/2/16.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 @Transactional

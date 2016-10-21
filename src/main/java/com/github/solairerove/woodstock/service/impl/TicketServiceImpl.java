@@ -12,9 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by krivitski-no on 9/28/16.
- */
 @Service
 @Transactional
 public class TicketServiceImpl implements TicketService {

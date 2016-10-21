@@ -7,9 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by krivitski-no on 10/1/16.
- */
 @Aspect
 @Component
 public class LoggingAspect {
@@ -44,5 +41,25 @@ public class LoggingAspect {
     @Before("execution(* com.github.solairerove.woodstock.controller.TaskController.*(..)))")
     public void taskControllerLog(JoinPoint joinPoint) {
         LOGGER.info("Task controller: " + joinPoint.getSignature().getName());
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.CategoryService.*(..)))")
+    public void categoryServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Category service: " + joinPoint.getSignature().getName());
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.controller.CategoryController.*(..)))")
+    public void categoryControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Category controller: " + joinPoint.getSignature().getName());
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.TicketManagerService.*(..)))")
+    public void ticketManagerServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Ticket manager service: " + joinPoint.getSignature().getName());
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.controller.TicketManagerController.*(..)))")
+    public void ticketManagerControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Ticket manager controller: " + joinPoint.getSignature().getName());
     }
 }

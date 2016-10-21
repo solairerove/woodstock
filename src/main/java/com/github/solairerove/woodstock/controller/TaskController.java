@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by krivitski-no on 10/3/16.
- */
 @RestController
 @ExposesResourceFor(Task.class)
 @RequestMapping(value = "/api/tasks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

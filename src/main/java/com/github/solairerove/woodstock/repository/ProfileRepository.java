@@ -5,9 +5,6 @@ import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- * Created by krivitski-no on 9/14/16.
- */
 @Repository
 public interface ProfileRepository extends GraphRepository<Profile> {
 

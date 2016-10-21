@@ -1,20 +1,11 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by krivitski-no on 10/1/16.
- */
-@Getter
-@Setter
-@NoArgsConstructor
 @NodeEntity(label = "Task")
 public class Task extends BaseEntity {
 
@@ -23,18 +14,26 @@ public class Task extends BaseEntity {
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Ticket> tickets;
 
-    private Boolean enable;
+    public Task() {
+        // why DATA? why...
+    }
 
-    private Boolean correct;
+    public String getQuestion() {
+        return question;
+    }
 
-    private String createdDate;
-
-    private String updatedDate;
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
     public List<Ticket> getTickets() {
         if (tickets == null) {
             tickets = new ArrayList<>();
         }
         return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }
