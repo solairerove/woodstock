@@ -74,7 +74,7 @@ public class TicketManagerServiceTest {
         Task task = generateTask();
         List<Ticket> tickets = generateTicketCollection();
 
-        task.getTickets().addAll(tickets);
+        task.setTickets(tickets);
         taskRepository.save(task);
 
         sort(tickets, ((o1, o2) -> o2.getId().compareTo(o1.getId())));

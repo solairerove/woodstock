@@ -1,20 +1,18 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-import org.neo4j.ogm.annotation.GraphId;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.NodeEntity;
-
-import java.io.Serializable;
 
 /**
  * Created by krivitski-no on 10/14/16.
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @NodeEntity(label = "Category")
-public class Category implements Serializable {
-
-    @GraphId
-    private Long id;
+public class Category extends BaseEntity {
 
     private String name;
 }

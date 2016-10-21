@@ -1,20 +1,18 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-import org.neo4j.ogm.annotation.GraphId;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.NodeEntity;
-
-import java.io.Serializable;
 
 /**
  * Created by krivitski-no on 9/14/16.
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @NodeEntity(label = "Profile")
-public class Profile implements Serializable {
-
-    @GraphId
-    private Long id;
+public class Profile extends BaseEntity {
 
     private String firstName;
 

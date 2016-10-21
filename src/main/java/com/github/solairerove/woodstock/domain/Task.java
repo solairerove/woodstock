@@ -1,23 +1,22 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-import org.neo4j.ogm.annotation.GraphId;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by krivitski-no on 10/1/16.
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @NodeEntity(label = "Task")
-public class Task implements Serializable {
-
-    @GraphId
-    private Long id;
+public class Task extends BaseEntity {
 
     private String question;
 
