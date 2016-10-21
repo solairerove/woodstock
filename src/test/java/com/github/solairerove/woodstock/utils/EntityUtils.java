@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by krivitski-no on 9/30/16.
@@ -66,8 +67,8 @@ public class EntityUtils {
         return ticketDTO;
     }
 
-    public static Iterable<Ticket> generateTicketCollection() {
-        Collection<Ticket> tickets = new ArrayList<>();
+    public static List<Ticket> generateTicketCollection() {
+        List<Ticket> tickets = new ArrayList<>();
         for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
             tickets.add(generateTicket());
         }
