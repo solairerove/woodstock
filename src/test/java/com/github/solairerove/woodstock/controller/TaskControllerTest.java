@@ -1,7 +1,6 @@
 package com.github.solairerove.woodstock.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.solairerove.woodstock.Application;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.repository.TaskRepository;
@@ -11,11 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import static com.github.solairerove.woodstock.utils.EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
@@ -34,10 +31,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@SpringBootTest(classes = Application.class)
-@Transactional
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TaskControllerTest {
 
     private static final String API_PATH = "/api/tasks";

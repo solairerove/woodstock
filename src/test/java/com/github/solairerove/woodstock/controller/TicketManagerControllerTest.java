@@ -1,7 +1,6 @@
 package com.github.solairerove.woodstock.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.solairerove.woodstock.Application;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.dto.TicketDTO;
@@ -13,26 +12,32 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
-import static com.github.solairerove.woodstock.utils.EntityUtils.*;
-import static org.hamcrest.Matchers.*;
+import static com.github.solairerove.woodstock.utils.EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTask;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTicket;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTicketCollection;
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTicketDTO;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.isA;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@SpringBootTest(classes = Application.class)
-@Transactional
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TicketManagerControllerTest {
 
     private static final String API_PATH = "/api/tasks";

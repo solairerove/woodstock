@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.service;
 
-import com.github.solairerove.woodstock.Application;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.repository.TaskRepository;
@@ -11,8 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.github.solairerove.woodstock.utils.EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
 import static com.github.solairerove.woodstock.utils.EntityUtils.generateTask;
@@ -21,9 +19,8 @@ import static com.github.solairerove.woodstock.utils.EntityUtils.generateTaskDTO
 import static com.github.solairerove.woodstock.utils.EntityUtils.getRandomString;
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Application.class)
-@Transactional
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TaskServiceTest {
 
     @Autowired
