@@ -8,13 +8,13 @@ ___
 
 * `docker-compose up`
 * `mvn spring-boot:run`
-* `mvn clean install -DskipTests=true && jar -jar target/*.jar`
+* `mvn clean install && jar -jar target/*.jar`
 
 ___
 
 #### Jacoco test coverage:
 
-* `mvn clean test jacoco:report`
+* `mvn clean test jacoco:report -Pdev`
 * `target/site/jacoco/index.html`
 
 ___
@@ -23,7 +23,7 @@ ___
 
 * [settings.xml](https://www.dropbox.com/s/d30qle3uocvf4mz/settings.xml?dl=0)
 * configure sonar
-* `mvn clean install`
+* `mvn clean install -Pdev`
 * `mvn sonar:sonar`
 
 ___

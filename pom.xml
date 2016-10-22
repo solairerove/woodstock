@@ -26,13 +26,17 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <neo4j.uri>http://neo4j:woodstock@localhost:7474</neo4j.uri>
+        <skip.test>true</skip.test>
     </properties>
 
     <profiles>
         <profile>
             <id>dev</id>
             <properties>
-                <neo4j.uri>http://neo4j:woodstock@localhost:7474</neo4j.uri>
+                <neo4j.uri>http://neo4j:test@localhost:7473</neo4j.uri>
+                <skip.test>false</skip.test>
             </properties>
         </profile>
     </profiles>
@@ -165,6 +169,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>${skip.test}</skipTests>
+                </configuration>
             </plugin>
 
             <plugin>

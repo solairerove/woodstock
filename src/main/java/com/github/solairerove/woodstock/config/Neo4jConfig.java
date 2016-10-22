@@ -9,7 +9,10 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableNeo4jRepositories({"com.github.solairerove.woodstock.repository", "BOOT-INF.classes.com.github.solairerove.woodstock.repository"})
+@EnableNeo4jRepositories({
+        "com.github.solairerove.woodstock.repository",
+        "BOOT-INF.classes.com.github.solairerove.woodstock.repository"
+})
 @EnableTransactionManagement
 public class Neo4jConfig extends Neo4jConfiguration {
 
@@ -28,6 +31,8 @@ public class Neo4jConfig extends Neo4jConfiguration {
 
     @Override
     public SessionFactory getSessionFactory() {
-        return new SessionFactory(getConfiguration(), "com.github.solairerove.woodstock.domain", "BOOT-INF.classes.com.github.solairerove.woodstock.domain");
+        return new SessionFactory(getConfiguration(),
+                "com.github.solairerove.woodstock.domain",
+                "BOOT-INF.classes.com.github.solairerove.woodstock.domain");
     }
 }
