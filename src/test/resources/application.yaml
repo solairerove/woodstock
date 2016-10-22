@@ -1,4 +1,4 @@
-spring:
-  data:
-    neo4j:
-      uri: http://neo4j:test@localhost:7473
+#spring:
+#  data:
+#    neo4j:
+#      uri: http://neo4j:test@localhost:7473

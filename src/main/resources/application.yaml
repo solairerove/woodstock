@@ -1,7 +1,2 @@
-spring:
-  data:
-    neo4j:
-      uri: http://neo4j:woodstock@localhost:7474
-
 server:
   port: 9090
