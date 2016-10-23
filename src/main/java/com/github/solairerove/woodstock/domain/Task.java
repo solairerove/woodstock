@@ -30,6 +30,7 @@ public class Task extends BaseEntity {
         if (tickets == null) {
             tickets = new ArrayList<>();
         }
+
         return tickets;
     }
 
