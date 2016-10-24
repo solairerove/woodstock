@@ -4,18 +4,20 @@ import com.github.solairerove.woodstock.domain.Task;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface TaskRepository extends GraphRepository<Task> {
 
-    @Query("MATCH (category:Category)<-[:HAS_IN]-(task) " +
+    @Query("MATCH (category:Category) OPTIONAL " +
+            "MATCH (category)<-[r:HAS_IN]-(task) " +
             "WHERE id(category)={categoryId} AND id(task)={taskId} " +
-            "RETURN task")
+            "RETURN task, r " +
+            "LIMIT 150")
     Task getTaskThatHasInCategoryFromId(@Param("categoryId") Long categoryId, @Param("taskId") Long taskId);
 
-    @Query("MATCH (category:Category)<-[:HAS_IN]->(tasks) " +
+    @Query("START category=node(*) " +
+            "MATCH (category:Category)<-[:HAS_IN*0..]-(tasks:Task) " +
             "WHERE id(category)={id} " +
-            "RETURN tasks")
+            "RETURN tasks " +
+            "LIMIT 5")
     Iterable<Task> getTasksThatHasInCategoryFromId(@Param("id") Long id);
 }
