@@ -23,18 +23,13 @@ public class CategoryController {
         this.service = service;
     }
 
-    @RequestMapping(path = "/{id}")
-    public ResponseEntity getProfile(@PathVariable Long id) {
-        return new ResponseEntity<>(service.get(id), HttpStatus.OK);
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody CategoryDTO categoryDTO) {
         return new ResponseEntity<>(service.create(categoryDTO), HttpStatus.CREATED);
     }
 
-    @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
-    public ResponseEntity deleteAll() {
-        return new ResponseEntity<>(service.deleteAll(), HttpStatus.ACCEPTED);
+    @RequestMapping(path = "/{id}")
+    public ResponseEntity get(@PathVariable Long id) {
+        return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 }
