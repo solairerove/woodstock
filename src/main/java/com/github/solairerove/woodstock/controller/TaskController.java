@@ -32,4 +32,9 @@ public class TaskController {
     public ResponseEntity get(@PathVariable Long categoryId, @PathVariable Long taskId) {
         return new ResponseEntity<>(service.get(categoryId, taskId), HttpStatus.OK);
     }
+
+    @RequestMapping
+    public ResponseEntity getAll(@PathVariable Long categoryId) {
+        return new ResponseEntity<>(service.getAll(categoryId), HttpStatus.OK);
+    }
 }

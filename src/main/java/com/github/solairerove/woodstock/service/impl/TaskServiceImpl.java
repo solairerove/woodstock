@@ -40,12 +40,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task get(Long categoryId, Long taskId) {
-        return null;
+        return taskRepository.getTaskThatHasInCategoryFromId(categoryId, taskId);
     }
 
     @Override
     public Iterable<Task> getAll(Long categoryId) {
-        return null;
+        return taskRepository.getTasksThatHasInCategoryFromId(categoryId);
     }
 
     @Override
