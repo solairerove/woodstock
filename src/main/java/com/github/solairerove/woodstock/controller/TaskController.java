@@ -1,14 +1,8 @@
 package com.github.solairerove.woodstock.controller;
 
-import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
-import com.github.solairerove.woodstock.service.TaskService;
+import com.github.solairerove.woodstock.service.TaskManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.EntityLinks;
-import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,53 +13,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@ExposesResourceFor(Task.class)
-@RequestMapping(value = "/api/tasks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/categories/{categoryId}/tasks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TaskController {
 
-    private final TaskService taskService;
-
-    private final PagedResourcesAssembler<Task> assembler;
-
-    private final EntityLinks entityLinks;
+    private final TaskManagerService service;
 
     @Autowired
-    public TaskController(TaskService taskService, EntityLinks entityLinks, PagedResourcesAssembler<Task> assembler) {
-        this.taskService = taskService;
-        this.entityLinks = entityLinks;
-        this.assembler = assembler;
-    }
-
-    @RequestMapping
-    public ResponseEntity getAllTasks(Pageable pageable) {
-        return new ResponseEntity<>(assembler.toResource(taskService.findAll(pageable)), HttpStatus.OK);
-    }
-
-    @RequestMapping(path = "/{id}")
-    public ResponseEntity getTask(@PathVariable Long id) {
-        Resource<Task> resource = new Resource<>(taskService.get(id));
-        resource.add(this.entityLinks.linkToSingleResource(Task.class, id));
-
-        return new ResponseEntity<>(resource, HttpStatus.OK);
+    public TaskController(TaskManagerService service) {
+        this.service = service;
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity createTask(@RequestBody TaskDTO taskDTO) {
-        return new ResponseEntity<>(taskService.create(taskDTO), HttpStatus.CREATED);
+    public ResponseEntity create(@PathVariable Long categoryId, @RequestBody TaskDTO taskDTO) {
+        return new ResponseEntity<>(service.create(categoryId, taskDTO), HttpStatus.CREATED);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
-        return new ResponseEntity<>(taskService.update(id, taskDTO), HttpStatus.OK);
-    }
-
-    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteTask(@PathVariable Long id) {
-        return new ResponseEntity<>(taskService.delete(id), HttpStatus.OK);
-    }
-
-    @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
-    public ResponseEntity deleteAll() {
-        return new ResponseEntity<>(taskService.deleteAll(), HttpStatus.ACCEPTED);
+    @RequestMapping(path = "/{taskId}")
+    public ResponseEntity get(@PathVariable Long categoryId, @PathVariable Long taskId) {
+        return new ResponseEntity<>(service.get(categoryId, taskId), HttpStatus.OK);
     }
 }
