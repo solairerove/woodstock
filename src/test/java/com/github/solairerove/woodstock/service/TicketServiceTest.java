@@ -1,7 +1,9 @@
 package com.github.solairerove.woodstock.service;
 
+import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.dto.TicketDTO;
+import com.github.solairerove.woodstock.repository.TaskRepository;
 import com.github.solairerove.woodstock.repository.TicketRepository;
 import org.junit.After;
 import org.junit.Before;
@@ -9,14 +11,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static com.github.solairerove.woodstock.utils.EntityUtils.NUMBER_OF_ENTITIES_IN_COLLECTION;
+import java.util.List;
+
+import static com.github.solairerove.woodstock.utils.EntityUtils.generateTask;
 import static com.github.solairerove.woodstock.utils.EntityUtils.generateTicket;
 import static com.github.solairerove.woodstock.utils.EntityUtils.generateTicketCollection;
 import static com.github.solairerove.woodstock.utils.EntityUtils.generateTicketDTO;
-import static com.github.solairerove.woodstock.utils.EntityUtils.getRandomString;
+import static java.util.Collections.sort;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -24,7 +27,10 @@ import static org.junit.Assert.assertEquals;
 public class TicketServiceTest {
 
     @Autowired
-    private TicketService ticketService;
+    private TicketService service;
+
+    @Autowired
+    private TaskRepository taskRepository;
 
     @Autowired
     private TicketRepository ticketRepository;
@@ -32,69 +38,74 @@ public class TicketServiceTest {
     @Before
     public void setUp() {
         ticketRepository.deleteAll();
+        taskRepository.deleteAll();
     }
 
     @After
     public void clear() {
         ticketRepository.deleteAll();
+        taskRepository.deleteAll();
     }
 
     @Test
     public void createTicketTest() {
-        TicketDTO saved = generateTicketDTO();
-        Long id = ticketService.create(saved).getId();
+        Task task = generateTask();
+        Long taskId = taskRepository.save(task).getId();
 
-        assertEquals(saved.getValue(), ticketRepository.findOne(id).getValue());
+        TicketDTO ticketDTO = generateTicketDTO();
+
+        assertEquals(ticketDTO.getValue(), service.create(taskId, ticketDTO).getValue());
+        assertEquals(ticketRepository.count(), task.getTickets().size());
     }
 
     @Test
     public void getTicketTest() {
-        Ticket saved = generateTicket();
-        ticketRepository.save(saved);
+        Task task = generateTask();
+        Ticket ticket = generateTicket();
 
-        assertEquals(saved, ticketService.get(saved.getId()));
+        task.getTickets().add(ticket);
+        taskRepository.save(task).getId();
+
+        assertEquals(ticket, service.get(task.getId(), ticket.getId()));
     }
 
     @Test
-    public void updateTicketTest() {
-        Ticket saved = generateTicket();
-        ticketRepository.save(saved);
-        Long id = saved.getId();
+    public void getAllTicketsTest() {
+        Task task = generateTask();
+        List<Ticket> tickets = generateTicketCollection();
 
-        TicketDTO ticketDTO = generateTicketDTO();
-        String value = getRandomString();
-        ticketDTO.setValue(value);
+        task.setTickets(tickets);
+        taskRepository.save(task);
 
-        ticketService.update(id, ticketDTO);
+        sort(tickets, ((o1, o2) -> o2.getId().compareTo(o1.getId())));
 
-        assertEquals(value, ticketRepository.findOne(id).getValue());
+        List<Ticket> result = (List<Ticket>) service.getAll(task.getId());
+        sort(result, (o1, o2) -> o2.getId().compareTo(o1.getId()));
+
+        assertEquals(tickets, result);
     }
 
     @Test
     public void deleteTicketTest() {
-        Ticket saved = generateTicket();
-        ticketRepository.save(saved);
-        Long id = saved.getId();
+        Task task = generateTask();
+        Ticket ticket = generateTicket();
 
-        ticketService.delete(id);
+        task.getTickets().add(ticket);
+        taskRepository.save(task);
 
-        assertEquals(null, ticketRepository.findOne(id));
+        Long ticketId = ticket.getId();
+
+        assertEquals(ticket, ticketRepository.findOne(ticketId));
+        assertEquals(ticket, service.delete(task.getId(), ticketId));
+        assertEquals(0, ticketRepository.count());
     }
 
     @Test
     public void deleteAll() {
         ticketRepository.save(generateTicketCollection());
 
-        ticketService.deleteAll();
+        service.deleteAll();
 
         assertEquals(0, ticketRepository.count());
-    }
-
-    @Test
-    public void findAllTest() {
-        ticketRepository.save(generateTicketCollection());
-        int count = NUMBER_OF_ENTITIES_IN_COLLECTION;
-
-        assertEquals(count, ticketService.findAll(new PageRequest(0, count)).getNumberOfElements());
     }
 }

@@ -1,12 +1,12 @@
 package com.github.solairerove.woodstock.service.impl;
 
+import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.dto.TicketDTO;
+import com.github.solairerove.woodstock.repository.TaskRepository;
 import com.github.solairerove.woodstock.repository.TicketRepository;
 import com.github.solairerove.woodstock.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,49 +16,56 @@ import java.time.LocalDateTime;
 @Transactional
 public class TicketServiceImpl implements TicketService {
 
-    private final TicketRepository repository;
+    private final TicketRepository ticketRepository;
+
+    private final TaskRepository taskRepository;
 
     @Autowired
-    public TicketServiceImpl(TicketRepository repository) {
-        this.repository = repository;
+    public TicketServiceImpl(TicketRepository ticketRepository, TaskRepository taskRepository) {
+        this.ticketRepository = ticketRepository;
+        this.taskRepository = taskRepository;
     }
 
     @Override
-    public Ticket create(TicketDTO ticketDTO) {
+    public Ticket create(Long taskId, TicketDTO ticketDTO) {
         Ticket ticket = new Ticket();
         ticket.setValue(ticketDTO.getValue());
         ticket.setCreatedDate(LocalDateTime.now().toString());
-        return repository.save(ticket);
+
+        Task task = taskRepository.findOne(taskId);
+        task.getTickets().add(ticket);
+        task.setUpdatedDate(LocalDateTime.now().toString());
+        taskRepository.save(task);
+
+        return ticket;
     }
 
     @Override
-    public Ticket get(Long id) {
-        return repository.findOne(id);
+    public Ticket get(Long taskId, Long ticketId) {
+        return ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
     }
 
     @Override
-    public Page<Ticket> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public Iterable<Ticket> getAll(Long taskId) {
+        return ticketRepository.getTicketsThatHasInTaskFromId(taskId);
     }
 
     @Override
     public Ticket update(Long id, TicketDTO ticketDTO) {
-        Ticket ticket = repository.findOne(id);
-        ticket.setValue(ticketDTO.getValue());
-        ticket.setUpdatedDate(LocalDateTime.now().toString());
-        return repository.save(ticket);
+        return null;
     }
 
     @Override
-    public Long delete(Long id) {
-        repository.delete(id);
-        return id;
+    public Ticket delete(Long taskId, Long ticketId) {
+        Ticket ticket = ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
+        ticketRepository.deleteTicketThatHasInTaskFromId(taskId, ticketId);
+        return ticket;
     }
 
     @Override
     public Iterable<Ticket> deleteAll() {
-        Iterable<Ticket> tickets = repository.findAll();
-        repository.deleteAll();
+        Iterable<Ticket> tickets = ticketRepository.findAll();
+        ticketRepository.deleteAll();
         return tickets;
     }
 }

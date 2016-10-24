@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Aspect
 @Component
 public class LoggingAspect {
@@ -15,26 +17,31 @@ public class LoggingAspect {
 
     @Before("execution(* com.github.solairerove.woodstock.controller.CategoryController.*(..)))")
     public void categoryControllerLog(JoinPoint joinPoint) {
-        LOGGER.info("Category controller: " + joinPoint.getSignature().getName());
-    }
-
-    @Before("execution(* com.github.solairerove.woodstock.controller.ManagerController.*(..)))")
-    public void managerControllerLog(JoinPoint joinPoint) {
-        LOGGER.info("Manager controller: " + joinPoint.getSignature().getName());
-    }
-
-    @Before("execution(* com.github.solairerove.woodstock.controller.ProfileController.*(..)))")
-    public void profileControllerLog(JoinPoint joinPoint) {
-        LOGGER.info("Profile controller: " + joinPoint.getSignature().getName());
+        LOGGER.info("Category controller: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
     }
 
     @Before("execution(* com.github.solairerove.woodstock.controller.TaskController.*(..)))")
     public void taskControllerLog(JoinPoint joinPoint) {
-        LOGGER.info("Task controller: " + joinPoint.getSignature().getName());
+        LOGGER.info("Task controller: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
     }
 
     @Before("execution(* com.github.solairerove.woodstock.controller.TicketController.*(..)))")
     public void ticketControllerLog(JoinPoint joinPoint) {
-        LOGGER.info("Ticket controller: " + joinPoint.getSignature().getName());
+        LOGGER.info("Ticket controller: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.controller.ManagerController.*(..)))")
+    public void managerControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Manager controller: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.controller.ProfileController.*(..)))")
+    public void profileControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Profile controller: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
     }
 }

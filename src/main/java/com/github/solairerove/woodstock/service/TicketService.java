@@ -7,15 +7,15 @@ import org.springframework.data.domain.Pageable;
 
 public interface TicketService {
 
-    Ticket create(TicketDTO ticketDTO);
+    Ticket create(Long taskId, TicketDTO ticketDTO);
 
-    Ticket get(Long id);
+    Ticket get(Long taskId, Long ticketId);
 
-    Page<Ticket> findAll(Pageable pageable);
+    Iterable<Ticket> getAll(Long taskId);
 
     Ticket update(Long id, TicketDTO ticketDTO);
 
-    Long delete(Long id);
+    Ticket delete(Long taskId, Long ticketId);
 
     Iterable<Ticket> deleteAll();
 }

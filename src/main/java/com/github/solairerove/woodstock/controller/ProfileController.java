@@ -36,35 +36,31 @@ public class ProfileController {
         this.entityLinks = entityLinks;
     }
 
-    @RequestMapping
-    public ResponseEntity getAllProfiles(Pageable pageable) {
-        return new ResponseEntity<>(assembler.toResource(service.findAll(pageable)), HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity create(@RequestBody ProfileDTO profileDTO) {
+        return new ResponseEntity<>(service.create(profileDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{id}")
-    public ResponseEntity getProfile(@PathVariable Long id) {
+    public ResponseEntity get(@PathVariable Long id) {
         Resource<Profile> resource = new Resource<>(service.get(id));
         resource.add(this.entityLinks.linkToSingleResource(Profile.class, id));
 
         return new ResponseEntity<>(resource, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity createProfile(@RequestBody ProfileDTO profileDTO) {
-        return new ResponseEntity<>(service.create(profileDTO), HttpStatus.CREATED);
+    @RequestMapping
+    public ResponseEntity getAll(Pageable pageable) {
+        return new ResponseEntity<>(assembler.toResource(service.findAll(pageable)), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity updateProfile(@PathVariable Long id, @RequestBody ProfileDTO profileDTO) {
+    public ResponseEntity update(@PathVariable Long id, @RequestBody ProfileDTO profileDTO) {
         return new ResponseEntity<>(service.update(id, profileDTO), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteProfile(@PathVariable Long id) {
+    public ResponseEntity delete(@PathVariable Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
-    }
-    @RequestMapping(path = "/delete_all", method = RequestMethod.DELETE)
-    public ResponseEntity deleteAll() {
-        return new ResponseEntity<>(service.deleteAll(), HttpStatus.ACCEPTED);
     }
 }
