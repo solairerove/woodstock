@@ -14,7 +14,7 @@ ___
 
 #### Jacoco test coverage:
 
-* `mvn clean test jacoco:report -Pdev`
+* `mvn clean test jacoco:report -Ptest`
 * `target/site/jacoco/index.html`
 
 ___
@@ -23,7 +23,7 @@ ___
 
 * [settings.xml](https://www.dropbox.com/s/d30qle3uocvf4mz/settings.xml?dl=0)
 * configure sonar
-* `mvn clean install -Pdev`
+* `mvn clean install -Ptest`
 * `mvn sonar:sonar`
 
 ___
