@@ -2,20 +2,14 @@ package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 public interface TaskService {
 
-    Task create(TaskDTO taskDTO);
+    Task create(Long categoryId, TaskDTO taskDTO);
 
-    Task get(Long id);
+    Task get(Long categoryId, Long taskId);
 
-    Page<Task> findAll(Pageable pageable);
-
-    Task update(Long id, TaskDTO taskDTO);
-
-    Long delete(Long id);
+    Iterable<Task> getAll(Long categoryId);
 
     Iterable<Task> deleteAll();
 }

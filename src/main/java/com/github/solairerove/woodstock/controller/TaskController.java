@@ -1,7 +1,7 @@
 package com.github.solairerove.woodstock.controller;
 
 import com.github.solairerove.woodstock.dto.TaskDTO;
-import com.github.solairerove.woodstock.service.TaskManagerService;
+import com.github.solairerove.woodstock.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/categories/{categoryId}/tasks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TaskController {
 
-    private final TaskManagerService service;
+    private final TaskService service;
 
     @Autowired
-    public TaskController(TaskManagerService service) {
+    public TaskController(TaskService service) {
         this.service = service;
     }
 

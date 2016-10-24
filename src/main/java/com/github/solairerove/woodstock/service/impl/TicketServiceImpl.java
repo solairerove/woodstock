@@ -8,12 +8,10 @@ import com.github.solairerove.woodstock.repository.TicketRepository;
 import com.github.solairerove.woodstock.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
 @Service
-@Transactional
 public class TicketServiceImpl implements TicketService {
 
     private final TicketRepository ticketRepository;

@@ -44,4 +44,28 @@ public class LoggingAspect {
         LOGGER.info("Profile controller: " + joinPoint.getSignature().getName() +
                 Arrays.toString(joinPoint.getArgs()));
     }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.CategoryService.*(..)))")
+    public void categoryServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Category service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.TaskService.*(..)))")
+    public void taskServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Task service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.TicketService.*(..)))")
+    public void ticketServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Ticket service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.ProfileService.*(..)))")
+    public void profileServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Profile service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
 }
