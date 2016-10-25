@@ -6,7 +6,6 @@ ___
 
 #### How to start:
 
-* `docker-compose up`
 * `mvn spring-boot:run`
 * `mvn clean install && jar -jar target/*.jar`
 
