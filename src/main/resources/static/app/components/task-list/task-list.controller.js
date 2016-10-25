@@ -4,6 +4,7 @@ woodstock.controller('TaskListController', ['$scope', '$location', '$routeParams
     function ($scope, $location, $routeParams, TaskService) {
         TaskService.query({categoryId: $routeParams.categoryId}, function (data) {
             $scope.tasks = data;
+            $scope.categoryId = $routeParams.categoryId;
         })
     }
 ]);

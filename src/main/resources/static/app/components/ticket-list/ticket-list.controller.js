@@ -5,6 +5,7 @@ woodstock.controller('TicketListController', ['$scope', '$location', '$routePara
         TicketService.query({taskId: $routeParams.taskId}, function (data) {
             $scope.tickets = data;
             $scope.taskId = $routeParams.taskId;
+            $scope.categoryId = $routeParams.categoryId;
         })
     }
 ]);
