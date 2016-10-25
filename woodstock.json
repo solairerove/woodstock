@@ -1,11 +1,11 @@
 {
   "_type": "export",
   "__export_format": 2,
-  "__export_date": "2016-10-24T21:09:08.709Z",
-  "__export_source": "insomnia.desktop.app:v3.5.13",
+  "__export_date": "2016-10-25T16:02:57.537Z",
+  "__export_source": "insomnia.desktop.app:v3.6.2",
   "resources": [
     {
-      "modified": 1477343271784,
+      "modified": 1477376470712,
       "created": 1474050228350,
       "parentId": null,
       "name": "Woodstock",
@@ -13,7 +13,7 @@
       "_type": "workspace"
     },
     {
-      "modified": 1477335173525,
+      "modified": 1477376470720,
       "created": 1477054986969,
       "parentId": null,
       "name": "Insomnia",
@@ -21,7 +21,7 @@
       "_type": "workspace"
     },
     {
-      "modified": 1477335173525,
+      "modified": 1477376470713,
       "created": 1474050373101,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "Base Environment",
@@ -30,7 +30,7 @@
       "_type": "environment"
     },
     {
-      "modified": 1477343340195,
+      "modified": 1477410381093,
       "created": 1474050373101,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "Default Jar",
@@ -42,14 +42,14 @@
           "domain": "localhost",
           "path": "/",
           "hostOnly": true,
-          "lastAccessed": "2016-10-24T21:08:59.939Z"
+          "lastAccessed": "2016-10-25T15:46:19.838Z"
         }
       ],
       "_id": "jar_it63j759rKweSPBEctfn7EUM",
       "_type": "cookie_jar"
     },
     {
-      "modified": 1477337026243,
+      "modified": 1477376476851,
       "created": 1475089445228,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "profile",
@@ -58,7 +58,7 @@
       "_type": "request_group"
     },
     {
-      "modified": 1477336950558,
+      "modified": 1477376580001,
       "created": 1475609416343,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "task",
@@ -67,7 +67,7 @@
       "_type": "request_group"
     },
     {
-      "modified": 1477342393984,
+      "modified": 1477376470724,
       "created": 1476306071529,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "ticket",
@@ -76,7 +76,7 @@
       "_type": "request_group"
     },
     {
-      "modified": 1477336946760,
+      "modified": 1477376470727,
       "created": 1476474531461,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "category",
@@ -85,7 +85,7 @@
       "_type": "request_group"
     },
     {
-      "modified": 1477335173525,
+      "modified": 1477376470715,
       "created": 1474050365964,
       "parentId": "fld_itna64bw4ZTf6jYDhFAF8RXD",
       "url": "http://localhost:9090/api/profiles",
@@ -99,7 +99,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477335173525,
+      "modified": 1477376470721,
       "created": 1474051257580,
       "parentId": "fld_itna64bw4ZTf6jYDhFAF8RXD",
       "url": "http://localhost:9090/api/profiles",
@@ -118,7 +118,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477335173526,
+      "modified": 1477376470724,
       "created": 1474054324292,
       "parentId": "fld_itna64bw4ZTf6jYDhFAF8RXD",
       "url": "http://localhost:9090/api/profiles/0",
@@ -137,7 +137,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477335173527,
+      "modified": 1477376470727,
       "created": 1474054442872,
       "parentId": "fld_itna64bw4ZTf6jYDhFAF8RXD",
       "url": "http://localhost:9090/api/profiles/2",
@@ -151,7 +151,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477335173527,
+      "modified": 1477376470730,
       "created": 1474055793855,
       "parentId": "fld_itna64bw4ZTf6jYDhFAF8RXD",
       "url": "http://localhost:9090/api/profiles/3",
@@ -165,7 +165,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477335173527,
+      "modified": 1477376470734,
       "created": 1475409731030,
       "parentId": "fld_itna64bw4ZTf6jYDhFAF8RXD",
       "url": "http://localhost:9090/api/profiles/delete_all",
@@ -179,7 +179,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477337015504,
+      "modified": 1477376470735,
       "created": 1475609428546,
       "parentId": "fld_itvvqwlzWsSCFjJ74YYYbFpA",
       "url": "http://localhost:9090/api/categories/202/tasks",
@@ -198,10 +198,10 @@
       "_type": "request"
     },
     {
-      "modified": 1477338903431,
+      "modified": 1477376612297,
       "created": 1475609498325,
       "parentId": "fld_itvvqwlzWsSCFjJ74YYYbFpA",
-      "url": "http://localhost:9090/api/categories/202/tasks/211",
+      "url": "http://localhost:9090/api/categories/5/tasks/24",
       "name": "get task",
       "method": "GET",
       "body": "",
@@ -212,10 +212,10 @@
       "_type": "request"
     },
     {
-      "modified": 1477338596192,
+      "modified": 1477376592058,
       "created": 1477338588141,
       "parentId": "fld_itvvqwlzWsSCFjJ74YYYbFpA",
-      "url": "http://localhost:9090/api/categories/202/tasks",
+      "url": "http://localhost:9090/api/categories/5/tasks",
       "name": "get tasks",
       "method": "GET",
       "body": "",
@@ -226,7 +226,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477338973788,
+      "modified": 1477376470752,
       "created": 1477322881524,
       "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
       "url": "http://localhost:9090/api/tasks/211/tickets/342",
@@ -240,7 +240,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477337335441,
+      "modified": 1477376470753,
       "created": 1476304979706,
       "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
       "url": "http://localhost:9090/api/tasks/211/tickets",
@@ -259,10 +259,10 @@
       "_type": "request"
     },
     {
-      "modified": 1477338981882,
+      "modified": 1477376623225,
       "created": 1476305956626,
       "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
-      "url": "http://localhost:9090/api/tasks/211/tickets",
+      "url": "http://localhost:9090/api/tasks/24/tickets",
       "name": "get tickets from task",
       "method": "GET",
       "body": "",
@@ -273,7 +273,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477335173529,
+      "modified": 1477376470753,
       "created": 1476306656370,
       "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
       "url": "http://localhost:9090/api/tasks/3/tickets/12",
@@ -287,7 +287,21 @@
       "_type": "request"
     },
     {
-      "modified": 1477336915545,
+      "modified": 1477409309692,
+      "created": 1477409136926,
+      "parentId": "fld_iua6tbpiq6baYFaPHSkKTQMc",
+      "url": "http://localhost:9090/api/categories",
+      "name": "get categories",
+      "method": "GET",
+      "body": "",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "_id": "req_2831ab639a3442229bb8d36c0d438a96",
+      "_type": "request"
+    },
+    {
+      "modified": 1477376470753,
       "created": 1476474541527,
       "parentId": "fld_iua6tbpiq6baYFaPHSkKTQMc",
       "url": "http://localhost:9090/api/categories",
@@ -306,10 +320,10 @@
       "_type": "request"
     },
     {
-      "modified": 1477342551584,
+      "modified": 1477409139799,
       "created": 1476474556567,
       "parentId": "fld_iua6tbpiq6baYFaPHSkKTQMc",
-      "url": "http://localhost:9090/api/categories/202",
+      "url": "http://localhost:9090/api/categories/5",
       "name": "get category",
       "method": "GET",
       "body": "",
@@ -320,7 +334,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477335173530,
+      "modified": 1477376470754,
       "created": 1476638818075,
       "parentId": "fld_iua6tbpiq6baYFaPHSkKTQMc",
       "url": "http://localhost:9090/api/categories/delete_all",
