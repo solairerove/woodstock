@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 public interface TaskRepository extends GraphRepository<Task> {
 
     @Query("MATCH (category:Category) OPTIONAL " +
-            "MATCH (category)<-[r:HAS_IN]-(task) " +
+            "MATCH (category)<-[r:HAS_IN]-(task:Task) " +
             "WHERE id(category)={categoryId} AND id(task)={taskId} " +
             "RETURN task, r " +
             "LIMIT 150")
