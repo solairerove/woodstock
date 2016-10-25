@@ -2,8 +2,8 @@
 
 woodstock.controller('TaskListController', ['$scope', '$route', 'TaskService',
     function ($scope, $route, TaskService) {
-        TaskService.get(function (data) {
-            $scope.tasks = data._embedded.taskList;
+        TaskService.get({categoryId: $routeParams.categoryId}, function (data) {
+            $scope.tasks = data;
         })
     }
 ]);

@@ -2,7 +2,7 @@
 
 woodstock.controller('CategoryDetailController', ['$scope', '$location', '$routeParams', 'CategoryService',
     function ($scope, $location, $routeParams, CategoryService) {
-        CategoryService.get({id: $routeParams.id}, function (data) {
+        CategoryService.get({categoryId: $routeParams.categoryId}, function (data) {
             $scope.category = data;
         })
     }
