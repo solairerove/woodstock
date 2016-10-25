@@ -30,6 +30,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Iterable<Category> getAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public Iterable<Category> deleteAll() {
         Iterable<Category> categories = repository.findAll();
         repository.deleteAll();

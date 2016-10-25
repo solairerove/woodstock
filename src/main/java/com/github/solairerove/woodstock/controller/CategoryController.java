@@ -32,4 +32,9 @@ public class CategoryController {
     public ResponseEntity get(@PathVariable Long id) {
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
+
+    @RequestMapping
+    public ResponseEntity getAll() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+    }
 }

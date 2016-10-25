@@ -9,5 +9,7 @@ public interface CategoryService {
 
     Category get(Long id);
 
+    Iterable<Category> getAll();
+
     Iterable<Category> deleteAll();
 }
