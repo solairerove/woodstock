@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/categories", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/units/{unitId}/categories", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class CategoryController {
 
     private final CategoryService service;
@@ -24,17 +24,17 @@ public class CategoryController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity create(@RequestBody CategoryDTO categoryDTO) {
-        return new ResponseEntity<>(service.create(categoryDTO), HttpStatus.CREATED);
+    public ResponseEntity create(@PathVariable Long unitId, @RequestBody CategoryDTO categoryDTO) {
+        return new ResponseEntity<>(service.create(unitId, categoryDTO), HttpStatus.CREATED);
     }
 
-    @RequestMapping(path = "/{id}")
-    public ResponseEntity get(@PathVariable Long id) {
-        return new ResponseEntity<>(service.get(id), HttpStatus.OK);
+    @RequestMapping(path = "/{categoryId}")
+    public ResponseEntity get(@PathVariable Long unitId, @PathVariable Long categoryId) {
+        return new ResponseEntity<>(service.get(unitId, categoryId), HttpStatus.OK);
     }
 
     @RequestMapping
-    public ResponseEntity getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+    public ResponseEntity getAll(@PathVariable Long unitId) {
+        return new ResponseEntity<>(service.getAll(unitId), HttpStatus.OK);
     }
 }

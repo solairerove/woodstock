@@ -5,11 +5,11 @@ import com.github.solairerove.woodstock.dto.CategoryDTO;
 
 public interface CategoryService {
 
-    Category create(CategoryDTO categoryDTO);
+    Category create(Long unitId, CategoryDTO categoryDTO);
 
-    Category get(Long id);
+    Category get(Long unitId, Long categoryId);
 
-    Iterable<Category> getAll();
+    Iterable<Category> getAll(Long unitId);
 
     Iterable<Category> deleteAll();
 }
