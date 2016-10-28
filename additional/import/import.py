@@ -7,6 +7,5 @@ user_name = "neo4j"
 password = "woodstock"
 
 graph = Graph("http://" + user_name + ":" + password + "@" + host_port + "/db/data/")
-cypher = graph.cypher
 
-print(cypher.execute("MATCH (n) RETURN n LIMIT 25"))
+print(graph.run("MATCH (n) RETURN n LIMIT 200").dump())
