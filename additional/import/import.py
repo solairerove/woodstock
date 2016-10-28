@@ -1,15 +1,19 @@
 #!/usr/bin/python3.4
 
 import time
+
 from py2neo import Graph
+from py2neo import Path, authenticate
 
 def main():
 
     host_port = "localhost:7474"
     user_name = "neo4j"
-    password = "woodstock"
+    user_password = "woodstock"
 
-    graph = Graph("http://" + user_name + ":" + password + "@" + host_port + "/db/data/")
+    authenticate(host_port, user_name, user_password)
+
+    graph = Graph()
 
     query = '''
         MATCH (n) RETURN n LIMIT 200
