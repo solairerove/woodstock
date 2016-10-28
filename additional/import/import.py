@@ -7,17 +7,16 @@ from py2neo import Path, authenticate
 
 def main():
 
-    host_port = "localhost:7474"
-    user_name = "neo4j"
-    user_password = "woodstock"
+    host_port = 'localhost:7474'
+    user_name = 'neo4j'
+    user_password = 'woodstock'
 
     authenticate(host_port, user_name, user_password)
 
     graph = Graph()
 
-    query = '''
-        MATCH (n) RETURN n LIMIT 200
-    '''
+    with open('./import.cypher') as file:
+        query = file.read()
 
     print(graph.run(query).dump())
 
