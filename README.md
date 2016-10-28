@@ -11,6 +11,13 @@ ___
 
 ___
 
+#### Import to neo4j:
+
+* `pip install py2neo`
+* `python3.4 import.py`
+
+___
+
 #### Jacoco test coverage:
 
 * `mvn clean test jacoco:report -Ptest`
