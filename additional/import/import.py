@@ -29,23 +29,53 @@ def main():
     # categories start
     streams_java = Node("Category", name="Streams in Java")
     primitives_java = Node("Category", name="Primitive types in Java")
+    jsf_java = Node("Category", name="JSF")
+    spring_framework_java = Node("Category", name="Spring Framework")
+    spring_data_jpa_java = Node("Category", name="Spring Data JPA")
+    spring_data_mongo_java = Node("Category", name="Spring Data MongoDB")
+    spring_data_neo_java = Node("Category", name="Spring Data Neo4J")
+    spring_boot_java = Node("Category", name="Spring Boot")
 
     variables_python = Node("Category", name="Variable types in Python")
+    py2neo_python = Node("Category", name="Py2neo Module")
 
     transaction.create(streams_java)
     transaction.create(primitives_java)
+    transaction.create(jsf_java)
+    transaction.create(spring_framework_java)
+    transaction.create(spring_data_jpa_java)
+    transaction.create(spring_data_mongo_java)
+    transaction.create(spring_data_neo_java)
+    transaction.create(spring_boot_java)
+
     transaction.create(variables_python)
+    transaction.create(py2neo_python)
     # categories end
 
     # relationships start
     java_streams_java = Relationship(streams_java, "HAS_IN", java)
     java_primitives_java = Relationship(primitives_java, "HAS_IN", java)
+    java_jsf_java = Relationship(jsf_java, "HAS_IN", java)
+    java_spring_framework_java = Relationship(spring_framework_java, "HAS_IN", java)
+    java_spring_data_jpa_java = Relationship(spring_data_jpa_java, "HAS_IN", java)
+    java_spring_data_mongo_java = Relationship(spring_data_mongo_java, "HAS_IN", java)
+    java_spring_data_neo_java = Relationship(spring_data_neo_java, "HAS_IN", java)
+    java_spring_boot_java = Relationship(spring_boot_java, "HAS_IN", java)
 
     python_variables_python = Relationship(variables_python, "HAS_IN", python)
+    python_py2neo_python = Relationship(py2neo_python, "HAS_IN", python)
 
     transaction.create(java_streams_java)
     transaction.create(java_primitives_java)
+    transaction.create(java_jsf_java)
+    transaction.create(java_spring_framework_java)
+    transaction.create(java_spring_data_jpa_java)
+    transaction.create(java_spring_data_mongo_java)
+    transaction.create(java_spring_data_neo_java)
+    transaction.create(java_spring_boot_java)
+
     transaction.create(python_variables_python)
+    transaction.create(python_py2neo_python)
     # relationships end
 
     transaction.commit()

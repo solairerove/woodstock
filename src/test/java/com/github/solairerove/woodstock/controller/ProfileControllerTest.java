@@ -132,17 +132,4 @@ public class ProfileControllerTest {
                 .andExpect(jsonPath("$", is(id.intValue())))
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8));
     }
-
-    @Test
-    public void deleteAllTest() throws Exception {
-        repository.save(generateProfileCollection());
-
-        mockMvc.perform(delete(API_PATH + "/" + "delete_all")
-                .accept(APPLICATION_JSON_UTF8)
-                .contentType(APPLICATION_JSON_UTF8))
-                .andExpect(status().isAccepted())
-                .andDo(print())
-                .andExpect(jsonPath("$", hasSize(NUMBER_OF_ENTITIES_IN_COLLECTION)))
-                .andExpect(content().contentType(APPLICATION_JSON_UTF8));
-    }
 }
