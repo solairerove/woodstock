@@ -26,7 +26,7 @@ def main():
     transaction.create(python)
     # units end
 
-    categories = [
+    java_categories = [
         'Streams in Java',
         'Primitive types in Java',
         'JSF',
@@ -37,22 +37,52 @@ def main():
         'Spring Boot'
     ]
 
-    # category
-    for category in categories:
-        print(category)
+    python_categories = [
+        "Some python category 1",
+        "Some python category 2"
+    ]
 
-        node = Node("Category", name=category)
-        transaction.create(node)
+    # category java
+    for category in java_categories:
+        category_java = Node("Category", name=category)
+        transaction.create(category_java)
 
-        transaction.create(Relationship(node, "HAS_IN", java))
+        transaction.create(Relationship(category_java, "HAS_IN", java))
 
-        # task
+        # task java
         for x in range(0, 15):
-            task_java = Node("Task", name="Some question " + str(x))
+            task_java = Node("Task", question="Some question " + str(x))
             transaction.create(task_java)
 
-            task_streams_java = Relationship(task_java, "HAS_IN", node)
-            transaction.create(task_streams_java)
+            transaction.create(Relationship(task_java, "HAS_IN", category_java))
+
+            # ticket java
+            for y in range(0, 10):
+                ticket_java = Node("Ticket", value="Some ticket" + str(y))
+                transaction.create(ticket_java)
+
+                transaction.create(Relationship(ticket_java, "HAS_IN", task_java))
+
+    # category python
+    for category in python_categories:
+        category_python = Node("Category", name=category)
+        transaction.create(category_python)
+
+        transaction.create(Relationship(category_python, "HAS_IN", python))
+
+        # task python
+        for x in range(0, 15):
+            task_python = Node("Task", question="Some question " + str(x))
+            transaction.create(task_python)
+
+            transaction.create(Relationship(task_python, "HAS_IN", category_python))
+
+            # ticket python
+            for y in range(0, 10):
+                ticket_python = Node("Ticket", value="Some ticket" + str(y))
+                transaction.create(ticket_python)
+
+                transaction.create(Relationship(ticket_python, "HAS_IN", task_python))
 
     transaction.commit()
 
