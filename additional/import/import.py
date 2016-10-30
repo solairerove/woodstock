@@ -16,10 +16,6 @@ def main():
     graph = Graph()
     transaction = graph.begin()
 
-    string = "Hello World"
-    for x in string:
-        print(x)
-
     graph.delete_all()
 
     # units start
@@ -30,75 +26,45 @@ def main():
     transaction.create(python)
     # units end
 
-    # categories start
-    streams_java = Node("Category", name="Streams in Java")
-    primitives_java = Node("Category", name="Primitive types in Java")
-    jsf_java = Node("Category", name="JSF")
-    spring_framework_java = Node("Category", name="Spring Framework")
-    spring_data_jpa_java = Node("Category", name="Spring Data JPA")
-    spring_data_mongo_java = Node("Category", name="Spring Data MongoDB")
-    spring_data_neo_java = Node("Category", name="Spring Data Neo4J")
-    spring_boot_java = Node("Category", name="Spring Boot")
+    categories = [
+        'Streams in Java',
+        'Primitive types in Java',
+        'JSF',
+        'Spring Framework',
+        'Spring Data JPA',
+        'Spring Data MongoDB',
+        'Spring Data Neo4J',
+        'Spring Boot'
+    ]
 
-    variables_python = Node("Category", name="Variable types in Python")
-    py2neo_python = Node("Category", name="Py2neo Module")
+    # category
+    for category in categories:
+        print(category)
 
-    transaction.create(streams_java)
-    transaction.create(primitives_java)
-    transaction.create(jsf_java)
-    transaction.create(spring_framework_java)
-    transaction.create(spring_data_jpa_java)
-    transaction.create(spring_data_mongo_java)
-    transaction.create(spring_data_neo_java)
-    transaction.create(spring_boot_java)
+        node = Node("Category", name=category)
+        transaction.create(node)
 
-    transaction.create(variables_python)
-    transaction.create(py2neo_python)
-    # categories end
+        transaction.create(Relationship(node, "HAS_IN", java))
 
-    # relationships unit<-category start
-    java_streams_java = Relationship(streams_java, "HAS_IN", java)
-    java_primitives_java = Relationship(primitives_java, "HAS_IN", java)
-    java_jsf_java = Relationship(jsf_java, "HAS_IN", java)
-    java_spring_framework_java = Relationship(spring_framework_java, "HAS_IN", java)
-    java_spring_data_jpa_java = Relationship(spring_data_jpa_java, "HAS_IN", java)
-    java_spring_data_mongo_java = Relationship(spring_data_mongo_java, "HAS_IN", java)
-    java_spring_data_neo_java = Relationship(spring_data_neo_java, "HAS_IN", java)
-    java_spring_boot_java = Relationship(spring_boot_java, "HAS_IN", java)
+        # task
+        for x in range(0, 15):
+            task_java = Node("Task", name="Some question " + str(x))
+            transaction.create(task_java)
 
-    python_variables_python = Relationship(variables_python, "HAS_IN", python)
-    python_py2neo_python = Relationship(py2neo_python, "HAS_IN", python)
-
-    transaction.create(java_streams_java)
-    transaction.create(java_primitives_java)
-    transaction.create(java_jsf_java)
-    transaction.create(java_spring_framework_java)
-    transaction.create(java_spring_data_jpa_java)
-    transaction.create(java_spring_data_mongo_java)
-    transaction.create(java_spring_data_neo_java)
-    transaction.create(java_spring_boot_java)
-
-    transaction.create(python_variables_python)
-    transaction.create(python_py2neo_python)
-    # relationships unit<-category end
-
-    # task start
-    for x in range(0, 15):
-        task_java = Node("Task", name="Stream question " + str(x))
-        transaction.create(task_java)
-
-        task_streams_java = Relationship(task_java, "HAS_IN", streams_java)
-        transaction.create(task_streams_java)
+            task_streams_java = Relationship(task_java, "HAS_IN", node)
+            transaction.create(task_streams_java)
 
     transaction.commit()
 
     with open('./import.cypher') as file:
         query = file.read()
 
+    print("\n")
     print(graph.run(query).dump())
 
 if __name__ == '__main__':
     start = time.time()
     main()
     end = time.time() - start
+    print("\n")
     print("Time to complete:", end)
