@@ -16,6 +16,4 @@ public interface ProfileService {
     Profile update(Long id, ProfileDTO profileDTO);
 
     Long delete(Long id);
-
-    Iterable<Profile> deleteAll();
 }

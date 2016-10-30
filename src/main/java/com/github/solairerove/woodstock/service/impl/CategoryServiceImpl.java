@@ -28,11 +28,9 @@ public class CategoryServiceImpl implements CategoryService {
     public Category create(Long unitId, CategoryDTO categoryDTO) {
         Category category = new Category();
         category.setName(categoryDTO.getName());
-        category.setCreatedDate(LocalDateTime.now().toString());
 
         Unit unit = unitRepository.findOne(unitId);
         unit.getCategories().add(category);
-        unit.setUpdatedDate(LocalDateTime.now().toString());
         unitRepository.save(unit);
 
         return category;
@@ -46,12 +44,5 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Iterable<Category> getAll(Long unitId) {
         return categoryRepository.getCategoriesThatHasInUnitFromId(unitId);
-    }
-
-    @Override
-    public Iterable<Category> deleteAll() {
-        Iterable<Category> categories = categoryRepository.findAll();
-        categoryRepository.deleteAll();
-        return categories;
     }
 }

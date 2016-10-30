@@ -13,10 +13,6 @@ public class Profile implements Serializable {
     @GraphId
     private Long id;
 
-    private String createdDate;
-
-    private String updatedDate;
-
     private String firstName;
 
     private String lastName;

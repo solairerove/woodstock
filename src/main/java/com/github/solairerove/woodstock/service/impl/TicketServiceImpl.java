@@ -28,11 +28,9 @@ public class TicketServiceImpl implements TicketService {
     public Ticket create(Long taskId, TicketDTO ticketDTO) {
         Ticket ticket = new Ticket();
         ticket.setValue(ticketDTO.getValue());
-        ticket.setCreatedDate(LocalDateTime.now().toString());
 
         Task task = taskRepository.findOne(taskId);
         task.getTickets().add(ticket);
-        task.setUpdatedDate(LocalDateTime.now().toString());
         taskRepository.save(task);
 
         return ticket;
@@ -58,12 +56,5 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
         ticketRepository.deleteTicketThatHasInTaskFromId(taskId, ticketId);
         return ticket;
-    }
-
-    @Override
-    public Iterable<Ticket> deleteAll() {
-        Iterable<Ticket> tickets = ticketRepository.findAll();
-        ticketRepository.deleteAll();
-        return tickets;
     }
 }

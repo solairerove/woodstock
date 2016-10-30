@@ -26,7 +26,6 @@ public class ProfileServiceImpl implements ProfileService {
         Profile profile = new Profile();
         profile.setFirstName(profileDTO.getFirstName());
         profile.setLastName(profileDTO.getLastName());
-        profile.setCreatedDate(LocalDateTime.now().toString());
         return repository.save(profile);
     }
 
@@ -45,7 +44,6 @@ public class ProfileServiceImpl implements ProfileService {
         Profile profile = repository.findOne(id);
         profile.setFirstName(profileDTO.getFirstName());
         profile.setLastName(profileDTO.getLastName());
-        profile.setUpdatedDate(LocalDateTime.now().toString());
         return repository.save(profile);
     }
 
@@ -53,12 +51,5 @@ public class ProfileServiceImpl implements ProfileService {
     public Long delete(Long id) {
         repository.delete(id);
         return id;
-    }
-
-    @Override
-    public Iterable<Profile> deleteAll() {
-        Iterable<Profile> profiles = repository.findAll();
-        repository.deleteAll();
-        return profiles;
     }
 }

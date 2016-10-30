@@ -10,6 +10,4 @@ public interface CategoryService {
     Category get(Long unitId, Long categoryId);
 
     Iterable<Category> getAll(Long unitId);
-
-    Iterable<Category> deleteAll();
 }

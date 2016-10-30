@@ -13,10 +13,6 @@ public class Ticket implements Serializable {
     @GraphId
     private Long id;
 
-    private String createdDate;
-
-    private String updatedDate;
-
     private String value;
 
     private Boolean enable;

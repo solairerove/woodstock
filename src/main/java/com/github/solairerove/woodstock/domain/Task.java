@@ -16,10 +16,6 @@ public class Task implements Serializable {
     @GraphId
     private Long id;
 
-    private String createdDate;
-
-    private String updatedDate;
-
     private String question;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)

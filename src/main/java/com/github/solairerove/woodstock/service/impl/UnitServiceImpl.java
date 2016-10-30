@@ -23,7 +23,6 @@ public class UnitServiceImpl implements UnitService {
     public Unit create(UnitDTO unitDTO) {
         Unit unit = new Unit();
         unit.setLabel(unitDTO.getLabel());
-        unit.setCreatedDate(LocalDateTime.now().toString());
         return repository.save(unit);
     }
 
@@ -35,12 +34,5 @@ public class UnitServiceImpl implements UnitService {
     @Override
     public Iterable<Unit> getAll() {
         return repository.findAll();
-    }
-
-    @Override
-    public Iterable<Unit> deleteAll() {
-        Iterable<Unit> units = repository.findAll();
-        repository.deleteAll();
-        return units;
     }
 }

@@ -58,6 +58,14 @@ public class ProfileServiceTest {
     }
 
     @Test
+    public void findAllTest() {
+        repository.save(generateProfileCollection());
+        int count = NUMBER_OF_ENTITIES_IN_COLLECTION;
+
+        assertEquals(count, service.findAll(new PageRequest(0, count)).getNumberOfElements());
+    }
+
+    @Test
     public void updateProfileTest() {
         Profile saved = generateProfile();
         repository.save(saved);
@@ -83,22 +91,5 @@ public class ProfileServiceTest {
         service.delete(saved.getId());
 
         assertEquals(repository.findOne(saved.getId()), null);
-    }
-
-    @Test
-    public void deleteAll() {
-        repository.save(generateProfileCollection());
-
-        service.deleteAll();
-
-        assertEquals(0, repository.count());
-    }
-
-    @Test
-    public void findAllTest() {
-        repository.save(generateProfileCollection());
-        int count = NUMBER_OF_ENTITIES_IN_COLLECTION;
-
-        assertEquals(count, service.findAll(new PageRequest(0, count)).getNumberOfElements());
     }
 }

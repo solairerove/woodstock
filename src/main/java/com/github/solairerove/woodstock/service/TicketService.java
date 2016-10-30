@@ -16,6 +16,4 @@ public interface TicketService {
     Ticket update(Long id, TicketDTO ticketDTO);
 
     Ticket delete(Long taskId, Long ticketId);
-
-    Iterable<Ticket> deleteAll();
 }

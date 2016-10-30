@@ -28,11 +28,9 @@ public class TaskServiceImpl implements TaskService {
     public Task create(Long categoryId, TaskDTO taskDTO) {
         Task task = new Task();
         task.setQuestion(taskDTO.getQuestion());
-        task.setCreatedDate(LocalDateTime.now().toString());
 
         Category category = categoryRepository.findOne(categoryId);
         category.getTasks().add(task);
-        category.setUpdatedDate(LocalDateTime.now().toString());
         categoryRepository.save(category);
 
         return task;
@@ -46,12 +44,5 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Iterable<Task> getAll(Long categoryId) {
         return taskRepository.getTasksThatHasInCategoryFromId(categoryId);
-    }
-
-    @Override
-    public Iterable<Task> deleteAll() {
-        Iterable<Task> tasks = taskRepository.findAll();
-        taskRepository.deleteAll();
-        return tasks;
     }
 }

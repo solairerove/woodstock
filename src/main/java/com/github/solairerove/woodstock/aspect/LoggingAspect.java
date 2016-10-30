@@ -63,17 +63,6 @@ public class LoggingAspect {
     }
 
     /**
-     * Manager controller log.
-     *
-     * @param joinPoint the join point
-     */
-    @Before("execution(* com.github.solairerove.woodstock.controller.ManagerController.*(..)))")
-    public void managerControllerLog(JoinPoint joinPoint) {
-        LOGGER.info("Manager controller: " + joinPoint.getSignature().getName() +
-                Arrays.toString(joinPoint.getArgs()));
-    }
-
-    /**
      * Profile controller log.
      *
      * @param joinPoint the join point

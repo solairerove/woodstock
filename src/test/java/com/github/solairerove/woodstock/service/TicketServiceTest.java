@@ -99,13 +99,4 @@ public class TicketServiceTest {
         assertEquals(ticket, service.delete(task.getId(), ticketId));
         assertEquals(0, ticketRepository.count());
     }
-
-    @Test
-    public void deleteAll() {
-        ticketRepository.save(generateTicketCollection());
-
-        service.deleteAll();
-
-        assertEquals(0, ticketRepository.count());
-    }
 }

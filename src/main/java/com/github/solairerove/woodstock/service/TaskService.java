@@ -10,6 +10,4 @@ public interface TaskService {
     Task get(Long categoryId, Long taskId);
 
     Iterable<Task> getAll(Long categoryId);
-
-    Iterable<Task> deleteAll();
 }

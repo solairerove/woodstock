@@ -16,10 +16,6 @@ public class Category implements Serializable {
     @GraphId
     private Long id;
 
-    private String createdDate;
-
-    private String updatedDate;
-
     private String name;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
