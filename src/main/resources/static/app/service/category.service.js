@@ -1,5 +1,5 @@
 'use strict';
 
 woodstock.factory('CategoryService', ['$resource', function ($resource) {
-    return $resource('/api/categories/:categoryId');
+    return $resource('/api/units/:unitId/categories/:categoryId');
 }]);
