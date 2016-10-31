@@ -2,8 +2,9 @@
     <tr ng-repeat="category in categories">
         <td>{{category.id}}</td>
         <td>{{category.name}}</td>
-        <td><a href="#/categories/{{category.id}}">View</a></td>
+        <td><a href="#/units/{{unitId}}/categories/{{category.id}}">View</a></td>
     </tr>
 </table>
 
+<a href="#/units/{{unitId}}">Back</a>
 <a href="#/">Home</a>
