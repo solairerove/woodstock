@@ -18,6 +18,6 @@ public interface TaskRepository extends GraphRepository<Task> {
             "MATCH (category:Category)<-[:HAS_IN*0..]-(tasks:Task) " +
             "WHERE id(category)={id} " +
             "RETURN tasks " +
-            "LIMIT 5")
+            "LIMIT 600")
     Iterable<Task> getTasksThatHasInCategoryFromId(@Param("id") Long id);
 }
