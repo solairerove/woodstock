@@ -6,12 +6,12 @@ woodstock.controller('TicketListController', ['$scope', '$location', '$routePara
             $scope.tickets = data;
             $scope.taskId = $routeParams.taskId;
         })
-    }]
-).controller('TicketViewController', ['$scope', '$location', '$routeParams', 'TicketService',
+    }
+]).controller('TicketViewController', ['$scope', '$location', '$routeParams', 'TicketService',
     function ($scope, $location, $routeParams, TicketService) {
         TicketService.get({taskId: $routeParams.taskId, ticketId: $routeParams.ticketId}, function (data) {
             $scope.ticket = data;
             $scope.taskId = $routeParams.taskId;
         })
-    }]
-);
+    }
+]);
