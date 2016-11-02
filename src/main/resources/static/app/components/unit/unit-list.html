@@ -1,5 +1,3 @@
-<h1>Unit list</h1>
-
 <table border="1">
     <tr ng-repeat="unit in units">
         <td>{{unit.id}}</td>
@@ -7,5 +5,24 @@
         <td><a href="#/units/{{unit.id}}/view">View</a></td>
     </tr>
 </table>
-
 <a href="#/">Home</a>
+
+<md-toolbar layout="row">
+    <h3>Unit list</h3>
+</md-toolbar>
+
+<div flex layout="row">
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+        <md-list>
+            <md-list-item ng-repeat="unit in units">
+                <md-button ng-click="viewUnit(unit.id)">
+                    {{unit.label}}
+                </md-button>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+
+    <md-content flex id="content">
+        <div ng-include="'/app/components/unit/unit-test.html'"></div>
+    </md-content>
+</div>
