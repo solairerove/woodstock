@@ -14,4 +14,11 @@ woodstock.controller('TicketListController', ['$scope', '$location', '$routePara
             $scope.taskId = $routeParams.taskId;
         })
     }
+]).controller('TicketCreateController', ['$scope', '$location', '$routeParams', 'TicketService',
+    function ($scope, $location, $routeParams, TicketService) {
+        $scope.addTicket = function () {
+            TicketService.save({taskId: $routeParams.taskId}, $scope.ticket);
+            $location.path('/tasks/' + $routeParams.taskId + '/tickets');
+        }
+    }
 ]);
