@@ -13,7 +13,7 @@ public interface TicketService {
 
     Iterable<Ticket> getAll(Long taskId);
 
-    Ticket update(Long id, TicketDTO ticketDTO);
+    Ticket update(Long taskId, Long ticketId, TicketDTO ticketDTO);
 
     Ticket delete(Long taskId, Long ticketId);
 }

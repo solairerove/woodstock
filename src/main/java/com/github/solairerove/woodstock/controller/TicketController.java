@@ -38,6 +38,11 @@ public class TicketController {
         return new ResponseEntity<>(service.getAll(taskId), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/{ticketId}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable Long taskId, @PathVariable Long ticketId, @RequestBody TicketDTO ticketDTO) {
+        return new ResponseEntity<>(service.update(taskId, ticketId, ticketDTO), HttpStatus.ACCEPTED);
+    }
+
     @RequestMapping(path = "/{ticketId}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable Long taskId, @PathVariable Long ticketId) {
         return new ResponseEntity<>(service.delete(taskId, ticketId), HttpStatus.ACCEPTED);

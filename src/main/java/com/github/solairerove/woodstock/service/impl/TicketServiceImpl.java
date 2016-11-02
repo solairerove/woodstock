@@ -47,8 +47,11 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Ticket update(Long id, TicketDTO ticketDTO) {
-        return null;
+    public Ticket update(Long taskId, Long ticketId, TicketDTO ticketDTO) {
+        Ticket ticket = ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
+        ticket.setValue(ticketDTO.getValue());
+
+        return ticketRepository.save(ticket);
     }
 
     @Override
