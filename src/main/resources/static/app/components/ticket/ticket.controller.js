@@ -24,4 +24,14 @@ woodstock.controller('TicketListController', ['$scope', '$location', '$routePara
             });
         }
     }
+]).controller('TicketEditController', ['$scope', '$location', '$routeParams', 'TicketService',
+    function ($scope, $location, $routeParams, TicketService) {
+        $scope.ticket = new TicketService();
+
+        $scope.updateTicket = function () {
+            $scope.ticket.$update({taskId: $routeParams.taskId, ticketId: $routeParams.ticketId}, function () {
+                $location.path('/tasks/' + $routeParams.taskId + '/tickets');
+            });
+        }
+    }
 ]);

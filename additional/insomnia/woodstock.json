@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 2,
-  "__export_date": "2016-10-28T07:10:36.322Z",
+  "__export_date": "2016-11-02T12:28:05.913Z",
   "__export_source": "insomnia.desktop.app:v3.6.2",
   "resources": [
     {
@@ -30,7 +30,7 @@
       "_type": "environment"
     },
     {
-      "modified": 1477638609047,
+      "modified": 1478089566858,
       "created": 1474050373101,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "Default Jar",
@@ -42,7 +42,7 @@
           "domain": "localhost",
           "path": "/",
           "hostOnly": true,
-          "lastAccessed": "2016-10-28T07:10:08.610Z"
+          "lastAccessed": "2016-11-02T12:26:06.778Z"
         }
       ],
       "_id": "jar_it63j759rKweSPBEctfn7EUM",
@@ -76,7 +76,7 @@
       "_type": "request_group"
     },
     {
-      "modified": 1477376470724,
+      "modified": 1478089507752,
       "created": 1476306071529,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "ticket",
@@ -235,10 +235,10 @@
       "_type": "request"
     },
     {
-      "modified": 1477638607525,
+      "modified": 1478013198159,
       "created": 1475609428546,
       "parentId": "fld_itvvqwlzWsSCFjJ74YYYbFpA",
-      "url": "http://localhost:9090/api/categories/18/tasks",
+      "url": "http://localhost:9090/api/categories/1207/tasks",
       "name": "create task",
       "method": "POST",
       "body": "{\n\t\"question\": \"New fucking task\"\n}",
@@ -268,10 +268,10 @@
       "_type": "request"
     },
     {
-      "modified": 1477376592058,
+      "modified": 1478013223758,
       "created": 1477338588141,
       "parentId": "fld_itvvqwlzWsSCFjJ74YYYbFpA",
-      "url": "http://localhost:9090/api/categories/5/tasks",
+      "url": "http://localhost:9090/api/categories/1207/tasks",
       "name": "get tasks",
       "method": "GET",
       "body": "",
@@ -282,7 +282,26 @@
       "_type": "request"
     },
     {
-      "modified": 1477376470752,
+      "modified": 1478089565381,
+      "created": 1478089514346,
+      "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
+      "url": "http://localhost:9090/api/tasks/1329/tickets/3",
+      "name": "update ticket",
+      "method": "PUT",
+      "body": "{\n\t\"value\": \"fuck this ticket\"\n}",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "_id": "req_40f591cf7f1a4b95839bb3c8fc53a920",
+      "_type": "request"
+    },
+    {
+      "modified": 1478089525107,
       "created": 1477322881524,
       "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
       "url": "http://localhost:9090/api/tasks/211/tickets/342",
@@ -296,10 +315,10 @@
       "_type": "request"
     },
     {
-      "modified": 1477376470753,
+      "modified": 1478089522614,
       "created": 1476304979706,
       "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
-      "url": "http://localhost:9090/api/tasks/211/tickets",
+      "url": "http://localhost:9090/api/tasks/1329/tickets",
       "name": "create ticket in task",
       "method": "POST",
       "body": "{\n\t\"value\": \"ticket in task\"\n}",
@@ -315,7 +334,7 @@
       "_type": "request"
     },
     {
-      "modified": 1477376623225,
+      "modified": 1478089526690,
       "created": 1476305956626,
       "parentId": "fld_iu7ein6xY5zZyswAkjbSZuhv",
       "url": "http://localhost:9090/api/tasks/24/tickets",
