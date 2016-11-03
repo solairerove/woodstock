@@ -14,13 +14,15 @@
 </head>
 
 <body layout="column" ng-cloak>
+
     <md-toolbar layout="row">
         <div ng-include="'/app/components/layout/menu/menu.html'"></div>
-        <h1>Woodstock</h1>
+        <h3>Woodstock</h3>
     </md-toolbar>
 
     <div class="container" layout="row" flex>
-        <md-sidenav md-component-id="left" class="md-sidenav-left" flex>
+        <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" flex>
+
             <md-list>
                 <md-list-item>
                     <a href="#/">Home</a>
