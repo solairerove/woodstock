@@ -1,23 +1,7 @@
-<!--<table border="1">-->
-    <!--<tr ng-repeat="unit in units">-->
-        <!--<td>{{unit.id}}</td>-->
-        <!--<td>{{unit.label}}</td>-->
-        <!--<td><a href="#/units/{{unit.id}}/view">View</a></td>-->
-    <!--</tr>-->
-<!--</table>-->
-<!--<a href="#/">Home</a>-->
-
 <div flex layout="row">
-        <md-list>
-            <md-list-item ng-repeat="unit in units">
-                <md-button ng-click="viewUnit(unit.id)">
-                    {{unit.label}}
-                </md-button>
-            </md-list-item>
-        </md-list>
-
-    <md-content flex id="content">
-        {{unit.label}}
-        <div ng-include="'/app/components/unit/unit-view.html'"></div>
-    </md-content>
+    <md-list>
+        <md-list-item ng-repeat="unit in units">
+            <a href="#/units/{{unit.id}}/view">{{unit.label}}</a>
+        </md-list-item>
+    </md-list>
 </div>
