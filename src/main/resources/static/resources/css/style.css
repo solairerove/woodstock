@@ -1,13 +1,23 @@
-.md-toolbar-tools h1 {
-    font-size: inherit;
-    font-weight: inherit;
-    margin: inherit;
+html, body {
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    height:100%;
+    margin: 0;
+    padding: 0;
 }
 
-.lightblue {
-    background-color: lightblue;
+md-toolbar h3 {
+    margin: auto;
+    font-weight: 500;
 }
 
-.lightgreen{
-    background-color: lightgreen;
+md-list-item > a {
+    width:100%;
+    text-align:left !important;
+}
+
+#content  {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
 }
