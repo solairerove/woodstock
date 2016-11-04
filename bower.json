@@ -6,7 +6,6 @@
     "angular": "1.5.8",
     "angular-resource": "1.5.8",
     "angular-route": "1.5.8",
-    "material-design-lite": "1.2.1",
-    "material-design-icons": "3.0.1"
+    "material-design-lite": "1.2.1"
   }
 }
