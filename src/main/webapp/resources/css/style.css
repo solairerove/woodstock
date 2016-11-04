@@ -2,6 +2,11 @@ html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
+.mdl-card {
+    width: 320px;
+    height: 400px;
+}
+
 .mdl-card__media > img {
     max-width: 100%;
 }
