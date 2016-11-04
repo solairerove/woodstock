@@ -1,11 +1,11 @@
-<div class="mdl-grid mdl-cell mdl-cell--12-col">
-    <div ng-repeat="unit in units" class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
+<div class="mdl-grid mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+    <div ng-repeat="unit in units" class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-card mdl-shadow--2dp">
-            <figure class="mdl-card__media">
+            <div class="mdl-card__media">
                 <img src="http://tfirdaus.github.io/mdl/images/laptop.jpg" alt=""/>
-            </figure>
-            <div class="mdl-card__title">
-                <h1 class="mdl-card__title-text">{{unit.label}}</h1>
+            </div>
+            <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">{{unit.label}}</h2>
             </div>
             <div class="mdl-card__supporting-text">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>

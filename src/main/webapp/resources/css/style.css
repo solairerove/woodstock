@@ -2,18 +2,13 @@ html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
-.mdl-card {
-    width: 320px;
-    height: 400px;
-}
-
 .mdl-card__media > img {
     max-width: 100%;
 }
 
 .mdl-card__actions {
     display: flex;
-    box-sizing:border-box;
+    box-sizing: border-box;
     align-items: center;
 }
 
