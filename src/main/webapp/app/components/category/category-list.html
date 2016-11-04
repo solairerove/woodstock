@@ -1,9 +1,19 @@
-<table border="1">
-    <tr ng-repeat="category in categories">
-        <td>{{category.id}}</td>
-        <td>{{category.name}}</td>
-        <td><a href="#/units/{{unitId}}/categories/{{category.id}}/view">View</a></td>
-    </tr>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="category in categories">
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>
+            <td><a href="#/units/{{unitId}}/categories/{{category.id}}/view">View</a></td>
+        </tr>
+    </tbody>
 </table>
 
 <a href="#/units/{{unitId}}/view">Back</a>
