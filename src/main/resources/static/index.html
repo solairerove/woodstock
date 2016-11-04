@@ -7,41 +7,12 @@
 
     <title>Woodstock</title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- inject:css -->
-    <link rel="stylesheet" href="resources/vendor/css/angular-material/angular-material.css">
     <link rel="stylesheet" href="resources/vendor/css/material-design-lite/material.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="resources/css/style.css">
     <!-- endinject -->
 </head>
-
-<!--<body layout="column" ng-cloak>-->
-    <!--<md-toolbar layout="row">-->
-        <!--<div ng-include="'/app/components/layout/menu/menu.html'"></div>-->
-        <!--<h3>Woodstock</h3>-->
-    <!--</md-toolbar>-->
-
-    <!--<div class="container" layout="row" flex>-->
-        <!--<md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" flex>-->
-
-            <!--<md-list>-->
-                <!--<md-list-item>-->
-                    <!--<a href="#/">Home</a>-->
-                <!--</md-list-item>-->
-                <!--<md-list-item>-->
-                    <!--<a href="#/profiles">Profiles</a>-->
-                <!--</md-list-item>-->
-                <!--<md-list-item>-->
-                    <!--<a href="#/units">Units</a>-->
-                <!--</md-list-item>-->
-            <!--</md-list>-->
-        <!--</md-sidenav>-->
-
-        <!--<md-content id="content" flex>-->
-            <!--<ng-view></ng-view>-->
-        <!--</md-content>-->
-    <!--</div>-->
-<!--</body>-->
 
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -58,9 +29,11 @@
                     <label class="mdl-textfield__label" for="search">Enter your query...</label>
                 </div>
             </div>
+
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="headerButton">
                 <i class="material-icons">more_vert</i>
             </button>
+
             <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="headerButton">
                 <li class="mdl-menu__item">About</li>
                 <li class="mdl-menu__item">Contact</li>
@@ -68,22 +41,32 @@
             </ul>
         </div>
     </header>
+
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-            <img src="images/user.jpg" class="demo-avatar">
+            <img src="resources/img/user.png" class="demo-avatar">
             <div class="demo-avatar-dropdown">
                 <span>hello@example.com</span>
                 <div class="mdl-layout-spacer"></div>
             </div>
         </header>
+
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+            <a class="mdl-navigation__link" href="#/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+            <a class="mdl-navigation__link" href="#/units"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">school</i>Units</a>
             <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
             <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
+            <div class="mdl-layout-spacer"></div>
+            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
     </div>
-    <main>
-        <ng-view></ng-view>
+
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid demo-content">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <ng-view></ng-view>
+            </div>
+        </div>
     </main>
 </div>
 </body>
@@ -92,12 +75,8 @@
 <script src="resources/vendor/js/angular/angular.js"></script>
 <script src="resources/vendor/js/angular-resource/angular-resource.js"></script>
 <script src="resources/vendor/js/angular-route/angular-route.js"></script>
-<script src="resources/vendor/js/angular-sanitize/angular-sanitize.js"></script>
-<script src="resources/vendor/js/angular-messages/angular-messages.js"></script>
-<script src="resources/vendor/js/angular-animate/angular-animate.js"></script>
-<script src="resources/vendor/js/angular-aria/angular-aria.js"></script>
-<script src="resources/vendor/js/angular-material/angular-material.js"></script>
 <script src="resources/vendor/js/material-design-lite/material.min.js"></script>
+<script src="resources/vendor/js/material-design-icons/index.js"></script>
 <script src="app/app.module.js"></script>
 <script src="app/route.js"></script>
 <script src="app/service/category.service.js"></script>
@@ -111,10 +90,10 @@
 <script src="app/components/profile-detail/route.js"></script>
 <script src="app/components/profile-list/profile-list.controller.js"></script>
 <script src="app/components/profile-list/route.js"></script>
-<script src="app/components/task/route.js"></script>
-<script src="app/components/task/task.controller.js"></script>
 <script src="app/components/ticket/route.js"></script>
 <script src="app/components/ticket/ticket.controller.js"></script>
+<script src="app/components/task/route.js"></script>
+<script src="app/components/task/task.controller.js"></script>
 <script src="app/components/unit/route.js"></script>
 <script src="app/components/unit/unit.controller.js"></script>
 <script src="app/components/layout/menu/menu.controller.js"></script>
