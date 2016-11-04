@@ -1,7 +1,40 @@
-<div flex layout="row">
-    <md-list>
-        <md-list-item ng-repeat="unit in units">
-            <a href="#/units/{{unit.id}}/view">{{unit.label}}</a>
-        </md-list-item>
-    </md-list>
+<div class="mdl-grid">
+    <div class="mdl-grid">
+        <div ng-repeat="unit in units">
+            <div class="card-square mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+                <figure class="mdl-card__media">
+                    <img src="http://tfirdaus.github.io/mdl/images/laptop.jpg" alt=""/>
+                </figure>
+                <div class="mdl-card__title">
+                    <h1 class="mdl-card__title-text">{{unit.label}}</h1>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                       href="#/units/{{unit.id}}/view">
+                        Read More
+                    </a>
+
+                    <div class="mdl-layout-spacer"></div>
+
+                    <button class="mdl-button mdl-button--icon mdl-button--colored">
+                        <i class="material-icons">favorite</i>
+                    </button>
+
+                    <button class="mdl-button mdl-button--icon mdl-button--colored">
+                        <i class="material-icons">share</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mdl-grid">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">6 on desktop, 8 on tablet</div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">4 on desktop, 6 on tablet</div>
+    </div>
 </div>
