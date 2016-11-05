@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer is-upgraded">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
@@ -37,11 +37,22 @@
             <a class="mdl-navigation__link" href="#/units">Units</a>
         </nav>
     </div>
-    <!-- Main -->
+     <!-- Main -->
     <main class="mdl-layout__content">
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer is-upgraded">
+        <div class="mdl-grid max-width">
             <ng-view></ng-view>
         </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Woodstock</div>
+            </div>
+            <div class="mdl-mini-footer__right-section">
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#/">Help</a></li>
+                    <li><a href="#/">Privacy &amp; Terms</a></li>
+                </ul>
+            </div>
+        </footer>
     </main>
 </div>
 </body>

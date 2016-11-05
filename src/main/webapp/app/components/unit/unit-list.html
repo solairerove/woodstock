@@ -1,33 +1,21 @@
-<div class="unit-section">
-    <div class="unit-section-title mdl-typography--display-1-color-contrast">More from Woodstock</div>
-    <div class="mdl-grid">
-        <div ng-repeat="unit in units"
-             class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-            <div class="mdl-card__media">
-                <img src="http://tfirdaus.github.io/mdl/images/laptop.jpg" alt=""/>
-            </div>
-            <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">{{unit.label}}</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>
-            </div>
-            <div class="mdl-card__actions mdl-card--border mdl-color--grey-50">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                   href="#/units/{{unit.id}}/view">
-                    Read More
-                </a>
-
-                <div class="mdl-layout-spacer"></div>
-
-                <button class="mdl-button mdl-button--icon mdl-button--colored">
-                    <i class="material-icons">favorite</i>
-                </button>
-
-                <button class="mdl-button mdl-button--icon mdl-button--colored">
-                    <i class="material-icons">share</i>
-                </button>
-            </div>
+<div class="unit-section-title mdl-typography--display-1-color-contrast">More from Woodstock</div>
+<div class="mdl-grid">
+    <div ng-repeat="unit in units"
+         class="mdl-card mdl-cell mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+        <div class="mdl-card__media">
+            <img src="http://tfirdaus.github.io/mdl/images/laptop.jpg" alt=""/>
+        </div>
+        <div class="mdl-card__title mdl-card--expand">
+            <h2 class="mdl-card__title-text">{{unit.label}}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent"
+               href="#/units/{{unit.id}}/view">
+                Read More
+            </a>
         </div>
     </div>
 </div>
