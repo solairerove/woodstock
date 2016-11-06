@@ -13,6 +13,8 @@ public class UnitDTO implements Serializable {
 
     private String label;
 
+    private String avatar;
+
     private String description;
 
     private String reference;

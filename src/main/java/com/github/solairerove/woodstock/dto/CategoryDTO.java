@@ -12,4 +12,10 @@ import java.io.Serializable;
 public class CategoryDTO implements Serializable {
 
     private String name;
+
+    private String avatar;
+
+    private String description;
+
+    private String reference;
 }

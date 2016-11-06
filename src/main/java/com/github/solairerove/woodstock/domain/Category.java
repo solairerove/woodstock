@@ -18,6 +18,12 @@ public class Category implements Serializable {
 
     private String name;
 
+    private String avatar;
+
+    private String description;
+
+    private String reference;
+
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Task> tasks;
 
