@@ -9,10 +9,10 @@ import com.github.solairerove.woodstock.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 public class CategoryServiceImpl implements CategoryService {
+
+    private static final Integer CATEGORIES_LIMIT_COUNT = 25;
 
     private final UnitRepository unitRepository;
 
@@ -42,7 +42,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Iterable<Category> getAll(Long unitId) {
-        return categoryRepository.getCategoriesThatHasInUnitFromId(unitId);
+    public Iterable<Category> getAll(Long unitId, Integer limit) {
+        if(limit == null) {
+            limit = CATEGORIES_LIMIT_COUNT;
+        }
+        return categoryRepository.getCategoriesThatHasInUnitFromId(unitId, limit);
     }
 }

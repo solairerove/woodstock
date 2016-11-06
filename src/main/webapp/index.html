@@ -16,6 +16,7 @@
 
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer is-upgraded">
+    <!-- Header -->
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
@@ -29,6 +30,7 @@
             </nav>
         </div>
     </header>
+
     <!-- Menu -->
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Woodstock</span>
@@ -37,23 +39,26 @@
             <a class="mdl-navigation__link" href="#/units">Units</a>
         </nav>
     </div>
-     <!-- Main -->
-    <main class="mdl-layout__content">
+
+    <!-- Main -->
+    <main class="mdl-layout__content" style="flex: 1 0 auto;">
         <div class="mdl-grid max-width">
             <ng-view></ng-view>
         </div>
-
-        <!-- Footer -->
-        <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Woodstock</div>
-                <ul class="mdl-mini-footer__link-list">
-                    <li><a href="#/">Help</a></li>
-                    <li><a href="#/">Privacy & Terms</a></li>
-                </ul>
-            </div>
-        </footer>
     </main>
+
+    <div class="mdl-layout-spacer"></div>
+
+    <!-- Footer -->
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">Woodstock</div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="#/">Help</a></li>
+                <li><a href="#/">Privacy & Terms</a></li>
+            </ul>
+        </div>
+    </footer>
 </div>
 </body>
 
@@ -75,10 +80,10 @@
 <script src="app/components/profile-detail/route.js"></script>
 <script src="app/components/profile-list/profile-list.controller.js"></script>
 <script src="app/components/profile-list/route.js"></script>
-<script src="app/components/task/route.js"></script>
-<script src="app/components/task/task.controller.js"></script>
 <script src="app/components/ticket/route.js"></script>
 <script src="app/components/ticket/ticket.controller.js"></script>
+<script src="app/components/task/route.js"></script>
+<script src="app/components/task/task.controller.js"></script>
 <script src="app/components/unit/route.js"></script>
 <script src="app/components/unit/unit.controller.js"></script>
 <!-- endinject -->

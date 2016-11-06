@@ -12,4 +12,8 @@ import java.io.Serializable;
 public class UnitDTO implements Serializable {
 
     private String label;
+
+    private String description;
+
+    private String reference;
 }

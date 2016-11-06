@@ -18,6 +18,6 @@ public interface CategoryRepository extends GraphRepository<Category> {
             "MATCH (unit:Unit)<-[:HAS_IN*0..]-(categories:Category) " +
             "WHERE id(unit)={unitId} " +
             "RETURN categories " +
-            "LIMIT 20")
-    Iterable<Category> getCategoriesThatHasInUnitFromId(@Param("unitId") Long unitId);
+            "LIMIT {limit}")
+    Iterable<Category> getCategoriesThatHasInUnitFromId(@Param("unitId") Long unitId, @Param("limit") Integer limit);
 }

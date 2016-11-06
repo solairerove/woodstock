@@ -10,4 +10,8 @@ public interface UnitService {
     Unit get(Long id);
 
     Iterable<Unit> getAll();
+
+    Unit update(Long id, UnitDTO unitDTO);
+
+    Unit delete(Long id);
 }

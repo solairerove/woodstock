@@ -7,8 +7,6 @@ import com.github.solairerove.woodstock.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 public class UnitServiceImpl implements UnitService {
 
@@ -23,6 +21,8 @@ public class UnitServiceImpl implements UnitService {
     public Unit create(UnitDTO unitDTO) {
         Unit unit = new Unit();
         unit.setLabel(unitDTO.getLabel());
+        unit.setDescription(unitDTO.getDescription());
+        unit.setReference(unitDTO.getReference());
         return repository.save(unit);
     }
 
@@ -34,5 +34,23 @@ public class UnitServiceImpl implements UnitService {
     @Override
     public Iterable<Unit> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Unit update(Long id, UnitDTO unitDTO) {
+        Unit unit = repository.findOne(id);
+        unit.setLabel(unitDTO.getLabel());
+        unit.setDescription(unitDTO.getDescription());
+        unit.setReference(unitDTO.getReference());
+
+        return repository.save(unit);
+    }
+
+    @Override
+    public Unit delete(Long id) {
+        Unit unit = repository.findOne(id);
+        repository.delete(id);
+
+        return unit;
     }
 }

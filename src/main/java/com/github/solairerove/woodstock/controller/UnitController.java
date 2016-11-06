@@ -37,4 +37,14 @@ public class UnitController {
     public ResponseEntity getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable Long id, @RequestBody UnitDTO unitDTO) {
+        return new ResponseEntity<>(service.update(id, unitDTO), HttpStatus.ACCEPTED);
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable Long id) {
+        return new ResponseEntity<>(service.delete(id), HttpStatus.ACCEPTED);
+    }
 }

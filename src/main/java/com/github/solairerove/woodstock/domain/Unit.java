@@ -19,6 +19,10 @@ public class Unit implements Serializable {
 
     private String label;
 
+    private String description;
+
+    private String reference;
+
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Category> categories;
 
