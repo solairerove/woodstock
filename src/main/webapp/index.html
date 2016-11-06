@@ -17,23 +17,31 @@
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer is-upgraded">
     <!-- Header -->
-    <header class="mdl-layout__header">
+    <div class="woodstock-header mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Woodstock</span>
+            <span class="woodstock-title mdl-layout-title">
+                <img class="woodstock-logo-image" src="">
+            </span>
             <!-- Spacer -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="#/">Home</a>
-                <a class="mdl-navigation__link" href="#/units">Units</a>
-            </nav>
+            <div class="woodstock-navigation-container">
+                <nav class="woodstock-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="#/">Home</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="#/units">Units</a>
+                </nav>
+            </div>
         </div>
-    </header>
+    </div>
 
     <!-- Menu -->
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Woodstock</span>
+    <div class="woodstock-drawer mdl-layout__drawer">
+        <!-- Logo -->
+        <span class="mdl-layout-title">
+            <img src="" class="woodstock-logo-image">
+        </span>
+        <!-- Navigation -->
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="#/">Home</a>
             <a class="mdl-navigation__link" href="#/units">Units</a>
@@ -41,11 +49,11 @@
     </div>
 
     <!-- Main -->
-    <main class="mdl-layout__content" style="flex: 1 0 auto;">
+    <div class="mdl-layout__content" style="flex: 1 0 auto;">
         <div class="mdl-grid max-width">
             <ng-view></ng-view>
         </div>
-    </main>
+    </div>
 
     <div class="mdl-layout-spacer"></div>
 

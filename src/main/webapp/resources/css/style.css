@@ -2,6 +2,74 @@ html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
+/* Header */
+
+.woodstock-logo-image {
+    height: 28px;
+    width: 140px;
+}
+
+/*.woodstock-header {*/
+    /*overflow: visible;*/
+    /*!*background-color: white;*!*/
+/*}*/
+
+/* Navigation */
+
+.woodstock-navigation-container {
+    direction: rtl;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.woodstock-navigation {
+    direction: ltr;
+    justify-content: flex-end;
+    width: 800px;
+}
+
+.woodstock-navigation .mdl-navigation__link {
+    display: inline-block;
+    height: 60px;
+    line-height: 68px;
+    background-color: transparent !important;
+    border-bottom: 4px solid transparent;
+}
+
+.woodstock-navigation .mdl-navigation__link:hover {
+    border-bottom: 4px solid #8bc34a;
+}
+
+/* Drawer */
+
+.woodstock-drawer {
+    border-right: none;
+}
+
+.woodstock-drawer .mdl-navigation__link.mdl-navigation__link {
+    font-size: 14px;
+    color: #757575;
+}
+
+.woodstock-drawer span.mdl-navigation__link.mdl-navigation__link {
+    color: #8bc34a;
+}
+
+.woodstock-drawer .mdl-layout-title {
+    position: relative;
+    background: #6ab344;
+    height: 160px;
+}
+
+.woodstock-drawer .woodstock-logo-image {
+    position: absolute;
+    bottom: 16px;
+}
+
+/* Content */
+
 .max-width {
     max-width: 900px;
     margin: auto;
@@ -26,4 +94,14 @@ html, body {
 .mdl-card__actions > .mdl-button--icon {
     margin-right: 3px;
     margin-left: 3px;
+}
+
+@media (max-width: 900px) {
+    .woodstock-navigation-container {
+        display: none;
+    }
+
+    .woodstock-title {
+        display: none !important;
+    }
 }
