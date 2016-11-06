@@ -9,10 +9,20 @@ html, body {
     width: 140px;
 }
 
-/*.woodstock-header {*/
-    /*overflow: visible;*/
-    /*!*background-color: white;*!*/
-/*}*/
+.woodstock-header {
+    overflow: visible;
+    background-color: white;
+}
+
+.woodstock-header .material-icons {
+    color: #767777 !important;
+}
+
+.woodstock-header .mdl-navigation__link {
+    color: #757575;
+    font-weight: 700;
+    font-size: 14px;
+}
 
 /* Navigation */
 
@@ -40,6 +50,16 @@ html, body {
 
 .woodstock-navigation .mdl-navigation__link:hover {
     border-bottom: 4px solid #8bc34a;
+}
+
+@media (max-width: 900px) {
+    .woodstock-navigation-container {
+        display: none;
+    }
+
+    .woodstock-title {
+        display: none !important;
+    }
 }
 
 /* Drawer */
@@ -75,33 +95,67 @@ html, body {
     margin: auto;
 }
 
-.unit-section-title {
-    margin-left: 16px;
+/* Unit section */
+
+.unit-section {
+    padding: 80px 0;
+    max-width: 1044px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.unit-section .unit-section-title {
+    margin-left: 12px;
     padding-bottom: 24px;
 }
 
-.mdl-card__media > img {
-    max-width: 100%;
+.unit-card-container {
+}
+
+.unit-card-container .mdl-card__media {
+    overflow: hidden;
+    background: transparent;
+}
+
+.unit-card-container .mdl-card__media img {
+    width: 100%;
+}
+
+.unit-card-container .mdl-card__title {
+    background: transparent;
     height: auto;
 }
 
-.mdl-card__actions {
-    display: flex;
-    box-sizing: border-box;
-    align-items: center;
+.unit-card-container .mdl-card__title-text {
+    color: black;
+    height: auto;
 }
 
-.mdl-card__actions > .mdl-button--icon {
-    margin-right: 3px;
-    margin-left: 3px;
+.unit-card-container .mdl-card__supporting-text {
+    height: auto;
+    color: black;
+    padding-bottom: 56px;
 }
 
-@media (max-width: 900px) {
-    .woodstock-navigation-container {
-        display: none;
-    }
+.unit-card-container .mdl-card__actions {
+    position: absolute;
+    bottom: 0;
+}
 
-    .woodstock-title {
-        display: none !important;
-    }
+.unit-card-container .mdl-card__actions a {
+    border-top: none;
+    font-size: 16px;
+    color: #8bc34a !important;
+}
+
+/* Footer */
+
+.woodstock-footer {
+    background-color: #f7f7f7;
+    position: relative;
+}
+
+.woodstock-link {
+    text-decoration: none;
+    color: #8bc34a !important;
 }
