@@ -90,21 +90,22 @@ html, body {
 
 /* Content */
 
-.max-width {
-    max-width: 900px;
-    margin: auto;
-}
-
-/* Unit section */
-
-.unit-section {
+.woodstock-content {
     padding: 80px 0;
     max-width: 1044px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.unit-section .unit-section-title {
+.mdl-card__actions a {
+    border-top: none;
+    font-size: 16px;
+    color: #8bc34a !important;
+}
+
+/* Unit list */
+
+.woodstock-content .unit-section-title {
     margin-left: 12px;
     padding-bottom: 24px;
 }
@@ -142,10 +143,26 @@ html, body {
     bottom: 0;
 }
 
-.unit-card-container .mdl-card__actions a {
-    border-top: none;
-    font-size: 16px;
-    color: #8bc34a !important;
+/* Unit view */
+
+.section--center {
+    max-width: 860px;
+    margin-bottom: 48px;
+}
+
+.unit-view-card-actions {
+    margin: 0;
+    padding: 4px 40px;
+    color: inherit;
+}
+
+.unit-view-wide.mdl-card {
+    width: 512px;
+}
+
+.unit-view-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
 }
 
 /* Footer */
