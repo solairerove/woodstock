@@ -172,6 +172,22 @@ html, body {
     width: calc(100% - 80px);
 }
 
+section .section__text {
+    flex-shrink: 0;
+    padding-top: 8px;
+}
+
+section .section__text:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,.13);
+}
+
+section .section__circle-container > .section__circle-container__circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    margin: 8px 0;
+}
+
 /* Footer */
 
 .woodstock-footer {
