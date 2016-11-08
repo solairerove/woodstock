@@ -146,7 +146,7 @@ html, body {
 /* Unit view */
 
 .section--center {
-    max-width: 860px;
+    /*max-width: 860px;*/
     margin-bottom: 48px;
 }
 
@@ -163,6 +163,13 @@ html, body {
 .unit-view-wide > .mdl-card__title {
     color: #fff;
     height: 176px;
+}
+
+/* Unit view details section */
+
+.unit-details__supporting-text {
+    margin: 40px;
+    width: calc(100% - 80px);
 }
 
 /* Footer */
