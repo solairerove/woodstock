@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NodeEntity(label = "Reference")
-public class Reference extends BaseEntity {
+public class Reference<T extends Chapter> extends BaseEntity {
 
     private String title;
 
     @Relationship(type = "HAS_CHAPTER", direction = Relationship.OUTGOING)
-    private List<Chapter> chapters;
+    private List<T> chapters;
 
     public Reference() {
 
@@ -26,7 +26,7 @@ public class Reference extends BaseEntity {
         this.title = title;
     }
 
-    public List<Chapter> getChapters() {
+    public List<T> getChapters() {
         if (chapters == null) {
             chapters = new ArrayList<>();
         }
@@ -34,7 +34,7 @@ public class Reference extends BaseEntity {
         return chapters;
     }
 
-    public void setChapters(List<Chapter> chapters) {
+    public void setChapters(List<T> chapters) {
         this.chapters = chapters;
     }
 }
