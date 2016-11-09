@@ -118,6 +118,28 @@ public class LoggingAspect {
     }
 
     /**
+     * Reference service log.
+     *
+     * @param joinPoint the join point
+     */
+    @Before("execution(* com.github.solairerove.woodstock.service.ReferenceService.*(..)))")
+    public void referenceServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Reference service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    /**
+     * Chapter service log.
+     *
+     * @param joinPoint the join point
+     */
+    @Before("execution(* com.github.solairerove.woodstock.service.ChapterService.*(..)))")
+    public void chapterServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Chapter service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    /**
      * Profile service log.
      *
      * @param joinPoint the join point

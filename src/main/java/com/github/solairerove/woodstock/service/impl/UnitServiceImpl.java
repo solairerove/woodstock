@@ -22,7 +22,6 @@ public class UnitServiceImpl implements UnitService {
         Unit unit = new Unit();
         unit.setLabel(unitDTO.getLabel());
         unit.setDescription(unitDTO.getDescription());
-        unit.setReference(unitDTO.getReference());
         return repository.save(unit);
     }
 
@@ -41,7 +40,6 @@ public class UnitServiceImpl implements UnitService {
         Unit unit = repository.findOne(id);
         unit.setLabel(unitDTO.getLabel());
         unit.setDescription(unitDTO.getDescription());
-        unit.setReference(unitDTO.getReference());
 
         return repository.save(unit);
     }

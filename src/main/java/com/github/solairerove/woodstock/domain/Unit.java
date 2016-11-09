@@ -23,7 +23,8 @@ public class Unit implements Serializable {
 
     private String description;
 
-    private String reference;
+    @Relationship(type = "HAS_REFERENCE")
+    private Reference reference;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Category> categories;
