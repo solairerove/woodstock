@@ -1,25 +1,30 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @NodeEntity(label = "Task")
-public class Task implements Serializable {
-
-    @GraphId
-    private Long id;
+public class Task extends BaseEntity {
 
     private String question;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Ticket> tickets;
+
+    public Task() {
+
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
     public List<Ticket> getTickets() {
         if (tickets == null) {
@@ -27,5 +32,9 @@ public class Task implements Serializable {
         }
 
         return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

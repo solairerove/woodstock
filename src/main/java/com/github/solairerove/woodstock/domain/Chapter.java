@@ -1,17 +1,31 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
-import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 
-@Data
 @NodeEntity(label = "Chapter")
-public class Chapter {
-
-    @GraphId
-    private Long id;
+public class Chapter extends BaseEntity {
 
     private String title;
 
     private String content;
+
+    public Chapter() {
+
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }
