@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.service.impl;
+package com.github.solairerove.woodstock.service.impl.chapter;
 
 import com.github.solairerove.woodstock.repository.chapter.UnitChapterRepository;
 import com.github.solairerove.woodstock.service.chapter.UnitChapterService;

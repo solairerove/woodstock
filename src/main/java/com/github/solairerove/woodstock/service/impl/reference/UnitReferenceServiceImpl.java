@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.service.impl;
+package com.github.solairerove.woodstock.service.impl.reference;
 
 import com.github.solairerove.woodstock.repository.reference.UnitReferenceRepository;
 import com.github.solairerove.woodstock.service.reference.UnitReferenceService;

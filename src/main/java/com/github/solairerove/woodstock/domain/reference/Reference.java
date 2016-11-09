@@ -13,6 +13,8 @@ public class Reference<T extends Chapter> extends BaseEntity {
 
     private String title;
 
+    private String version;
+
     @Relationship(type = "HAS_CHAPTER", direction = Relationship.OUTGOING)
     private List<T> chapters;
 
@@ -26,6 +28,14 @@ public class Reference<T extends Chapter> extends BaseEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public List<T> getChapters() {
