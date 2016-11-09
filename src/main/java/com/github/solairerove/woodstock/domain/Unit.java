@@ -2,6 +2,7 @@ package com.github.solairerove.woodstock.domain;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
 import com.github.solairerove.woodstock.domain.reference.Reference;
+import com.github.solairerove.woodstock.domain.reference.UnitReference;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -18,7 +19,7 @@ public class Unit extends BaseEntity {
     private String description;
 
     @Relationship(type = "HAS_REFERENCE")
-    private Reference reference;
+    private UnitReference reference;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Category> categories;
@@ -63,7 +64,7 @@ public class Unit extends BaseEntity {
         return categories;
     }
 
-    public void setReference(Reference reference) {
+    public void setReference(UnitReference reference) {
         this.reference = reference;
     }
 

@@ -1,6 +1,7 @@
 package com.github.solairerove.woodstock.domain;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
+import com.github.solairerove.woodstock.domain.reference.CategoryReference;
 import com.github.solairerove.woodstock.domain.reference.Reference;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
@@ -18,7 +19,7 @@ public class Category extends BaseEntity {
     private String description;
 
     @Relationship(type = "HAS_REFERENCE")
-    private Reference reference;
+    private CategoryReference reference;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Task> tasks;
@@ -55,7 +56,7 @@ public class Category extends BaseEntity {
         return reference;
     }
 
-    public void setReference(Reference reference) {
+    public void setReference(CategoryReference reference) {
         this.reference = reference;
     }
 
