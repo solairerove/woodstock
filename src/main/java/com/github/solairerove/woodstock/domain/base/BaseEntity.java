@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.domain;
+package com.github.solairerove.woodstock.domain.base;
 
 import org.neo4j.ogm.annotation.GraphId;
 

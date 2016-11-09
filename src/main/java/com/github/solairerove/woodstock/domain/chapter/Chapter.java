@@ -1,5 +1,6 @@
-package com.github.solairerove.woodstock.domain;
+package com.github.solairerove.woodstock.domain.chapter;
 
+import com.github.solairerove.woodstock.domain.base.BaseEntity;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity(label = "Chapter")

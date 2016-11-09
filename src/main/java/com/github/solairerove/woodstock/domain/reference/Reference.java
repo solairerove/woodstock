@@ -1,5 +1,7 @@
-package com.github.solairerove.woodstock.domain;
+package com.github.solairerove.woodstock.domain.reference;
 
+import com.github.solairerove.woodstock.domain.base.BaseEntity;
+import com.github.solairerove.woodstock.domain.chapter.Chapter;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 

@@ -1,5 +1,6 @@
 package com.github.solairerove.woodstock.domain;
 
+import com.github.solairerove.woodstock.domain.base.BaseEntity;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity(label = "Ticket")
