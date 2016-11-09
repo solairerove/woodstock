@@ -1,7 +1,7 @@
 package com.github.solairerove.woodstock.service.impl;
 
 import com.github.solairerove.woodstock.repository.CategoryReferenceRepository;
-import com.github.solairerove.woodstock.service.CategoryReferenceService;
+import com.github.solairerove.woodstock.service.reference.CategoryReferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

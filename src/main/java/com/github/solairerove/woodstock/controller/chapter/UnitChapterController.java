@@ -1,6 +1,6 @@
-package com.github.solairerove.woodstock.controller;
+package com.github.solairerove.woodstock.controller.chapter;
 
-import com.github.solairerove.woodstock.service.UnitChapterService;
+import com.github.solairerove.woodstock.service.chapter.UnitChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
