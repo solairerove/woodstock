@@ -6,54 +6,59 @@
 <a href="#/units">Back</a>
 <a href="#/">Home</a>
 
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <header class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone
-    mdl-color--teal-50" style="background: url('http://tfirdaus.github.io/mdl/images/laptop.jpg') center / cover;">
-
-    </header>
-
-    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-        <div class="mdl-card__supporting-text">
-            <h4>{{unit.label}}</h4>
-            {{unit.description}}
+<!-- Unit preview card -->
+<div class="mdl-grid" style="margin-bottom: 48px;">
+    <!-- Image -->
+    <div class="unit-image-preview mdl-card mdl-cell mdl-cell--3-col-desktop mdl-shadow--4dp"
+         style="background: url('http://tfirdaus.github.io/mdl/images/laptop.jpg') center / cover;">
+    </div>
+    <!-- Card preview -->
+    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-shadow--4dp">
+        <!-- Title -->
+        <div class="mdl-card__title">
+            <h4 class="mdl-card__title-text">{{unit.label}}</h4>
         </div>
-
+        <!-- Description -->
+        <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-thin mdl-typography--subhead">
+                    {{unit.description}}
+                </span>
+        </div>
+        <!-- Actions -->
         <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Action
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent"
+               href="#/">
+                Read More
             </a>
         </div>
     </div>
-</section>
+</div>
 
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="unit-details__supporting-text mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+<!-- Categories preview -->
+<section class="mdl-grid">
+    <!-- Categories preview card -->
+    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--4dp">
+        <div class="mdl-card__supporting-text mdl-grid--no-spacing">
             <!-- Title -->
-            <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
+            <h4 class="mdl-cell mdl-cell--12-col">Categories</h4>
             <!-- Unit details preview -->
-            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                <div class="section__circle-container__circle mdl-color--primary"></div>
-            </div>
-            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
                 <h5>Lorem ipsum dolor sit amet</h5>
-                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et
+                eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
             </div>
-            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                <div class="section__circle-container__circle mdl-color--primary"></div>
-            </div>
-            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
                 <h5>Lorem ipsum dolor sit amet</h5>
-                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et
+                eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
             </div>
-            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                <div class="section__circle-container__circle mdl-color--primary"></div>
-            </div>
-            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <div class="section__text mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
                 <h5>Lorem ipsum dolor sit amet</h5>
-                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et
+                eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
             </div>
         </div>
+        <!-- Actions -->
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Read More
