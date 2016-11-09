@@ -44,8 +44,9 @@ public class ModuleServiceImpl implements ModuleService {
     @Override
     public Iterable<Module> getAll(Long unitId, Integer limit) {
         if (limit == null) {
-            limit = MODULES_LIMIT_COUNT;
+            return moduleRepository.getModulesThatHasInUnitFromId(unitId, MODULES_LIMIT_COUNT);
         }
+
         return moduleRepository.getModulesThatHasInUnitFromId(unitId, limit);
     }
 }
