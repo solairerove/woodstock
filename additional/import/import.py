@@ -55,7 +55,7 @@ def main():
     transaction.create(java_script)
     # units end
 
-    java_categories = [
+    java_modules = [
         'Streams in Java',
         'Primitive types in Java',
         'JSF',
@@ -66,29 +66,29 @@ def main():
         'Spring Boot'
     ]
 
-    python_categories = [
-        "Some python category 1",
-        "Some python category 2"
+    python_modules = [
+        "Some python module 1",
+        "Some python module 2"
     ]
 
-    java_script_categories = [
-        "Some js category 1",
-        "Some js category 2"
+    java_script_modules = [
+        "Some js module 1",
+        "Some js module 2"
     ]
 
-    # category java
-    for category in java_categories:
-        category_java = Node("Category", name=category)
-        transaction.create(category_java)
+    # module java
+    for module in java_modules:
+        module_java = Node("Module", name=module)
+        transaction.create(module_java)
 
-        transaction.create(Relationship(category_java, "HAS_IN", java))
+        transaction.create(Relationship(module_java, "HAS_IN", java))
 
         # task java
         for x in range(0, 15):
             task_java = Node("Task", question="Some question " + str(x))
             transaction.create(task_java)
 
-            transaction.create(Relationship(task_java, "HAS_IN", category_java))
+            transaction.create(Relationship(task_java, "HAS_IN", module_java))
 
             # ticket java
             for y in range(0, 10):
@@ -97,19 +97,19 @@ def main():
 
                 transaction.create(Relationship(ticket_java, "HAS_IN", task_java))
 
-    # category python
-    for category in python_categories:
-        category_python = Node("Category", name=category)
-        transaction.create(category_python)
+    # module python
+    for module in python_modules:
+        module_python = Node("Module", name=module)
+        transaction.create(module_python)
 
-        transaction.create(Relationship(category_python, "HAS_IN", python))
+        transaction.create(Relationship(module_python, "HAS_IN", python))
 
         # task python
         for x in range(0, 15):
             task_python = Node("Task", question="Some question " + str(x))
             transaction.create(task_python)
 
-            transaction.create(Relationship(task_python, "HAS_IN", category_python))
+            transaction.create(Relationship(task_python, "HAS_IN", module_python))
 
             # ticket python
             for y in range(0, 10):
@@ -119,19 +119,19 @@ def main():
                 transaction.create(Relationship(ticket_python, "HAS_IN", task_python))
 
 
-    # category js
-    for category in java_script_categories:
-        category_js = Node("Category", name=category)
-        transaction.create(category_js)
+    # module js
+    for module in java_script_modules:
+        module_js = Node("Module", name=module)
+        transaction.create(module_js)
 
-        transaction.create(Relationship(category_js, "HAS_IN", java_script))
+        transaction.create(Relationship(module_js, "HAS_IN", java_script))
 
         # task js
         for x in range(0, 15):
             task_js = Node("Task", question="Some question " + str(x))
             transaction.create(task_js)
 
-            transaction.create(Relationship(task_js, "HAS_IN", category_js))
+            transaction.create(Relationship(task_js, "HAS_IN", module_js))
 
             # ticket js
             for y in range(0, 10):

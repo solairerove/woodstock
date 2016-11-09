@@ -21,7 +21,7 @@ public class Unit extends BaseEntity {
     private List<UnitReference> references;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
-    private List<Category> categories;
+    private List<Module> modules;
 
     public Unit() {
 
@@ -62,15 +62,15 @@ public class Unit extends BaseEntity {
         this.references = references;
     }
 
-    public List<Category> getCategories() {
-        if (categories == null) {
-            categories = new ArrayList<>();
+    public List<Module> getModules() {
+        if (modules == null) {
+            modules = new ArrayList<>();
         }
 
-        return categories;
+        return modules;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setModules(List<Module> modules) {
+        this.modules = modules;
     }
 }

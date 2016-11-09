@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CategoryDTO implements Serializable {
+public class ModuleDTO implements Serializable {
 
     private String name;
 

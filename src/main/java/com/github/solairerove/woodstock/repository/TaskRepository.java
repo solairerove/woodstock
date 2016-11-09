@@ -7,17 +7,17 @@ import org.springframework.data.repository.query.Param;
 
 public interface TaskRepository extends GraphRepository<Task> {
 
-    @Query("MATCH (category:Category) OPTIONAL " +
-            "MATCH (category)<-[r:HAS_IN]-(task:Task) " +
-            "WHERE id(category)={categoryId} AND id(task)={taskId} " +
+    @Query("MATCH (module:Module) OPTIONAL " +
+            "MATCH (module)<-[r:HAS_IN]-(task:Task) " +
+            "WHERE id(module)={moduleId} AND id(task)={taskId} " +
             "RETURN task, r " +
             "LIMIT 150")
-    Task getTaskThatHasInCategoryFromId(@Param("categoryId") Long categoryId, @Param("taskId") Long taskId);
+    Task getTaskThatHasInModuleFromId(@Param("moduleId") Long moduleId, @Param("taskId") Long taskId);
 
-    @Query("START category=node(*) " +
-            "MATCH (category:Category)<-[:HAS_IN*0..]-(tasks:Task) " +
-            "WHERE id(category)={id} " +
+    @Query("START module=node(*) " +
+            "MATCH (module:Module)<-[:HAS_IN*0..]-(tasks:Task) " +
+            "WHERE id(module)={id} " +
             "RETURN tasks " +
             "LIMIT 600")
-    Iterable<Task> getTasksThatHasInCategoryFromId(@Param("id") Long id);
+    Iterable<Task> getTasksThatHasInModuleFromId(@Param("id") Long id);
 }

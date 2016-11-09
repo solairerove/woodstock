@@ -2,16 +2,16 @@
 
 woodstock.controller('TaskListController', ['$scope', '$location', '$routeParams', 'TaskService',
     function ($scope, $location, $routeParams, TaskService) {
-        TaskService.query({categoryId: $routeParams.categoryId}, function (data) {
+        TaskService.query({moduleId: $routeParams.moduleId}, function (data) {
             $scope.tasks = data;
-            $scope.categoryId = $routeParams.categoryId;
+            $scope.moduleId = $routeParams.moduleId;
         })
     }
 ]).controller('TaskDetailController', ['$scope', '$location', '$routeParams', 'TaskService',
     function ($scope, $location, $routeParams, TaskService) {
-        TaskService.get({categoryId: $routeParams.categoryId, taskId: $routeParams.taskId}, function (data) {
+        TaskService.get({moduleId: $routeParams.moduleId, taskId: $routeParams.taskId}, function (data) {
             $scope.task = data;
-            $scope.categoryId = $routeParams.categoryId;
+            $scope.moduleId = $routeParams.moduleId;
         })
     }
 ]);

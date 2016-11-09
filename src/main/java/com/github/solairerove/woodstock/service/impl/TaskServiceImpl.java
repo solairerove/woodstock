@@ -1,48 +1,46 @@
 package com.github.solairerove.woodstock.service.impl;
 
-import com.github.solairerove.woodstock.domain.Category;
+import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
-import com.github.solairerove.woodstock.repository.CategoryRepository;
+import com.github.solairerove.woodstock.repository.ModuleRepository;
 import com.github.solairerove.woodstock.repository.TaskRepository;
 import com.github.solairerove.woodstock.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
 
-    private final CategoryRepository categoryRepository;
+    private final ModuleRepository moduleRepository;
 
     @Autowired
-    public TaskServiceImpl(TaskRepository taskRepository, CategoryRepository categoryRepository) {
+    public TaskServiceImpl(TaskRepository taskRepository, ModuleRepository moduleRepository) {
         this.taskRepository = taskRepository;
-        this.categoryRepository = categoryRepository;
+        this.moduleRepository = moduleRepository;
     }
 
     @Override
-    public Task create(Long categoryId, TaskDTO taskDTO) {
+    public Task create(Long moduleId, TaskDTO taskDTO) {
         Task task = new Task();
         task.setQuestion(taskDTO.getQuestion());
 
-        Category category = categoryRepository.findOne(categoryId);
-        category.getTasks().add(task);
-        categoryRepository.save(category);
+        Module module = moduleRepository.findOne(moduleId);
+        module.getTasks().add(task);
+        moduleRepository.save(module);
 
         return task;
     }
 
     @Override
-    public Task get(Long categoryId, Long taskId) {
-        return taskRepository.getTaskThatHasInCategoryFromId(categoryId, taskId);
+    public Task get(Long moduleId, Long taskId) {
+        return taskRepository.getTaskThatHasInModuleFromId(moduleId, taskId);
     }
 
     @Override
-    public Iterable<Task> getAll(Long categoryId) {
-        return taskRepository.getTasksThatHasInCategoryFromId(categoryId);
+    public Iterable<Task> getAll(Long moduleId) {
+        return taskRepository.getTasksThatHasInModuleFromId(moduleId);
     }
 }

@@ -1,15 +1,15 @@
 package com.github.solairerove.woodstock.domain;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
-import com.github.solairerove.woodstock.domain.reference.CategoryReference;
+import com.github.solairerove.woodstock.domain.reference.ModuleReference;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@NodeEntity(label = "Category")
-public class Category extends BaseEntity {
+@NodeEntity(label = "Module")
+public class Module extends BaseEntity {
 
     private String name;
 
@@ -18,12 +18,12 @@ public class Category extends BaseEntity {
     private String description;
 
     @Relationship(type = "HAS_REFERENCE")
-    private List<CategoryReference> references;
+    private List<ModuleReference> references;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Task> tasks;
 
-    public Category() {
+    public Module() {
 
     }
 
@@ -51,7 +51,7 @@ public class Category extends BaseEntity {
         this.description = description;
     }
 
-    public List<CategoryReference> getReferences() {
+    public List<ModuleReference> getReferences() {
         if (references == null) {
             references = new ArrayList<>();
         }
@@ -59,7 +59,7 @@ public class Category extends BaseEntity {
         return references;
     }
 
-    public void setReferences(List<CategoryReference> references) {
+    public void setReferences(List<ModuleReference> references) {
         this.references = references;
     }
 

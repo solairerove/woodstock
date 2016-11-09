@@ -5,9 +5,9 @@ import com.github.solairerove.woodstock.dto.TaskDTO;
 
 public interface TaskService {
 
-    Task create(Long categoryId, TaskDTO taskDTO);
+    Task create(Long moduleId, TaskDTO taskDTO);
 
-    Task get(Long categoryId, Long taskId);
+    Task get(Long moduleId, Long taskId);
 
-    Iterable<Task> getAll(Long categoryId);
+    Iterable<Task> getAll(Long moduleId);
 }

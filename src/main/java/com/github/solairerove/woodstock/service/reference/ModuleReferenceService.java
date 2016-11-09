@@ -1,5 +1,5 @@
 package com.github.solairerove.woodstock.service.reference;
 
-public interface CategoryReferenceService {
+public interface ModuleReferenceService {
 
 }

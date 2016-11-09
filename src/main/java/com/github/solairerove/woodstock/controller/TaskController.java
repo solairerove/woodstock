@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/categories/{categoryId}/tasks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/modules/{moduleId}/tasks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TaskController {
 
     private final TaskService service;
@@ -24,17 +24,17 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity create(@PathVariable Long categoryId, @RequestBody TaskDTO taskDTO) {
-        return new ResponseEntity<>(service.create(categoryId, taskDTO), HttpStatus.CREATED);
+    public ResponseEntity create(@PathVariable Long moduleId, @RequestBody TaskDTO taskDTO) {
+        return new ResponseEntity<>(service.create(moduleId, taskDTO), HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{taskId}")
-    public ResponseEntity get(@PathVariable Long categoryId, @PathVariable Long taskId) {
-        return new ResponseEntity<>(service.get(categoryId, taskId), HttpStatus.OK);
+    public ResponseEntity get(@PathVariable Long moduleId, @PathVariable Long taskId) {
+        return new ResponseEntity<>(service.get(moduleId, taskId), HttpStatus.OK);
     }
 
     @RequestMapping
-    public ResponseEntity getAll(@PathVariable Long categoryId) {
-        return new ResponseEntity<>(service.getAll(categoryId), HttpStatus.OK);
+    public ResponseEntity getAll(@PathVariable Long moduleId) {
+        return new ResponseEntity<>(service.getAll(moduleId), HttpStatus.OK);
     }
 }

@@ -1,10 +1,10 @@
 package com.github.solairerove.woodstock.utils;
 
-import com.github.solairerove.woodstock.domain.Category;
+import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Profile;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.domain.Ticket;
-import com.github.solairerove.woodstock.dto.CategoryDTO;
+import com.github.solairerove.woodstock.dto.ModuleDTO;
 import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.dto.TicketDTO;
@@ -95,26 +95,26 @@ public class EntityUtils {
         return tasks;
     }
 
-    public static Category generateCategory() {
-        Category category = new Category();
-        category.setName(getRandomString());
+    public static Module generateModule() {
+        Module module = new Module();
+        module.setName(getRandomString());
 
-        return category;
+        return module;
     }
 
-    public static CategoryDTO generateCategoryDTO() {
-        CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.setName(getRandomString());
+    public static ModuleDTO generateModuleDTO() {
+        ModuleDTO moduleDTO = new ModuleDTO();
+        moduleDTO.setName(getRandomString());
 
-        return categoryDTO;
+        return moduleDTO;
     }
 
-    public static Iterable<Category> generateCategoryCollection() {
-        Collection<Category> categories = new ArrayList<>();
+    public static Iterable<Module> generateModuleCollection() {
+        Collection<Module> modules = new ArrayList<>();
         for(int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
-            categories.add(generateCategory());
+            modules.add(generateModule());
         }
 
-        return categories;
+        return modules;
     }
 }

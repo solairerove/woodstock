@@ -30,13 +30,13 @@ public class LoggingAspect {
     }
 
     /**
-     * Category controller log.
+     * Module controller log.
      *
      * @param joinPoint the join point
      */
-    @Before("execution(* com.github.solairerove.woodstock.controller.CategoryController.*(..)))")
-    public void categoryControllerLog(JoinPoint joinPoint) {
-        LOGGER.info("Category controller: " + joinPoint.getSignature().getName() +
+    @Before("execution(* com.github.solairerove.woodstock.controller.ModuleController.*(..)))")
+    public void moduleControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Module controller: " + joinPoint.getSignature().getName() +
                 Arrays.toString(joinPoint.getArgs()));
     }
 
@@ -85,13 +85,13 @@ public class LoggingAspect {
     }
 
     /**
-     * Category service log.
+     * Module service log.
      *
      * @param joinPoint the join point
      */
-    @Before("execution(* com.github.solairerove.woodstock.service.CategoryService.*(..)))")
-    public void categoryServiceLog(JoinPoint joinPoint) {
-        LOGGER.info("Category service: " + joinPoint.getSignature().getName() +
+    @Before("execution(* com.github.solairerove.woodstock.service.ModuleService.*(..)))")
+    public void moduleServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Module service: " + joinPoint.getSignature().getName() +
                 Arrays.toString(joinPoint.getArgs()));
     }
 

@@ -1,7 +1,7 @@
 package com.github.solairerove.woodstock.controller;
 
-import com.github.solairerove.woodstock.dto.CategoryDTO;
-import com.github.solairerove.woodstock.service.CategoryService;
+import com.github.solairerove.woodstock.dto.ModuleDTO;
+import com.github.solairerove.woodstock.service.ModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/units/{unitId}/categories", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class CategoryController {
+@RequestMapping(value = "/api/units/{unitId}/modules", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+public class ModuleController {
 
-    private final CategoryService service;
+    private final ModuleService service;
 
     @Autowired
-    public CategoryController(CategoryService service) {
+    public ModuleController(ModuleService service) {
         this.service = service;
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity create(@PathVariable Long unitId, @RequestBody CategoryDTO categoryDTO) {
-        return new ResponseEntity<>(service.create(unitId, categoryDTO), HttpStatus.CREATED);
+    public ResponseEntity create(@PathVariable Long unitId, @RequestBody ModuleDTO moduleDTO) {
+        return new ResponseEntity<>(service.create(unitId, moduleDTO), HttpStatus.CREATED);
     }
 
-    @RequestMapping(path = "/{categoryId}")
-    public ResponseEntity get(@PathVariable Long unitId, @PathVariable Long categoryId) {
-        return new ResponseEntity<>(service.get(unitId, categoryId), HttpStatus.OK);
+    @RequestMapping(path = "/{moduleId}")
+    public ResponseEntity get(@PathVariable Long unitId, @PathVariable Long moduleId) {
+        return new ResponseEntity<>(service.get(unitId, moduleId), HttpStatus.OK);
     }
 
     @RequestMapping
