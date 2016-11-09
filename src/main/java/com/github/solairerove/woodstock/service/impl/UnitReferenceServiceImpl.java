@@ -1,6 +1,6 @@
 package com.github.solairerove.woodstock.service.impl;
 
-import com.github.solairerove.woodstock.repository.UnitReferenceRepository;
+import com.github.solairerove.woodstock.repository.reference.UnitReferenceRepository;
 import com.github.solairerove.woodstock.service.reference.UnitReferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
