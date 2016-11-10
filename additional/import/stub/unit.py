@@ -2,8 +2,8 @@
 
 from py2neo import Node
 
-from description import Description
-from reference import Reference
+from .description import Description
+from .reference import Reference
 
 
 class Unit:

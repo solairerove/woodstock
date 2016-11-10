@@ -2,7 +2,7 @@
 
 import time
 
-from create import Import
+from generate.create import Import
 
 
 def main():
