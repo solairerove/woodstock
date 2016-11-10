@@ -5,15 +5,13 @@ import time
 from py2neo import Graph, Node, Relationship
 from py2neo import Path, authenticate
 
+from authenticate import Authenticate
 from unit import Unit
+from module import Module
 
 def main():
 
-    host_port = 'localhost:7474'
-    user_name = 'neo4j'
-    user_password = 'woodstock'
-
-    authenticate(host_port, user_name, user_password)
+    authenticate(Authenticate.HOST_PORT, Authenticate.USER_NAME, Authenticate.USER_PASSWORD)
 
     graph = Graph()
     transaction = graph.begin()
@@ -30,26 +28,9 @@ def main():
     transaction.create(java_script)
     # units end
 
-    java_modules = [
-        'Streams in Java',
-        'Primitive types in Java',
-        'JSF',
-        'Spring Framework',
-        'Spring Data JPA',
-        'Spring Data MongoDB',
-        'Spring Data Neo4J',
-        'Spring Boot'
-    ]
-
-    python_modules = [
-        "Some python module 1",
-        "Some python module 2"
-    ]
-
-    java_script_modules = [
-        "Some js module 1",
-        "Some js module 2"
-    ]
+    java_modules = Module.JAVA_MODULES
+    python_modules = Module.PYTHON_MODULES
+    java_script_modules = Module.JS_MODULES
 
     # module java
     for module in java_modules:
