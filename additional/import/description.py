@@ -1,7 +1,6 @@
 #!/usr/bin/python3.4
 
 class Description:
-
     JAVA_DESCRIPTION = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus suscipit mollis.' \
                        'Vivamus dignissim quis arcu et consectetur. Nulla volutpat ut metus sit amet efficitur. ' \
                        'Donec molestie orci orci, ac scelerisque metus vehicula a.'

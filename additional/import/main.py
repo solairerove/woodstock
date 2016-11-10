@@ -1,0 +1,18 @@
+#!/usr/bin/python3.4
+
+import time
+
+from create import Import
+
+
+def main():
+    create = Import()
+    create.create()
+
+
+if __name__ == '__main__':
+    start = time.time()
+    main()
+    end = time.time() - start
+    print("\n")
+    print("Time to complete:", end)

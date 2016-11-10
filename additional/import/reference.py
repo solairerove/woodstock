@@ -1,7 +1,6 @@
 #!/usr/bin/python3.4
 
 class Reference:
-
     JAVA_REFERENCE = 'Ut a nisi sit amet turpis euismod rhoncus. Phasellus hendrerit vel turpis ut condimentum. ' \
                      'Nam cursus turpis id ex sagittis, nec aliquam risus rhoncus. ' \
                      'Vivamus fringilla erat in tincidunt rutrum. ' \

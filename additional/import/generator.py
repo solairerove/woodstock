@@ -2,8 +2,8 @@
 
 from py2neo import Node, Relationship
 
-class Generator:
 
+class Generator:
     def generate(self, unit, modules, graph):
 
         transaction = graph.begin()

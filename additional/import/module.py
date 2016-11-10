@@ -1,7 +1,6 @@
 #!/usr/bin/python3.4
 
 class Module:
-
     JAVA_MODULES = [
         'Streams in Java',
         'Primitive types in Java',
