@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/modules/{moduleId}/reference", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/modules/{moduleId}/references", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class ModuleReferenceController {
 
     private final ModuleReferenceService service;

@@ -1,7 +1,6 @@
 package com.github.solairerove.woodstock.domain;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
-import com.github.solairerove.woodstock.domain.reference.ModuleReference;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -18,7 +17,7 @@ public class Module extends BaseEntity {
     private String description;
 
     @Relationship(type = "HAS_REFERENCE")
-    private List<ModuleReference> references;
+    private List<Reference> references;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Task> tasks;
@@ -51,7 +50,7 @@ public class Module extends BaseEntity {
         this.description = description;
     }
 
-    public List<ModuleReference> getReferences() {
+    public List<Reference> getReferences() {
         if (references == null) {
             references = new ArrayList<>();
         }
@@ -59,7 +58,7 @@ public class Module extends BaseEntity {
         return references;
     }
 
-    public void setReferences(List<ModuleReference> references) {
+    public void setReferences(List<Reference> references) {
         this.references = references;
     }
 

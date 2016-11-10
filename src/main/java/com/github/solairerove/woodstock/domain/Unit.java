@@ -1,7 +1,6 @@
 package com.github.solairerove.woodstock.domain;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
-import com.github.solairerove.woodstock.domain.reference.UnitReference;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -18,7 +17,7 @@ public class Unit extends BaseEntity {
     private String description;
 
     @Relationship(type = "HAS_REFERENCE")
-    private List<UnitReference> references;
+    private List<Reference> references;
 
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Module> modules;
@@ -51,14 +50,14 @@ public class Unit extends BaseEntity {
         this.description = description;
     }
 
-    public List<UnitReference> getReferences() {
+    public List<Reference> getReferences() {
         if (references == null) {
             references = new ArrayList<>();
         }
         return references;
     }
 
-    public void setReferences(List<UnitReference> references) {
+    public void setReferences(List<Reference> references) {
         this.references = references;
     }
 
