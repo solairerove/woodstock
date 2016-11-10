@@ -5,6 +5,8 @@ import time
 from py2neo import Graph, Node, Relationship
 from py2neo import Path, authenticate
 
+from unit import Unit
+
 def main():
 
     host_port = 'localhost:7474'
@@ -18,37 +20,10 @@ def main():
 
     graph.delete_all()
 
-    java_description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus suscipit mollis.' \
-                       'Vivamus dignissim quis arcu et consectetur. Nulla volutpat ut metus sit amet efficitur. ' \
-                       'Donec molestie orci orci, ac scelerisque metus vehicula a.'
-
-    java_reference = 'Ut a nisi sit amet turpis euismod rhoncus. Phasellus hendrerit vel turpis ut condimentum. ' \
-                     'Nam cursus turpis id ex sagittis, nec aliquam risus rhoncus. ' \
-                     'Vivamus fringilla erat in tincidunt rutrum. ' \
-                     'Sed vulputate purus non lorem blandit, ut consectetur eros egestas.'
-
-    python_description = 'Nulla sollicitudin iaculis velit, at ultricies arcu malesuada sed. ' \
-                         'Pellentesque eu euismod nunc, in consequat sem. Aliquam pulvinar ante in lobortis faucibus. ' \
-                         'Fusce consectetur nibh elit, nec egestas ipsum imperdiet et. ' \
-                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-
-    python_reference = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus suscipit mollis.' \
-                     'Vivamus dignissim quis arcu et consectetur. Nulla volutpat ut metus sit amet efficitur. ' \
-                     'Donec molestie orci orci, ac scelerisque metus vehicula a.'
-
-    js_description = 'Nulla sollicitudin iaculis velit, at ultricies arcu malesuada sed. ' \
-                         'Pellentesque eu euismod nunc, in consequat sem. Aliquam pulvinar ante in lobortis faucibus. ' \
-                         'Fusce consectetur nibh elit, nec egestas ipsum imperdiet et. ' \
-                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-
-    js_reference = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus suscipit mollis.' \
-                       'Vivamus dignissim quis arcu et consectetur. Nulla volutpat ut metus sit amet efficitur. ' \
-                       'Donec molestie orci orci, ac scelerisque metus vehicula a.'
-
     # units start
-    java = Node("Unit", label="Java", description=java_description, reference=java_reference)
-    python = Node("Unit", label="Python", description=python_description, reference=python_reference)
-    java_script = Node("Unit", label="Java Script", description=js_description, reference=js_reference)
+    java = Unit.JAVA_UNIT
+    python = Unit.PYTHON_UNIT
+    java_script = Unit.JS_UNIT
 
     transaction.create(java)
     transaction.create(python)
