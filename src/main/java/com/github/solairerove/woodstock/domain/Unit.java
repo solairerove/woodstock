@@ -16,9 +16,6 @@ public class Unit extends BaseEntity {
 
     private String description;
 
-    @Relationship(type = "HAS_REFERENCE")
-    private List<Reference> references;
-
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Module> modules;
 
@@ -48,17 +45,6 @@ public class Unit extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Reference> getReferences() {
-        if (references == null) {
-            references = new ArrayList<>();
-        }
-        return references;
-    }
-
-    public void setReferences(List<Reference> references) {
-        this.references = references;
     }
 
     public List<Module> getModules() {

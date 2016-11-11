@@ -12,4 +12,6 @@ import java.io.Serializable;
 public class ReferenceDTO implements Serializable {
 
     private String title;
+
+    private String version;
 }
