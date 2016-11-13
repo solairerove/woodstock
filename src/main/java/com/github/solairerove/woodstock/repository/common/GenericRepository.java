@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.repository;
+package com.github.solairerove.woodstock.repository.common;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
 import org.springframework.data.neo4j.annotation.Query;

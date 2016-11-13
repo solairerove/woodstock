@@ -1,19 +1,17 @@
-package com.github.solairerove.woodstock.service.impl;
+package com.github.solairerove.woodstock.service.common;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
-import com.github.solairerove.woodstock.repository.GenericRepository;
-import com.github.solairerove.woodstock.service.GenericService;
+import com.github.solairerove.woodstock.repository.common.GenericRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public abstract class GenericServiceImpl<T extends BaseEntity, REPO extends GenericRepository<T>>
-        implements GenericService<T> {
+public abstract class GenericServiceImpl<T extends BaseEntity> implements GenericService<T> {
 
-    protected final REPO repository;
+    private final GenericRepository<T> repository;
 
     @Autowired
-    public GenericServiceImpl(REPO repository) {
+    public GenericServiceImpl(GenericRepository<T> repository) {
         this.repository = repository;
     }
 

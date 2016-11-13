@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.service;
+package com.github.solairerove.woodstock.service.common;
 
 import com.github.solairerove.woodstock.domain.base.BaseEntity;
 
