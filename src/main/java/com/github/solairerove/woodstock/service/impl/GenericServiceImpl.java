@@ -7,27 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GenericServiceImpl<T extends BaseEntity, S> implements GenericService<T, S> {
+public abstract class GenericServiceImpl<T extends BaseEntity, REPO extends GenericRepository<T>>
+        implements GenericService<T> {
 
-    private final GenericRepository<T> repository;
+    protected final REPO repository;
 
     @Autowired
-    public GenericServiceImpl(GenericRepository<T> repository) {
+    public GenericServiceImpl(REPO repository) {
         this.repository = repository;
     }
 
     @Override
-    public T create(Long id1, S s) {
-        return null;
-    }
-
-    @Override
     public T get(Long id1, Long id2) {
-        return null;
+        return repository.getOneThatHasInNode(id1, id2);
     }
 
     @Override
     public Iterable<T> getAll(Long id1) {
-        return null;
+        return repository.getAllThatHasInNode(id1);
     }
 }

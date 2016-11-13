@@ -7,9 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface GenericRepository<T extends BaseEntity> extends GraphRepository<T> {
 
-    @Query("MATCH (task:Task)<-[:HAS_IN]-(tickets) WHERE id(task)={id1} RETURN tickets")
-    Iterable<T> getTicketsThatHasInTaskFromId(@Param("id") Long id1);
+    @Query("MATCH (n1)<-[:HAS_IN]-(n2) WHERE id(n1)={id1} AND id(n2)={id2} RETURN n2")
+    T getOneThatHasInNode(@Param("id1") Long id1, @Param("id2") Long id2);
 
-    @Query("MATCH (task:Task)<-[:HAS_IN]-(ticket) WHERE id(task)={id1} AND id(ticket)={id2} RETURN ticket")
-    T getTicketThatHasInTaskFromId(@Param("id1") Long id1, @Param("id2") Long id2);
+    @Query("MATCH (n1)<-[:HAS_IN]-(n2) WHERE id(n1)={id1} RETURN n2")
+    Iterable<T> getAllThatHasInNode(@Param("id1") Long id1);
 }

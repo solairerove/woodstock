@@ -10,43 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ModuleServiceImpl implements ModuleService {
+public class ModuleServiceImpl extends GenericServiceImpl<Module, ModuleRepository> implements ModuleService {
 
-    private static final Integer MODULES_LIMIT_COUNT = 25;
-
-    private final UnitRepository unitRepository;
-
-    private final ModuleRepository moduleRepository;
-
-    @Autowired
-    public ModuleServiceImpl(UnitRepository unitRepository, ModuleRepository moduleRepository) {
-        this.unitRepository = unitRepository;
-        this.moduleRepository = moduleRepository;
+    public ModuleServiceImpl(ModuleRepository repository) {
+        super(repository);
     }
 
     @Override
     public Module create(Long unitId, ModuleDTO moduleDTO) {
-        Module module = new Module();
-        module.setName(moduleDTO.getName());
-
-        Unit unit = unitRepository.findOne(unitId);
-        unit.getModules().add(module);
-        unitRepository.save(unit);
-
-        return module;
-    }
-
-    @Override
-    public Module get(Long unitId, Long moduleId) {
-        return moduleRepository.getModuleThatHasInUnitFromId(unitId, moduleId);
-    }
-
-    @Override
-    public Iterable<Module> getAll(Long unitId, Integer limit) {
-        if (limit == null) {
-            return moduleRepository.getModulesThatHasInUnitFromId(unitId, MODULES_LIMIT_COUNT);
-        }
-
-        return moduleRepository.getModulesThatHasInUnitFromId(unitId, limit);
+        return null;
     }
 }

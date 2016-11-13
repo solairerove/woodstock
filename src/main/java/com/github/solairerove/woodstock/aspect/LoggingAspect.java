@@ -127,4 +127,10 @@ public class LoggingAspect {
         LOGGER.info("Profile service: " + joinPoint.getSignature().getName() +
                 Arrays.toString(joinPoint.getArgs()));
     }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.GenericService.*(..)))")
+    public void genericServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Generic service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
 }
