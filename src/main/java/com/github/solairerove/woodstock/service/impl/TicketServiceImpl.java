@@ -5,21 +5,22 @@ import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.dto.TicketDTO;
 import com.github.solairerove.woodstock.repository.TaskRepository;
 import com.github.solairerove.woodstock.repository.TicketRepository;
+import com.github.solairerove.woodstock.repository.common.GenericRepository;
 import com.github.solairerove.woodstock.service.TicketService;
+import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
-public class TicketServiceImpl implements TicketService {
+public class TicketServiceImpl extends GenericServiceImpl<Ticket> implements TicketService {
 
     private final TicketRepository ticketRepository;
 
     private final TaskRepository taskRepository;
 
     @Autowired
-    public TicketServiceImpl(TicketRepository ticketRepository, TaskRepository taskRepository) {
+    public TicketServiceImpl(GenericRepository<Ticket> repository, TicketRepository ticketRepository, TaskRepository taskRepository) {
+        super(repository);
         this.ticketRepository = ticketRepository;
         this.taskRepository = taskRepository;
     }
@@ -37,26 +38,16 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Ticket get(Long taskId, Long ticketId) {
-        return ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
-    }
-
-    @Override
-    public Iterable<Ticket> getAll(Long taskId) {
-        return ticketRepository.getTicketsThatHasInTaskFromId(taskId);
-    }
-
-    @Override
     public Ticket update(Long taskId, Long ticketId, TicketDTO ticketDTO) {
-        Ticket ticket = ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
+        Ticket ticket = repository.getOneThatHasInNode(taskId, ticketId);
         ticket.setValue(ticketDTO.getValue());
 
-        return ticketRepository.save(ticket);
+        return repository.save(ticket);
     }
 
     @Override
     public Ticket delete(Long taskId, Long ticketId) {
-        Ticket ticket = ticketRepository.getTicketThatHasInTaskFromId(taskId, ticketId);
+        Ticket ticket = repository.getOneThatHasInNode(taskId, ticketId);
         ticketRepository.deleteTicketThatHasInTaskFromId(taskId, ticketId);
         return ticket;
     }

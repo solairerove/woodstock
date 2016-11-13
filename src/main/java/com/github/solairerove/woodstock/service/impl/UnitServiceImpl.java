@@ -22,6 +22,7 @@ public class UnitServiceImpl implements UnitService {
         Unit unit = new Unit();
         unit.setLabel(unitDTO.getLabel());
         unit.setDescription(unitDTO.getDescription());
+
         return repository.save(unit);
     }
 

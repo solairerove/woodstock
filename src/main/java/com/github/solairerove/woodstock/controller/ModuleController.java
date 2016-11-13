@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,7 +34,7 @@ public class ModuleController {
     }
 
     @RequestMapping
-    public ResponseEntity getAll(@PathVariable Long unitId, @RequestParam(value = "limit", required = false) Integer limit) {
-        return new ResponseEntity<>(service.getAll(unitId, limit), HttpStatus.OK);
+    public ResponseEntity getAll(@PathVariable Long unitId) {
+        return new ResponseEntity<>(service.getAll(unitId), HttpStatus.OK);
     }
 }
