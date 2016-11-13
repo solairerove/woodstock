@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public abstract class GenericServiceImpl<T extends BaseEntity> implements GenericService<T> {
 
-    private final GenericRepository<T> repository;
+    protected final GenericRepository<T> repository;
 
     @Autowired
     public GenericServiceImpl(GenericRepository<T> repository) {

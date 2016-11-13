@@ -4,21 +4,20 @@ import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.repository.ModuleRepository;
-import com.github.solairerove.woodstock.repository.TaskRepository;
+import com.github.solairerove.woodstock.repository.common.GenericRepository;
 import com.github.solairerove.woodstock.service.TaskService;
+import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TaskServiceImpl implements TaskService {
-
-    private final TaskRepository taskRepository;
+public class TaskServiceImpl extends GenericServiceImpl<Task> implements TaskService {
 
     private final ModuleRepository moduleRepository;
 
     @Autowired
-    public TaskServiceImpl(TaskRepository taskRepository, ModuleRepository moduleRepository) {
-        this.taskRepository = taskRepository;
+    public TaskServiceImpl(GenericRepository<Task> repository, ModuleRepository moduleRepository) {
+        super(repository);
         this.moduleRepository = moduleRepository;
     }
 
@@ -32,15 +31,5 @@ public class TaskServiceImpl implements TaskService {
         moduleRepository.save(module);
 
         return task;
-    }
-
-    @Override
-    public Task get(Long moduleId, Long taskId) {
-        return taskRepository.getTaskThatHasInModuleFromId(moduleId, taskId);
-    }
-
-    @Override
-    public Iterable<Task> getAll(Long moduleId) {
-        return taskRepository.getTasksThatHasInModuleFromId(moduleId);
     }
 }
