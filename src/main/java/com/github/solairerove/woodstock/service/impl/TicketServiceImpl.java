@@ -10,6 +10,8 @@ import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToTicket;
+
 @Service
 public class TicketServiceImpl extends GenericServiceImpl<Ticket, TicketRepository> implements TicketService {
 
@@ -23,8 +25,7 @@ public class TicketServiceImpl extends GenericServiceImpl<Ticket, TicketReposito
 
     @Override
     public Ticket create(Long taskId, TicketDTO ticketDTO) {
-        Ticket ticket = new Ticket();
-        ticket.setValue(ticketDTO.getValue());
+        Ticket ticket = convertToTicket(ticketDTO);
 
         Task task = taskRepository.findOne(taskId);
         task.getTickets().add(ticket);

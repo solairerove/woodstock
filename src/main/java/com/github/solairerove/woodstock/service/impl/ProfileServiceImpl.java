@@ -9,8 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 public class ProfileServiceImpl implements ProfileService {
 
@@ -26,6 +24,7 @@ public class ProfileServiceImpl implements ProfileService {
         Profile profile = new Profile();
         profile.setFirstName(profileDTO.getFirstName());
         profile.setLastName(profileDTO.getLastName());
+
         return repository.save(profile);
     }
 
@@ -44,12 +43,14 @@ public class ProfileServiceImpl implements ProfileService {
         Profile profile = repository.findOne(id);
         profile.setFirstName(profileDTO.getFirstName());
         profile.setLastName(profileDTO.getLastName());
+
         return repository.save(profile);
     }
 
     @Override
     public Long delete(Long id) {
         repository.delete(id);
+
         return id;
     }
 }

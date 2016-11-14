@@ -33,6 +33,18 @@ public class ServiceLoggingAspect {
                 Arrays.toString(joinPoint.getArgs()));
     }
 
+    @Before("execution(* com.github.solairerove.woodstock.service.ReferenceService.*(..)))")
+    public void referenceServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Reference service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.ChapterService.*(..)))")
+    public void chapterServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Chapter service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
     @Before("execution(* com.github.solairerove.woodstock.service.TaskService.*(..)))")
     public void taskServiceLog(JoinPoint joinPoint) {
         LOGGER.info("Task service: " + joinPoint.getSignature().getName() +

@@ -10,6 +10,8 @@ import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToModule;
+
 @Service
 public class ModuleServiceImpl extends GenericServiceImpl<Module, ModuleRepository> implements ModuleService {
 
@@ -23,10 +25,7 @@ public class ModuleServiceImpl extends GenericServiceImpl<Module, ModuleReposito
 
     @Override
     public Module create(Long unitId, ModuleDTO moduleDTO) {
-        Module module = new Module();
-        module.setName(moduleDTO.getName());
-        module.setAvatar(moduleDTO.getAvatar());
-        module.setDescription(moduleDTO.getDescription());
+        Module module = convertToModule(moduleDTO);
 
         Unit unit = unitRepository.findOne(unitId);
         unit.getModules().add(module);

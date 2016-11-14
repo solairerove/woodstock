@@ -10,6 +10,8 @@ import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToReference;
+
 @Service
 public class ReferenceServiceImpl extends GenericServiceImpl<Reference, ReferenceRepository> implements ReferenceService {
 
@@ -23,9 +25,7 @@ public class ReferenceServiceImpl extends GenericServiceImpl<Reference, Referenc
 
     @Override
     public Reference create(Long moduleId, ReferenceDTO referenceDTO) {
-        Reference reference = new Reference();
-        reference.setTitle(referenceDTO.getTitle());
-        reference.setVersion(referenceDTO.getVersion());
+        Reference reference = convertToReference(referenceDTO);
 
         Module module = moduleRepository.findOne(moduleId);
         module.getReferences().add(reference);

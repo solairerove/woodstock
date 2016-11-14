@@ -10,6 +10,8 @@ import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToTask;
+
 @Service
 public class TaskServiceImpl extends GenericServiceImpl<Task, TaskRepository> implements TaskService {
 
@@ -23,8 +25,7 @@ public class TaskServiceImpl extends GenericServiceImpl<Task, TaskRepository> im
 
     @Override
     public Task create(Long moduleId, TaskDTO taskDTO) {
-        Task task = new Task();
-        task.setQuestion(taskDTO.getQuestion());
+        Task task = convertToTask(taskDTO);
 
         Module module = moduleRepository.findOne(moduleId);
         module.getTasks().add(task);

@@ -7,6 +7,8 @@ import com.github.solairerove.woodstock.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToUnit;
+
 @Service
 public class UnitServiceImpl implements UnitService {
 
@@ -19,11 +21,7 @@ public class UnitServiceImpl implements UnitService {
 
     @Override
     public Unit create(UnitDTO unitDTO) {
-        Unit unit = new Unit();
-        unit.setLabel(unitDTO.getLabel());
-        unit.setDescription(unitDTO.getDescription());
-
-        return repository.save(unit);
+        return repository.save(convertToUnit(unitDTO));
     }
 
     @Override

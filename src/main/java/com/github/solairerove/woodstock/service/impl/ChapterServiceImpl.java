@@ -10,6 +10,8 @@ import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToChapter;
+
 @Service
 public class ChapterServiceImpl extends GenericServiceImpl<Chapter, ChapterRepository> implements ChapterService {
 
@@ -23,9 +25,7 @@ public class ChapterServiceImpl extends GenericServiceImpl<Chapter, ChapterRepos
 
     @Override
     public Chapter create(Long refId, ChapterDTO chapterDTO) {
-        Chapter chapter = new Chapter();
-        chapter.setTitle(chapterDTO.getTitle());
-        chapter.setContent(chapterDTO.getContent());
+        Chapter chapter = convertToChapter(chapterDTO);
 
         Reference reference = referenceRepository.findOne(refId);
         reference.getChapters().add(chapter);
