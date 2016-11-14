@@ -14,7 +14,7 @@ ___
 #### Import to neo4j:
 
 * `pip install py2neo`
-* `python3.4 import.py`
+* `python3.4 main.py`
 
 ___
 
