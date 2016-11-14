@@ -18,6 +18,20 @@ class Generator:
 
             transaction.create(Relationship(module, "HAS_IN", unit))
 
+            # references
+            for r in range(0, 5):
+                reference = Node("Reference", title="Reference " + str(r), description="Some description " + str(r))
+                transaction.create(reference)
+
+                transaction.create(Relationship(module, "HAS_REFERENCE", reference))
+
+                # chapter
+                for c in range(0, 10):
+                    chapter = Node("Chapter", title="Chapter " + str(c), content="Some markdown content " + str(c))
+                    transaction.create(chapter)
+
+                    transaction.create(Relationship(reference, "HAS_CHAPTER", chapter))
+
             # task
             for x in range(0, 15):
                 task = Node("Task", question="Some question " + str(x))
