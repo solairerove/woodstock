@@ -1,8 +1,8 @@
 package com.github.solairerove.woodstock.repository;
 
 import com.github.solairerove.woodstock.domain.Unit;
-import org.springframework.data.neo4j.repository.GraphRepository;
+import com.github.solairerove.woodstock.repository.common.GenericRepository;
 
-public interface UnitRepository extends GraphRepository<Unit> {
+public interface UnitRepository extends GenericRepository<Unit> {
 
 }

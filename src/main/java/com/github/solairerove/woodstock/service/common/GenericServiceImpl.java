@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public abstract class GenericServiceImpl<T extends BaseEntity> implements GenericService<T> {
+public abstract class GenericServiceImpl<T extends BaseEntity, REPO extends GenericRepository<T>>
+        implements GenericService<T> {
 
-    protected final GenericRepository<T> repository;
+    protected final REPO repository;
 
     @Autowired
-    public GenericServiceImpl(GenericRepository<T> repository) {
+    public GenericServiceImpl(REPO repository) {
         this.repository = repository;
     }
 

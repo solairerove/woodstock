@@ -4,19 +4,19 @@ import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
 import com.github.solairerove.woodstock.repository.ModuleRepository;
-import com.github.solairerove.woodstock.repository.common.GenericRepository;
+import com.github.solairerove.woodstock.repository.ReferenceRepository;
 import com.github.solairerove.woodstock.service.ReferenceService;
 import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ReferenceServiceImpl extends GenericServiceImpl<Reference> implements ReferenceService {
+public class ReferenceServiceImpl extends GenericServiceImpl<Reference, ReferenceRepository> implements ReferenceService {
 
     private final ModuleRepository moduleRepository;
 
     @Autowired
-    public ReferenceServiceImpl(GenericRepository<Reference> repository, ModuleRepository moduleRepository) {
+    public ReferenceServiceImpl(ReferenceRepository repository, ModuleRepository moduleRepository) {
         super(repository);
         this.moduleRepository = moduleRepository;
     }

@@ -5,23 +5,19 @@ import com.github.solairerove.woodstock.domain.Ticket;
 import com.github.solairerove.woodstock.dto.TicketDTO;
 import com.github.solairerove.woodstock.repository.TaskRepository;
 import com.github.solairerove.woodstock.repository.TicketRepository;
-import com.github.solairerove.woodstock.repository.common.GenericRepository;
 import com.github.solairerove.woodstock.service.TicketService;
 import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TicketServiceImpl extends GenericServiceImpl<Ticket> implements TicketService {
-
-    private final TicketRepository ticketRepository;
+public class TicketServiceImpl extends GenericServiceImpl<Ticket, TicketRepository> implements TicketService {
 
     private final TaskRepository taskRepository;
 
     @Autowired
-    public TicketServiceImpl(GenericRepository<Ticket> repository, TicketRepository ticketRepository, TaskRepository taskRepository) {
+    public TicketServiceImpl(TicketRepository repository, TaskRepository taskRepository) {
         super(repository);
-        this.ticketRepository = ticketRepository;
         this.taskRepository = taskRepository;
     }
 
@@ -48,7 +44,7 @@ public class TicketServiceImpl extends GenericServiceImpl<Ticket> implements Tic
     @Override
     public Ticket delete(Long taskId, Long ticketId) {
         Ticket ticket = repository.getOneThatHasInNode(taskId, ticketId);
-        ticketRepository.deleteTicketThatHasInTaskFromId(taskId, ticketId);
+        repository.deleteTicketThatHasInTaskFromId(taskId, ticketId);
         return ticket;
     }
 }
