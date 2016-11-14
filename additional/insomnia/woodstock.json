@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 2,
-  "__export_date": "2016-11-14T07:50:38.593Z",
+  "__export_date": "2016-11-14T09:26:56.975Z",
   "__export_source": "insomnia.desktop.app:v3.6.2",
   "resources": [
     {
@@ -30,7 +30,7 @@
       "_type": "environment"
     },
     {
-      "modified": 1479109824876,
+      "modified": 1479115601215,
       "created": 1474050373101,
       "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
       "name": "Default Jar",
@@ -42,7 +42,7 @@
           "domain": "localhost",
           "path": "/",
           "hostOnly": true,
-          "lastAccessed": "2016-11-14T07:50:24.837Z"
+          "lastAccessed": "2016-11-14T09:26:41.188Z"
         }
       ],
       "_id": "jar_it63j759rKweSPBEctfn7EUM",
@@ -55,6 +55,24 @@
       "name": "unit",
       "environment": {},
       "_id": "fld_09c0ec90e2524814a165001c1c3a4142",
+      "_type": "request_group"
+    },
+    {
+      "modified": 1479115355242,
+      "created": 1479115348945,
+      "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
+      "name": "chapter",
+      "environment": {},
+      "_id": "fld_1f922d8ebb10449c86a6a48420b5ff57",
+      "_type": "request_group"
+    },
+    {
+      "modified": 1479115249794,
+      "created": 1479110067512,
+      "parentId": "wrk_it63g3geAev5nQChKphqjh3d",
+      "name": "reference",
+      "environment": {},
+      "_id": "fld_cf6a97937f9344cebe4913d371264e6f",
       "_type": "request_group"
     },
     {
@@ -138,6 +156,100 @@
       ],
       "authentication": {},
       "_id": "req_c8ca44966c5b4409940619b1abdc6764",
+      "_type": "request"
+    },
+    {
+      "modified": 1479115565189,
+      "created": 1479115454512,
+      "parentId": "fld_1f922d8ebb10449c86a6a48420b5ff57",
+      "url": "http://localhost:9090/api/references/86/chapters",
+      "name": "get chapters",
+      "method": "GET",
+      "body": "",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "_id": "req_3065dc4c0e8e405cbcf05f9f4063b8d0",
+      "_type": "request"
+    },
+    {
+      "modified": 1479115554359,
+      "created": 1479115511384,
+      "parentId": "fld_1f922d8ebb10449c86a6a48420b5ff57",
+      "url": "http://localhost:9090/api/references/86/chapters",
+      "name": "create chapter",
+      "method": "POST",
+      "body": "{\n\t\"title\": \"new title\",\n\t\"content\": \"Some markdown content\"\n}",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "_id": "req_383ae521aae0483e98dc6b84878accc4",
+      "_type": "request"
+    },
+    {
+      "modified": 1479115596008,
+      "created": 1479115573609,
+      "parentId": "fld_1f922d8ebb10449c86a6a48420b5ff57",
+      "url": "http://localhost:9090/api/references/86/chapters/87",
+      "name": "get chapter",
+      "method": "GET",
+      "body": "",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "_id": "req_ba26b244d11c4387b51cf3696beca832",
+      "_type": "request"
+    },
+    {
+      "modified": 1479115255005,
+      "created": 1479110081287,
+      "parentId": "fld_cf6a97937f9344cebe4913d371264e6f",
+      "url": "http://localhost:9090/api/modules/25436/references",
+      "name": "get references",
+      "method": "GET",
+      "body": "",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "_id": "req_40745f1f782f4496b1db473b2d7c47ec",
+      "_type": "request"
+    },
+    {
+      "modified": 1479115460564,
+      "created": 1479115248555,
+      "parentId": "fld_cf6a97937f9344cebe4913d371264e6f",
+      "url": "http://localhost:9090/api/modules/25436/references/86",
+      "name": "get reference",
+      "method": "GET",
+      "body": "",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "_id": "req_953a29723a9b467cba1a165ca7af5108",
+      "_type": "request"
+    },
+    {
+      "modified": 1479115251798,
+      "created": 1479115152668,
+      "parentId": "fld_cf6a97937f9344cebe4913d371264e6f",
+      "url": "http://localhost:9090/api/modules/25436/references",
+      "name": "create reference",
+      "method": "POST",
+      "body": "{\n\t\"title\": \"new title\",\n\t\"version\": \"latest\"\n}",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "_id": "req_f08d51c06edc4a5daaca91d13582676a",
       "_type": "request"
     },
     {
