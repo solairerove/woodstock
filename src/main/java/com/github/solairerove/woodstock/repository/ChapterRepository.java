@@ -7,6 +7,12 @@ import org.springframework.data.repository.query.Param;
 
 public interface ChapterRepository extends GenericRepository<Chapter> {
 
+    @Query("MATCH (ref:Reference)" +
+            "WHERE id(ref)={refId}" +
+            "CREATE (ref)-[:HAS_CHAPTER]->(chapter:Chapter {title:{title}, content:{content}})" +
+            "RETURN chapter")
+    Chapter create(@Param("refId") Long refId, @Param("title") String title, @Param("content") String content);
+
     @Query("MATCH (ref:Reference)-[:HAS_CHAPTER]->(chapter) " +
             "WHERE id(ref)={refId} AND id(chapter)={chapterId} " +
             "RETURN chapter")
