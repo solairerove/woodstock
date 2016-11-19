@@ -37,4 +37,14 @@ public class TaskController {
     public ResponseEntity getAll(@PathVariable Long moduleId) {
         return new ResponseEntity<>(service.getAll(moduleId), HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/{taskId}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable Long moduleId, @PathVariable Long taskId, @RequestBody TaskDTO taskDTO) {
+        return new ResponseEntity<>(service.update(moduleId, taskId, taskDTO), HttpStatus.ACCEPTED);
+    }
+
+    @RequestMapping(path = "/{taskId}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable Long moduleId, @PathVariable Long taskId) {
+        return new ResponseEntity<>(service.delete(moduleId, taskId), HttpStatus.ACCEPTED);
+    }
 }

@@ -33,4 +33,20 @@ public class TaskServiceImpl extends GenericServiceImpl<Task, TaskRepository> im
 
         return task;
     }
+
+    @Override
+    public Task update(Long moduleId, Long taskId, TaskDTO taskDTO) {
+        Task task = repository.getOneThatHasInNode(moduleId, taskId);
+        task.setQuestion(taskDTO.getQuestion());
+
+        return repository.save(task);
+    }
+
+    @Override
+    public Task delete(Long moduleId, Long taskId) {
+        Task task = repository.getOneThatHasInNode(moduleId, taskId);
+        repository.deleteOneThatHasInNode(moduleId, taskId);
+
+        return task;
+    }
 }

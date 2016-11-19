@@ -45,7 +45,8 @@ public class TicketServiceImpl extends GenericServiceImpl<Ticket, TicketReposito
     @Override
     public Ticket delete(Long taskId, Long ticketId) {
         Ticket ticket = repository.getOneThatHasInNode(taskId, ticketId);
-        repository.deleteTicketThatHasInTaskFromId(taskId, ticketId);
+        repository.deleteOneThatHasInNode(taskId, ticketId);
+
         return ticket;
     }
 }

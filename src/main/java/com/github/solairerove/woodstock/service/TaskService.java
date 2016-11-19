@@ -7,4 +7,8 @@ import com.github.solairerove.woodstock.service.common.GenericService;
 public interface TaskService extends GenericService<Task> {
 
     Task create(Long moduleId, TaskDTO taskDTO);
+
+    Task update(Long moduleId, Long taskId, TaskDTO taskDTO);
+
+    Task delete(Long moduleId, Long taskId);
 }
