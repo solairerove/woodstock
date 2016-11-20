@@ -13,8 +13,8 @@ services:
       - POSTGRES_USER=sonar
       - POSTGRES_PASSWORD=sonar
     volumes:
-      - /opt/docker/woodstock/sonar/postgresql:/var/lib/postgresql
-      - /opt/docker/woodstock/sonar/postgresql_data:/var/lib/postgresql/data
+      - /docker/woodstock/sonar/postgresql:/var/lib/postgresql
+      - /docker/woodstock/sonar/postgresql_data:/var/lib/postgresql/data
 
   sonarqube:
     depends_on:
@@ -28,10 +28,10 @@ services:
     environment:
       - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
     volumes:
-      - /opt/docker/woodstock/sonar/sonarqube_conf:/opt/sonarqube/conf
-      - /opt/docker/woodstock/sonar/sonarqube_data:/opt/sonarqube/data
-      - /opt/docker/woodstock/sonar/sonarqube_extensions:/opt/sonarqube/extensions
-      - /opt/docker/woodstock/sonar/sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+      - /docker/woodstock/sonar/sonarqube_conf:/opt/sonarqube/conf
+      - /docker/woodstock/sonar/sonarqube_data:/opt/sonarqube/data
+      - /docker/woodstock/sonar/sonarqube_extensions:/opt/sonarqube/extensions
+      - /docker/woodstock/sonar/sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
 
   neo4j:
     container_name: neo4j-woodstock
@@ -42,7 +42,7 @@ services:
     networks:
       - woodnet
     volumes:
-      - /opt/docker/woodstock/neo4j:/data
+      - /docker/woodstock/neo4j:/data
 
   neo4j-test:
     depends_on:
@@ -55,7 +55,7 @@ services:
     networks:
       - woodnet
     volumes:
-      - /opt/docker/woodstock/neo4j-test:/data
+      - /docker/woodstock/neo4j-test:/data
 
   jenkins:
     container_name: jenkins-woodstock
@@ -66,7 +66,7 @@ services:
     networks:
       - woodnet
     volumes:
-      - /opt/docker/woodstock/jenkins:/var/jenkins_home
+      - /docker/woodstock/jenkins:/var/jenkins_home
 
 networks:
   woodnet:

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-mkdir /opt/docker/woodstock
-mkdir /opt/docker/woodstock/sonar
-mkdir /opt/docker/woodstock/neo4j
-mkdir /opt/docker/woodstock/neo4j-test
-mkdir /opt/docker/woodstock/jenkins
+mkdir /docker/woodstock
+mkdir /docker/woodstock/sonar
+mkdir /docker/woodstock/neo4j
+mkdir /docker/woodstock/neo4j-test
+mkdir /docker/woodstock/jenkins
 
-chown -R ${USER}:users /opt/docker/woodstock
-chmod -R 777 /opt/docker/woodstock
+chown -R ${USER}:users /docker/woodstock
+chmod -R 777 /docker/woodstock
