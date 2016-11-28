@@ -1,4 +1,4 @@
-#!/usr/bin/python3.4
+#!/usr/bin/python3.5
 
 class Description:
     JAVA_DESCRIPTION = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus suscipit mollis.' \

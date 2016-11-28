@@ -15,6 +15,7 @@ services:
     volumes:
       - /docker/woodstock/sonar/postgresql:/var/lib/postgresql
       - /docker/woodstock/sonar/postgresql_data:/var/lib/postgresql/data
+    privileged: true
 
   sonarqube:
     depends_on:
@@ -32,6 +33,7 @@ services:
       - /docker/woodstock/sonar/sonarqube_data:/opt/sonarqube/data
       - /docker/woodstock/sonar/sonarqube_extensions:/opt/sonarqube/extensions
       - /docker/woodstock/sonar/sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    privileged: true
 
   neo4j:
     container_name: neo4j-woodstock
@@ -43,6 +45,7 @@ services:
       - woodnet
     volumes:
       - /docker/woodstock/neo4j:/data
+    privileged: true
 
   neo4j-test:
     depends_on:
@@ -56,6 +59,7 @@ services:
       - woodnet
     volumes:
       - /docker/woodstock/neo4j-test:/data
+    privileged: true
 
   jenkins:
     container_name: jenkins-woodstock
@@ -67,6 +71,7 @@ services:
       - woodnet
     volumes:
       - /docker/woodstock/jenkins:/var/jenkins_home
+    privileged: true
 
 networks:
   woodnet:
