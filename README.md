@@ -14,7 +14,9 @@ ___
 #### Import to neo4j:
 
 * `pip install py2neo`
-* `python3.4 main.py`
+* `cp /usr/lib/python2.7/py2neo /usr/lib/python3.5/` - if this shit wan't install
+* `alias python=python3`
+* `python main.py`
 
 ___
 
