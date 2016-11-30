@@ -7,4 +7,6 @@ import com.github.solairerove.woodstock.service.common.GenericService;
 public interface ModuleService extends GenericService<Module> {
 
     Module create(Long unitId, ModuleDTO moduleDTO);
+
+    Iterable<Module> getAll(Long id1, Integer size);
 }

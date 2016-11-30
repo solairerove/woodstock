@@ -15,6 +15,8 @@ import static com.github.solairerove.woodstock.service.common.ModelMapper.conver
 @Service
 public class ModuleServiceImpl extends GenericServiceImpl<Module, ModuleRepository> implements ModuleService {
 
+    private static final int MODULES_SIZE = 25;
+
     private final UnitRepository unitRepository;
 
     @Autowired
@@ -32,5 +34,13 @@ public class ModuleServiceImpl extends GenericServiceImpl<Module, ModuleReposito
         unitRepository.save(unit);
 
         return module;
+    }
+
+    @Override
+    public Iterable<Module> getAll(Long id1, Integer size) {
+        if (size == null) {
+            size = MODULES_SIZE;
+        }
+        return repository.getAllThatHasInNode(id1, size);
     }
 }
