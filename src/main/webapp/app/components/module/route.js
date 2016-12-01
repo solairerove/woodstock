@@ -3,7 +3,7 @@
 woodstock.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $routeProvider
         .when('/units/:unitId/modules/', {
-            templateUrl: 'app/components/module/module-list.html',
+            templateUrl: '/app/components/module/module-list.html',
             controller: 'ModuleListController'
         })
         .when('/units/:unitId/modules/:moduleId/view', {
