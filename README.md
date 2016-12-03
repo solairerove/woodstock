@@ -29,8 +29,6 @@ ___
 
 #### Sonar analyze:
 
-* [settings.xml](https://www.dropbox.com/s/d30qle3uocvf4mz/settings.xml?dl=0)
-* configure sonar
 * `mvn clean install -Ptest`
 * `mvn sonar:sonar`
 
@@ -38,5 +36,4 @@ ___
 
 #### Api doc:
 
-* `woodstock.json` - insomnia rest client
 * `curl --request GET --url http://localhost:9090/api/tasks --header 'content-type: application/json'`
