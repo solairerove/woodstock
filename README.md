@@ -33,7 +33,3 @@ ___
 * `mvn sonar:sonar`
 
 ___
-
-#### Api doc:
-
-* `curl --request GET --url http://localhost:9090/api/tasks --header 'content-type: application/json'`
