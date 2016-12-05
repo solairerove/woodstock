@@ -1,6 +1,16 @@
 'use strict';
 
-woodstock.controller('TaskListController', ['$scope', '$location', '$routeParams', 'TaskService',
+woodstock.controller('TaskCreateController', ['$scope', '$location', '$routeParams', 'TaskService',
+    function ($scope, $location, $routeParams, TaskService) {
+        $scope.task = new TaskService();
+
+        $scope.addTask = function () {
+            $scope.task.$create({moduleId: $routeParams.moduleId}, function () {
+                $location.path('/modules/' + $routeParams.moduleId + '/tasks');
+            });
+        }
+    }
+]).controller('TaskListController', ['$scope', '$location', '$routeParams', 'TaskService',
     function ($scope, $location, $routeParams, TaskService) {
         TaskService.query({moduleId: $routeParams.moduleId}, function (data) {
             $scope.tasks = data;
@@ -13,5 +23,15 @@ woodstock.controller('TaskListController', ['$scope', '$location', '$routeParams
             $scope.task = data;
             $scope.moduleId = $routeParams.moduleId;
         })
+    }
+]).controller('TaskEditController', ['$scope', '$location', '$routeParams', 'TaskService',
+    function ($scope, $location, $routeParams, TaskService) {
+        $scope.task = new TaskService();
+
+        $scope.updateTask = function () {
+            $scope.task.$update({moduleId: $routeParams.moduleId, taskId: $routeParams.taskId}, function () {
+                $location.path('/modules/' + $routeParams.moduleId + '/tasks');
+            });
+        }
     }
 ]);
