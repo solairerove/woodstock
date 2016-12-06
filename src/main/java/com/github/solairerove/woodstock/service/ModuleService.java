@@ -9,4 +9,6 @@ public interface ModuleService extends GenericService<Module> {
     Module create(Long unitId, ModuleDTO moduleDTO);
 
     Iterable<Module> getAll(Long id1, Integer size);
+
+    Module update(Long unitId, Long moduleId, ModuleDTO moduleDTO);
 }

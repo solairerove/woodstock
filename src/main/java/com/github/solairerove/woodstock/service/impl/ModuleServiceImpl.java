@@ -43,4 +43,13 @@ public class ModuleServiceImpl extends GenericServiceImpl<Module, ModuleReposito
         }
         return repository.getAllThatHasInNode(id1, size);
     }
+
+    @Override
+    public Module update(Long unitId, Long moduleId, ModuleDTO moduleDTO) {
+        Module module = repository.getOneThatHasInNode(unitId, moduleId);
+        module.setName(moduleDTO.getName());
+        module.setDescription(moduleDTO.getDescription());
+
+        return repository.save(module);
+    }
 }

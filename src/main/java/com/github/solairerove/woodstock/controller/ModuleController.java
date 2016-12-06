@@ -38,4 +38,9 @@ public class ModuleController {
     public ResponseEntity getAll(@PathVariable Long unitId, @RequestParam(value = "size", required = false) Integer size) {
         return new ResponseEntity<>(service.getAll(unitId, size), HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/{moduleId}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable Long unitId, @PathVariable Long moduleId, @RequestBody ModuleDTO moduleDTO) {
+        return new ResponseEntity<>(service.update(unitId, moduleId, moduleDTO), HttpStatus.ACCEPTED);
+    }
 }
