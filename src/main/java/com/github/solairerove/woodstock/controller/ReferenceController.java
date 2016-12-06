@@ -37,4 +37,9 @@ public class ReferenceController {
     public ResponseEntity getAll(@PathVariable Long moduleId) {
         return new ResponseEntity<>(service.getAll(moduleId), HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/{refId}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable Long moduleId, @PathVariable Long refId, @RequestBody ReferenceDTO referenceDTO) {
+        return new ResponseEntity<>(service.update(moduleId, refId, referenceDTO), HttpStatus.ACCEPTED);
+    }
 }

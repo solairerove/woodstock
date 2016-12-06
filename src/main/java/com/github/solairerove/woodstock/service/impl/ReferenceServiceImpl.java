@@ -33,4 +33,13 @@ public class ReferenceServiceImpl extends GenericServiceImpl<Reference, Referenc
 
         return reference;
     }
+
+    @Override
+    public Reference update(Long moduleId, Long refId, ReferenceDTO referenceDTO) {
+        Reference reference = repository.getOneThatHasInNode(moduleId, refId);
+        reference.setTitle(referenceDTO.getTitle());
+        reference.setVersion(referenceDTO.getVersion());
+
+        return repository.save(reference);
+    }
 }

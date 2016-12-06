@@ -7,4 +7,6 @@ import com.github.solairerove.woodstock.service.common.GenericService;
 public interface ReferenceService extends GenericService<Reference> {
 
     Reference create(Long moduleId, ReferenceDTO referenceDTO);
+
+    Reference update(Long moduleId, Long refId, ReferenceDTO referenceDTO);
 }

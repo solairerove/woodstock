@@ -1,9 +1,12 @@
+<a href="#/modules/{{moduleId}}/references/new">Add new reference</a>
+
 <table border="1">
     <tr ng-repeat="ref in refs">
         <td>{{ref.id}}</td>
         <td>{{ref.title}}</td>
         <td>{{ref.version}}</td>
         <td><a href="#/modules/{{moduleId}}/references/{{ref.id}}/view">View</a></td>
+        <td><a href="#/modules/{{moduleId}}/references/{{ref.id}}/edit">Edit</a></td>
     </tr>
 </table>
 
