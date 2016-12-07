@@ -1,5 +1,4 @@
 # Woodstock
-[![Dependency Status](https://www.versioneye.com/user/projects/57e682d979806f002f4ab840/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57e682d979806f002f4ab840)
 
 *You should see [hrms](https://github.com/vlsidlyarevich/unity) module. There will be some integration in future.*
 ___
