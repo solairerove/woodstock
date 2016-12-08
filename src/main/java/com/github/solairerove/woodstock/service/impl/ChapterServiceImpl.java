@@ -20,4 +20,13 @@ public class ChapterServiceImpl extends GenericServiceImpl<Chapter, ChapterRepos
     public Chapter create(Long refId, ChapterDTO chapterDTO) {
         return repository.create(refId, chapterDTO.getTitle(), chapterDTO.getContent());
     }
+
+    @Override
+    public Chapter update(Long refId, Long chapterId, ChapterDTO chapterDTO) {
+        Chapter chapter = repository.getOneThatHasInNode(refId, chapterId);
+        chapter.setTitle(chapterDTO.getTitle());
+        chapter.setContent(chapterDTO.getContent());
+
+        return repository.save(chapter);
+    }
 }

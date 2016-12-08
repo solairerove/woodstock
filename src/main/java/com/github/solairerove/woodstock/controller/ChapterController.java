@@ -37,4 +37,9 @@ public class ChapterController {
     public ResponseEntity getAll(@PathVariable Long refId) {
         return new ResponseEntity<>(service.getAll(refId), HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/{chapterId}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable Long refId, @PathVariable Long chapterId, @RequestBody ChapterDTO chapterDTO) {
+        return new ResponseEntity<>(service.update(refId, chapterId, chapterDTO), HttpStatus.ACCEPTED);
+    }
 }

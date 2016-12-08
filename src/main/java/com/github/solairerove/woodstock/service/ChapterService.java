@@ -7,4 +7,6 @@ import com.github.solairerove.woodstock.service.common.GenericService;
 public interface ChapterService extends GenericService<Chapter> {
 
     Chapter create(Long refId, ChapterDTO chapterDTO);
+
+    Chapter update(Long refId, Long chapterId, ChapterDTO chapterDTO);
 }
