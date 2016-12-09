@@ -2,11 +2,14 @@ package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Chapter;
 import com.github.solairerove.woodstock.dto.ChapterDTO;
-import com.github.solairerove.woodstock.service.common.GenericService;
 
-public interface ChapterService extends GenericService<Chapter> {
+public interface ChapterService {
 
     Chapter create(Long refId, ChapterDTO chapterDTO);
+
+    Chapter get(Long refId, Long chapterId);
+
+    Iterable<Chapter> getAll(Long refId);
 
     Chapter update(Long refId, Long chapterId, ChapterDTO chapterDTO);
 }

@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.service.common;
+package com.github.solairerove.woodstock.service.mapper;
 
 import com.github.solairerove.woodstock.domain.Chapter;
 import com.github.solairerove.woodstock.domain.Module;

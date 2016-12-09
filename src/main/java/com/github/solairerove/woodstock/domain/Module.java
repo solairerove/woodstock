@@ -1,14 +1,20 @@
 package com.github.solairerove.woodstock.domain;
 
-import com.github.solairerove.woodstock.domain.base.BaseEntity;
+import lombok.Data;
+import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @NodeEntity(label = "Module")
-public class Module extends BaseEntity {
+public class Module implements Serializable {
+
+    @GraphId
+    private Long id;
 
     private String name;
 
@@ -22,34 +28,6 @@ public class Module extends BaseEntity {
     @Relationship(type = "HAS_IN", direction = Relationship.INCOMING)
     private List<Task> tasks;
 
-    public Module() {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<Reference> getReferences() {
         if (references == null) {
             references = new ArrayList<>();
@@ -58,19 +36,11 @@ public class Module extends BaseEntity {
         return references;
     }
 
-    public void setReferences(List<Reference> references) {
-        this.references = references;
-    }
-
     public List<Task> getTasks() {
         if (tasks == null) {
             tasks = new ArrayList<>();
         }
 
         return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
     }
 }

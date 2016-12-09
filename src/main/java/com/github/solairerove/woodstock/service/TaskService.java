@@ -2,11 +2,14 @@ package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Task;
 import com.github.solairerove.woodstock.dto.TaskDTO;
-import com.github.solairerove.woodstock.service.common.GenericService;
 
-public interface TaskService extends GenericService<Task> {
+public interface TaskService {
 
     Task create(Long moduleId, TaskDTO taskDTO);
+
+    Task get(Long moduleId, Long taskId);
+
+    Iterable<Task> getAll(Long moduleId);
 
     Task update(Long moduleId, Long taskId, TaskDTO taskDTO);
 

@@ -1,11 +1,11 @@
 package com.github.solairerove.woodstock.repository;
 
 import com.github.solairerove.woodstock.domain.Chapter;
-import com.github.solairerove.woodstock.repository.common.GenericRepository;
 import org.springframework.data.neo4j.annotation.Query;
+import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface ChapterRepository extends GenericRepository<Chapter> {
+public interface ChapterRepository extends GraphRepository<Chapter> {
 
     @Query("MATCH (ref:Reference)" +
             "WHERE id(ref)={refId}" +

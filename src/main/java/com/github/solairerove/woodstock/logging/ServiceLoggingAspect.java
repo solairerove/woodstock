@@ -15,12 +15,6 @@ public class ServiceLoggingAspect {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceLoggingAspect.class);
 
-    @Before("execution(* com.github.solairerove.woodstock.service.common.GenericService.*(..)))")
-    public void genericServiceLog(JoinPoint joinPoint) {
-        LOGGER.info("Generic service: " + joinPoint.getSignature().getName() +
-                Arrays.toString(joinPoint.getArgs()));
-    }
-
     @Before("execution(* com.github.solairerove.woodstock.service.UnitService.*(..)))")
     public void unitServiceLog(JoinPoint joinPoint) {
         LOGGER.info("Unit service: " + joinPoint.getSignature().getName() +

@@ -7,7 +7,7 @@ import com.github.solairerove.woodstock.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToUnit;
+import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToUnit;
 
 @Service
 public class UnitServiceImpl implements UnitService {

@@ -1,14 +1,20 @@
 package com.github.solairerove.woodstock.domain;
 
-import com.github.solairerove.woodstock.domain.base.BaseEntity;
+import lombok.Data;
+import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @NodeEntity(label = "Reference")
-public class Reference extends BaseEntity {
+public class Reference implements Serializable {
+
+    @GraphId
+    private Long id;
 
     private String title;
 
@@ -16,22 +22,6 @@ public class Reference extends BaseEntity {
 
     @Relationship(type = "HAS_CHAPTER", direction = Relationship.OUTGOING)
     private List<Chapter> chapters;
-
-    public Reference() {
-
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getVersion() {
-        return version;
-    }
 
     public void setVersion(String version) {
         this.version = version;
@@ -43,9 +33,5 @@ public class Reference extends BaseEntity {
         }
 
         return chapters;
-    }
-
-    public void setChapters(List<Chapter> chapters) {
-        this.chapters = chapters;
     }
 }

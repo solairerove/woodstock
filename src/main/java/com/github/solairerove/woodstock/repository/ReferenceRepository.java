@@ -1,11 +1,11 @@
 package com.github.solairerove.woodstock.repository;
 
 import com.github.solairerove.woodstock.domain.Reference;
-import com.github.solairerove.woodstock.repository.common.GenericRepository;
 import org.springframework.data.neo4j.annotation.Query;
+import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface ReferenceRepository extends GenericRepository<Reference> {
+public interface ReferenceRepository extends GraphRepository<Reference> {
 
     @Query("MATCH (module:Module)-[:HAS_REFERENCE]->(ref) " +
             "WHERE id(module)={moduleId} AND id(ref)={refId} " +

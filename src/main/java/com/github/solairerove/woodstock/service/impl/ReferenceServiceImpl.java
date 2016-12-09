@@ -6,21 +6,22 @@ import com.github.solairerove.woodstock.dto.ReferenceDTO;
 import com.github.solairerove.woodstock.repository.ModuleRepository;
 import com.github.solairerove.woodstock.repository.ReferenceRepository;
 import com.github.solairerove.woodstock.service.ReferenceService;
-import com.github.solairerove.woodstock.service.common.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.github.solairerove.woodstock.service.common.ModelMapper.convertToReference;
+import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToReference;
 
 @Service
-public class ReferenceServiceImpl extends GenericServiceImpl<Reference, ReferenceRepository> implements ReferenceService {
+public class ReferenceServiceImpl implements ReferenceService {
 
     private final ModuleRepository moduleRepository;
 
+    private final ReferenceRepository referenceRepository;
+
     @Autowired
-    public ReferenceServiceImpl(ReferenceRepository repository, ModuleRepository moduleRepository) {
-        super(repository);
+    public ReferenceServiceImpl(ModuleRepository moduleRepository, ReferenceRepository referenceRepository) {
         this.moduleRepository = moduleRepository;
+        this.referenceRepository = referenceRepository;
     }
 
     @Override
@@ -35,11 +36,21 @@ public class ReferenceServiceImpl extends GenericServiceImpl<Reference, Referenc
     }
 
     @Override
+    public Reference get(Long moduleId, Long refId) {
+        return referenceRepository.getOneThatHasInNode(moduleId, refId);
+    }
+
+    @Override
+    public Iterable<Reference> getAll(Long moduleId) {
+        return referenceRepository.getAllThatHasInNode(moduleId);
+    }
+
+    @Override
     public Reference update(Long moduleId, Long refId, ReferenceDTO referenceDTO) {
-        Reference reference = repository.getOneThatHasInNode(moduleId, refId);
+        Reference reference = referenceRepository.getOneThatHasInNode(moduleId, refId);
         reference.setTitle(referenceDTO.getTitle());
         reference.setVersion(referenceDTO.getVersion());
 
-        return repository.save(reference);
+        return referenceRepository.save(reference);
     }
 }
