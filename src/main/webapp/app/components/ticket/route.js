@@ -18,4 +18,8 @@ woodstock.config(['$locationProvider', '$routeProvider', function ($locationProv
             templateUrl: '/app/components/ticket/ticket-edit.html',
             controller: 'TicketEditController'
         })
+        .when('/tasks/:taskId/tickets/:ticketId/delete', {
+            templateUrl: '/app/components/ticket/ticket-delete.html',
+            controller: 'TicketDeleteController'
+        })
 }]);

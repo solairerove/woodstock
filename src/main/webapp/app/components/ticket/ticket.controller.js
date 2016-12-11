@@ -34,4 +34,14 @@ woodstock.controller('TicketListController', ['$scope', '$location', '$routePara
             });
         }
     }
+]).controller('TicketDeleteController', ['$scope', '$location', '$routeParams', 'TicketService',
+    function ($scope, $location, $routeParams, TicketService) {
+        $scope.ticket = new TicketService();
+
+        $scope.deleteTicket = function () {
+            $scope.ticket.$delete({taskId: $routeParams.taskId, ticketId: $routeParams.ticketId}, function () {
+                $location.path('/tasks/' + $routeParams.taskId + '/tickets');
+            });
+        }
+    }
 ]);
