@@ -16,4 +16,9 @@ public interface ReferenceRepository extends GraphRepository<Reference> {
             "WHERE id(module)={moduleId} " +
             "RETURN refs")
     Iterable<Reference> getAllThatHasInNode(@Param("moduleId") Long moduleId);
+
+    @Query("MATCH (n1)<-[r1:HAS_IN]-(n2)<-[r2:HAS_IN]-(n3) " +
+            "WHERE id(n1)={moduleId} AND id(n2)={refId} " +
+            "DELETE r2, n3, r1, n2")
+    void deleteOneThatHasInNode(@Param("moduleId") Long moduleId, @Param("refId") Long refId);
 }

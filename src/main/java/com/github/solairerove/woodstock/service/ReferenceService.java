@@ -12,4 +12,6 @@ public interface ReferenceService {
     Iterable<Reference> getAll(Long moduleId);
 
     Reference update(Long moduleId, Long refId, ReferenceDTO referenceDTO);
+
+    Reference delete(Long moduleId, Long refId);
 }

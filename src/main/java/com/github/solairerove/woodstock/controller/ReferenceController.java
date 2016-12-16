@@ -42,4 +42,9 @@ public class ReferenceController {
     public ResponseEntity update(@PathVariable Long moduleId, @PathVariable Long refId, @RequestBody ReferenceDTO referenceDTO) {
         return new ResponseEntity<>(service.update(moduleId, refId, referenceDTO), HttpStatus.ACCEPTED);
     }
+
+    @RequestMapping(path = "/{refId}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable Long moduleId, @PathVariable Long refId) {
+        return new ResponseEntity<>(service.delete(moduleId, refId), HttpStatus.ACCEPTED);
+    }
 }
