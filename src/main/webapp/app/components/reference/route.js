@@ -18,4 +18,8 @@ woodstock.config(['$locationProvider', '$routeProvider', function ($locationProv
             templateUrl: '/app/components/reference/reference-edit.html',
             controller: 'ReferenceEditController'
         })
+        .when('/modules/:moduleId/references/:refId/delete', {
+            templateUrl: '/app/components/reference/reference-delete.html',
+            controller: 'ReferenceDeleteController'
+        })
 }]);

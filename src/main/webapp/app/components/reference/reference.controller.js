@@ -34,4 +34,14 @@ woodstock.controller('ReferenceCreateController', ['$scope', '$location', '$rout
             })
         }
     }
+]).controller('ReferenceDeleteController', ['$scope', '$location', '$routeParams', 'ReferenceService',
+    function ($scope, $location, $routeParams, ReferenceService) {
+        $scope.ref = new ReferenceService();
+
+        $scope.deleteReference = function () {
+            $scope.ref.$delete({moduleId: $routeParams.moduleId, refId: $routeParams.refId}, function () {
+                $location.path('/modules/' + $routeParams.moduleId + '/references')
+            })
+        }
+    }
 ]);

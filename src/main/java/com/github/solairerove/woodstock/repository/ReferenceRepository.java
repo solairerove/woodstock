@@ -17,8 +17,8 @@ public interface ReferenceRepository extends GraphRepository<Reference> {
             "RETURN refs")
     Iterable<Reference> getAllThatHasInNode(@Param("moduleId") Long moduleId);
 
-    @Query("MATCH (n1)<-[r1:HAS_IN]-(n2)<-[r2:HAS_IN]-(n3) " +
-            "WHERE id(n1)={moduleId} AND id(n2)={refId} " +
-            "DELETE r2, n3, r1, n2")
+    @Query("MATCH (module:Module)-[r1:HAS_REFERENCE]->(ref)-[r2:HAS_CHAPTER]->(chapters)" +
+            "WHERE id(module)={moduleId} AND id(ref)={refId} " +
+            "DELETE r2, chapters, r1, ref")
     void deleteOneThatHasInNode(@Param("moduleId") Long moduleId, @Param("refId") Long refId);
 }
