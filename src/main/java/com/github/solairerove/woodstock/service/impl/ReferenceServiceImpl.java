@@ -57,8 +57,7 @@ public class ReferenceServiceImpl implements ReferenceService {
     @Override
     public Reference delete(Long moduleId, Long refId) {
         Reference reference = referenceRepository.getOneThatHasInNode(moduleId, refId);
-        referenceRepository.deleteOneThatHasInNode(moduleId, refId);
-
+        referenceRepository.delete(refId);
         return reference;
     }
 }
