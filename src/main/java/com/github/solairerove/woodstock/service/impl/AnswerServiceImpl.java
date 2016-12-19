@@ -1,6 +1,7 @@
 package com.github.solairerove.woodstock.service.impl;
 
 import com.github.solairerove.woodstock.domain.Answer;
+import com.github.solairerove.woodstock.dto.AnswerDTO;
 import com.github.solairerove.woodstock.repository.AnswerRepository;
 import com.github.solairerove.woodstock.repository.QuestionRepository;
 import com.github.solairerove.woodstock.service.AnswerService;
@@ -23,8 +24,8 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public Answer create(Long questionId) {
-        return null;
+    public Answer create(Long questionId, AnswerDTO answerDTO) {
+        return answerRepository.create(questionId, answerDTO.getAnswer(), answerDTO.isCorrect(), answerDTO.isEnable());
     }
 
     @Override

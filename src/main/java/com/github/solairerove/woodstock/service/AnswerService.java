@@ -1,12 +1,13 @@
 package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Answer;
+import com.github.solairerove.woodstock.dto.AnswerDTO;
 
 import java.util.List;
 
 public interface AnswerService {
 
-    Answer create(Long questionId);
+    Answer create(Long questionId, AnswerDTO answerDTO);
 
     Answer get(Long questionId, Long answerId);
 

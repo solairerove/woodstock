@@ -9,6 +9,7 @@ import com.github.solairerove.woodstock.dto.ProfileDTO;
 import com.github.solairerove.woodstock.dto.TaskDTO;
 import com.github.solairerove.woodstock.dto.TicketDTO;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -18,12 +19,16 @@ import java.util.List;
 @Component
 public class EntityUtils {
 
-    public static final int NUMBER_OF_ENTITIES_IN_COLLECTION = 10;
+    public static final int NUMBER_OF_ENTITIES_IN_COLLECTION = 15;
 
-    private static final int MAX_STRING_LENGTH = 25;
+    public static final int MAX_STRING_LENGTH = 25;
 
     public static String getRandomString() {
         return RandomStringUtils.random(MAX_STRING_LENGTH, true, true);
+    }
+
+    public static boolean getRandomBoolean() {
+        return RandomUtils.nextBoolean();
     }
 
     public static Profile generateProfile() {
@@ -111,7 +116,7 @@ public class EntityUtils {
 
     public static Iterable<Module> generateModuleCollection() {
         Collection<Module> modules = new ArrayList<>();
-        for(int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
+        for (int i = 0; i < NUMBER_OF_ENTITIES_IN_COLLECTION; i++) {
             modules.add(generateModule());
         }
 
