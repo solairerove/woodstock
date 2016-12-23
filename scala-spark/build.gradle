@@ -1,16 +1,6 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
-    }
-}
-
 apply plugin: 'scala'
 apply plugin: 'idea'
 apply plugin: 'application'
-apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'com.github.solairerove.woodstock'
 version '1.0-SNAPSHOT'
@@ -21,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.scala-lang:scala-library:2.12.1'
+    compile 'org.scala-lang:scala-compiler:2.12.1'
 }
 
 mainClassName = 'com.github.solairerove.woodstock.Application'
