@@ -41,9 +41,3 @@ jar {
         }
     }
 }
-
-//task run(type: JavaExec, dependsOn: classes) {
-//    main = 'com.github.solairerove.woodstock.Application'
-//    classpath sourceSets.main.runtimeClasspath
-//    classpath configurations.runtime
-//}
