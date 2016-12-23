@@ -1,0 +1,29 @@
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+group 'com.github.solairerove.woodstock'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.12.1'
+}
+
+mainClassName = 'com.github.solairerove.woodstock.Application'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.github.solairerove.woodstock.Application'
+    }
+}
+
+//task run(type: JavaExec, dependsOn: classes) {
+//    main = 'com.github.solairerove.woodstock.Application'
+//    classpath sourceSets.main.runtimeClasspath
+//    classpath configurations.runtime
+//}
