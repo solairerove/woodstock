@@ -1,6 +1,16 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+    }
+}
+
 apply plugin: 'scala'
 apply plugin: 'idea'
 apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'com.github.solairerove.woodstock'
 version '1.0-SNAPSHOT'
@@ -17,8 +27,18 @@ dependencies {
 mainClassName = 'com.github.solairerove.woodstock.Application'
 
 jar {
+
     manifest {
         attributes 'Main-Class': 'com.github.solairerove.woodstock.Application'
+    }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
     }
 }
 
