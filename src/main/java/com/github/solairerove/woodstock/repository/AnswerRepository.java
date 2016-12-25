@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface AnswerRepository extends GraphRepository<Answer> {
 
-    @Query("OPTIONAL MATCH (question:Question) " +
+    @Query("OPTIONAL MATCH (question:Question)" +
             "WHERE id(question)={questionId}" +
             "CREATE (question)-[:HAS_ANSWER]->(answer:Answer {answer:{answer}, correct:{correct}, enable:{enable}})" +
             "RETURN answer")
@@ -15,4 +15,9 @@ public interface AnswerRepository extends GraphRepository<Answer> {
                   @Param("answer") String answer,
                   @Param("correct") boolean correct,
                   @Param("enable") boolean enable);
+
+    @Query("OPTIONAL MATCH (question:Question)-[:HAS_ANSWER]->(answer)" +
+            "WHERE id(question)={questionId} and id(answer)={answerId}" +
+            "RETURN answer")
+    Answer get(@Param("questionId") Long questionId, @Param("answerId") Long answerId);
 }

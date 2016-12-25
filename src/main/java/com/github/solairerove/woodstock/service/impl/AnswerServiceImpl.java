@@ -30,7 +30,7 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public Answer get(Long questionId, Long answerId) {
-        return null;
+        return answerRepository.get(questionId, answerId);
     }
 
     @Override

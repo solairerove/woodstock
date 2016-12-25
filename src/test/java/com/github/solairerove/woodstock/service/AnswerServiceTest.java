@@ -1,5 +1,6 @@
 package com.github.solairerove.woodstock.service;
 
+import com.github.solairerove.woodstock.domain.Answer;
 import com.github.solairerove.woodstock.domain.Question;
 import com.github.solairerove.woodstock.dto.AnswerDTO;
 import com.github.solairerove.woodstock.repository.AnswerRepository;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static com.github.solairerove.woodstock.utils.AnswerGenerator.generateAnswer;
 import static com.github.solairerove.woodstock.utils.AnswerGenerator.generateAnswerDTO;
 import static com.github.solairerove.woodstock.utils.QuestionGenerator.generateQuestion;
 import static org.junit.Assert.assertEquals;
@@ -48,5 +50,17 @@ public class AnswerServiceTest {
         assertEquals(answerDTO.isCorrect(), questionRepository.findOne(questionId).getAnswers().get(0).isCorrect());
         assertEquals(answerDTO.isEnable(), questionRepository.findOne(questionId).getAnswers().get(0).isEnable());
         assertEquals(answerDTO.getAnswer(), answerRepository.findOne(answerId).getAnswer());
+    }
+
+    @Test
+    public void getAnswerTest() {
+        Question savedQuestion = generateQuestion();
+        Long questionId = questionRepository.save(savedQuestion).getId();
+
+        Answer savedAnswer = generateAnswer();
+        questionRepository.findOne(questionId).getAnswers().add(savedAnswer);
+        Long answerId = savedAnswer.getId();
+
+        assertEquals(savedAnswer, answerService.get(questionId, answerId));
     }
 }
