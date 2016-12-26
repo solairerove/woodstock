@@ -64,9 +64,9 @@ public class TicketServiceTest {
         Ticket ticket = generateTicket();
 
         task.getTickets().add(ticket);
-        taskRepository.save(task).getId();
+        Long taskId = taskRepository.save(task).getId();
 
-        assertEquals(ticket, service.get(task.getId(), ticket.getId()));
+        assertEquals(ticket, service.get(taskId, ticket.getId()));
     }
 
     @Test
@@ -77,10 +77,10 @@ public class TicketServiceTest {
         task.setTickets(tickets);
         taskRepository.save(task);
 
-        sort(tickets, ((o1, o2) -> o2.getId().compareTo(o1.getId())));
+        tickets.sort(((o1, o2) -> o2.getId().compareTo(o1.getId())));
 
         List<Ticket> result = (List<Ticket>) service.getAll(task.getId());
-        sort(result, (o1, o2) -> o2.getId().compareTo(o1.getId()));
+        result.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
 
         assertEquals(tickets, result);
     }
