@@ -54,11 +54,11 @@ public class AnswerServiceTest {
 
     @Test
     public void getAnswerTest() {
-        Question savedQuestion = generateQuestion();
-        Long questionId = questionRepository.save(savedQuestion).getId();
-
         Answer savedAnswer = generateAnswer();
-        questionRepository.findOne(questionId).getAnswers().add(savedAnswer);
+        Question savedQuestion = generateQuestion();
+
+        savedQuestion.getAnswers().add(savedAnswer);
+        Long questionId = questionRepository.save(savedQuestion).getId();
         Long answerId = savedAnswer.getId();
 
         assertEquals(savedAnswer, answerService.get(questionId, answerId));
