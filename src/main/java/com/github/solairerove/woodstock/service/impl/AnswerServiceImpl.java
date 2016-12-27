@@ -39,8 +39,8 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public Answer update(Long questionId, Long answerId) {
-        return null;
+    public Answer update(Long questionId, Long answerId, AnswerDTO answerDTO) {
+        return answerRepository.update(questionId, answerId, answerDTO.getAnswer(), answerDTO.isCorrect(), answerDTO.isEnable());
     }
 
     @Override

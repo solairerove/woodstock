@@ -13,7 +13,7 @@ public interface AnswerService {
 
     List<Answer> getAll(Long questionId);
 
-    Answer update(Long questionId, Long answerId);
+    Answer update(Long questionId, Long answerId, AnswerDTO answerDTO);
 
     Long delete(Long questionId, Long answerId);
 }

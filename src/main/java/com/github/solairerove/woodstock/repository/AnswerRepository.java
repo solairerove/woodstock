@@ -13,11 +13,11 @@ public interface AnswerRepository extends GraphRepository<Answer> {
             "WHERE id(question)={questionId}" +
             "CREATE (question)-[:HAS_ANSWER]->(answer:Answer {answer:{answer}, correct:{correct}, enable:{enable}})" +
             "RETURN answer")
-    Answer create(@Param("questionId") Long questionId, @Param("answer") String answer,
-                  @Param("correct") boolean correct, @Param("enable") boolean enable);
+    Answer create(@Param("questionId") Long questionId,
+                  @Param("answer") String answer, @Param("correct") boolean correct, @Param("enable") boolean enable);
 
     @Query("OPTIONAL MATCH (question:Question)-[:HAS_ANSWER]->(answer)" +
-            "WHERE id(question)={questionId} and id(answer)={answerId}" +
+            "WHERE id(question)={questionId} AND id(answer)={answerId}" +
             "RETURN answer")
     Answer get(@Param("questionId") Long questionId, @Param("answerId") Long answerId);
 
@@ -25,4 +25,11 @@ public interface AnswerRepository extends GraphRepository<Answer> {
             "WHERE id(question)={questionId}" +
             "RETURN answers")
     List<Answer> getAll(@Param("questionId") Long questionId);
+
+    @Query("OPTIONAL MATCH (question:Question)-[:HAS_ANSWER]->(answer:Answer)" +
+            "WHERE id(question)={questionId} AND id(answer)={answerId}" +
+            "SET answer+={answer:{answer}, correct:{correct}, enable:{enable}}" +
+            "RETURN answer")
+    Answer update(@Param("questionId") Long questionId, @Param("answerId") Long answerId,
+                  @Param("answer") String answer, @Param("correct") boolean correct, @Param("enable") boolean enable);
 }

@@ -84,4 +84,19 @@ public class AnswerServiceTest {
 
         assertEquals(answers, result);
      }
+
+     @Test
+     public void updateAnswerTest() {
+        Answer savedAnswer = generateAnswer();
+        Question savedQuestion = generateQuestion();
+
+        savedQuestion.getAnswers().add(savedAnswer);
+        Long questionId = questionRepository.save(savedQuestion).getId();
+        Long answerId = savedAnswer.getId();
+
+        AnswerDTO answerDTO = generateAnswerDTO();
+        Answer updatedAnswer = answerService.update(questionId, answerId, answerDTO);
+
+        assertEquals(answerDTO.getAnswer(), updatedAnswer.getAnswer());
+     }
 }
