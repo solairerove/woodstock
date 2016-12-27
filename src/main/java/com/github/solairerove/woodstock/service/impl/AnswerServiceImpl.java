@@ -35,7 +35,7 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public List<Answer> getAll(Long questionId) {
-        return null;
+        return answerRepository.getAll(questionId);
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.github.solairerove.woodstock.domain.Question;
 import com.github.solairerove.woodstock.dto.AnswerDTO;
 import com.github.solairerove.woodstock.repository.AnswerRepository;
 import com.github.solairerove.woodstock.repository.QuestionRepository;
+import com.github.solairerove.woodstock.utils.QuestionGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Collections;
+import java.util.List;
+
 import static com.github.solairerove.woodstock.utils.AnswerGenerator.generateAnswer;
+import static com.github.solairerove.woodstock.utils.AnswerGenerator.generateAnswerCollection;
 import static com.github.solairerove.woodstock.utils.AnswerGenerator.generateAnswerDTO;
 import static com.github.solairerove.woodstock.utils.QuestionGenerator.generateQuestion;
 import static org.junit.Assert.assertEquals;
@@ -63,4 +68,20 @@ public class AnswerServiceTest {
 
         assertEquals(savedAnswer, answerService.get(questionId, answerId));
     }
+
+    @Test
+    public void getAllAnswersTest() {
+        Question question = generateQuestion();
+        List<Answer> answers = generateAnswerCollection();
+
+        question.setAnswers(answers);
+        Long questionId = questionRepository.save(question).getId();
+
+        answers.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
+
+        List<Answer> result = answerService.getAll(questionId);
+        result.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
+
+        assertEquals(answers, result);
+     }
 }
