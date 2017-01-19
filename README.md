@@ -10,15 +10,6 @@ ___
 
 ___
 
-#### Import to neo4j:
-
-* `pip install py2neo`
-* `cp /usr/lib/python2.7/py2neo /usr/lib/python3.5/` - if this shit wan't install
-* `alias python=python3`
-* `python main.py`
-
-___
-
 #### Jacoco test coverage:
 
 * `mvn clean test jacoco:report -Ptest`
