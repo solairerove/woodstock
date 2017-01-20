@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Store} from '@ngrx/store';
+import {NgRedux, select} from 'ng2-redux';
+import {Observable} from 'rxjs/Observable';
 
-import {INCREMENT, DECREMENT, RESET} from './counter.reducer';
-
-interface AppState {
-  counter: number;
-}
+import {CounterActions} from './counter.actions';
+import {IAppState} from '../../store';
 
 @Component({
   selector: 'app-counter',
@@ -14,24 +11,12 @@ interface AppState {
 })
 export class CounterComponent implements OnInit {
 
-  counter: Observable<number>;
+  @select() counter$: Observable<number>;
 
-  constructor(private store: Store<AppState>) {
-    this.counter = store.select('counter');
-  }
+    constructor(public actions: CounterActions,
+                private ngRedux: NgRedux<IAppState>) {
+    }
 
-  ngOnInit() {
-  }
-
-  increment() {
-    this.store.dispatch({type: INCREMENT});
-  }
-
-  decrement() {
-    this.store.dispatch({type: DECREMENT});
-  }
-
-  reset() {
-    this.store.dispatch({type: RESET});
-  }
+    ngOnInit() {
+    }
 }

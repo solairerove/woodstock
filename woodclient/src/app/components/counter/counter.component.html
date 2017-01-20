@@ -1,8 +1,5 @@
-<p>
-  counter works!
-</p>
-
-<button (click)="increment()">Increment</button>
-<div>Current Count: {{counter | async}}</div>
-<button (click)="decrement()">Decrement</button>
-<button (click)="reset()">Reset Counter</button>
+<button (click)="actions.increment()" class="btn btn-default">Increment</button>
+<div>Current Count: {{counter$ | async}}</div>
+<button (click)="actions.decrement()" class="btn btn-default">Decrement</button>
+<button (click)="actions.randomize()" class="btn btn-default">Randomize</button>
+<button (click)="actions.reset()" class="btn btn-default">Reset</button>
