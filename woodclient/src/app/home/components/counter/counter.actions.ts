@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {NgRedux} from 'ng2-redux';
-import {RandomNumberService} from '../../service/random-number.service';
-import {IAppState} from '../../store';
+import { Injectable } from '@angular/core';
+import { NgRedux } from 'ng2-redux';
+import { RandomNumberService } from '../../service/random-number.service';
+import { IAppState } from '../../store';
 
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
@@ -12,15 +12,15 @@ export const RESET = 'RESET';
 export class CounterActions {
 
     constructor(private ngRedux: NgRedux<IAppState>,
-                private randomNumberService: RandomNumberService) {
+        private randomNumberService: RandomNumberService) {
     }
 
     increment(): void {
-        this.ngRedux.dispatch({type: INCREMENT});
+        this.ngRedux.dispatch({ type: INCREMENT });
     }
 
     decrement(): void {
-        this.ngRedux.dispatch({type: DECREMENT});
+        this.ngRedux.dispatch({ type: DECREMENT });
     }
 
     randomize(): void {
@@ -31,6 +31,6 @@ export class CounterActions {
     }
 
     reset(): void {
-        this.ngRedux.dispatch({type: RESET});
+        this.ngRedux.dispatch({ type: RESET });
     }
 }

@@ -1,5 +1,5 @@
-import {combineReducers, Reducer} from 'redux';
-import {counterReducer} from './counter.reducer';
+import { combineReducers, Reducer } from 'redux';
+import { counterReducer } from './counter.reducer';
 
 export class IAppState {
     counter?: number;

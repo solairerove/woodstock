@@ -1,4 +1,4 @@
-import {INCREMENT, DECREMENT, RANDOMIZE, RESET} from '../components/counter/counter.actions';
+import { INCREMENT, DECREMENT, RANDOMIZE, RESET } from '../components/counter/counter.actions';
 
 const INITIAL_STATE = 0;
 

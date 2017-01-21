@@ -2,28 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {NgReduxModule} from 'ng2-redux';
 
 import { AppComponent } from './app.component';
-import { CounterActions } from './components/counter/counter.actions';
-import { CounterComponent } from './components/counter/counter.component';
-import { RandomNumberService } from './service/random-number.service';
+import { AppRoutingModule } from './app.routes';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CounterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgReduxModule
+
+    AppRoutingModule,
+    HomeModule
   ],
-  providers: [
-    CounterActions,
-    RandomNumberService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
