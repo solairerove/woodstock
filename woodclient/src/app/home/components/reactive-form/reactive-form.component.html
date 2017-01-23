@@ -1,0 +1,19 @@
+<p>
+  reactive-form works!
+</p>
+<section>
+  <h1>Header</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <label>First Name:</label>
+      <input type="text" formControlName="firstName">
+    </p>
+    <p>
+      <label>Password</label>
+      <input type="password" formControlName="password">
+    </p>
+    <p>
+      <button type="submit" [disabled]="!form.valid">submit</button>
+    </p>
+  </form>
+</section>
