@@ -1,28 +1,31 @@
-<p>
-  reactive-form works!
-</p>
-<section>
-  <h1>Header</h1>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="row">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <label>First Name:</label>
+        <input type="text" formControlName="firstName">
+      </div>
+      <!-- input-field -->
+      <div class="input-field col s6">
+        <label>Password</label>
+        <input type="password" formControlName="password">
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- row -->
     <p>
-      <label>First Name:</label>
-      <input type="text" formControlName="firstName">
+      <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn">submit</button>
     </p>
     <p>
-      <label>Password</label>
-      <input type="password" formControlName="password">
+      <button (click)="partialUpdate()" class="btn">Partial Update</button>
     </p>
     <p>
-      <button type="submit" [disabled]="!form.valid">submit</button>
+      <button (click)="fullUpdate()" class="btn">Full Update</button>
     </p>
     <p>
-      <button (click)="partialUpdate()">Partial Update</button>
-    </p>
-    <p>
-      <button (click)="fullUpdate()">Full Update</button>
-    </p>
-    <p>
-      <button (click)="reset()">Cancel</button>
+      <button (click)="reset()" class="btn">Cancel</button>
     </p>
   </form>
-</section>
+  <!-- form col s12 -->
+</div>
+<!-- row -->

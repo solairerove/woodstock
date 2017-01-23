@@ -1,12 +1,10 @@
-<div>
-  <ul>
-    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-  </ul>
-</div>
-<div>
-  <ul>
-    <li><a routerLink="/home/counter" routerLinkActive="active">counter</a></li>
-    <li><a routerLink="/home/reactive-form" routerLinkActive="active">reactive-form</a></li>
-  </ul>
-</div>
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/home" routerLinkActive="active" class="brand-logo">Woodstock</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a routerLink="/home/counter" routerLinkActive="active">counter</a></li>
+      <li><a routerLink="/home/reactive-form" routerLinkActive="active">reactive-form</a></li>
+    </ul>
+  </div>
+</nav>
 <router-outlet></router-outlet>
