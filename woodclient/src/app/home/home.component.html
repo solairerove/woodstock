@@ -1,7 +1,12 @@
-<div class="row">
-  <ul class="nav nav-pills">
+<div>
+  <ul>
     <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
   </ul>
 </div>
-<app-counter></app-counter>
-<app-reactive-form></app-reactive-form>
+<div>
+  <ul>
+    <li><a routerLink="/home/counter" routerLinkActive="active">counter</a></li>
+    <li><a routerLink="/home/reactive-form" routerLinkActive="active">reactive-form</a></li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
