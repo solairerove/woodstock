@@ -15,5 +15,14 @@
     <p>
       <button type="submit" [disabled]="!form.valid">submit</button>
     </p>
+    <p>
+      <button (click)="partialUpdate()">Partial Update</button>
+    </p>
+    <p>
+      <button (click)="fullUpdate()">Full Update</button>
+    </p>
+    <p>
+      <button (click)="reset()">Cancel</button>
+    </p>
   </form>
 </section>

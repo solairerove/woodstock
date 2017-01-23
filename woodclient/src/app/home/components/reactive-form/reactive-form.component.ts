@@ -10,20 +10,29 @@ export class ReactiveFormComponent implements OnInit {
 
   form: FormGroup;
 
-  firstName = new FormControl('', Validators.required);
+  constructor(private fb: FormBuilder) {
+  }
 
-  constructor(fb: FormBuilder) {
-    this.form = fb.group({
-      'firstName': this.firstName,
+  ngOnInit() {
+    this.form = this.fb.group({
+      'firstName': ['', Validators.required],
       'password': ['', Validators.required]
     });
   }
 
-  ngOnInit() {
+  onSubmit() {
+    console.log(this.form.value);
   }
 
-  onSubmit() {
-    console.log(this.form);
-    console.log(this.form.value);
+  fullUpdate() {
+    this.form.patchValue({ firstName: 'Space', password: 'Monlkey' });
+  }
+
+  partialUpdate() {
+    this.form.patchValue({ firstName: 'Space' });
+  }
+
+  reset() {
+    this.form.reset();
   }
 }
