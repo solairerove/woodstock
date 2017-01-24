@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
-import { RandomNumberService } from '../../service/random-number.service';
-import { IAppState } from '../../store';
+import {Injectable} from '@angular/core';
+import {NgRedux} from 'ng2-redux';
+import {RandomNumberService} from '../../service/random-number.service';
 
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
@@ -11,26 +10,26 @@ export const RESET = 'RESET';
 @Injectable()
 export class CounterActions {
 
-    constructor(private ngRedux: NgRedux<IAppState>,
-        private randomNumberService: RandomNumberService) {
-    }
+  constructor(private ngRedux: NgRedux<any>,
+              private randomNumberService: RandomNumberService) {
+  }
 
-    increment(): void {
-        this.ngRedux.dispatch({ type: INCREMENT });
-    }
+  increment(): void {
+    this.ngRedux.dispatch({type: INCREMENT});
+  }
 
-    decrement(): void {
-        this.ngRedux.dispatch({ type: DECREMENT });
-    }
+  decrement(): void {
+    this.ngRedux.dispatch({type: DECREMENT});
+  }
 
-    randomize(): void {
-        this.ngRedux.dispatch({
-            type: RANDOMIZE,
-            payload: this.randomNumberService.pick()
-        });
-    }
+  randomize(): void {
+    this.ngRedux.dispatch({
+      type: RANDOMIZE,
+      payload: this.randomNumberService.pick()
+    });
+  }
 
-    reset(): void {
-        this.ngRedux.dispatch({ type: RESET });
-    }
+  reset(): void {
+    this.ngRedux.dispatch({type: RESET});
+  }
 }

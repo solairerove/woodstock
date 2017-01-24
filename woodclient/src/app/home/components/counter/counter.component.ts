@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import {Component, OnInit} from '@angular/core';
+import {NgRedux} from 'ng2-redux';
+import {Observable} from 'rxjs/Observable';
 
-import { CounterActions } from './counter.actions';
-import { IAppState } from '../../store';
+import {CounterActions} from './counter.actions';
 
 @Component({
   selector: 'app-counter',
@@ -11,12 +10,13 @@ import { IAppState } from '../../store';
 })
 export class CounterComponent implements OnInit {
 
-  @select() counter$: Observable<number>;
+  counter$: Observable<number>;
 
   constructor(public actions: CounterActions,
-    private ngRedux: NgRedux<IAppState>) {
+              private ngRedux: NgRedux<any>) {
   }
 
   ngOnInit() {
+    this.counter$ = this.ngRedux.select('counter');
   }
 }
