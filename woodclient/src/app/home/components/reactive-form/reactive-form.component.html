@@ -13,18 +13,19 @@
       <!-- input-field -->
     </div>
     <!-- row -->
-    <p>
-      <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn">submit</button>
-    </p>
-    <p>
-      <button (click)="partialUpdate()" class="btn">Partial Update</button>
-    </p>
-    <p>
-      <button (click)="fullUpdate()" class="btn">Full Update</button>
-    </p>
-    <p>
-      <button (click)="reset()" class="btn">Cancel</button>
-    </p>
+    <div [hidden]="password.valid || password.untouched">
+      <div>
+        pass valid message
+      </div>
+      <div [hidden]="!password.hasError('required')">
+        pass required message
+      </div>
+    </div>
+    <!-- valid-->
+    <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn">submit</button>
+    <button (click)="partialUpdate()" class="btn">Partial Update</button>
+    <button (click)="fullUpdate()" class="btn">Full Update</button>
+    <button (click)="reset()" class="btn">Cancel</button>
   </form>
   <!-- form col s12 -->
 </div>

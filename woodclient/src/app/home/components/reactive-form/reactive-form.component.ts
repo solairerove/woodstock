@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {FormGroup, Validators, FormBuilder, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -8,16 +8,32 @@ import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 })
 export class ReactiveFormComponent implements OnInit {
 
+  firstName: FormControl;
+  password: FormControl;
+
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private builder: FormBuilder) {
   }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      'firstName': ['', Validators.required],
-      'password': ['', Validators.required]
+    this.initField();
+
+    this.form = this.builder.group({
+      'firstName': this.firstName,
+      'password': this.password
     });
+  }
+
+  private initField() {
+    this.firstName = new FormControl('', [
+      Validators.required,
+      Validators.minLength(5)
+    ]);
+    this.password = new FormControl('', [
+      Validators.required,
+      Validators.minLength(5)
+    ]);
   }
 
   onSubmit() {
@@ -25,7 +41,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   fullUpdate() {
-    this.form.patchValue({firstName: 'Space', password: 'Monlkey'});
+    this.form.patchValue({firstName: 'Space', password: 'Monkey'});
   }
 
   partialUpdate() {
