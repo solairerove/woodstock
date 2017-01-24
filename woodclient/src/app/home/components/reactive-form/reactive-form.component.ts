@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -25,11 +25,11 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   fullUpdate() {
-    this.form.patchValue({ firstName: 'Space', password: 'Monlkey' });
+    this.form.patchValue({firstName: 'Space', password: 'Monlkey'});
   }
 
   partialUpdate() {
-    this.form.patchValue({ firstName: 'Space' });
+    this.form.patchValue({firstName: 'Space'});
   }
 
   reset() {
