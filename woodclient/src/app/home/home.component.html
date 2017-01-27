@@ -1,10 +1,19 @@
-<nav>
-  <div class="nav-wrapper">
-    <a routerLink="/home" routerLinkActive="active" class="brand-logo">Woodstock</a>
+<nav role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">Woodstock</a>
     <ul class="right hide-on-med-and-down">
-      <li><a routerLink="/home/counter" routerLinkActive="active">counter</a></li>
-      <li><a routerLink="/home/reactive-form" routerLinkActive="active">reactive-form</a></li>
+      <li><a routerLink="/home/counter" routerLinkActive="active">Counter</a></li>
+      <li><a routerLink="/home/reactive-form" routerLinkActive="active">Reactive Form</a></li>
     </ul>
+    <!-- ul right -->
+    <ul id="nav-mobile" class="side-nav">
+      <li><a routerLink="/home/counter" routerLinkActive="active">Counter</a></li>
+      <li><a routerLink="/home/reactive-form" routerLinkActive="active">Reactive Form</a></li>
+    </ul>
+    <!-- ul mobile -->
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
   </div>
+  <!-- nav wrapper -->
 </nav>
+<!-- navigation -->
 <router-outlet></router-outlet>

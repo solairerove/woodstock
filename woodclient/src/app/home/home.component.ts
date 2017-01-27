@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 
-import { IAppState, rootReducer } from './store/index';
+import { rootReducer } from './store/index';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ import { IAppState, rootReducer } from './store/index';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private ngRedux: NgRedux<IAppState>) {
+  constructor(private ngRedux: NgRedux<any>) {
     this.ngRedux.configureStore(rootReducer, {}, []);
   }
 
