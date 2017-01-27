@@ -1,22 +1,34 @@
-import {Component, OnInit} from '@angular/core';
-import {NgRedux} from 'ng2-redux';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
-import {CounterActions} from './counter.actions';
+import { INCREMENT, DECREMENT, RESET } from './counter.reducer';
 
 @Component({
   selector: 'app-counter',
-  templateUrl: './counter.component.html'
+  templateUrl: './counter.component.html',
+  styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
 
-  counter$: Observable<number>;
+  counter: Observable<any>;
 
-  constructor(public actions: CounterActions,
-              private ngRedux: NgRedux<any>) {
+  constructor(private store: Store<any>) {
+    this.counter = store.select('counter');
   }
 
   ngOnInit() {
-    this.counter$ = this.ngRedux.select('counter');
+  }
+
+  increment() {
+    this.store.dispatch({ type: INCREMENT });
+  }
+
+  decrement() {
+    this.store.dispatch({ type: DECREMENT });
+  }
+
+  reset() {
+    this.store.dispatch({ type: RESET });
   }
 }

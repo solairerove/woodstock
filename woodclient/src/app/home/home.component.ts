@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
-
-import { rootReducer } from './store/index';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +7,7 @@ import { rootReducer } from './store/index';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private ngRedux: NgRedux<any>) {
-    this.ngRedux.configureStore(rootReducer, {}, []);
+  constructor() {
   }
 
   ngOnInit() {
