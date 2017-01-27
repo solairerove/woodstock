@@ -7,7 +7,7 @@ export const RESET = 'RESET';
 
 const INITIAL_STATE = 0;
 
-export function counterReducer(state = INITIAL_STATE, action: Action) {
+export const counterReducer = (state = INITIAL_STATE, action: Action) => {
     switch (action.type) {
         case INCREMENT:
             return state + 1;
@@ -24,4 +24,4 @@ export function counterReducer(state = INITIAL_STATE, action: Action) {
         default:
             return INITIAL_STATE;
     }
-}
+};

@@ -15,7 +15,7 @@ import { CounterComponent } from './components/counter/counter.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    StoreModule.provideStore({ counter: counterReducer }),
+    StoreModule.provideStore({ counterReducer }),
     HomeRoutingModule
   ],
   declarations: [
