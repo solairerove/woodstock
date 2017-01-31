@@ -19,10 +19,6 @@ public class DomainModelServiceImpl {
     }
 
     public DomainModel create(DomainModelDTO dto) {
-//        DomainModel model = new DomainModel();
-//        model.setFirstField(dto.getFirstField());
-//        model.setLastField(dto.getLastField());
-
         return repository.save(new DomainModel(dto.getFirstField(), dto.getLastField()));
     }
 
