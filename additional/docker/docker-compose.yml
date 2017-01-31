@@ -2,77 +2,85 @@ version: "2"
 
 services:
 
-  db:
-    container_name: postgres-woodstock
-    image: postgres:latest
+  mongodb:
+    container_name: mongo-woodstock
+    image: mongo:latest
     ports:
-      - "5432:5432"
-    networks:
-      - woodnet
+      - "27017:27017"
     environment:
-      - POSTGRES_USER=sonar
-      - POSTGRES_PASSWORD=sonar
-    volumes:
-      - /docker/woodstock/sonar/postgresql:/var/lib/postgresql
-      - /docker/woodstock/sonar/postgresql_data:/var/lib/postgresql/data
-    privileged: true
+      - MONGODB_DATABASE=docker
 
-  sonarqube:
-    depends_on:
-      - db
-    container_name: sonarqube-woodstock
-    image: sonarqube:latest
-    ports:
-      - "9000:9000"
-    networks:
-      - woodnet
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
-    volumes:
-      - /docker/woodstock/sonar/sonarqube_conf:/opt/sonarqube/conf
-      - /docker/woodstock/sonar/sonarqube_data:/opt/sonarqube/data
-      - /docker/woodstock/sonar/sonarqube_extensions:/opt/sonarqube/extensions
-      - /docker/woodstock/sonar/sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-    privileged: true
+#  db:
+#    container_name: postgres-woodstock
+#    image: postgres:latest
+#    ports:
+#      - "5432:5432"
+#    networks:
+#      - woodnet
+#    environment:
+#      - POSTGRES_USER=sonar
+#      - POSTGRES_PASSWORD=sonar
+#    volumes:
+#      - /docker/woodstock/sonar/postgresql:/var/lib/postgresql
+#      - /docker/woodstock/sonar/postgresql_data:/var/lib/postgresql/data
+#    privileged: true
+#
+#  sonarqube:
+#    depends_on:
+#      - db
+#    container_name: sonarqube-woodstock
+#    image: sonarqube:latest
+#    ports:
+#      - "9000:9000"
+#    networks:
+#      - woodnet
+#    environment:
+#      - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
+#    volumes:
+#      - /docker/woodstock/sonar/sonarqube_conf:/opt/sonarqube/conf
+#      - /docker/woodstock/sonar/sonarqube_data:/opt/sonarqube/data
+#      - /docker/woodstock/sonar/sonarqube_extensions:/opt/sonarqube/extensions
+#      - /docker/woodstock/sonar/sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+#    privileged: true
+#
+#  neo4j:
+#    container_name: neo4j-woodstock
+#    image: neo4j:latest
+#    ports:
+#      - "7474:7474"
+#      - "7687:7687"
+#    networks:
+#      - woodnet
+#    volumes:
+#      - /docker/woodstock/neo4j:/data
+#    privileged: true
+#
+#  neo4j-test:
+#    depends_on:
+#      - neo4j
+#    container_name: neo4j-test-woodstock
+#    image: neo4j:latest
+#    ports:
+#      - "7473:7474"
+#      - "7686:7687"
+#    networks:
+#      - woodnet
+#    volumes:
+#      - /docker/woodstock/neo4j-test:/data
+#    privileged: true
+#
+#  jenkins:
+#    container_name: jenkins-woodstock
+#    image: jenkins:latest
+#    ports:
+#      - "8090:8080"
+#      - "50000:50000"
+#    networks:
+#      - woodnet
+#    volumes:
+#      - /docker/woodstock/jenkins:/var/jenkins_home
+#    privileged: true
 
-  neo4j:
-    container_name: neo4j-woodstock
-    image: neo4j:latest
-    ports:
-      - "7474:7474"
-      - "7687:7687"
-    networks:
-      - woodnet
-    volumes:
-      - /docker/woodstock/neo4j:/data
-    privileged: true
-
-  neo4j-test:
-    depends_on:
-      - neo4j
-    container_name: neo4j-test-woodstock
-    image: neo4j:latest
-    ports:
-      - "7473:7474"
-      - "7686:7687"
-    networks:
-      - woodnet
-    volumes:
-      - /docker/woodstock/neo4j-test:/data
-    privileged: true
-
-  jenkins:
-    container_name: jenkins-woodstock
-    image: jenkins:latest
-    ports:
-      - "8090:8080"
-      - "50000:50000"
-    networks:
-      - woodnet
-    volumes:
-      - /docker/woodstock/jenkins:/var/jenkins_home
-    privileged: true
-
-networks:
-  woodnet:
-    driver: bridge
+#networks:
+#  woodnet:
+#    driver: bridge

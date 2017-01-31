@@ -18,7 +18,6 @@
         <commons-lang3.version>3.5</commons-lang3.version>
 
         <jacoco-maven-plugin.version>0.7.7.201606060606</jacoco-maven-plugin.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
 
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,7 +28,6 @@
         <profile>
             <id>test</id>
             <properties>
-                <neo4j.uri>http://neo4j:test@localhost:7473</neo4j.uri>
                 <skip.test>false</skip.test>
             </properties>
         </profile>
@@ -37,7 +35,6 @@
         <profile>
             <id>dev</id>
             <properties>
-                <neo4j.uri>http://neo4j:woodstock@localhost:7474</neo4j.uri>
                 <skip.test>true</skip.test>
             </properties>
             <activation>
@@ -56,16 +53,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -91,7 +78,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-neo4j</artifactId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
         <dependency>
