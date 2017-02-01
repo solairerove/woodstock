@@ -14,8 +14,9 @@ export class CounterComponent implements OnInit {
 
   counter: Observable<any>;
 
-  constructor(private store: Store<any>, private randomNumberService: RandomNumberService) {
-    this.counter = store.select('counterReducer');
+  constructor(private store: Store<any>, 
+              private randomNumberService: RandomNumberService) {
+    this.counter = store.select(state => state.counterReducer);
   }
 
   ngOnInit() {
