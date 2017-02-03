@@ -1,7 +1,10 @@
+import { CounterEffects } from './effect/counter.effects';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routes';
@@ -20,6 +23,9 @@ import { DynamicEntrypointComponent } from './components/dynamic-entrypoint/dyna
     CommonModule,
     ReactiveFormsModule,
     StoreModule.provideStore({ counterReducer }),
+    EffectsModule.run(CounterEffects),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({ maxAge: 5 }),
+
     HomeRoutingModule
   ],
   declarations: [

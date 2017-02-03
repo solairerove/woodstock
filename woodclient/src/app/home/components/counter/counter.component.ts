@@ -1,3 +1,4 @@
+import { CounterActions } from './../../action/counter.action';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -14,8 +15,8 @@ export class CounterComponent implements OnInit {
 
   counter: Observable<any>;
 
-  constructor(private store: Store<any>, 
-              private randomNumberService: RandomNumberService) {
+  constructor(private store: Store<any>,
+    private randomNumberService: RandomNumberService) {
     this.counter = store.select(state => state.counterReducer);
   }
 
@@ -31,10 +32,7 @@ export class CounterComponent implements OnInit {
   }
 
   randomize() {
-    this.store.dispatch({
-      type: RANDOMIZE,
-      payload: this.randomNumberService.pick()
-    });
+    this.store.dispatch(CounterActions.randomizeCounter());
   }
 
   reset() {
