@@ -1,3 +1,4 @@
+import { ModelListComponent } from './components/model-list/model-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,7 +13,8 @@ const routes: Routes = [
         children: [
             { path: 'counter', component: CounterComponent, canActivate: [] },
             { path: 'reactive-form', component: ReactiveFormComponent, canActivate: [] },
-            { path: 'dynamic-entrypoint-component', component: DynamicEntrypointComponent, canActivate: [] }
+            { path: 'dynamic-entrypoint-component', component: DynamicEntrypointComponent, canActivate: [] },
+            { path: 'model-list', component: ModelListComponent, canActivate: [] }
         ]
     },
 ];
