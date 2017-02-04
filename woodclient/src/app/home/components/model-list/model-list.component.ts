@@ -19,9 +19,10 @@ export class ModelListComponent implements OnInit {
   }
 
   getResponse() {
-    this.httpService$.fetchResponse().subscribe(
+    this.httpService$.fetchResponse()
+      .subscribe(
       data => this.models = data,
       error => this.errorMessage = <any>error
-    );
+      );
   }
 }
