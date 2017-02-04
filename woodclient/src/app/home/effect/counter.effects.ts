@@ -8,10 +8,10 @@ import { RandomNumberService } from './../service/random-number.service';
 @Injectable()
 export class CounterEffects {
 
-    @Effect() randomize$ = this.actions$
-        .ofType(CounterActions.RANDOMIZE)
-        .switchMap(() => this.randomNumberService.pick())
-        .map(res => CounterActions.fireCounterSuccess(res));
+    // @Effect() randomize$ = this.actions$
+    //     .ofType(CounterActions.RANDOMIZE)
+    //     .switchMap(() => this.randomNumberService.pick())
+    //     .map(res => CounterActions.fireCounterSuccess(res));
 
     constructor(private actions$: Actions,
         private randomNumberService: RandomNumberService) { }

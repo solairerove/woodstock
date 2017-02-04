@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 export class RandomNumberService {
 
     pick() {
-        return Observable.of(Math.floor(Math.random() * 100));
+        return Math.floor(Math.random() * 100);
     }
 }

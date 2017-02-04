@@ -32,7 +32,7 @@ export class CounterComponent implements OnInit {
   }
 
   randomize() {
-    this.store.dispatch(CounterActions.randomizeCounter());
+    this.store.dispatch({ type: RANDOMIZE });
   }
 
   reset() {
