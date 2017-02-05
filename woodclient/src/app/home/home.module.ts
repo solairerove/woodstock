@@ -20,13 +20,15 @@ import { FirstDumbComponent } from './components/first-dumb/first-dumb.component
 import { SecondDumbComponent } from './components/second-dumb/second-dumb.component';
 import { DynamicEntrypointComponent } from './components/dynamic-entrypoint/dynamic-entrypoint.component';
 import { ModelListComponent } from './components/model-list/model-list.component';
+import { ModelListEffects } from './effect/model-list.effects';
+import { modelListReducer } from './reducer/model-list.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    StoreModule.provideStore({ counterReducer }),
-    EffectsModule.run(CounterEffects),
+    StoreModule.provideStore({ counterReducer, modelListReducer }),
+    EffectsModule.run(ModelListEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension({ maxAge: 5 }),
 
     HomeRoutingModule

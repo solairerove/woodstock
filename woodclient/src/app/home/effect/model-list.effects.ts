@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { ModelListActions } from './../action/model-list.cation';
 import { HttpService } from './../service/http.service';
 import 'rxjs';
@@ -7,8 +8,9 @@ import { Effect, Actions } from '@ngrx/effects';
 @Injectable()
 export class ModelListEffects {
 
-    @Effect() load$ = this.actions$
+    @Effect() loadModels$: Observable<any> = this.actions$
         .ofType(ModelListActions.LOAD_MODEL)
+        .do(() => console.log('effects -> loadModels$'))
         .switchMap(() => this.httpService$.fetchResponse())
         .map(res => ModelListActions.loadModelActionSuccess(res));
 

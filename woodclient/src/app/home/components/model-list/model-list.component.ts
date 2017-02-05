@@ -1,3 +1,4 @@
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../../service/http.service';
@@ -12,17 +13,19 @@ export class ModelListComponent implements OnInit {
   public models: Observable<any>;
   private errorMessage: any;
 
-  constructor(private httpService$: HttpService) { }
-
-  ngOnInit() {
-    this.getResponse();
+  constructor(private store$: Store<any>,
+    private httpService$: HttpService) {
   }
 
-  getResponse() {
-    this.httpService$.fetchResponse()
-      .subscribe(
-      data => this.models = data,
-      error => this.errorMessage = <any>error
-      );
+  ngOnInit() {
+    this.initState();
+  }
+
+  private initState() {
+    this.store$
+      .select(state => state.modelListReducer)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 }
