@@ -1,19 +1,13 @@
-import { ModelListActions } from './../action/model-list.cation';
 import { Action } from '@ngrx/store';
+import { ModelListActions } from './../action/model-list.cation';
 
-const INITIAL_STATE = {};
-
-export const modelListReducer = (state = INITIAL_STATE, action: Action) => {
+export const modelListReducer = (state: any = {}, action: Action) => {
     switch (action.type) {
-        case ModelListActions.LOAD_MODEL: {
-            return Object.assign({}, state);
-        }
 
-        case ModelListActions.LOAD_MODEL_SUCCESS: {
+        case ModelListActions.LOAD_MODEL_SUCCESS:
             return action.payload;
-        }
 
         default:
-            return INITIAL_STATE;
+            return state;
     }
 };

@@ -14,7 +14,7 @@ export class ModelListActions {
         };
     }
 
-    static loadModelActionSuccess(data: any): Action {
+    static loadModelActionSuccess(data): Action {
         return {
             type: ModelListActions.LOAD_MODEL_SUCCESS,
             payload: data

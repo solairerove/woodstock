@@ -1,3 +1,4 @@
+import { ModelListActions } from './../../action/model-list.cation';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
@@ -27,5 +28,9 @@ export class ModelListComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
       });
+  }
+
+  public load(): void {
+    this.store$.dispatch(ModelListActions.loadModelAction());
   }
 }
