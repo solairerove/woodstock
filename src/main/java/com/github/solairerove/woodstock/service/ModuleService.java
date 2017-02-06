@@ -1,15 +1,15 @@
-//package com.github.solairerove.woodstock.service;
+package com.github.solairerove.woodstock.service;
+
+import com.github.solairerove.woodstock.domain.Module;
+import com.github.solairerove.woodstock.dto.ModuleDTO;
+
+public interface ModuleService {
+
+    Module create(String unitId, ModuleDTO moduleDTO);
+
+    Module get(String unitId, String moduleId);
 //
-//import com.github.solairerove.woodstock.domain.Module;
-//import com.github.solairerove.woodstock.dto.ModuleDTO;
+    Iterable<Module> getAll(String unitId);
 //
-//public interface ModuleService {
-//
-//    Module create(Long unitId, ModuleDTO moduleDTO);
-//
-//    Module get(Long unitId, Long moduleId);
-//
-//    Iterable<Module> getAll(Long id1, Integer size);
-//
-//    Module update(Long unitId, Long moduleId, ModuleDTO moduleDTO);
-//}
+//    Module update(String unitId, Long moduleId, ModuleDTO moduleDTO);
+}

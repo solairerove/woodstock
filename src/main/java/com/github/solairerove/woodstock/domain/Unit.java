@@ -21,13 +21,13 @@ public class Unit implements Serializable {
 
     private String description;
 
-    private Collection<Long> moduleIds;
+    private Collection<String> modules;
 
-    public Collection<Long> getModuleIds() {
-        if (this.moduleIds == null) {
-            this.moduleIds = new ArrayList<>();
+    public Collection<String> getModules() {
+        if (this.modules == null) {
+            this.modules = new ArrayList<>();
         }
 
-        return moduleIds;
+        return modules;
     }
 }

@@ -1,14 +1,10 @@
 package com.github.solairerove.woodstock.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class ModuleDTO implements Serializable {
 
     private String name;
@@ -16,6 +12,4 @@ public class ModuleDTO implements Serializable {
     private String avatar;
 
     private String description;
-
-    private String reference;
 }
