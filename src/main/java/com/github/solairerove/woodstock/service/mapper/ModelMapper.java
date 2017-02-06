@@ -1,28 +1,19 @@
-//package com.github.solairerove.woodstock.service.mapper;
-//
-//import com.github.solairerove.woodstock.domain.Chapter;
-//import com.github.solairerove.woodstock.domain.Module;
-//import com.github.solairerove.woodstock.domain.Reference;
-//import com.github.solairerove.woodstock.domain.Task;
-//import com.github.solairerove.woodstock.domain.Ticket;
-//import com.github.solairerove.woodstock.domain.Unit;
-//import com.github.solairerove.woodstock.dto.ChapterDTO;
-//import com.github.solairerove.woodstock.dto.ModuleDTO;
-//import com.github.solairerove.woodstock.dto.ReferenceDTO;
-//import com.github.solairerove.woodstock.dto.TaskDTO;
-//import com.github.solairerove.woodstock.dto.TicketDTO;
-//import com.github.solairerove.woodstock.dto.UnitDTO;
-//
-//public class ModelMapper {
-//
-//    public static Unit convertToUnit(UnitDTO unitDTO) {
-//        Unit unit = new Unit();
-//        unit.setLabel(unitDTO.getLabel());
-//        unit.setDescription(unitDTO.getDescription());
-//
-//        return unit;
-//    }
-//
+package com.github.solairerove.woodstock.service.mapper;
+
+import com.github.solairerove.woodstock.domain.Unit;
+import com.github.solairerove.woodstock.dto.UnitDTO;
+
+public class ModelMapper {
+
+    public static Unit convertToUnit(UnitDTO unitDTO) {
+        Unit unit = new Unit();
+        unit.setLabel(unitDTO.getLabel());
+        unit.setAvatar(unitDTO.getAvatar());
+        unit.setDescription(unitDTO.getDescription());
+
+        return unit;
+    }
+
 //    public static Module convertToModule(ModuleDTO moduleDTO) {
 //        Module module = new Module();
 //        module.setName(moduleDTO.getName());
@@ -61,4 +52,4 @@
 //
 //        return ticket;
 //    }
-//}
+}
