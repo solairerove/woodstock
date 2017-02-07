@@ -1,14 +1,10 @@
 package com.github.solairerove.woodstock.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class ChapterDTO implements Serializable {
 
     private String title;

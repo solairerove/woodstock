@@ -10,10 +10,10 @@ import com.github.solairerove.woodstock.service.ReferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToReference;
+import static java.util.Collections.EMPTY_LIST;
 
 @Service
 public class ReferenceServiceImpl implements ReferenceService {
@@ -56,11 +56,8 @@ public class ReferenceServiceImpl implements ReferenceService {
 
     @Override
     public List getAll(String unitId, String moduleId) {
-        return unitRepository.findOne(unitId).getModules().contains(moduleId)
-                ?
-                (List) referenceRepository.findAll(moduleRepository.findOne(moduleId).getReferences())
-                :
-                Collections.EMPTY_LIST;
+        return unitRepository.findOne(unitId).getModules().contains(moduleId) ?
+                (List) referenceRepository.findAll(moduleRepository.findOne(moduleId).getReferences()) : EMPTY_LIST;
     }
 
     @Override
@@ -72,41 +69,4 @@ public class ReferenceServiceImpl implements ReferenceService {
     public Reference delete(String unitId, String moduleId, String refId) {
         return null;
     }
-
-    //    @Override
-//    public Reference create(Long moduleId, ReferenceDTO referenceDTO) {
-//        Reference reference = convertToReference(referenceDTO);
-//
-//        Module module = moduleRepository.findOne(moduleId);
-//        module.getReferences().add(reference);
-//        moduleRepository.save(module);
-//
-//        return reference;
-//    }
-//
-//    @Override
-//    public Reference get(Long moduleId, Long refId) {
-//        return referenceRepository.getOneThatHasInNode(moduleId, refId);
-//    }
-//
-//    @Override
-//    public Iterable<Reference> getAll(Long moduleId) {
-//        return referenceRepository.getAllThatHasInNode(moduleId);
-//    }
-//
-//    @Override
-//    public Reference update(Long moduleId, Long refId, ReferenceDTO referenceDTO) {
-//        Reference reference = referenceRepository.getOneThatHasInNode(moduleId, refId);
-//        reference.setTitle(referenceDTO.getTitle());
-//        reference.setVersion(referenceDTO.getVersion());
-//
-//        return referenceRepository.save(reference);
-//    }
-//
-//    @Override
-//    public Reference delete(Long moduleId, Long refId) {
-//        Reference reference = referenceRepository.getOneThatHasInNode(moduleId, refId);
-//        referenceRepository.delete(refId);
-//        return reference;
-//    }
 }

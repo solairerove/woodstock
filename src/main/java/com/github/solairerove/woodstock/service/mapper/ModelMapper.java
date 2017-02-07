@@ -1,8 +1,10 @@
 package com.github.solairerove.woodstock.service.mapper;
 
+import com.github.solairerove.woodstock.domain.Chapter;
 import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
+import com.github.solairerove.woodstock.dto.ChapterDTO;
 import com.github.solairerove.woodstock.dto.ModuleDTO;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
 import com.github.solairerove.woodstock.dto.UnitDTO;
@@ -35,14 +37,14 @@ public class ModelMapper {
         return reference;
     }
 
-//    public static Chapter convertToChapter(ChapterDTO chapterDTO) {
-//        Chapter chapter = new Chapter();
-//        chapter.setTitle(chapterDTO.getTitle());
-//        chapter.setContent(chapterDTO.getContent());
-//
-//        return chapter;
-//    }
-//
+    public static Chapter convertToChapter(ChapterDTO chapterDTO) {
+        Chapter chapter = new Chapter();
+        chapter.setTitle(chapterDTO.getTitle());
+        chapter.setContent(chapterDTO.getContent());
+
+        return chapter;
+    }
+
 //    public static Task convertToTask(TaskDTO taskDTO) {
 //        Task task = new Task();
 //        task.setQuestion(taskDTO.getQuestion());
