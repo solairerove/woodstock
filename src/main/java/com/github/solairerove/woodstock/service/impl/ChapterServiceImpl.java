@@ -1,9 +1,7 @@
 package com.github.solairerove.woodstock.service.impl;
 
 import com.github.solairerove.woodstock.domain.Chapter;
-import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
-import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ChapterDTO;
 import com.github.solairerove.woodstock.repository.ChapterRepository;
 import com.github.solairerove.woodstock.repository.ModuleRepository;
@@ -13,7 +11,10 @@ import com.github.solairerove.woodstock.service.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToChapter;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class ChapterServiceImpl implements ChapterService {
@@ -90,8 +91,31 @@ public class ChapterServiceImpl implements ChapterService {
     }
 
     @Override
-    public Iterable<Chapter> getAll(String unitId, String moduleId, String refId) {
-        return null;
+    public Collection<Chapter> getAll(String unitId, String moduleId, String refId) {
+        // TODO some stream utils class maybe
+        String module = unitRepository
+                .findOne(unitId)
+                .getModules()
+                .stream()
+                .filter(moduleRepository::exists)
+                .filter(moduleId::equals)
+                .collect(toList())
+                .get(0);
+
+        String reference = moduleRepository
+                .findOne(module)
+                .getReferences()
+                .stream()
+                .filter(referenceRepository::exists)
+                .filter(refId::equals)
+                .collect(toList())
+                .get(0);
+
+        Collection<String> modules = referenceRepository
+                .findOne(reference)
+                .getChapters();
+
+        return (Collection<Chapter>) chapterRepository.findAll(modules);
     }
 
     @Override

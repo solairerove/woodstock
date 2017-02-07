@@ -36,12 +36,14 @@ public class ChapterController {
 //    public ResponseEntity get(@PathVariable Long refId, @PathVariable Long chapterId) {
 //        return new ResponseEntity<>(service.get(refId, chapterId), HttpStatus.OK);
 //    }
-//
-//    @RequestMapping
-//    public ResponseEntity getAll(@PathVariable Long refId) {
-//        return new ResponseEntity<>(service.getAll(refId), HttpStatus.OK);
-//    }
-//
+
+    @RequestMapping
+    public ResponseEntity getAll(@PathVariable String unitId,
+                                 @PathVariable String moduleId,
+                                 @PathVariable String refId) {
+        return new ResponseEntity<>(service.getAll(unitId, moduleId, refId), HttpStatus.OK);
+    }
+
 //    @RequestMapping(path = "/{chapterId}", method = RequestMethod.PUT)
 //    public ResponseEntity update(@PathVariable Long refId, @PathVariable Long chapterId, @RequestBody ChapterDTO chapterDTO) {
 //        return new ResponseEntity<>(service.update(refId, chapterId, chapterDTO), HttpStatus.ACCEPTED);
