@@ -1,8 +1,10 @@
 package com.github.solairerove.woodstock.service.mapper;
 
 import com.github.solairerove.woodstock.domain.Module;
+import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ModuleDTO;
+import com.github.solairerove.woodstock.dto.ReferenceDTO;
 import com.github.solairerove.woodstock.dto.UnitDTO;
 
 public class ModelMapper {
@@ -24,15 +26,15 @@ public class ModelMapper {
 
         return module;
     }
-//
-//    public static Reference convertToReference(ReferenceDTO referenceDTO) {
-//        Reference reference = new Reference();
-//        reference.setTitle(referenceDTO.getTitle());
-//        reference.setVersion(referenceDTO.getVersion());
-//
-//        return reference;
-//    }
-//
+
+    public static Reference convertToReference(ReferenceDTO referenceDTO) {
+        Reference reference = new Reference();
+        reference.setTitle(referenceDTO.getTitle());
+        reference.setVersion(referenceDTO.getVersion());
+
+        return reference;
+    }
+
 //    public static Chapter convertToChapter(ChapterDTO chapterDTO) {
 //        Chapter chapter = new Chapter();
 //        chapter.setTitle(chapterDTO.getTitle());
