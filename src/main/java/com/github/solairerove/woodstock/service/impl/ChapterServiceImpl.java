@@ -41,26 +41,51 @@ public class ChapterServiceImpl implements ChapterService {
     @Override
     public Chapter create(String unitId, String moduleId, String refId, ChapterDTO chapterDTO) {
         Chapter chapter = chapterRepository.save(convertToChapter(chapterDTO));
-        String chapterId = chapter.getId();
 
-        Unit unit = unitRepository.findOne(unitId);
-
-        Module module = new Module();
-        if (unit.getModules().contains(moduleId)) {
-            module = moduleRepository.findOne(moduleId);
-        }
-
-        if (module.getReferences().contains(refId)) {
-            Reference reference = referenceRepository.findOne(refId);
-            reference.getChapters().add(chapterId);
-            referenceRepository.save(reference);
-        }
+        unitRepository
+                .findOne(unitId)
+                .getModules()
+                .stream()
+                .filter(moduleId::equals)
+                .findFirst()
+                .ifPresent(moduleId$ -> moduleRepository
+                        .findOne(moduleId$)
+                        .getReferences()
+                        .stream()
+                        .filter(refId::equals)
+                        .findFirst()
+                        .ifPresent(refId$ -> {
+                                    Reference reference = referenceRepository.findOne(refId$);
+                                    reference.getChapters().add(chapter.getId());
+                                    referenceRepository.save(reference);
+                                }
+                        )
+                );
 
         return chapter;
     }
 
     @Override
     public Chapter get(String unitId, String moduleId, String refId, String chapterId) {
+//        return unitRepository
+//                .findOne(unitId)
+//                .getModules()
+//                .stream()
+//                .filter(moduleId::equals)
+//                .findFirst()
+//                .ifPresent(moduleId$ -> moduleRepository
+//                        .findOne(moduleId$)
+//                        .getReferences()
+//                        .stream()
+//                        .filter(refId::equals)
+//                        .findFirst()
+//                        .ifPresent(refId$ -> referenceRepository
+//                                .findOne(refId$)
+//                                .getChapters()
+//                                .stream()
+//                                .filter(chapterId::equals)
+//                                .findFirst()
+//                                .ifPresent(chapterRepository::findOne)));
         return null;
     }
 
