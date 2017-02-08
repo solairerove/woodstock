@@ -1,35 +1,34 @@
-import { HttpModule } from '@angular/http';
-import { CounterEffects } from './effect/counter.effects';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
-import { HomeComponent } from './home.component';
-import { HomeRoutingModule } from './home.routes';
+import {HomeComponent} from './home.component';
+import {HomeRoutingModule} from './home.routes';
 
-import { RandomNumberService } from './service/random-number.service';
-import { HttpService } from './service/http.service';
-import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
-import { counterReducer } from './components/counter/counter.reducer';
-import { CounterComponent } from './components/counter/counter.component';
-import { DynamicComponent } from './components/dynamic/dynamic.component';
-import { FirstDumbComponent } from './components/first-dumb/first-dumb.component';
-import { SecondDumbComponent } from './components/second-dumb/second-dumb.component';
-import { DynamicEntrypointComponent } from './components/dynamic-entrypoint/dynamic-entrypoint.component';
-import { ModelListComponent } from './components/model-list/model-list.component';
-import { ModelListEffects } from './effect/model-list.effects';
-import { modelListReducer } from './reducer/model-list.reducer';
+import {RandomNumberService} from './service/random-number.service';
+import {HttpService} from './service/http.service';
+import {ReactiveFormComponent} from './components/reactive-form/reactive-form.component';
+import {counterReducer} from './components/counter/counter.reducer';
+import {CounterComponent} from './components/counter/counter.component';
+import {DynamicComponent} from './components/dynamic/dynamic.component';
+import {FirstDumbComponent} from './components/first-dumb/first-dumb.component';
+import {SecondDumbComponent} from './components/second-dumb/second-dumb.component';
+import {DynamicEntrypointComponent} from './components/dynamic-entrypoint/dynamic-entrypoint.component';
+import {UnitListComponent} from './components/unit-list/unit-list.component';
+import {units} from './reducer/units';
+import {UnitEffect} from './effect/unit.effect';
+import { SectionComponent } from './components/section/section.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    StoreModule.provideStore({ counterReducer, modelListReducer }),
-    EffectsModule.run(ModelListEffects),
-    StoreDevtoolsModule.instrumentOnlyWithExtension({ maxAge: 5 }),
+    StoreModule.provideStore({counterReducer, units}),
+    EffectsModule.run(UnitEffect),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({maxAge: 5}),
 
     HomeRoutingModule
   ],
@@ -41,11 +40,13 @@ import { modelListReducer } from './reducer/model-list.reducer';
     FirstDumbComponent,
     SecondDumbComponent,
     DynamicEntrypointComponent,
-    ModelListComponent
+    UnitListComponent,
+    SectionComponent
   ],
   providers: [
     RandomNumberService,
     HttpService
   ],
 })
-export class HomeModule { }
+export class HomeModule {
+}

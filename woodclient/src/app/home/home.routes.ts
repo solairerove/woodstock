@@ -1,11 +1,10 @@
-import { ModelListComponent } from './components/model-list/model-list.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { HomeComponent } from './home.component';
-import { CounterComponent } from './components/counter/counter.component';
-import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
-import { DynamicEntrypointComponent } from './components/dynamic-entrypoint/dynamic-entrypoint.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HomeComponent} from './home.component';
+import {CounterComponent} from './components/counter/counter.component';
+import {ReactiveFormComponent} from './components/reactive-form/reactive-form.component';
+import {DynamicEntrypointComponent} from './components/dynamic-entrypoint/dynamic-entrypoint.component';
+import {SectionComponent} from './components/section/section.component';
 
 const routes: Routes = [
     {
@@ -14,7 +13,7 @@ const routes: Routes = [
             { path: 'counter', component: CounterComponent, canActivate: [] },
             { path: 'reactive-form', component: ReactiveFormComponent, canActivate: [] },
             { path: 'dynamic-entrypoint-component', component: DynamicEntrypointComponent, canActivate: [] },
-            { path: 'model-list', component: ModelListComponent, canActivate: [] }
+            { path: 'section', component: SectionComponent, canActivate: [] }
         ]
     },
 ];
