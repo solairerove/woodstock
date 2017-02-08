@@ -44,6 +44,12 @@ public class FetchUtils {
                 .get(0);
     }
 
+    public Collection<String> fetchModules(String unitId) {
+        return this.unitRepository
+                .findOne(unitId)
+                .getModules();
+    }
+
     public String fetchReference(String unitId, String moduleId, String refId) {
         return this.moduleRepository
                 .findOne(this.fetchModule(unitId, moduleId))
@@ -53,6 +59,12 @@ public class FetchUtils {
                 .filter(refId::equals)
                 .collect(toList())
                 .get(0);
+    }
+
+    public Collection<String> fetchReferences(String unitId, String moduleId) {
+        return this.moduleRepository
+                .findOne(this.fetchModule(unitId, moduleId))
+                .getReferences();
     }
 
     public String fetchChapter(String unitId, String moduleId, String refId, String chapterId) {
