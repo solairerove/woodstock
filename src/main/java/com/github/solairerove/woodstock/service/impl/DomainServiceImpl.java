@@ -30,4 +30,11 @@ public class DomainServiceImpl {
     public List<Domain> getAll() {
         return this.domainRepository.findAll();
     }
+
+    public Domain delete(String domainId) {
+        Domain domain = this.domainRepository.findOne(domainId);
+        this.domainRepository.delete(domainId);
+
+        return domain;
+    }
 }
