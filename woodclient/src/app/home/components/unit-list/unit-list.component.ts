@@ -1,7 +1,6 @@
-import {Component, OnInit} from "@angular/core";
-import {Store} from "@ngrx/store";
-import {HttpService} from "../../service/http.service";
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-unit-list',
@@ -12,16 +11,16 @@ export class UnitListComponent implements OnInit {
 
   public units: Observable<any>;
 
-  constructor(private store$: Store<any>,
-  private httpService$: HttpService) {
+  constructor(private store$: Store<any>) {
   }
 
   ngOnInit() {
-    this.httpService$
-      .fetchUnits()
+    this.initState();
+  }
+
+  private initState() {
+    this.store$
+      .select(state => state.units)
       .subscribe(s => this.units = s);
-    // this.store$
-    //   .select(state => state.units)
-    //   .subscribe(s => console.log(s));
   }
 }
