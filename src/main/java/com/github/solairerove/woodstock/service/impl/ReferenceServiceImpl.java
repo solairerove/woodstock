@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.service.impl;
 
-import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToReference;
 
@@ -59,7 +57,7 @@ public class ReferenceServiceImpl implements ReferenceService {
     }
 
     @Override
-    public Iterable<Reference> getAll(String unitId, String moduleId) {
+    public List<Reference> getAll(String unitId, String moduleId) {
         return repository
                 .findOne(unitId)
                 .getModules()
