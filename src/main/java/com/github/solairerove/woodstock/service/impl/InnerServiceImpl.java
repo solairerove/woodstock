@@ -35,8 +35,20 @@ public class InnerServiceImpl {
     }
 
     public List<Inner> getAll(String domainId) {
-        System.out.println(this.innerRepository.count());
-        System.out.println(this.domainRepository.count());
+        if (this.isExist(domainId)) {
+            long count = domainRepository
+                    .findOne(domainId)
+                    .getInners()
+                    .stream()
+                    .map(Inner::getSomeField)
+                    .filter("lol"::equals)
+                    .count();
+            System.out.println("count of lol: " + count);
+        }
         return this.domainRepository.findOne(domainId).getInners();
+    }
+
+    private boolean isExist(String domainId) {
+        return this.domainRepository.exists(domainId);
     }
 }
