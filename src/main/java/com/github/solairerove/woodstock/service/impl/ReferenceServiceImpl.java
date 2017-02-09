@@ -2,54 +2,72 @@ package com.github.solairerove.woodstock.service.impl;
 
 import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
+import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
-import com.github.solairerove.woodstock.repository.ModuleRepository;
-import com.github.solairerove.woodstock.repository.ReferenceRepository;
+import com.github.solairerove.woodstock.repository.UnitRepository;
 import com.github.solairerove.woodstock.service.ReferenceService;
-import com.github.solairerove.woodstock.utils.FetchUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToReference;
 
 @Service
 public class ReferenceServiceImpl implements ReferenceService {
 
-    private final FetchUtils utils;
-
-    private final ModuleRepository moduleRepository;
-
-    private final ReferenceRepository referenceRepository;
+    private final UnitRepository repository;
 
     @Autowired
-    public ReferenceServiceImpl(FetchUtils utils,
-                                ModuleRepository moduleRepository,
-                                ReferenceRepository referenceRepository) {
-        this.utils = utils;
-        this.moduleRepository = moduleRepository;
-        this.referenceRepository = referenceRepository;
+    public ReferenceServiceImpl(UnitRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public Reference create(String unitId, String moduleId, ReferenceDTO referenceDTO) {
-        Reference reference = referenceRepository.save(convertToReference(referenceDTO));
-        String refId = reference.getId();
+        Reference reference = convertToReference(referenceDTO);
 
-        Module module = moduleRepository.findOne(this.utils.fetchModule(unitId, moduleId));
-        module.getReferences().add(refId);
-        moduleRepository.save(module);
+        Unit unit = repository.findOne(unitId);
+
+        unit.getModules()
+                .stream()
+                .filter(module$ -> module$.getId().equals(moduleId))
+                .findFirst()
+                .orElse(null)
+                .getReferences()
+                .add(reference);
+        repository.save(unit);
 
         return reference;
     }
 
     @Override
     public Reference get(String unitId, String moduleId, String refId) {
-        return referenceRepository.findOne(this.utils.fetchReference(unitId, moduleId, refId));
+        return repository
+                .findOne(unitId)
+                .getModules()
+                .stream()
+                .filter(el -> el.getId().equals(moduleId))
+                .findFirst()
+                .orElse(null)
+                .getReferences()
+                .stream()
+                .filter(el -> el.getId().equals(refId))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Iterable<Reference> getAll(String unitId, String moduleId) {
-        return referenceRepository.findAll(utils.fetchReferences(unitId, moduleId));
+        return repository
+                .findOne(unitId)
+                .getModules()
+                .stream()
+                .filter(module$ -> module$.getId().equals(moduleId))
+                .findFirst()
+                .orElse(null)
+                .getReferences();
     }
 
     @Override

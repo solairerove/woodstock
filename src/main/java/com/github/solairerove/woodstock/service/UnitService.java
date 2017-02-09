@@ -3,7 +3,7 @@ package com.github.solairerove.woodstock.service;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.UnitDTO;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface UnitService {
 
@@ -11,7 +11,7 @@ public interface UnitService {
 
     Unit get(String id);
 
-    Collection<Unit> getAll();
+    List<Unit> getAll();
 
     Unit update(String id, UnitDTO unitDTO);
 

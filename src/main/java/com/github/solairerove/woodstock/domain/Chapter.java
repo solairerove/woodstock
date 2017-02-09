@@ -1,13 +1,14 @@
 package com.github.solairerove.woodstock.domain;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
 @Data
-@Document
+@Document(collection = "chapters")
 public class Chapter implements Serializable {
 
     @Id
@@ -16,4 +17,8 @@ public class Chapter implements Serializable {
     private String title;
 
     private String content;
+
+    public Chapter() {
+        this.id = ObjectId.get().toHexString();
+    }
 }

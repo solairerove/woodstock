@@ -3,46 +3,49 @@ package com.github.solairerove.woodstock.service.impl;
 import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ModuleDTO;
-import com.github.solairerove.woodstock.repository.ModuleRepository;
 import com.github.solairerove.woodstock.repository.UnitRepository;
 import com.github.solairerove.woodstock.service.ModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToModule;
 
 @Service
 public class ModuleServiceImpl implements ModuleService {
 
-    private final UnitRepository unitRepository;
-
-    private final ModuleRepository moduleRepository;
+    private final UnitRepository repository;
 
     @Autowired
-    public ModuleServiceImpl(UnitRepository unitRepository, ModuleRepository moduleRepository) {
-        this.unitRepository = unitRepository;
-        this.moduleRepository = moduleRepository;
+    public ModuleServiceImpl(UnitRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public Module create(String unitId, ModuleDTO moduleDTO) {
-        Module module = moduleRepository.save(convertToModule(moduleDTO));
-        String moduleId = module.getId();
+        Module module = convertToModule(moduleDTO);
 
-        Unit unit = unitRepository.findOne(unitId);
-        unit.getModules().add(moduleId);
-        unitRepository.save(unit);
+        Unit unit = repository.findOne(unitId);
+        unit.getModules().add(module);
+        repository.save(unit);
 
         return module;
     }
 
     @Override
-    public Module get(String unitId, String moduleId) {
-        return unitRepository.findOne(unitId).getModules().contains(moduleId) ? moduleRepository.findOne(moduleId) : new Module();
+    public Optional<Module> get(String unitId, String moduleId) {
+        return repository
+                .findOne(unitId)
+                .getModules()
+                .stream()
+                .filter(module -> module.getId().equals(moduleId))
+                .findFirst();
     }
 
     @Override
-    public Iterable<Module> getAll(String unitId) {
-        return moduleRepository.findAll(unitRepository.findOne(unitId).getModules());
+    public List<Module> getAll(String unitId) {
+        return repository.findOne(unitId).getModules();
     }
 }

@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Data
-@Document
+@Document(collection = "units")
 public class Unit implements Serializable {
 
     @Id
@@ -21,13 +21,13 @@ public class Unit implements Serializable {
 
     private String description;
 
-    private Collection<String> modules;
+    private List<Module> modules;
 
-    public Collection<String> getModules() {
+    public List<Module> getModules() {
         if (this.modules == null) {
             this.modules = new ArrayList<>();
         }
 
-        return modules;
+        return this.modules;
     }
 }

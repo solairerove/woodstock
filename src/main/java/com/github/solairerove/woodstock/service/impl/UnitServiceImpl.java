@@ -7,7 +7,7 @@ import com.github.solairerove.woodstock.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
 
 import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToUnit;
 
@@ -32,7 +32,7 @@ public class UnitServiceImpl implements UnitService {
     }
 
     @Override
-    public Collection<Unit> getAll() {
+    public List<Unit> getAll() {
         return repository.findAll();
     }
 

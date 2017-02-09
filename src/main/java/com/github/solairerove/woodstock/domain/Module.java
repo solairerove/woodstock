@@ -1,13 +1,16 @@
 package com.github.solairerove.woodstock.domain;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Data
+@Document(collection = "modules")
 public class Module implements Serializable {
 
     @Id
@@ -19,23 +22,17 @@ public class Module implements Serializable {
 
     private String description;
 
-    private Collection<String> references;
+    private List<Reference> references;
 
-    private Collection<String> tasks;
-
-    public Collection<String> getReferences() {
-        if (references == null) {
-            references = new ArrayList<>();
-        }
-
-        return references;
+    public Module() {
+        this.id = ObjectId.get().toHexString();
     }
 
-    public Collection<String> getTasks() {
-        if (tasks == null) {
-            tasks = new ArrayList<>();
+    public List<Reference> getReferences() {
+        if (this.references == null) {
+            this.references = new ArrayList<>();
         }
 
-        return tasks;
+        return this.references;
     }
 }
