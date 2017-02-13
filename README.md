@@ -5,8 +5,8 @@ ___
 
 #### How to start:
 
-* `mvn spring-boot:run`
-* `mvn clean install && jar -jar target/*.jar`
+* `mvn clean install && java -jar *.jar`
+* `mvn clean install && java -jar -Dspring.profiles.active=generate *.jar`
 
 ___
 
