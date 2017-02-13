@@ -23,11 +23,23 @@ public class Unit implements Serializable {
 
     private List<Module> modules;
 
+    public Unit() {
+        this.init();
+    }
+
+    private void init() {
+        this.modules = new ArrayList<>();
+    }
+
     public List<Module> getModules() {
         if (this.modules == null) {
             this.modules = new ArrayList<>();
         }
 
         return this.modules;
+    }
+
+    public void add(Module module) {
+        this.modules.add(module);
     }
 }

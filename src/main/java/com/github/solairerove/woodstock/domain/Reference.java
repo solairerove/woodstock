@@ -23,7 +23,12 @@ public class Reference implements Serializable {
     private List<Chapter> chapters;
 
     public Reference() {
+        this.init();
+    }
+
+    private void init() {
         this.id = ObjectId.get().toHexString();
+        this.chapters = new ArrayList<>();
     }
 
     public List<Chapter> getChapters() {
@@ -32,5 +37,9 @@ public class Reference implements Serializable {
         }
 
         return this.chapters;
+    }
+
+    public void add(Chapter chapter) {
+        this.chapters.add(chapter);
     }
 }

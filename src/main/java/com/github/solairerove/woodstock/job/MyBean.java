@@ -54,11 +54,11 @@ public class MyBean implements CommandLineRunner {
                         chapter.setContent("MD chapter content");
                         count++;
 
-                        reference.getChapters().add(chapter);
+                        reference.add(chapter);
                     }
-                    module.getReferences().add(reference);
+                    module.add(reference);
                 }
-                unit.getModules().add(module);
+                unit.add(module);
             }
             units.add(unit);
         }
