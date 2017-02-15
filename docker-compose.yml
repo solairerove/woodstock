@@ -45,17 +45,25 @@ services:
     environment:
       - SONARQUBE_JDBC_URL=jdbc:postgresql://sonardb:5432/sonar
 
-#  jenkins:
-#    container_name: jenkins-woodstock
-#    image: jenkins:latest
-#    ports:
-#      - "8090:8080"
-#      - "50000:50000"
-#    networks:
-#      - woodnet
-#    volumes:
-#      - /docker/woodstock/jenkins:/var/jenkins_home
-#    privileged: true
+  jenkins:
+    container_name: jenkins-woodstock
+    image: jenkins:2.32.2-alpine
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      - woodnet
+
+  portainer:
+    container_name: portainer-woodstock
+    image: portainer/portainer:latest
+    ports:
+      - "9010:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - woodnet
+    privileged: true
 
 networks:
   woodnet:
