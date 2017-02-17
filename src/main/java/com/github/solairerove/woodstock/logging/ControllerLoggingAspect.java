@@ -33,9 +33,10 @@ public class ControllerLoggingAspect {
                 Arrays.toString(joinPoint.getArgs()));
     }
 
-//    @Before("execution(* com.github.solairerove.woodstock.controller.ChapterController.*(..)))")
-//    public void chapterControllerLog(JoinPoint joinPoint) {
-//        LOGGER.info("Chapter controller: " + joinPoint.getSignature().getName() +
-//                Arrays.toString(joinPoint.getArgs()));
-//    }
+    @Before("execution(* com.github.solairerove.woodstock.controller.ChapterController.*(..)))")
+    public void chapterControllerLog(JoinPoint joinPoint) {
+        LOGGER.info("Chapter controller: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
+
 }

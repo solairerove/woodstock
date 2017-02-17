@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.github.solairerove.woodstock.controller.ControllerApi.MODULE_API;
+
 @RestController
-@RequestMapping(value = "/api/units/{unitId}/modules", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = MODULE_API, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class ModuleController {
 
     private final ModuleService service;

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.github.solairerove.woodstock.controller.ControllerApi.UNIT_API;
+
 @RestController
-@RequestMapping(path = "/api/units", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(path = UNIT_API, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UnitController {
 
     private final UnitService service;
