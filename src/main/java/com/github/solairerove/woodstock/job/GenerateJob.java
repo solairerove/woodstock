@@ -1,7 +1,9 @@
 package com.github.solairerove.woodstock.job;
 
+import com.github.solairerove.woodstock.domain.Answer;
 import com.github.solairerove.woodstock.domain.Chapter;
 import com.github.solairerove.woodstock.domain.Module;
+import com.github.solairerove.woodstock.domain.Question;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.repository.UnitRepository;
@@ -15,12 +17,12 @@ import java.util.List;
 
 @Component
 @Profile("generate")
-public class MyBean implements CommandLineRunner {
+public class GenerateJob implements CommandLineRunner {
 
     private final UnitRepository repository;
 
     @Autowired
-    public MyBean(UnitRepository repository) {
+    public GenerateJob(UnitRepository repository) {
         this.repository = repository;
     }
 
@@ -41,6 +43,23 @@ public class MyBean implements CommandLineRunner {
                 module.setAvatar("Module lint to avatar image");
                 module.setDescription("MD short description");
                 count++;
+
+                for(int q = 0; q < 35; q++) {
+                    Question question = new Question();
+                    question.setQuestion("Question " + "Reference title " + u + "->" + m + "->" + q);
+                    count++;
+
+                    for(int a = 0; a < 10; a++) {
+                        Answer answer = new Answer();
+                        answer.setAnswer("Answer" + u + "->" + m + "->" + q + "->" + a);
+                        answer.setEnable(true);
+                        answer.setCorrect(a % 5 == 0);
+                        count++;
+
+                        question.add(answer);
+                    }
+                    module.addQuestion(question);
+                }
 
                 for (int r = 0; r < 8; r++) {
                     Reference reference = new Reference();
@@ -67,6 +86,10 @@ public class MyBean implements CommandLineRunner {
             System.out.println(u.getLabel());
             u.getModules().forEach(m -> {
                 System.out.println(m.getName());
+                m.getQuestions().forEach(q -> {
+                    System.out.println(q.getQuestion());
+                    q.getAnswers().forEach(System.out::println);
+                });
                 m.getReferences().forEach(r -> {
                     System.out.println(r.getTitle());
                     r.getChapters().forEach(System.out::println);

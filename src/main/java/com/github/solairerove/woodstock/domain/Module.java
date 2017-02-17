@@ -55,4 +55,8 @@ public class Module implements Serializable {
     public void addReference(Reference reference) {
         this.references.add(reference);
     }
+
+    public void addQuestion(Question question) {
+        this.questions.add(question);
+    }
 }
