@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.github.solairerove.woodstock.utils.ControllerApi.REFERENCE_API;
+import static com.github.solairerove.woodstock.controller.ControllerApi.REFERENCE_API;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController

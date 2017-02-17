@@ -8,6 +8,8 @@ import java.io.Serializable;
 public class AnswerDTO implements Serializable {
 
     private String answer;
+
     private boolean correct;
+
     private boolean enable;
 }

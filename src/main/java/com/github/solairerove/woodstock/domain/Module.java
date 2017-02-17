@@ -24,6 +24,8 @@ public class Module implements Serializable {
 
     private List<Reference> references;
 
+    private List<Question> questions;
+
     public Module() {
         this.init();
     }
@@ -31,6 +33,7 @@ public class Module implements Serializable {
     private void init() {
         this.id = ObjectId.get().toHexString();
         this.references = new ArrayList<>();
+        this.questions = new ArrayList<>();
     }
 
     public List<Reference> getReferences() {
@@ -41,7 +44,15 @@ public class Module implements Serializable {
         return this.references;
     }
 
-    public void add(Reference reference) {
+    public List<Question> getQuestions() {
+        if (this.questions == null) {
+            this.questions = new ArrayList<>();
+        }
+
+        return this.questions;
+    }
+
+    public void addReference(Reference reference) {
         this.references.add(reference);
     }
 }

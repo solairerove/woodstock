@@ -56,7 +56,7 @@ public class MyBean implements CommandLineRunner {
 
                         reference.add(chapter);
                     }
-                    module.add(reference);
+                    module.addReference(reference);
                 }
                 unit.add(module);
             }

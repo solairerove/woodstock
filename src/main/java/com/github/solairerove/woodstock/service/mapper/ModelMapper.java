@@ -1,11 +1,15 @@
 package com.github.solairerove.woodstock.service.mapper;
 
+import com.github.solairerove.woodstock.domain.Answer;
 import com.github.solairerove.woodstock.domain.Chapter;
 import com.github.solairerove.woodstock.domain.Module;
+import com.github.solairerove.woodstock.domain.Question;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
+import com.github.solairerove.woodstock.dto.AnswerDTO;
 import com.github.solairerove.woodstock.dto.ChapterDTO;
 import com.github.solairerove.woodstock.dto.ModuleDTO;
+import com.github.solairerove.woodstock.dto.QuestionDTO;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
 import com.github.solairerove.woodstock.dto.UnitDTO;
 
@@ -45,17 +49,19 @@ public class ModelMapper {
         return chapter;
     }
 
-//    public static Task convertToTask(TaskDTO taskDTO) {
-//        Task task = new Task();
-//        task.setQuestion(taskDTO.getQuestion());
-//
-//        return task;
-//    }
-//
-//    public static Ticket convertToTicket(TicketDTO ticketDTO) {
-//        Ticket ticket = new Ticket();
-//        ticket.setValue(ticketDTO.getValue());
-//
-//        return ticket;
-//    }
+    public static Question convertToQuestion(QuestionDTO questionDTO) {
+        Question question = new Question();
+        question.setQuestion(questionDTO.getQuestion());
+
+        return question;
+    }
+
+    public static Answer convertToAnswer(AnswerDTO answerDTO) {
+        Answer answer = new Answer();
+        answer.setAnswer(answerDTO.getAnswer());
+        answer.setCorrect(answerDTO.isCorrect());
+        answer.setEnable(answerDTO.isEnable());
+
+        return answer;
+    }
 }

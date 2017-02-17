@@ -1,4 +1,4 @@
-package com.github.solairerove.woodstock.utils;
+package com.github.solairerove.woodstock.controller;
 
 public class ControllerApi {
 
