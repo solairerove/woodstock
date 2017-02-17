@@ -2,18 +2,48 @@ package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.UnitDTO;
+import com.github.solairerove.woodstock.repository.UnitRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface UnitService {
+import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToUnit;
 
-    Unit create(UnitDTO unitDTO);
+@Service
+public class UnitService {
 
-    Unit get(String id);
+    private final UnitRepository repository;
 
-    List<Unit> getAll();
+    @Autowired
+    public UnitService(UnitRepository repository) {
+        this.repository = repository;
+    }
 
-    Unit update(String id, UnitDTO unitDTO);
+    public Unit create(UnitDTO unitDTO) {
+        return repository.save(convertToUnit(unitDTO));
+    }
 
-    Unit delete(String id);
+    public Unit get(String id) {
+        return repository.findOne(id);
+    }
+
+    public List<Unit> getAll() {
+        return repository.findAll();
+    }
+
+    public Unit update(String id, UnitDTO unitDTO) {
+        Unit unit = repository.findOne(id);
+        unit.setLabel(unitDTO.getLabel());
+        unit.setDescription(unitDTO.getDescription());
+
+        return repository.save(unit);
+    }
+
+    public Unit delete(String id) {
+        Unit unit = repository.findOne(id);
+        repository.delete(id);
+
+        return unit;
+    }
 }

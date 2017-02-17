@@ -1,18 +1,45 @@
 package com.github.solairerove.woodstock.service;
 
 import com.github.solairerove.woodstock.domain.Module;
+import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ModuleDTO;
+import com.github.solairerove.woodstock.repository.UnitRepository;
+import com.github.solairerove.woodstock.service.util.ServiceUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface ModuleService {
+import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToModule;
 
-    Module create(String unitId, ModuleDTO moduleDTO);
+@Service
+public class ModuleService {
 
-    Optional<Module> get(String unitId, String moduleId);
+    private final UnitRepository repository;
 
-    List<Module> getAll(String unitId);
-//
-//    Module update(String unitId, Long moduleId, ModuleDTO moduleDTO);
+    private final ServiceUtil util;
+
+    @Autowired
+    public ModuleService(UnitRepository repository, ServiceUtil util) {
+        this.repository = repository;
+        this.util = util;
+    }
+
+    public Module create(String unitId, ModuleDTO moduleDTO) {
+        Module module = convertToModule(moduleDTO);
+
+        Unit unit = repository.findOne(unitId);
+        unit.getModules().add(module);
+        repository.save(unit);
+
+        return module;
+    }
+
+    public Module get(String unitId, String moduleId) {
+        return this.util.getModule(unitId, moduleId);
+    }
+
+    public List<Module> getAll(String unitId) {
+        return this.util.getModules(unitId);
+    }
 }
