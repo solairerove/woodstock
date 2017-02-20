@@ -1,10 +1,10 @@
-import { WoodclientPage } from './app.po';
+import { WoodstockPage } from './app.po';
 
-describe('woodclient App', function() {
-  let page: WoodclientPage;
+describe('woodstock App', function() {
+  let page: WoodstockPage;
 
   beforeEach(() => {
-    page = new WoodclientPage();
+    page = new WoodstockPage();
   });
 
   it('should display message saying app works', () => {

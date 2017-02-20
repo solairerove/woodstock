@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class WoodclientPage {
+export class WoodstockPage {
   navigateTo() {
     return browser.get('/');
   }

@@ -1,12 +1,11 @@
 {
-  "name": "woodclient",
+  "name": "woodstock",
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
@@ -26,8 +25,8 @@
     "@ngrx/store": "^2.2.1",
     "@ngrx/store-devtools": "^3.2.3",
     "core-js": "^2.4.1",
-    "jquery": "3.1.1",
-    "materialize-css": "0.97.8",
+    "jquery": "^3.1.1",
+    "materialize-css": "^0.98.0",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.7.2"
@@ -36,7 +35,7 @@
     "@angular/compiler-cli": "^2.3.1",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
-    "angular-cli": "1.0.0-beta.24",
+    "angular-cli": "1.0.0-beta.28.3",
     "codelyzer": "~2.0.0-beta.1",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",
@@ -47,7 +46,7 @@
     "karma-remap-istanbul": "^0.2.1",
     "protractor": "~4.0.13",
     "ts-node": "1.2.1",
-    "tslint": "^4.0.2",
+    "tslint": "^4.3.0",
     "typescript": "~2.0.3"
   }
 }
