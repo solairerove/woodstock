@@ -1,13 +1,11 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-@Data
 @Document(collection = "answers")
 public class Answer implements Serializable {
 
@@ -21,10 +19,41 @@ public class Answer implements Serializable {
     private boolean enable;
 
     public Answer() {
-        this.init();
+        this.id = ObjectId.get().toHexString();
     }
 
-    private void init() {
+    public Answer(String answer, boolean correct, boolean enable) {
         this.id = ObjectId.get().toHexString();
+        this.answer = answer;
+        this.correct = correct;
+        this.enable = enable;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public boolean isCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Document(collection = "references")
 public class Reference implements Serializable {
 
@@ -23,12 +21,28 @@ public class Reference implements Serializable {
     private List<Chapter> chapters;
 
     public Reference() {
-        this.init();
-    }
-
-    private void init() {
         this.id = ObjectId.get().toHexString();
         this.chapters = new ArrayList<>();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public List<Chapter> getChapters() {
@@ -37,6 +51,10 @@ public class Reference implements Serializable {
         }
 
         return this.chapters;
+    }
+
+    public void setChapters(List<Chapter> chapters) {
+        this.chapters = chapters;
     }
 
     public void add(Chapter chapter) {

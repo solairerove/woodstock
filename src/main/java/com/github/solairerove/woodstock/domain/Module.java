@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.domain;
 
-import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Document(collection = "modules")
 public class Module implements Serializable {
 
@@ -27,13 +25,37 @@ public class Module implements Serializable {
     private List<Question> questions;
 
     public Module() {
-        this.init();
-    }
-
-    private void init() {
         this.id = ObjectId.get().toHexString();
         this.references = new ArrayList<>();
         this.questions = new ArrayList<>();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Reference> getReferences() {
@@ -44,12 +66,20 @@ public class Module implements Serializable {
         return this.references;
     }
 
+    public void setReferences(List<Reference> references) {
+        this.references = references;
+    }
+
     public List<Question> getQuestions() {
         if (this.questions == null) {
             this.questions = new ArrayList<>();
         }
 
         return this.questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public void addReference(Reference reference) {

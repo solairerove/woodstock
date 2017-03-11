@@ -1,11 +1,19 @@
 package com.github.solairerove.woodstock.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
-@Data
 public class QuestionDTO implements Serializable {
 
     private String question;
+
+    public QuestionDTO() {
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 }
