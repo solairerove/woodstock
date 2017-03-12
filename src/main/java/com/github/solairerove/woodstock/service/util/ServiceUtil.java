@@ -2,6 +2,7 @@ package com.github.solairerove.woodstock.service.util;
 
 import com.github.solairerove.woodstock.domain.Chapter;
 import com.github.solairerove.woodstock.domain.Module;
+import com.github.solairerove.woodstock.domain.Question;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.repository.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,15 @@ public class ServiceUtil {
                 .orElse(null);
     }
 
+    public Question getQuestion(String unitId, String moduleId, String questionId) {
+        return this.getModule(unitId, moduleId)
+                .getQuestions()
+                .stream()
+                .filter(el -> el.getId().equals(questionId))
+                .findFirst()
+                .orElse(null);
+    }
+
     public Chapter getChapter(String unitId, String moduleId, String refId, String chapterId) {
         return this.getReference(unitId, moduleId, refId)
                 .getChapters()
@@ -56,6 +66,11 @@ public class ServiceUtil {
     public List<Reference> getReferences(String unitId, String moduleId) {
         return this.getModule(unitId, moduleId)
                 .getReferences();
+    }
+
+    public List<Question> getQuestions(String unitId, String moduleId) {
+        return this.getModule(unitId, moduleId)
+                .getQuestions();
     }
 
     public List<Chapter> getChapters(String unitId, String moduleId, String refId) {

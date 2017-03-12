@@ -33,11 +33,11 @@ node: 7.7.1
 
 ## Generate stub in mongo:
 
-* `mvn clean install && java -jar -Dspring.profiles.active=generate *.jar`
+* `mvn clean install -T 4 && java -jar -Dspring.profiles.active=generate *.jar`
 
 ## Start backend:
 
-* `mvn clean install && java -jar *.jar`
+* `mvn clean install -T 4 && java -jar *.jar`
 
 ## Start frontend:
 
