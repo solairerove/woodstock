@@ -29,6 +29,7 @@
             <id>test</id>
             <properties>
                 <skip.test>false</skip.test>
+                <mongodb.port>27018</mongodb.port>
             </properties>
         </profile>
 
@@ -36,6 +37,7 @@
             <id>dev</id>
             <properties>
                 <skip.test>true</skip.test>
+                <mongodb.port>27017</mongodb.port>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>

@@ -12,6 +12,16 @@ services:
     networks:
       - woodnet
 
+  mongodb-test:
+    container_name: mongo-woodstock-test
+    image: mongo:3.4.2
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGODB_DATABASE=docker
+    networks:
+      - woodnet
+
   mongoclient:
     depends_on:
       - mongodb

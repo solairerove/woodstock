@@ -35,6 +35,10 @@ node: 7.7.1
 
 * `mvn clean install -T 4 && java -jar -Dspring.profiles.active=generate *.jar`
 
+## Invoke tests:
+
+* `mvn clean install -Ptest -T 4`
+
 ## Start backend:
 
 * `mvn clean install -T 4 && java -jar *.jar`
