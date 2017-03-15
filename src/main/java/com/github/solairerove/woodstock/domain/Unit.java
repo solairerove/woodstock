@@ -25,6 +25,13 @@ public class Unit implements Serializable {
         this.modules = new ArrayList<>();
     }
 
+    public Unit(String label, String avatar, String description) {
+        this.label = label;
+        this.avatar = avatar;
+        this.description = description;
+        this.modules = new ArrayList<>();
+    }
+
     public String getId() {
         return id;
     }
