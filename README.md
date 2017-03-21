@@ -7,28 +7,30 @@ ___
 ## Env:
 
 ``` bash
-$ java -version
-java version "1.8.0_111"
-Java(TM) SE Runtime Environment (build 1.8.0_111-b14)
-Java HotSpot(TM) 64-Bit Server VM (build 25.111-b14, mixed mode)
+solairerove$ java -version
+java version "1.8.0_121"
+Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
 
-$ mvn -v
-Apache Maven 3.3.9
-Maven home: /opt/env/maven339
-Java version: 1.8.0_111, vendor: Oracle Corporation
-Java home: /opt/env/jdk8/jre
+solairerove$ mvn -v
+Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T19:41:47+03:00)
+Maven home: /usr/local/Cellar/maven/3.3.9/libexec
+Java version: 1.8.0_121, vendor: Oracle Corporation
+Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre
 Default locale: en_US, platform encoding: UTF-8
-OS name: "linux", version: "4.4.52-1-manjaro", arch: "amd64", family: "unix"
+OS name: "mac os x", version: "10.12.1", arch: "x86_64", family: "mac"
 
-$ ng version
-                             _                           _  _
-  __ _  _ __    __ _  _   _ | |  __ _  _ __         ___ | |(_)
- / _` || '_ \  / _` || | | || | / _` || '__|_____  / __|| || |
-| (_| || | | || (_| || |_| || || (_| || |  |_____|| (__ | || |
- \__,_||_| |_| \__, | \__,_||_| \__,_||_|          \___||_||_|
+solairerove$ ng version
+    _                      _                 ____ _     ___
+   / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+  / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+ / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+/_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
                |___/
-angular-cli: 1.0.0-beta.28.3
-node: 7.7.1
+@angular/cli: 1.0.0-rc.2
+node: 7.7.3
+npm: 4.1.2
+os: darwin x64
 ```
 
 ## Generate stub in mongo:
