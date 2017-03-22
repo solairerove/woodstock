@@ -1,12 +1,15 @@
 package com.github.solairerove.woodstock;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.solairerove.woodstock.domain.Unit;
+import com.github.solairerove.woodstock.dto.UnitDTO;
 import com.github.solairerove.woodstock.repository.UnitRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpMethod;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -16,6 +19,7 @@ import static com.github.solairerove.woodstock.controller.ControllerApi.UNIT_API
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -40,6 +44,21 @@ public class UnitControllerTest {
     }
 
     @Test
+    public void createUnitTest() throws Exception {
+        repository.deleteAll();
+        UnitDTO dto = new UnitDTO("Label", "URL to avatar", "Short MD description");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        mvc.perform(request(POST, UNIT_API)
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isCreated())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.label", is("Label")));
+    }
+
+    @Test
     public void getUnitTest() throws Exception {
         repository.deleteAll();
         Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
@@ -51,7 +70,7 @@ public class UnitControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.label", is("Label")))
-                .andExpect(jsonPath("$.avatar", is("URL to avatar")));;
+                .andExpect(jsonPath("$.avatar", is("URL to avatar")));
     }
 
     @Test

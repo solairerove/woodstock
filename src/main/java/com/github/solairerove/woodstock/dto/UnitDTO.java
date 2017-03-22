@@ -13,6 +13,12 @@ public class UnitDTO implements Serializable {
     public UnitDTO() {
     }
 
+    public UnitDTO(String label, String avatar, String description) {
+        this.label = label;
+        this.avatar = avatar;
+        this.description = description;
+    }
+
     public String getLabel() {
         return label;
     }
