@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -86,5 +87,22 @@ public class UnitControllerTest {
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.[0].label", is("Label")))
                 .andExpect(jsonPath("$.[0].avatar", is("URL to avatar")));
+    }
+
+    @Test
+    public void updateUnitTest() throws Exception {
+        repository.deleteAll();
+        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+        String id = repository.save(unit).getId();
+        UnitDTO dto = new UnitDTO("Updated Label", "URL to avatar", "Short MD description");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        mvc.perform(request(PUT, UNIT_API + "/" + id)
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isAccepted())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.label", is("Updated Label")));
     }
 }

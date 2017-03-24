@@ -15,12 +15,8 @@ export class UnitListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initState();
-  }
-
-  private initState() {
     this.store$
-      .select(state => state.units)
-      .subscribe(s => this.units = s);
+      .map(state => state.units)
+      .subscribe(u => this.units = u);
   }
 }
