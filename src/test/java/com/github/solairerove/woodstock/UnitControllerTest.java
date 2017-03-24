@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.UnitDTO;
 import com.github.solairerove.woodstock.repository.UnitRepository;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,9 +18,8 @@ import org.springframework.web.context.WebApplicationContext;
 import static com.github.solairerove.woodstock.controller.ControllerApi.UNIT_API;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpMethod.PUT;
+import static org.junit.Assert.assertEquals;
+import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -104,5 +104,22 @@ public class UnitControllerTest {
                 .andExpect(status().isAccepted())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.label", is("Updated Label")));
+    }
+
+    @Test
+    public void deleteUnitTest() throws Exception {
+        repository.deleteAll();
+        Unit unit = new Unit("Deleted Label", "URL to avatar", "Short MD description");
+        String id = repository.save(unit).getId();
+
+        mvc.perform(request(DELETE, UNIT_API + "/" + id)
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isAccepted())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.id", is(id)))
+                .andExpect(jsonPath("$.label", is("Deleted Label")));
+
+        assertEquals(0L, repository.count());
     }
 }
