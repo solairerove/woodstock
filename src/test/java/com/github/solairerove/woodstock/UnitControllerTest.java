@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.UnitDTO;
 import com.github.solairerove.woodstock.repository.UnitRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
