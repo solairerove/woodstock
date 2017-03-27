@@ -30,6 +30,15 @@ public class Module implements Serializable {
         this.questions = new ArrayList<>();
     }
 
+    public Module(String name, String avatar, String description) {
+        this.id = ObjectId.get().toHexString();
+        this.name = name;
+        this.avatar = avatar;
+        this.description = description;
+        this.references = new ArrayList<>();
+        this.questions = new ArrayList<>();
+    }
+
     public String getId() {
         return id;
     }
