@@ -13,6 +13,12 @@ public class ModuleDTO implements Serializable {
     public ModuleDTO() {
     }
 
+    public ModuleDTO(String name, String avatar, String description) {
+        this.name = name;
+        this.avatar = avatar;
+        this.description = description;
+    }
+
     public String getName() {
         return name;
     }

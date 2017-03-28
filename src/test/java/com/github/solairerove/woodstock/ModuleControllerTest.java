@@ -1,7 +1,9 @@
 package com.github.solairerove.woodstock;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Unit;
+import com.github.solairerove.woodstock.dto.ModuleDTO;
 import com.github.solairerove.woodstock.repository.UnitRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -40,6 +43,24 @@ public class ModuleControllerTest {
     @Before
     public void setup() throws Exception {
         this.mvc = webAppContextSetup(context).build();
+    }
+
+    @Test
+    public void createModuleTest() throws Exception {
+        repository.deleteAll();
+        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+        String unitId = repository.save(unit).getId();
+
+        ModuleDTO dto = new ModuleDTO("Name", "Link to avatar", "Short description");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        mvc.perform(request(POST, "/api/units/" + unitId + "/modules/")
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isCreated())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.name", is("Name")));
     }
 
     @Test
