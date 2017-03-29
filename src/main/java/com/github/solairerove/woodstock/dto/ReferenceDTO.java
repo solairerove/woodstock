@@ -11,6 +11,11 @@ public class ReferenceDTO implements Serializable {
     public ReferenceDTO() {
     }
 
+    public ReferenceDTO(String title, String version) {
+        this.title = title;
+        this.version = version;
+    }
+
     public String getTitle() {
         return title;
     }
