@@ -2,6 +2,7 @@ package com.github.solairerove.woodstock;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.solairerove.woodstock.domain.Module;
+import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
 import com.github.solairerove.woodstock.repository.UnitRepository;
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.Matchers.is;
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
@@ -66,5 +68,27 @@ public class ReferenceControllerTest {
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.title", is("Title")))
                 .andExpect(jsonPath("$.version", is("Reference version")));
+    }
+
+    @Test
+    public void getReferenceTest() throws Exception {
+        repository.deleteAll();
+        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+        Module module = new Module("Name", "Link to avatar", "Short Description");
+        Reference reference = new Reference("Reference Title", "Version");
+
+        module.addReference(reference);
+        unit.add(module);
+
+        String unitId = repository.save(unit).getId();
+        String moduleId = module.getId();
+        String refId = reference.getId();
+
+        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId + "/references/" + refId)
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.title", is("Reference Title")));
     }
 }

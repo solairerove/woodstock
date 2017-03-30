@@ -25,6 +25,13 @@ public class Reference implements Serializable {
         this.chapters = new ArrayList<>();
     }
 
+    public Reference(String title, String version) {
+        this.id = ObjectId.get().toHexString();
+        this.title = title;
+        this.version = version;
+        this.chapters = new ArrayList<>();
+    }
+
     public String getId() {
         return id;
     }
