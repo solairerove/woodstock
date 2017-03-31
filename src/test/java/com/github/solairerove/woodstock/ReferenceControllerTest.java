@@ -16,6 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
@@ -90,5 +91,27 @@ public class ReferenceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.title", is("Reference Title")));
+    }
+
+    @Test
+    public void getAllReferencesTest() throws Exception {
+        repository.deleteAll();
+        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+        Module module = new Module("Name", "Link to avatar", "Short Description");
+        Reference reference = new Reference("Reference Title", "Version");
+
+        module.addReference(reference);
+        unit.add(module);
+
+        String unitId = repository.save(unit).getId();
+        String moduleId = module.getId();
+
+        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId + "/references")
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].title", is("Reference Title")));
     }
 }
