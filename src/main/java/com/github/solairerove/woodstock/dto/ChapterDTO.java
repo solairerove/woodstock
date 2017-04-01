@@ -11,6 +11,11 @@ public class ChapterDTO implements Serializable {
     public ChapterDTO() {
     }
 
+    public ChapterDTO(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     public String getTitle() {
         return title;
     }
