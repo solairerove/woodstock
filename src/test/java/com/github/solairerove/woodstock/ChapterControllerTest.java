@@ -1,6 +1,7 @@
 package com.github.solairerove.woodstock;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.solairerove.woodstock.domain.Chapter;
 import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
@@ -17,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.Matchers.is;
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
@@ -71,5 +73,30 @@ public class ChapterControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.title", is("Chapter title")));
+    }
+
+    @Test
+    public void getAllChaptersTest() throws Exception {
+        repository.deleteAll();
+        Unit unit = new Unit("Label", "Link to avatar", "Description");
+        Module module = new Module("Name", "Avatar", "Description");
+        Reference reference = new Reference("Title", "Version");
+        Chapter chapter = new Chapter("Chapter title", "Content");
+
+        reference.add(chapter);
+        module.addReference(reference);
+        unit.add(module);
+
+        String unitId = repository.save(unit).getId();
+        String moduleId = module.getId();
+        String refId = reference.getId();
+
+        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId +
+                "/references/" + refId + "/chapters")
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[0].title", is("Chapter title")));
     }
 }
