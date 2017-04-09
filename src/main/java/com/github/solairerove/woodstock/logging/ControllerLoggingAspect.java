@@ -38,5 +38,4 @@ public class ControllerLoggingAspect {
         LOGGER.info("Chapter controller: " + joinPoint.getSignature().getName() +
                 Arrays.toString(joinPoint.getArgs()));
     }
-
 }

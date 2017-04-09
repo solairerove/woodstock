@@ -42,4 +42,18 @@ public class ModuleService {
     public List<Module> getAll(String unitId) {
         return this.util.getModules(unitId);
     }
+
+    public Module update(String unitId, String moduleId, ModuleDTO dto) {
+        Unit unit = repository.findOne(unitId);
+
+        Module module = util.getModule(unitId, moduleId);
+        module.setName(dto.getName());
+        module.setAvatar(dto.getAvatar());
+        module.setDescription(dto.getDescription());
+
+        unit.add(module);
+        repository.save(unit);
+
+        return module;
+    }
 }
