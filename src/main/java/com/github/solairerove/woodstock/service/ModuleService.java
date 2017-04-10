@@ -47,6 +47,8 @@ public class ModuleService {
         Unit unit = repository.findOne(unitId);
 
         Module module = util.getModule(unitId, moduleId);
+        unit.getModules().removeIf(s -> moduleId.equals(s.getId()));
+
         module.setName(dto.getName());
         module.setAvatar(dto.getAvatar());
         module.setDescription(dto.getDescription());
