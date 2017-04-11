@@ -75,4 +75,8 @@ public class Unit implements Serializable {
     public void add(Module module) {
         this.modules.add(module);
     }
+
+    public void delete(Module module) {
+        this.modules.remove(module);
+    }
 }

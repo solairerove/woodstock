@@ -18,10 +18,10 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -127,7 +127,7 @@ public class ModuleControllerTest {
 
         mvc.perform(request(PUT, "/api/units/" + unitId + "/modules/" + moduleId)
                 .accept(APPLICATION_JSON_UTF8_VALUE)
-                .contentType(APPLICATION_JSON_UTF8)
+                .contentType(APPLICATION_JSON_UTF8_VALUE)
                 .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isAccepted())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
@@ -136,5 +136,28 @@ public class ModuleControllerTest {
         assertEquals(2, repository.findOne(unitId).getModules().size());
         assertEquals("Cork", repository.findOne(unitId).getModules().get(1).getName());
         assertEquals(moduleId, repository.findOne(unitId).getModules().get(1).getId());
+    }
+
+    @Test
+    public void deleteModuleTest() throws Exception {
+        repository.deleteAll();
+        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+        Module module = new Module("Name", "Link to avatar", "Short Description");
+        Module module2 = new Module("Name2", "Link to avatar2", "Short Description");
+        unit.add(module);
+        unit.add(module2);
+
+        String unitId = repository.save(unit).getId();
+        String moduleId = module.getId();
+
+        mvc.perform(request(DELETE, "/api/units/" + unitId + "/modules/" + moduleId)
+                .accept(APPLICATION_JSON_UTF8_VALUE)
+                .contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isAccepted())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.name", is("Name")));
+
+        assertEquals(1, repository.findOne(unitId).getModules().size());
+        assertEquals("Name2", repository.findOne(unitId).getModules().get(0).getName());
     }
 }

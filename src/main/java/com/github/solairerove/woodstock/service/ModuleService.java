@@ -58,4 +58,14 @@ public class ModuleService {
 
         return module;
     }
+
+    public Module delete(String unitId, String moduleId) {
+        Module module = util.getModule(unitId, moduleId);
+
+        Unit unit = repository.findOne(unitId);
+        unit.getModules().removeIf(s -> moduleId.equals(s.getId()));
+        repository.save(unit);
+
+        return module;
+    }
 }

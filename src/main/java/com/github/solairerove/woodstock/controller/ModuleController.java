@@ -14,6 +14,7 @@ import static org.springframework.http.HttpStatus.ACCEPTED;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
@@ -49,5 +50,10 @@ public class ModuleController {
                                  @PathVariable String moduleId,
                                  @RequestBody ModuleDTO moduleDTO) {
         return new ResponseEntity<>(service.update(unitId, moduleId, moduleDTO), ACCEPTED);
+    }
+
+    @RequestMapping(path = "/{moduleId}", method = DELETE)
+    public ResponseEntity delete(@PathVariable String unitId, @PathVariable String moduleId) {
+        return new ResponseEntity<>(service.delete(unitId, moduleId), ACCEPTED);
     }
 }
