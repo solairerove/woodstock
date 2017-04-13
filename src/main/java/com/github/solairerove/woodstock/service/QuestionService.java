@@ -1,16 +1,15 @@
 package com.github.solairerove.woodstock.service;
 
+import com.github.solairerove.woodstock.service.mapper.ModelMapper;
+import com.github.solairerove.woodstock.service.util.ServiceUtil;
 import com.github.solairerove.woodstock.domain.Question;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.QuestionDTO;
 import com.github.solairerove.woodstock.repository.UnitRepository;
-import com.github.solairerove.woodstock.service.util.ServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToQuestion;
 
 @Service
 public class QuestionService {
@@ -26,10 +25,11 @@ public class QuestionService {
     }
 
     public Question create(String unitId, String moduleId, QuestionDTO dto) {
-        Question question = convertToQuestion(dto);
+        Question question = ModelMapper.convertToQuestion(dto);
 
         Unit unit = repository.findOne(unitId);
 
+        // TODO: add method in utils
         unit.getModules()
                 .stream()
                 .filter(module$ -> module$.getId().equals(moduleId))

@@ -9,6 +9,10 @@ public class QuestionDTO implements Serializable {
     public QuestionDTO() {
     }
 
+    public QuestionDTO(String question) {
+        this.question = question;
+    }
+
     public String getQuestion() {
         return question;
     }

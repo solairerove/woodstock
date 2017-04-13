@@ -23,6 +23,11 @@ public class Question implements Serializable {
         this.answers = new ArrayList<>();
     }
 
+    public Question(String question) {
+        this.id = ObjectId.get().toHexString();
+        this.question = question;
+    }
+
     public String getId() {
         return id;
     }
