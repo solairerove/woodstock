@@ -1,9 +1,8 @@
-package com.github.solairerove.woodstock;
+package com.github.solairerove.woodstock.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Unit;
-import com.github.solairerove.woodstock.dto.ModuleDTO;
+import com.github.solairerove.woodstock.dto.UnitDTO;
 import com.github.solairerove.woodstock.repository.UnitRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static com.github.solairerove.woodstock.controller.ControllerApi.UNIT_API;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
@@ -23,19 +23,16 @@ import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
-/**
- * Created by solairerove on 3/27/17.
- */
 @SpringBootTest
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ModuleControllerTest {
+public class UnitControllerTest {
 
     private MockMvc mvc;
 
@@ -51,113 +48,82 @@ public class ModuleControllerTest {
     }
 
     @Test
-    public void createModuleTest() throws Exception {
+    public void createUnitTest() throws Exception {
         repository.deleteAll();
-        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        String unitId = repository.save(unit).getId();
-
-        ModuleDTO dto = new ModuleDTO("Name", "Link to avatar", "Short description");
+        UnitDTO dto = new UnitDTO("Label", "URL to avatar", "Short MD description");
         ObjectMapper objectMapper = new ObjectMapper();
 
-        mvc.perform(request(POST, "/api/units/" + unitId + "/modules/")
+        mvc.perform(request(POST, UNIT_API)
                 .accept(APPLICATION_JSON_UTF8_VALUE)
                 .contentType(APPLICATION_JSON_UTF8_VALUE)
                 .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.name", is("Name")));
+                .andExpect(jsonPath("$.label", is("Label")));
     }
 
     @Test
-    public void getModuleTest() throws Exception {
+    public void getUnitTest() throws Exception {
         repository.deleteAll();
         Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        Module module = new Module("Name", "Link to avatar", "Short Description");
-        unit.add(module);
+        String id = repository.save(unit).getId();
 
-        String unitId = repository.save(unit).getId();
-        String moduleId = module.getId();
-
-        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId)
+        mvc.perform(request(GET, UNIT_API + "/" + id)
                 .accept(APPLICATION_JSON_UTF8_VALUE)
                 .contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.name", is("Name")))
-                .andExpect(jsonPath("$.avatar", is("Link to avatar")));
+                .andExpect(jsonPath("$.label", is("Label")))
+                .andExpect(jsonPath("$.avatar", is("URL to avatar")));
     }
 
     @Test
-    public void getAllModulesTest() throws Exception {
+    public void getAllUnitsTest() throws Exception {
         repository.deleteAll();
         Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        Module module = new Module("Name", "Link to avatar", "Short Description");
-        Module module2 = new Module("Name2", "Link to avatar2", "Short Description");
-        unit.add(module);
-        unit.add(module2);
+        repository.save(unit);
 
-        String unitId = repository.save(unit).getId();
-
-        mvc.perform(request(GET, "/api/units/" + unitId + "/modules")
+        mvc.perform(request(GET, UNIT_API)
                 .accept(APPLICATION_JSON_UTF8_VALUE)
                 .contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$.[0].name", is("Name")))
-                .andExpect(jsonPath("$.[0].avatar", is("Link to avatar")))
-                .andExpect(jsonPath("$.[1].name", is("Name2")))
-                .andExpect(jsonPath("$.[1].avatar", is("Link to avatar2")));
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$.[0].label", is("Label")))
+                .andExpect(jsonPath("$.[0].avatar", is("URL to avatar")));
     }
 
     @Test
-    public void updateModuleTest() throws Exception {
+    public void updateUnitTest() throws Exception {
         repository.deleteAll();
         Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        Module module = new Module("Name", "Link to avatar", "Short Description");
-        Module module2 = new Module("Name2", "Link to avatar2", "Short Description");
-        unit.add(module);
-        unit.add(module2);
-
-        String unitId = repository.save(unit).getId();
-        String moduleId = module.getId();
-
-        ModuleDTO dto = new ModuleDTO("Cork", "Link to avatar", "Short description");
+        String id = repository.save(unit).getId();
+        UnitDTO dto = new UnitDTO("Updated Label", "URL to avatar", "Short MD description");
         ObjectMapper objectMapper = new ObjectMapper();
 
-        mvc.perform(request(PUT, "/api/units/" + unitId + "/modules/" + moduleId)
+        mvc.perform(request(PUT, UNIT_API + "/" + id)
                 .accept(APPLICATION_JSON_UTF8_VALUE)
                 .contentType(APPLICATION_JSON_UTF8_VALUE)
                 .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isAccepted())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.name", is("Cork")));
-
-        assertEquals(2, repository.findOne(unitId).getModules().size());
-        assertEquals("Cork", repository.findOne(unitId).getModules().get(1).getName());
-        assertEquals(moduleId, repository.findOne(unitId).getModules().get(1).getId());
+                .andExpect(jsonPath("$.label", is("Updated Label")));
     }
 
     @Test
-    public void deleteModuleTest() throws Exception {
+    public void deleteUnitTest() throws Exception {
         repository.deleteAll();
-        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        Module module = new Module("Name", "Link to avatar", "Short Description");
-        Module module2 = new Module("Name2", "Link to avatar2", "Short Description");
-        unit.add(module);
-        unit.add(module2);
+        Unit unit = new Unit("Deleted Label", "URL to avatar", "Short MD description");
+        String id = repository.save(unit).getId();
 
-        String unitId = repository.save(unit).getId();
-        String moduleId = module.getId();
-
-        mvc.perform(request(DELETE, "/api/units/" + unitId + "/modules/" + moduleId)
+        mvc.perform(request(DELETE, UNIT_API + "/" + id)
                 .accept(APPLICATION_JSON_UTF8_VALUE)
                 .contentType(APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isAccepted())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.name", is("Name")));
+                .andExpect(jsonPath("$.id", is(id)))
+                .andExpect(jsonPath("$.label", is("Deleted Label")));
 
-        assertEquals(1, repository.findOne(unitId).getModules().size());
-        assertEquals("Name2", repository.findOne(unitId).getModules().get(0).getName());
+        assertEquals(0L, repository.count());
     }
 }
