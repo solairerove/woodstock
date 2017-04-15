@@ -45,10 +45,13 @@ public class ReferenceController {
         return new ResponseEntity<>(service.getAll(unitId, moduleId), HttpStatus.OK);
     }
 
-//    @RequestMapping(path = "/{refId}", method = RequestMethod.PUT)
-//    public ResponseEntity update(@PathVariable Long moduleId, @PathVariable Long refId, @RequestBody ReferenceDTO referenceDTO) {
-//        return new ResponseEntity<>(service.update(moduleId, refId, referenceDTO), HttpStatus.ACCEPTED);
-//    }
+    @RequestMapping(path = "/{refId}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable String unitId,
+                                 @PathVariable String moduleId,
+                                 @PathVariable String refId,
+                                 @RequestBody ReferenceDTO referenceDTO) {
+        return new ResponseEntity<>(service.update(unitId, moduleId, refId, referenceDTO), HttpStatus.ACCEPTED);
+    }
 
 //    @RequestMapping(path = "/{refId}", method = RequestMethod.DELETE)
 //    public ResponseEntity delete(@PathVariable Long moduleId, @PathVariable Long refId) {

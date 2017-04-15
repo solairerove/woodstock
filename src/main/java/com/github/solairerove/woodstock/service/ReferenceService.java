@@ -1,5 +1,6 @@
 package com.github.solairerove.woodstock.service;
 
+import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToReference;
 
@@ -50,8 +53,28 @@ public class ReferenceService {
         return this.util.getReferences(unitId, moduleId);
     }
 
-    public Reference update(String unitId, String moduleId, String refId, ReferenceDTO referenceDTO) {
-        return null;
+    public Reference update(String unitId, String moduleId, String refId, ReferenceDTO dto) {
+        Unit unit = repository.findOne(unitId);
+        Module module = util.getModule(unitId, moduleId);
+
+        List<Reference> refs = util.getReferences(unitId, moduleId);
+
+        Reference reference = util.getReference(unitId, moduleId, refId);
+        reference.setTitle(dto.getTitle());
+        reference.setVersion(dto.getVersion());
+
+        int index = IntStream.range(0, refs.size())
+                .filter(i -> refId.equals(refs.get(i).getId()))
+                .findFirst()
+                .getAsInt();
+
+        refs.set(index, reference);
+        module.setReferences(refs);
+        unit.add(module);
+
+        repository.save(unit);
+
+        return reference;
     }
 
     public Reference delete(String unitId, String moduleId, String refId) {
