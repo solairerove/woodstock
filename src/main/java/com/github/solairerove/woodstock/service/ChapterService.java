@@ -25,33 +25,33 @@ public class ChapterService {
         this.util = util;
     }
 
-    public Chapter create(String unitId, String moduleId, String refId, ChapterDTO chapterDTO) {
-        Chapter chapter = convertToChapter(chapterDTO);
-
-        Unit unit = repository.findOne(unitId);
-
-        unit.getModules()
-                .stream()
-                .filter(el -> moduleId.equals(el.getId()))
-                .findFirst()
-                .orElse(null)
-                .getReferences()
-                .stream()
-                .filter(el -> refId.equals(el.getId()))
-                .findFirst()
-                .orElse(null)
-                .getChapters()
-                .add(chapter);
-        repository.save(unit);
-
-        return chapter;
-    }
-
-    public Chapter get(String unitId, String moduleId, String refId, String chapterId) {
-        return this.util.getChapter(unitId, moduleId, refId, chapterId);
-    }
-
-    public List<Chapter> getAll(String unitId, String moduleId, String refId) {
-        return this.util.getChapters(unitId, moduleId, refId);
-    }
+//    public Chapter create(String unitId, String moduleId, String refId, ChapterDTO chapterDTO) {
+//        Chapter chapter = convertToChapter(chapterDTO);
+//
+//        Unit unit = repository.findOne(unitId);
+//
+//        unit.getModules()
+//                .stream()
+//                .filter(el -> moduleId.equals(el.getId()))
+//                .findFirst()
+//                .orElse(null)
+//                .getReferences()
+//                .stream()
+//                .filter(el -> refId.equals(el.getId()))
+//                .findFirst()
+//                .orElse(null)
+//                .getChapters()
+//                .add(chapter);
+//        repository.save(unit);
+//
+//        return chapter;
+//    }
+//
+//    public Chapter get(String unitId, String moduleId, String refId, String chapterId) {
+//        return this.util.getChapter(unitId, moduleId, refId, chapterId);
+//    }
+//
+//    public List<Chapter> getAll(String unitId, String moduleId, String refId) {
+//        return this.util.getChapters(unitId, moduleId, refId);
+//    }
 }

@@ -45,69 +45,69 @@ public class QuestionControllerTest {
         this.mvc = webAppContextSetup(context).build();
     }
 
-    @Test
-    public void createQuestionTest() throws Exception {
-        repository.deleteAll();
-        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        Module module = new Module("Name", "Link to avatar", "Short Description");
-        unit.add(module);
-
-        String unitId = repository.save(unit).getId();
-        String moduleId = module.getId();
-
-        QuestionDTO dto = new QuestionDTO("Some Question");
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        mvc.perform(request(POST, "/api/units/" + unitId + "/modules/" + moduleId + "/questions/")
-                .accept(APPLICATION_JSON_UTF8_VALUE)
-                .contentType(APPLICATION_JSON_UTF8_VALUE)
-                .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isCreated())
-                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.question", is("Some Question")));
-    }
-
-    @Test
-    public void getQuestionTest() throws Exception {
-        repository.deleteAll();
-        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        Module module = new Module("Name", "Link to avatar", "Short Description");
-        Question question = new Question("What's up, bitch");
-
-        module.addQuestion(question);
-        unit.add(module);
-
-        String unitId = repository.save(unit).getId();
-        String moduleId = module.getId();
-        String questionId = question.getId();
-
-        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId + "/questions/" + questionId)
-                .accept(APPLICATION_JSON_UTF8_VALUE)
-                .contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.question", is("What's up, bitch")));
-    }
-
-    @Test
-    public void getAllQuestionsTest() throws Exception {
-        repository.deleteAll();
-        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
-        Module module = new Module("Name", "Link to avatar", "Short Description");
-        Question question = new Question("What's up, bitch");
-
-        module.addQuestion(question);
-        unit.add(module);
-
-        String unitId = repository.save(unit).getId();
-        String moduleId = module.getId();
-
-        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId + "/questions")
-                .accept(APPLICATION_JSON_UTF8_VALUE)
-                .contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].question", is("What's up, bitch")));
-    }
+//    @Test
+//    public void createQuestionTest() throws Exception {
+//        repository.deleteAll();
+//        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+//        Module module = new Module("Name", "Link to avatar", "Short Description");
+//        unit.add(module);
+//
+//        String unitId = repository.save(unit).getId();
+//        String moduleId = module.getId();
+//
+//        QuestionDTO dto = new QuestionDTO("Some Question");
+//        ObjectMapper objectMapper = new ObjectMapper();
+//
+//        mvc.perform(request(POST, "/api/units/" + unitId + "/modules/" + moduleId + "/questions/")
+//                .accept(APPLICATION_JSON_UTF8_VALUE)
+//                .contentType(APPLICATION_JSON_UTF8_VALUE)
+//                .content(objectMapper.writeValueAsString(dto)))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+//                .andExpect(jsonPath("$.question", is("Some Question")));
+//    }
+//
+//    @Test
+//    public void getQuestionTest() throws Exception {
+//        repository.deleteAll();
+//        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+//        Module module = new Module("Name", "Link to avatar", "Short Description");
+//        Question question = new Question("What's up, bitch");
+//
+//        module.addQuestion(question);
+//        unit.add(module);
+//
+//        String unitId = repository.save(unit).getId();
+//        String moduleId = module.getId();
+//        String questionId = question.getId();
+//
+//        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId + "/questions/" + questionId)
+//                .accept(APPLICATION_JSON_UTF8_VALUE)
+//                .contentType(APPLICATION_JSON_UTF8_VALUE))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+//                .andExpect(jsonPath("$.question", is("What's up, bitch")));
+//    }
+//
+//    @Test
+//    public void getAllQuestionsTest() throws Exception {
+//        repository.deleteAll();
+//        Unit unit = new Unit("Label", "URL to avatar", "Short MD description");
+//        Module module = new Module("Name", "Link to avatar", "Short Description");
+//        Question question = new Question("What's up, bitch");
+//
+//        module.addQuestion(question);
+//        unit.add(module);
+//
+//        String unitId = repository.save(unit).getId();
+//        String moduleId = module.getId();
+//
+//        mvc.perform(request(GET, "/api/units/" + unitId + "/modules/" + moduleId + "/questions")
+//                .accept(APPLICATION_JSON_UTF8_VALUE)
+//                .contentType(APPLICATION_JSON_UTF8_VALUE))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+//                .andExpect(jsonPath("$", hasSize(1)))
+//                .andExpect(jsonPath("$[0].question", is("What's up, bitch")));
+//    }
 }

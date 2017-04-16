@@ -24,29 +24,29 @@ public class QuestionService {
         this.util = util;
     }
 
-    public Question create(String unitId, String moduleId, QuestionDTO dto) {
-        Question question = ModelMapper.convertToQuestion(dto);
-
-        Unit unit = repository.findOne(unitId);
-
-        // TODO: add method in utils
-        unit.getModules()
-                .stream()
-                .filter(module$ -> module$.getId().equals(moduleId))
-                .findFirst()
-                .orElse(null)
-                .getQuestions()
-                .add(question);
-        repository.save(unit);
-
-        return question;
-    }
-
-    public Question get(String unitId, String moduleId, String questionId) {
-        return this.util.getQuestion(unitId, moduleId, questionId);
-    }
-
-    public List<Question> getAll(String unitId, String moduleId) {
-        return this.util.getQuestions(unitId, moduleId);
-    }
+//    public Question create(String unitId, String moduleId, QuestionDTO dto) {
+//        Question question = ModelMapper.convertToQuestion(dto);
+//
+//        Unit unit = repository.findOne(unitId);
+//
+//        // TODO: add method in utils
+//        unit.getModules()
+//                .stream()
+//                .filter(module$ -> module$.getId().equals(moduleId))
+//                .findFirst()
+//                .orElse(null)
+//                .getQuestions()
+//                .add(question);
+//        repository.save(unit);
+//
+//        return question;
+//    }
+//
+//    public Question get(String unitId, String moduleId, String questionId) {
+//        return this.util.getQuestion(unitId, moduleId, questionId);
+//    }
+//
+//    public List<Question> getAll(String unitId, String moduleId) {
+//        return this.util.getQuestions(unitId, moduleId);
+//    }
 }

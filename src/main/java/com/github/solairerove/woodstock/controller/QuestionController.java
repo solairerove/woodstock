@@ -26,23 +26,23 @@ public class QuestionController {
         this.service = service;
     }
 
-    @RequestMapping(method = POST)
-    public ResponseEntity create(@PathVariable String unitId,
-                                 @PathVariable String moduleId,
-                                 @RequestBody QuestionDTO dto) {
-        return new ResponseEntity<>(service.create(unitId, moduleId, dto), CREATED);
-    }
-
-    @RequestMapping(path = "/{questionId}")
-    public ResponseEntity get(@PathVariable String unitId,
-                              @PathVariable String moduleId,
-                              @PathVariable String questionId) {
-        return new ResponseEntity<>(service.get(unitId, moduleId, questionId), OK);
-    }
-
-    @RequestMapping
-    public ResponseEntity getAll(@PathVariable String unitId,
-                                 @PathVariable String moduleId) {
-        return new ResponseEntity<>(service.getAll(unitId, moduleId), OK);
-    }
+//    @RequestMapping(method = POST)
+//    public ResponseEntity create(@PathVariable String unitId,
+//                                 @PathVariable String moduleId,
+//                                 @RequestBody QuestionDTO dto) {
+//        return new ResponseEntity<>(service.create(unitId, moduleId, dto), CREATED);
+//    }
+//
+//    @RequestMapping(path = "/{questionId}")
+//    public ResponseEntity get(@PathVariable String unitId,
+//                              @PathVariable String moduleId,
+//                              @PathVariable String questionId) {
+//        return new ResponseEntity<>(service.get(unitId, moduleId, questionId), OK);
+//    }
+//
+//    @RequestMapping
+//    public ResponseEntity getAll(@PathVariable String unitId,
+//                                 @PathVariable String moduleId) {
+//        return new ResponseEntity<>(service.getAll(unitId, moduleId), OK);
+//    }
 }

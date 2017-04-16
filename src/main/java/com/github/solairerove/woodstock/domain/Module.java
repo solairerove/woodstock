@@ -25,7 +25,6 @@ public class Module implements Serializable {
     private List<Question> questions;
 
     public Module() {
-        this.id = ObjectId.get().toHexString();
         this.references = new ArrayList<>();
         this.questions = new ArrayList<>();
     }

@@ -19,7 +19,7 @@ public class Unit implements Serializable {
 
     private String description;
 
-    private List<Module> modules;
+    private List<String> modules;
 
     public Unit() {
         this.modules = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Unit implements Serializable {
         this.description = description;
     }
 
-    public List<Module> getModules() {
+    public List<String> getModules() {
         if (this.modules == null) {
             this.modules = new ArrayList<>();
         }
@@ -68,15 +68,15 @@ public class Unit implements Serializable {
         return this.modules;
     }
 
-    public void setModules(List<Module> modules) {
+    public void setModules(List<String> modules) {
         this.modules = modules;
     }
 
-    public void add(Module module) {
+    public void add(String module) {
         this.modules.add(module);
     }
 
-    public void delete(Module module) {
+    public void delete(String module) {
         this.modules.remove(module);
     }
 }

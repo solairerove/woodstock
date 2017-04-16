@@ -27,26 +27,26 @@ public class ChapterController {
         this.service = service;
     }
 
-    @RequestMapping(method = POST)
-    public ResponseEntity create(@PathVariable String unitId,
-                                 @PathVariable String moduleId,
-                                 @PathVariable String refId,
-                                 @RequestBody ChapterDTO chapterDTO) {
-        return new ResponseEntity<>(service.create(unitId, moduleId, refId, chapterDTO), CREATED);
-    }
-
-    @RequestMapping(path = "/{chapterId}", method = GET)
-    public ResponseEntity get(@PathVariable String unitId,
-                              @PathVariable String moduleId,
-                              @PathVariable String refId,
-                              @PathVariable String chapterId) {
-        return new ResponseEntity<>(service.get(unitId, moduleId, refId, chapterId), OK);
-    }
-
-    @RequestMapping(method = GET)
-    public ResponseEntity getAll(@PathVariable String unitId,
-                                 @PathVariable String moduleId,
-                                 @PathVariable String refId) {
-        return new ResponseEntity<>(service.getAll(unitId, moduleId, refId), OK);
-    }
+//    @RequestMapping(method = POST)
+//    public ResponseEntity create(@PathVariable String unitId,
+//                                 @PathVariable String moduleId,
+//                                 @PathVariable String refId,
+//                                 @RequestBody ChapterDTO chapterDTO) {
+//        return new ResponseEntity<>(service.create(unitId, moduleId, refId, chapterDTO), CREATED);
+//    }
+//
+//    @RequestMapping(path = "/{chapterId}", method = GET)
+//    public ResponseEntity get(@PathVariable String unitId,
+//                              @PathVariable String moduleId,
+//                              @PathVariable String refId,
+//                              @PathVariable String chapterId) {
+//        return new ResponseEntity<>(service.get(unitId, moduleId, refId, chapterId), OK);
+//    }
+//
+//    @RequestMapping(method = GET)
+//    public ResponseEntity getAll(@PathVariable String unitId,
+//                                 @PathVariable String moduleId,
+//                                 @PathVariable String refId) {
+//        return new ResponseEntity<>(service.getAll(unitId, moduleId, refId), OK);
+//    }
 }
