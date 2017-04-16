@@ -155,8 +155,9 @@ public class ModuleControllerTest {
                 .andExpect(jsonPath("$.name", is("Cork")));
 
         assertEquals(2, unitRepository.findOne(unitId).getModules().size());
-        assertEquals(moduleId, unitRepository.findOne(unitId).getModules().get(1));
+        assertEquals(true, unitRepository.findOne(unitId).getModules().contains(moduleId));
         assertEquals(moduleId, moduleRepository.findOne(moduleId).getId());
+        assertEquals("Cork", moduleRepository.findOne(moduleId).getName());
     }
 
 //    @Test
