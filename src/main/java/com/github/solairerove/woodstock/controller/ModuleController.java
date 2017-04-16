@@ -35,15 +35,15 @@ public class ModuleController {
         return new ResponseEntity<>(service.create(unitId, moduleDTO), CREATED);
     }
 
-//    @RequestMapping(path = "/{moduleId}", method = GET)
-//    public ResponseEntity get(@PathVariable String unitId, @PathVariable String moduleId) {
-//        return new ResponseEntity<>(service.get(unitId, moduleId), OK);
-//    }
-//
-//    @RequestMapping(method = GET)
-//    public ResponseEntity getAll(@PathVariable String unitId) {
-//        return new ResponseEntity<>(service.getAll(unitId), OK);
-//    }
+    @RequestMapping(path = "/{moduleId}", method = GET)
+    public ResponseEntity get(@PathVariable String unitId, @PathVariable String moduleId) {
+        return new ResponseEntity<>(service.get(unitId, moduleId), OK);
+    }
+
+    @RequestMapping(method = GET)
+    public ResponseEntity getAll(@PathVariable String unitId) {
+        return new ResponseEntity<>(service.getAll(unitId), OK);
+    }
 
     @RequestMapping(path = "/{moduleId}", method = PUT)
     public ResponseEntity update(@PathVariable String unitId,

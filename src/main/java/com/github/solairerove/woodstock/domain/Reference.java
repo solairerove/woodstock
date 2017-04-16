@@ -21,12 +21,10 @@ public class Reference implements Serializable {
     private List<Chapter> chapters;
 
     public Reference() {
-        this.id = ObjectId.get().toHexString();
         this.chapters = new ArrayList<>();
     }
 
     public Reference(String title, String version) {
-        this.id = ObjectId.get().toHexString();
         this.title = title;
         this.version = version;
         this.chapters = new ArrayList<>();

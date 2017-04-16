@@ -8,6 +8,9 @@ import com.github.solairerove.woodstock.repository.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ModuleService {
 
@@ -33,30 +36,19 @@ public class ModuleService {
         return module;
     }
 
+    // TODO: check if exists in collection of ids
+    public Module get(String unitId, String moduleId) {
+        unitRepository.findOne(unitId).getModules().contains(moduleId);
+        return moduleRepository.findOne(moduleId);
+    }
 
-
-//    public Module create(String unitId, ModuleDTO moduleDTO) {
-//        Module module = convertToModule(moduleDTO);
-//
-//        Unit unit = repository.findOne(unitId);
-//        unit.getModules().add(module);
-//        repository.save(unit);
-//
-//        return module;
-//    }
-//
-//    public Module get(String unitId, String moduleId) {
-//        return this.util.getModule(unitId, moduleId);
-//    }
-//
-//    public List<Module> getAll(String unitId) {
-//        return this.util.getModules(unitId);
-//    }
+    public Iterable<Module> getAll(String unitId) {
+        List<String> ids = unitRepository.findOne(unitId).getModules();
+        return moduleRepository.findAll(ids);
+    }
 
     // TODO: check if exists in collection of ids
     public Module update(String unitId, String moduleId, ModuleDTO dto) {
-
-
         Module module = moduleRepository.findOne(moduleId);
         module.setName(dto.getName());
         module.setAvatar(dto.getAvatar());

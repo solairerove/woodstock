@@ -20,7 +20,7 @@ public class Module implements Serializable {
 
     private String description;
 
-    private List<Reference> references;
+    private List<String> references;
 
     private List<Question> questions;
 
@@ -30,7 +30,6 @@ public class Module implements Serializable {
     }
 
     public Module(String name, String avatar, String description) {
-        this.id = ObjectId.get().toHexString();
         this.name = name;
         this.avatar = avatar;
         this.description = description;
@@ -66,7 +65,7 @@ public class Module implements Serializable {
         this.description = description;
     }
 
-    public List<Reference> getReferences() {
+    public List<String> getReferences() {
         if (this.references == null) {
             this.references = new ArrayList<>();
         }
@@ -74,7 +73,7 @@ public class Module implements Serializable {
         return this.references;
     }
 
-    public void setReferences(List<Reference> references) {
+    public void setReferences(List<String> references) {
         this.references = references;
     }
 
@@ -90,7 +89,7 @@ public class Module implements Serializable {
         this.questions = questions;
     }
 
-    public void addReference(Reference reference) {
+    public void addReference(String reference) {
         this.references.add(reference);
     }
 

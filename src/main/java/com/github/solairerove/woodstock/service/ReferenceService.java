@@ -4,79 +4,65 @@ import com.github.solairerove.woodstock.domain.Module;
 import com.github.solairerove.woodstock.domain.Reference;
 import com.github.solairerove.woodstock.domain.Unit;
 import com.github.solairerove.woodstock.dto.ReferenceDTO;
+import com.github.solairerove.woodstock.repository.ModuleRepository;
+import com.github.solairerove.woodstock.repository.ReferenceRepository;
 import com.github.solairerove.woodstock.repository.UnitRepository;
-import com.github.solairerove.woodstock.service.util.ServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.stream.IntStream;
-
-import static com.github.solairerove.woodstock.service.mapper.ModelMapper.convertToReference;
 
 @Service
 public class ReferenceService {
 
-    private final UnitRepository repository;
+    private final UnitRepository unitRepository;
 
-    private final ServiceUtil util;
+    private final ModuleRepository moduleRepository;
+
+    private final ReferenceRepository referenceRepository;
 
     @Autowired
-    public ReferenceService(UnitRepository repository, ServiceUtil util) {
-        this.repository = repository;
-        this.util = util;
+    public ReferenceService(final UnitRepository unitRepository,
+                            final ModuleRepository moduleRepository,
+                            final ReferenceRepository referenceRepository) {
+        this.unitRepository = unitRepository;
+        this.moduleRepository = moduleRepository;
+        this.referenceRepository = referenceRepository;
     }
 
-//    public Reference create(String unitId, String moduleId, ReferenceDTO referenceDTO) {
-//        Reference reference = convertToReference(referenceDTO);
-//
-//        Unit unit = repository.findOne(unitId);
-//
-//        unit.getModules()
-//                .stream()
-//                .filter(module$ -> module$.getId().equals(moduleId))
-//                .findFirst()
-//                .orElse(null)
-//                .getReferences()
-//                .add(reference);
-//        repository.save(unit);
-//
-//        return reference;
-//    }
-//
-//    public Reference get(String unitId, String moduleId, String refId) {
-//        return this.util.getReference(unitId, moduleId, refId);
-//    }
-//
-//    public List<Reference> getAll(String unitId, String moduleId) {
-//        return this.util.getReferences(unitId, moduleId);
-//    }
-//
-//    public Reference update(String unitId, String moduleId, String refId, ReferenceDTO dto) {
-//        Unit unit = repository.findOne(unitId);
-//        Module module = util.getModule(unitId, moduleId);
-//
-//        List<Reference> refs = util.getReferences(unitId, moduleId);
-//
-//        Reference reference = util.getReference(unitId, moduleId, refId);
-//        reference.setTitle(dto.getTitle());
-//        reference.setVersion(dto.getVersion());
-//
-//        int index = IntStream.range(0, refs.size())
-//                .filter(i -> refId.equals(refs.get(i).getId()))
-//                .findFirst()
-//                .getAsInt();
-//
-//        refs.set(index, reference);
-//        module.setReferences(refs);
-//        unit.add(module);
-//
-//        repository.save(unit);
-//
-//        return reference;
-//    }
-//
+    // TODO: check if exists
+    public Reference create(String unitId, String moduleId, ReferenceDTO dto) {
+        Reference reference = new Reference(dto.getTitle(), dto.getVersion());
+        referenceRepository.save(reference);
+        String id = reference.getId();
+
+        Module module = moduleRepository.findOne(moduleId);
+        module.addReference(id);
+        moduleRepository.save(module);
+
+        return reference;
+    }
+
+    public Reference get(String unitId, String moduleId, String refId) {
+        return referenceRepository.findOne(refId);
+    }
+
+    public Iterable<Reference> getAll(String unitId, String moduleId) {
+        List<String> ids = moduleRepository.findOne(moduleId).getReferences();
+        return referenceRepository.findAll(ids);
+    }
+
+    // TODO: check if exists in collection of ids
+    public Reference update(String unitId, String moduleId, String refId, ReferenceDTO dto) {
+        Reference reference = referenceRepository.findOne(refId);
+        reference.setTitle(dto.getTitle());
+        reference.setVersion(dto.getVersion());
+        referenceRepository.save(reference);
+
+        return reference;
+    }
+
 //    public Reference delete(String unitId, String moduleId, String refId) {
 //        return null;
 //    }
