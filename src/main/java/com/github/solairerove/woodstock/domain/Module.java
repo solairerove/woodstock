@@ -22,7 +22,7 @@ public class Module implements Serializable {
 
     private List<String> references;
 
-    private List<Question> questions;
+    private List<String> questions;
 
     public Module() {
         this.references = new ArrayList<>();
@@ -77,7 +77,7 @@ public class Module implements Serializable {
         this.references = references;
     }
 
-    public List<Question> getQuestions() {
+    public List<String> getQuestions() {
         if (this.questions == null) {
             this.questions = new ArrayList<>();
         }
@@ -85,7 +85,7 @@ public class Module implements Serializable {
         return this.questions;
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(List<String> questions) {
         this.questions = questions;
     }
 
@@ -93,7 +93,7 @@ public class Module implements Serializable {
         this.references.add(reference);
     }
 
-    public void addQuestion(Question question) {
+    public void addQuestion(String question) {
         this.questions.add(question);
     }
 }

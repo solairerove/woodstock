@@ -13,7 +13,9 @@ import static com.github.solairerove.woodstock.controller.ControllerApi.QUESTION
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController
 @RequestMapping(value = QUESTION_API, produces = APPLICATION_JSON_UTF8_VALUE)
@@ -26,23 +28,31 @@ public class QuestionController {
         this.service = service;
     }
 
-//    @RequestMapping(method = POST)
-//    public ResponseEntity create(@PathVariable String unitId,
-//                                 @PathVariable String moduleId,
-//                                 @RequestBody QuestionDTO dto) {
-//        return new ResponseEntity<>(service.create(unitId, moduleId, dto), CREATED);
-//    }
-//
-//    @RequestMapping(path = "/{questionId}")
-//    public ResponseEntity get(@PathVariable String unitId,
-//                              @PathVariable String moduleId,
-//                              @PathVariable String questionId) {
-//        return new ResponseEntity<>(service.get(unitId, moduleId, questionId), OK);
-//    }
-//
-//    @RequestMapping
-//    public ResponseEntity getAll(@PathVariable String unitId,
-//                                 @PathVariable String moduleId) {
-//        return new ResponseEntity<>(service.getAll(unitId, moduleId), OK);
-//    }
+    @RequestMapping(method = POST)
+    public ResponseEntity create(@PathVariable String unitId,
+                                 @PathVariable String moduleId,
+                                 @RequestBody QuestionDTO dto) {
+        return new ResponseEntity<>(service.create(unitId, moduleId, dto), CREATED);
+    }
+
+    @RequestMapping(path = "/{questionId}", method = GET)
+    public ResponseEntity get(@PathVariable String unitId,
+                              @PathVariable String moduleId,
+                              @PathVariable String questionId) {
+        return new ResponseEntity<>(service.get(unitId, moduleId, questionId), OK);
+    }
+
+    @RequestMapping(method = GET)
+    public ResponseEntity getAll(@PathVariable String unitId,
+                                 @PathVariable String moduleId) {
+        return new ResponseEntity<>(service.getAll(unitId, moduleId), OK);
+    }
+
+    @RequestMapping(path = "/{questionId}", method = PUT)
+    public ResponseEntity create(@PathVariable String unitId,
+                                 @PathVariable String moduleId,
+                                 @PathVariable String questionId,
+                                 @RequestBody QuestionDTO dto) {
+        return new ResponseEntity<>(service.update(unitId, moduleId, questionId, dto), OK);
+    }
 }

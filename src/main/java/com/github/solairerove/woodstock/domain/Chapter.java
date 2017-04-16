@@ -17,11 +17,10 @@ public class Chapter implements Serializable {
     private String content;
 
     public Chapter() {
-        this.id = ObjectId.get().toHexString();
+
     }
 
     public Chapter(String title, String content) {
-        this.id = ObjectId.get().toHexString();
         this.title = title;
         this.content = content;
     }

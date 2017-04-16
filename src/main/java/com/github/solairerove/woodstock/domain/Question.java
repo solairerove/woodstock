@@ -1,6 +1,5 @@
 package com.github.solairerove.woodstock.domain;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,15 +15,13 @@ public class Question implements Serializable {
 
     private String question;
 
-    private List<Answer> answers;
+    private List<String> answers;
 
     public Question() {
-        this.id = ObjectId.get().toHexString();
         this.answers = new ArrayList<>();
     }
 
     public Question(String question) {
-        this.id = ObjectId.get().toHexString();
         this.question = question;
     }
 
@@ -40,7 +37,7 @@ public class Question implements Serializable {
         this.question = question;
     }
 
-    public List<Answer> getAnswers() {
+    public List<String> getAnswers() {
         if (answers == null) {
             this.answers = new ArrayList<>();
         }
@@ -48,11 +45,11 @@ public class Question implements Serializable {
         return this.answers;
     }
 
-    public void setAnswers(List<Answer> answers) {
+    public void setAnswers(List<String> answers) {
         this.answers = answers;
     }
 
-    public void add(Answer answer) {
+    public void add(String answer) {
         this.answers.add(answer);
     }
 }

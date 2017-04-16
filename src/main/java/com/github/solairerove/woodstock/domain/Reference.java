@@ -18,7 +18,7 @@ public class Reference implements Serializable {
 
     private String version;
 
-    private List<Chapter> chapters;
+    private List<String> chapters;
 
     public Reference() {
         this.chapters = new ArrayList<>();
@@ -50,7 +50,7 @@ public class Reference implements Serializable {
         this.version = version;
     }
 
-    public List<Chapter> getChapters() {
+    public List<String> getChapters() {
         if (this.chapters == null) {
             this.chapters = new ArrayList<>();
         }
@@ -58,11 +58,11 @@ public class Reference implements Serializable {
         return this.chapters;
     }
 
-    public void setChapters(List<Chapter> chapters) {
+    public void setChapters(List<String> chapters) {
         this.chapters = chapters;
     }
 
-    public void add(Chapter chapter) {
+    public void add(String chapter) {
         this.chapters.add(chapter);
     }
 }
