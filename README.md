@@ -1,5 +1,4 @@
 # Woodstock
-I can't commit every day now. I'm stupid now.
 
 * You should see [hrms](https://github.com/vlsidlyarevich/unity) module. 
 There will be some integration in future.
