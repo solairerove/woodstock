@@ -44,4 +44,10 @@ public class ServiceLoggingAspect {
         LOGGER.info("Chapter service: " + joinPoint.getSignature().getName() +
                 Arrays.toString(joinPoint.getArgs()));
     }
+
+    @Before("execution(* com.github.solairerove.woodstock.service.AnswerService.*(..)))")
+    public void answerServiceLog(JoinPoint joinPoint) {
+        LOGGER.info("Answer service: " + joinPoint.getSignature().getName() +
+                Arrays.toString(joinPoint.getArgs()));
+    }
 }

@@ -13,6 +13,12 @@ public class AnswerDTO implements Serializable {
     public AnswerDTO() {
     }
 
+    public AnswerDTO(String answer, boolean correct, boolean enable) {
+        this.answer = answer;
+        this.correct = correct;
+        this.enable = enable;
+    }
+
     public String getAnswer() {
         return answer;
     }
