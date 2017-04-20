@@ -15,12 +15,6 @@ export class HttpService {
   constructor(private http$: Http) {
   }
 
-  fetchUnits(): Observable<any> {
-    return this.http$.get(environment.server + HttpService.UNITS)
-      .map(HttpService.extractData)
-      .catch(HttpService.handleError);
-  }
-
   private static extractData(res: Response) {
     let data = res.json();
     return data || {};
@@ -37,5 +31,11 @@ export class HttpService {
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
+  }
+
+  fetchUnits(): Observable<any> {
+    return this.http$.get(environment.server + HttpService.UNITS)
+      .map(HttpService.extractData)
+      .catch(HttpService.handleError);
   }
 }

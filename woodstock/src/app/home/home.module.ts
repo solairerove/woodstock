@@ -9,11 +9,12 @@ import {HomeComponent} from './home.component';
 import {HomeRoutingModule} from './home.routes';
 
 import {HttpService} from './service/http.service';
-import {UnitActions} from './action/unit.action'
+import {UnitActions} from './action/unit.action';
 import {UnitEffect} from './effect/unit.effect';
 import {units} from './reducer/units';
 import {SectionComponent} from './components/section/section.component';
 import {UnitListComponent} from './components/unit-list/unit-list.component';
+import { UnitDetailComponent } from './components/unit-detail/unit-detail.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {UnitListComponent} from './components/unit-list/unit-list.component';
   declarations: [
     HomeComponent,
     UnitListComponent,
-    SectionComponent
+    SectionComponent,
+    UnitDetailComponent
   ],
   providers: [
     HttpService,
