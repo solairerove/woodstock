@@ -14,6 +14,11 @@ export class UnitEffect {
     .switchMap(() => this.httpService$.fetchUnits()
       .map(res => UnitActions.loadUnitsSuccess(res)));
 
+  @Effect() loadUnit$: Observable<any> = this.actions$
+    .ofType(UnitActions.LOAD_UNITS)
+    .switchMap(() => this.httpService$.fetchUnit('f')
+      .map(res => UnitActions.loadUnitSucess(res)));
+
   constructor(private actions$: Actions,
               private httpService$: HttpService) {
   }

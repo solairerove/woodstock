@@ -15,12 +15,23 @@ export class HttpService {
   constructor(private http$: Http) {
   }
 
-  private static extractData(res: Response) {
-    let data = res.json();
-    return data || {};
+  fetchUnits(): Observable<any> {
+    return this.http$.get(environment.server + HttpService.UNITS)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  private static handleError(error: Response | any) {
+  fetchUnit(unitId: string): Observable<any> {
+    return this.http$.get(environment.server + HttpService.UNITS + '/' + unitId)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private extractData(res: Response) {
+    return res.json() || {};
+  }
+
+  private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
@@ -31,11 +42,5 @@ export class HttpService {
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
-  }
-
-  fetchUnits(): Observable<any> {
-    return this.http$.get(environment.server + HttpService.UNITS)
-      .map(HttpService.extractData)
-      .catch(HttpService.handleError);
   }
 }
