@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import AddTodo from './containers/AddTodo';
+import VisibleTodoList from './containers/VisibleTodoList';
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
                 <h2>Welcome to React!</h2>
             </div>
             <AddTodo/>
+            <VisibleTodoList/>
         </div>
     )
 };
