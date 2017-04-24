@@ -16,10 +16,23 @@ class App extends React.Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h2>Welcome to React!</h2>
                 </div>
+
                 <TodoApp/>
+
                 <Counter value={store.getState()}
-                         onIncrement={() => store.dispatch({type: 'INCREMENT'})}
-                         onDecrement={() => store.dispatch({type: 'DECREMENT'})}/>
+
+                         onIncrement={() =>
+                             store.dispatch({
+                                 type: 'INCREMENT'
+                             })
+                         }
+
+                         onDecrement={() =>
+                             store.dispatch({
+                                 type: 'DECREMENT'
+                             })
+                         }
+                />
             </div>
         );
     }

@@ -12,6 +12,7 @@ class Counter extends Component {
         if (this.props.value % 2 !== 0) {
             this.props.onIncrement()
         }
+        console.log('if odd');
     };
 
     incrementAsync = () => {
