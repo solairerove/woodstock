@@ -25,10 +25,10 @@ const todos = (state = initialState, action) => {
                     completed: false
                 },
                 ...state
-            ]
+            ];
 
         case DELETE_TODO:
-            return state.filter(todo => todo.id !== action.id)
+            return state.filter(todo => todo.id !== action.id);
 
         case EDIT_TODO:
             return state.map(todo => todo.id === action.id
@@ -36,7 +36,7 @@ const todos = (state = initialState, action) => {
                     ...todo,
                     text: action.text
                 }
-                : todo)
+                : todo);
 
         case COMPLETE_TODO:
             return state.map(todo => todo.id === action.id
@@ -44,14 +44,14 @@ const todos = (state = initialState, action) => {
                     ...todo,
                     completed: !action.completed
                 }
-                : todo)
+                : todo);
 
         case COMPLETE_ALL:
             const areAllMarked = state.every(todo => todo.completed);
             return state.map(todo => ({
                 ...todo,
                 completed: !areAllMarked
-            }))
+            }));
 
         case CLEAR_COMPLETED:
             return state.filter(todo => todo.completed === false)
