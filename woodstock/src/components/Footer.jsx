@@ -1,15 +1,13 @@
-import React from 'react';
-import FilterLink from '../containers/FilterLink';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters';
 
-const Footer = () => (
-    <p>
-        Show: {" "}
-        <FilterLink filter="SHOW_ALL">All</FilterLink>
-        {", "}
-        <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
-        {", "}
-        <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
-    </p>
-);
-
-export default Footer;
+export default class Footer extends Component {
+    state = {  }
+    render() {
+        return (
+            
+        );
+    }
+}
