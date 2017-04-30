@@ -29,6 +29,7 @@ export default class TodoItem extends Component {
                 .props
                 .editTodo(id, text)
         }
+        this.setState({editing: false})
     }
 
     render() {
@@ -44,7 +45,7 @@ export default class TodoItem extends Component {
             element = (
                 <div className="view">
                     <input
-                        className="toogle"
+                        className="toggle"
                         type="checkbox"
                         checked={todo.completed}
                         onChange={() => completeTodo(todo.id)}/>
@@ -61,7 +62,7 @@ export default class TodoItem extends Component {
 
         return (
             <li
-                className={classnames({completed: todo.Component, editing: this.state.editing})}>
+                className={classnames({completed: todo.completed, editing: this.state.editing})}>
                 {element}
             </li>
         )

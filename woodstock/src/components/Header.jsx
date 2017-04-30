@@ -24,6 +24,6 @@ export default class Header extends Component {
                     onSave={this.handleSave}
                     placeholder="This is holy shit"/>
             </header>
-        );
+        )
     }
 }
