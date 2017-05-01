@@ -20,7 +20,7 @@ export default class Footer extends Component {
 
     renderTodoCount() {
         const {activeCount} = this.props;
-        const itemWord = activeCount === 1 ? 'item' : 'items';
+        const itemWord = activeCount === 1 ? ' item ' : ' items ';
 
         return (
             <span className="todo-count">

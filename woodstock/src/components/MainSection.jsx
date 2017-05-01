@@ -30,10 +30,10 @@ export default class MainSection extends Component {
 
     renderToggleAll(completedCount) {
         const {todos, actions} = this.props;
+
         if (todos.length > 0) {
             return (
-                <input className="toggle-all"
-                       type="checkbox"
+                <input type="checkbox"
                        checked={completedCount === todos.length}
                        onChange={actions.completeAll}/>
             )
