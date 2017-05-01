@@ -35,7 +35,7 @@ export default class MainSection extends Component {
             return (
                 <input type="checkbox"
                        checked={completedCount === todos.length}
-                       onChange={actions.completeAll}/>
+                       onChange={() => actions.completeAll()}/>
             )
         }
     }
@@ -69,7 +69,11 @@ export default class MainSection extends Component {
                 <ul className="todo-list">
                     {
                         filteredTodos.map(todo =>
-                            <TodoItem key={todo.id} todo={todo} {...actions}/>
+                            <TodoItem key={todo.id}
+                                      todo={todo}
+                                      editTodo={() => actions.editTodo(todo.id, todo.text)}
+                                      deleteTodo={() => actions.deleteTodo(todo.id)}
+                                      completeTodo={() => actions.completeTodo(todo.id)}/>
                         )
                     }
                 </ul>
