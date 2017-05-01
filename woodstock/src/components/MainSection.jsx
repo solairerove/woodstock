@@ -71,7 +71,7 @@ export default class MainSection extends Component {
                         filteredTodos.map(todo =>
                             <TodoItem key={todo.id}
                                       todo={todo}
-                                      editTodo={() => actions.editTodo(todo.id, todo.text)}
+                                      editTodo={(id, text) => actions.editTodo(id, text)}
                                       deleteTodo={() => actions.deleteTodo(todo.id)}
                                       completeTodo={() => actions.completeTodo(todo.id)}/>
                         )

@@ -20,11 +20,10 @@ export default class TodoItem extends Component {
     };
 
     handleSave = (id, text) => {
-        if (text.length === 0) {
-            this.props.deleteTodo(id)
-        } else {
-            this.props.editTodo(id, text)
+        if(!text) {
+            return this.props.deleteTodo(id);
         }
+        this.props.editTodo(id, text)
 
         this.setState({editing: false})
     };
