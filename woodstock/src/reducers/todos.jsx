@@ -15,16 +15,15 @@ const initialState = [
     }
 ];
 
-const todos = (state = initialState, action) => {
+const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
             return [
-                {
+                ...state, {
                     id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
                     text: action.text,
                     completed: false
-                },
-                ...state
+                }
             ];
 
         case DELETE_TODO:
@@ -48,17 +47,18 @@ const todos = (state = initialState, action) => {
 
         case COMPLETE_ALL:
             const areAllMarked = state.every(todo => todo.completed);
+
             return state.map(todo => ({
                 ...todo,
                 completed: !areAllMarked
             }));
 
         case CLEAR_COMPLETED:
-            return state.filter(todo => todo.completed === false)
+            return state.filter(todo => todo.completed === false);
 
         default:
             return state
     }
 };
 
-export default todos;
+export default todoReducer;

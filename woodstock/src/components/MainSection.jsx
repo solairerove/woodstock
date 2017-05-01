@@ -32,11 +32,10 @@ export default class MainSection extends Component {
         const {todos, actions} = this.props;
         if (todos.length > 0) {
             return (
-                <input
-                    className="toggle-all"
-                    type="checkbox"
-                    checked={completedCount === todos.length}
-                    onChange={actions.completeAll}/>
+                <input className="toggle-all"
+                       type="checkbox"
+                       checked={completedCount === todos.length}
+                       onChange={actions.completeAll}/>
             )
         }
     }
@@ -44,16 +43,15 @@ export default class MainSection extends Component {
     renderFooter(completedCount) {
         const {todos} = this.props;
         const {filter} = this.state;
-        const activeCount = todos.length = completedCount;
+        const activeCount = todos.length - completedCount;
 
         if (todos.length) {
             return (
-                <Footer
-                    completedCount={completedCount}
-                    activeCount={activeCount}
-                    filter={filter}
-                    onClearCompleted={this.handleClearCompleted}
-                    onShow={this.handleShow}/>
+                <Footer completedCount={completedCount}
+                        activeCount={activeCount}
+                        filter={filter}
+                        onClearCompleted={this.handleClearCompleted}
+                        onShow={this.handleShow}/>
             )
         }
     }
@@ -68,10 +66,12 @@ export default class MainSection extends Component {
         return (
             <section className="main">
                 {this.renderToggleAll(completedCount)}
-                <ul className="todo=list">
-                    {filteredTodos.map(todo =>
-                        <TodoItem key={todo.id} todo={todo} {...actions}/>
-                    )}
+                <ul className="todo-list">
+                    {
+                        filteredTodos.map(todo =>
+                            <TodoItem key={todo.id} todo={todo} {...actions}/>
+                        )
+                    }
                 </ul>
                 {this.renderFooter(completedCount)}
             </section>
