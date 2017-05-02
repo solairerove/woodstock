@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component, PropTypes} from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
 import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters';
@@ -11,10 +10,6 @@ const TODO_FILTERS = {
 };
 
 export default class MainSection extends Component {
-    static propTypes = {
-        todos: PropTypes.array.isRequired,
-        actions: PropTypes.object.isRequired
-    };
 
     state = {
         filter: SHOW_ALL
@@ -82,3 +77,8 @@ export default class MainSection extends Component {
         )
     }
 }
+
+MainSection.propTypes = {
+    todos: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
+};

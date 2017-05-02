@@ -23,7 +23,7 @@ export default class TodoItem extends Component {
         if(!text) {
             return this.props.deleteTodo(id);
         }
-        this.props.editTodo(id, text)
+        this.props.editTodo(id, text);
 
         this.setState({editing: false})
     };
