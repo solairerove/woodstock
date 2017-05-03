@@ -7,12 +7,12 @@ ___
 ## Env:
 
 ``` bash
-solairerove$ java -version
+✗ java -version
 java version "1.8.0_121"
 Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
 
-solairerove$ mvn -v
+✗ mvn -v
 Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T19:41:47+03:00)
 Maven home: /usr/local/Cellar/maven/3.3.9/libexec
 Java version: 1.8.0_121, vendor: Oracle Corporation
@@ -20,17 +20,14 @@ Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre
 Default locale: en_US, platform encoding: UTF-8
 OS name: "mac os x", version: "10.12.1", arch: "x86_64", family: "mac"
 
-solairerove$ ng version
-    _                      _                 ____ _     ___
-   / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
-  / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
- / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
-/_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
-               |___/
-@angular/cli: 1.0.0-rc.2
-node: 7.7.3
-npm: 4.1.2
-os: darwin x64
+✗ create-react-app -V 
+1.3.0
+
+✗ node -v
+v7.7.3
+
+✗ npm -v
+4.1.2
 ```
 
 ## Generate stub in mongo:
