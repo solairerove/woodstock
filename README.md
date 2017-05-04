@@ -1,7 +1,6 @@
 # Woodstock
 
 * You should see [hrms](https://github.com/vlsidlyarevich/unity) module. 
-There will be some integration in future.
 ___
 
 ## Env:
@@ -41,7 +40,3 @@ v7.7.3
 ## Start backend:
 
 * `mvn clean install -T 4 && java -jar *.jar`
-
-## Start frontend:
-
-* `ng serve`
