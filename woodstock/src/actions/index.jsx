@@ -10,16 +10,21 @@ export const completeTodo = (id) => ({type: types.COMPLETE_TODO, id});
 export const completeAll = () => ({type: types.COMPLETE_ALL});
 export const clearCompleted = () => ({type: types.CLEAR_COMPLETED});
 
-export function fetchUnits() {
-    return function (dispatch) {
-        axios.get(`${API_URL}/units`)
-            .then(response => {
-                console.log(response);
-                dispatch({
-                    type: types.FETCH_UNITS,
-                    payload: response.data
-                });
-            })
-            .catch((error) => console.log(error));
+export const fetchUnitsSuccess = (units) => {
+    return {
+        type: types.FETCH_UNITS_SUCCESS,
+        units
     }
-}
+};
+
+export const fetchUnits = () => {
+    return (dispatch) => {
+        return axios
+            .get(`${API_URL}/units`)
+            .then(res => {
+                console.log(res);
+                dispatch(fetchUnitsSuccess(res.data));
+            })
+            .catch(error => console.log(error));
+    }
+};

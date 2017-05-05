@@ -1,18 +1,22 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {applyMiddleware, createStore} from 'redux';
+import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 import App from './containers/App';
 import rootReducer from './reducers';
 import 'todomvc-app-css/index.css'
+import * as TodoActions from './actions';
 
 import './index.css';
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(logger)
+    applyMiddleware(thunk, logger)
 );
+
+store.dispatch(TodoActions.fetchUnits());
 
 console.log(store.getState());
 
