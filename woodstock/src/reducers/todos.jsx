@@ -4,8 +4,7 @@ import {
     EDIT_TODO,
     COMPLETE_TODO,
     COMPLETE_ALL,
-    CLEAR_COMPLETED,
-    FETCH_UNITS_SUCCESS
+    CLEAR_COMPLETED
 } from '../constants/ActionTypes';
 
 const initialState = [
@@ -56,9 +55,6 @@ const todoReducer = (state = initialState, action) => {
 
         case CLEAR_COMPLETED:
             return state.filter(todo => todo.completed === false);
-        
-        case FETCH_UNITS_SUCCESS:
-            return action.units;
 
         default:
             return state

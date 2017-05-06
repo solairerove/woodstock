@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 import App from './containers/App';
 import rootReducer from './reducers';
 import 'todomvc-app-css/index.css'
-import * as TodoActions from './actions';
+import * as UnitActions from './actions/UnitActions';
 
 import './index.css';
 
@@ -16,7 +16,7 @@ const store = createStore(
     applyMiddleware(thunk, logger)
 );
 
-store.dispatch(TodoActions.fetchUnits());
+store.dispatch(UnitActions.fetchUnits());
 
 console.log(store.getState());
 
