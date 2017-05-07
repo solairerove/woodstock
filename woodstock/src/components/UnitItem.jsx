@@ -3,21 +3,17 @@ import PropTypes from 'prop-types';
 
 export default class UnitItem extends Component {
     static propTypes = {
-        todo: PropTypes.object.isRequired
+        unit: PropTypes.object.isRequired
     };
 
     render() {
-        const {todo} = this.props;
-
-        const element = (
-            <label>
-                {todo.text}
-            </label>
-        );
+        const {unit} = this.props;
 
         return (
             <li>
-                {element}
+                <label>
+                    {unit.text}
+                </label>
             </li>
         )
     }
