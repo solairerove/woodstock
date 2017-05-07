@@ -1,7 +1,13 @@
 import {FETCH_UNITS_SUCCESS} from  '../constants/ActionTypes';
 
 const initState = [
-    {}
+    {
+        id: "0",
+        label: "Unit label",
+        avatar: "Unit avatar",
+        description: "description",
+        modules: []
+    }
 ];
 
 const unitReducer = (state = initState, action) => {

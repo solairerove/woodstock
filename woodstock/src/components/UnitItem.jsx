@@ -12,7 +12,7 @@ export default class UnitItem extends Component {
         return (
             <li>
                 <label>
-                    {unit.text}
+                    {unit.label}
                 </label>
             </li>
         )

@@ -10,14 +10,17 @@ export default class UnitList extends Component {
     render() {
         const {units} = this.props;
 
+        const element = (
+            units.map(unit =>
+                <UnitItem key={unit.id}
+                          unit={unit}/>
+            )
+        );
+
         return (
             <section>
                 <ul className="unit-list">
-                    {
-                        units.map(unit =>
-                            <UnitItem unit={unit}/>
-                        )
-                    }
+                    {element}
                 </ul>
             </section>
         )

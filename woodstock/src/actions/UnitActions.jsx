@@ -15,7 +15,6 @@ export const fetchUnits = () => {
         return axios
             .get(`${API_URL}/units`)
             .then(res => {
-                console.log(res);
                 dispatch(fetchUnitsSuccess(res.data));
             })
             .catch(error => console.log(error));
