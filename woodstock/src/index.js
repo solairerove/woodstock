@@ -4,12 +4,15 @@ import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
+import injectTapEventPlugin from 'react-tap-event-plugin'
 import App from './containers/App';
 import rootReducer from './reducers';
 import 'todomvc-app-css/index.css'
 import * as UnitActions from './actions/UnitActions';
 
 import './index.css';
+
+injectTapEventPlugin();
 
 const store = createStore(
     rootReducer,
