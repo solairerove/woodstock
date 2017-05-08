@@ -5,9 +5,12 @@ import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import ligthBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from './containers/App';
 import rootReducer from './reducers';
-import 'todomvc-app-css/index.css'
+// import 'todomvc-app-css/index.css'
 import * as UnitActions from './actions/UnitActions';
 
 import './index.css';
@@ -24,8 +27,10 @@ store.dispatch(UnitActions.fetchUnits());
 console.log(store.getState());
 
 render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
+    <MuiThemeProvider muiTheme={getMuiTheme(ligthBaseTheme)}>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </MuiThemeProvider>,
     document.getElementById('root')
 );

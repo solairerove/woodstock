@@ -58,7 +58,7 @@ public class GenerateJob implements CommandLineRunner {
         for (int u = 0; u < 3; u++) {
             Unit unit = new Unit(
                     "Unit label " + u,
-                    "Unit avatar link",
+                    "https://www.kv.by/sites/default/files/1440670661_java.jpg",
                     "MD short description"
             );
             count++;
