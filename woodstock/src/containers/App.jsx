@@ -4,13 +4,15 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
+import AppBarHeader from '../components/AppBarHeader';
 import UnitList from '../components/UnitList';
 import * as TodoActions from '../actions';
 
 const App = ({todos, actions, units}) => (
     <div>
-        <Header addTodo={actions.addTodo}/>
-        <MainSection todos={todos} actions={actions}/>
+        <AppBarHeader/>
+        {/*<Header addTodo={actions.addTodo}/>*/}
+        {/*<MainSection todos={todos} actions={actions}/>*/}
         <UnitList units={units}/>
     </div>
 );
