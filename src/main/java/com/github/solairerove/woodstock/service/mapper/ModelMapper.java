@@ -19,6 +19,7 @@ public class ModelMapper {
         Unit unit = new Unit();
         unit.setLabel(unitDTO.getLabel());
         unit.setAvatar(unitDTO.getAvatar());
+        unit.setFeatured(unitDTO.isFeatured());
         unit.setDescription(unitDTO.getDescription());
 
         return unit;

@@ -21,6 +21,8 @@ public class Unit implements Serializable {
 
     private String description;
 
+    private boolean featured;
+
     private List<String> modules;
 
     public Unit() {

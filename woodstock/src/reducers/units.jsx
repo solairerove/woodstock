@@ -6,6 +6,7 @@ const initState = [
         label: "Unit label",
         avatar: "Unit avatar",
         description: "description",
+        featured: false,
         modules: []
     }
 ];

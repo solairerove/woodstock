@@ -35,6 +35,8 @@ public class UnitService {
     public Unit update(String id, UnitDTO unitDTO) {
         Unit unit = repository.findOne(id);
         unit.setLabel(unitDTO.getLabel());
+        unit.setAvatar(unitDTO.getAvatar());
+        unit.setFeatured(unitDTO.isFeatured());
         unit.setDescription(unitDTO.getDescription());
 
         return repository.save(unit);
