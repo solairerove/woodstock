@@ -4,6 +4,7 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import BookAction from 'material-ui/svg-icons/action/book';
+import Paper from 'material-ui/Paper';
 import UnitItem from './UnitItem';
 
 const styles = {
@@ -43,8 +44,12 @@ export default class UnitList extends Component {
         // )
 
         return (
+
             <div style={styles.root}>
-                <GridList cellHeight={200} style={styles.gridList}>
+                <GridList
+                    cellHeight={250}
+                    style={styles.gridList}
+                    padding={1}>
                     <Subheader>Units</Subheader>
                     {units.map(unit =>
                         <GridTile key={unit.id}

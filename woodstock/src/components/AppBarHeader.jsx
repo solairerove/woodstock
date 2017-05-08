@@ -1,11 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
-const AppBarHeader = () => (
-    <AppBar
-        title="Woodstock"
-        iconClassNameRight="muidocs-icon-navigation-expand-more"
-    />
-);
+export default class AppBarHeader extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {open: false};
+    }
 
-export default AppBarHeader;
+    handleToggle = () => this.setState({open: !this.state.open});
+
+    handleClose = () => this.setState({open: false});
+
+    render() {
+        return (
+            <div>
+                <AppBar
+                    title="Woodstock"
+                    iconElementLeft={
+                        <IconButton>
+                            <NavigationMenu onTouchTap={this.handleToggle}/>
+                        </IconButton>
+                    }/>
+
+                <Drawer
+                    docked={false}
+                    width={200}
+                    open={this.state.open}
+                    onRequestChange={open => this.setState({open})}>
+                    <MenuItem onTouchTap={this.handleClose}>Close</MenuItem>
+                </Drawer>
+            </div>
+        )
+    }
+};
