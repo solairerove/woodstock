@@ -19,12 +19,14 @@ export default class AppBarHeader extends Component {
         return (
             <div>
                 <AppBar
+                    style={{position: 'fixed'}}
                     title="Woodstock"
                     iconElementLeft={
                         <IconButton>
                             <NavigationMenu onTouchTap={this.handleToggle}/>
                         </IconButton>
-                    }/>
+                    }
+                    zDepth={1}/>
 
                 <Drawer
                     docked={false}
