@@ -16,7 +16,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    units: state.units
+    units: state.rootReducer.units
 });
 
 export default connect(mapStateToProps)(App)

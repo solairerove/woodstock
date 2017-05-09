@@ -1,9 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {applyMiddleware, createStore} from 'redux';
-import thunk from 'redux-thunk';
+import {Route, Switch} from 'react-router';
+
+import {applyMiddleware, createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+
+import createHistory from 'history/createBrowserHistory'
+import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux';
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import ligthBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -11,17 +16,27 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import App from './containers/App';
+import Home from './components/Home';
 import rootReducer from './reducers';
 
 import * as UnitActions from './actions/UnitActions';
 
 import './index.css';
 
+// Material UI
 injectTapEventPlugin();
 
+// React Router
+const history = createHistory();
+const reduxRouteMiddleware = routerMiddleware(history);
+
+// Redux
 const store = createStore(
-    rootReducer,
-    applyMiddleware(thunk, logger)
+    combineReducers({
+        rootReducer,
+        router: routerReducer
+    }),
+    applyMiddleware(thunk, logger, reduxRouteMiddleware)
 );
 
 store.dispatch(UnitActions.fetchUnits());
@@ -29,7 +44,12 @@ store.dispatch(UnitActions.fetchUnits());
 render(
     <MuiThemeProvider muiTheme={getMuiTheme(ligthBaseTheme)}>
         <Provider store={store}>
-            <App/>
+            <ConnectedRouter history={history}>
+                <Switch>
+                    <Route exact path="/" component={App}/>
+                    <Route path="/home" component={Home}/>
+                </Switch>
+            </ConnectedRouter>
         </Provider>
     </MuiThemeProvider>,
     document.getElementById('root')
