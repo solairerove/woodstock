@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {GridList, GridTile} from "material-ui/GridList";
+import Paper from 'material-ui/Paper';
 import IconButton from "material-ui/IconButton";
 import BookAction from "material-ui/svg-icons/action/book";
 
@@ -28,26 +29,28 @@ export default class UnitList extends Component {
 
         return (
             <div style={styles.root}>
-                <GridList
-                    cols={2}
-                    cellHeight={200}
-                    padding={1}
-                    style={styles.gridList}>
-                    {units.map(unit => (
-                        <GridTile key={unit.id}
-                                  title={unit.label}
-                                  actionIcon={
-                                      <IconButton>
-                                          <BookAction color="white"/>
-                                      </IconButton>
-                                  }
-                                  titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-                                  cols={unit.featured ? 2 : 1}
-                                  rows={unit.featured ? 2 : 1}>
-                            <img src={unit.avatar} alt=""/>
-                        </GridTile>
-                    ))}
-                </GridList>
+                <Paper zDepth={2}>
+                    <GridList
+                        cols={2}
+                        cellHeight={200}
+                        style={styles.gridList}
+                        padding={0}>
+                        {units.map(unit => (
+                                <GridTile key={unit.id}
+                                          title={unit.label}
+                                          actionIcon={
+                                              <IconButton>
+                                                  <BookAction color="white"/>
+                                              </IconButton>
+                                          }
+                                          cols={unit.featured ? 2 : 1}
+                                          rows={unit.featured ? 2 : 1}>
+                                    <img src={unit.avatar} alt=""/>
+                                </GridTile>
+                            )
+                        )}
+                    </GridList>
+                </Paper>
             </div>
         );
     }
