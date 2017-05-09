@@ -2,34 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import Header from '../components/Header';
-import MainSection from '../components/MainSection';
 import AppBarHeader from '../components/AppBarHeader';
 import UnitList from '../components/UnitList';
-import * as TodoActions from '../actions';
+import * as UnitActions from '../actions/UnitActions';
 
-const App = ({todos, actions, units}) => (
+const App = ({actions, units}) => (
     <div>
         <AppBarHeader/>
-        {/*<Header addTodo={actions.addTodo}/>*/}
-        {/*<MainSection todos={todos} actions={actions}/>*/}
         <UnitList units={units}/>
     </div>
 );
 
 App.propTypes = {
-    todos: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired,
     units: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-    todos: state.todos,
     units: state.units
 });
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators(UnitActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps())(App)
