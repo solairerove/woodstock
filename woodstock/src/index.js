@@ -22,6 +22,7 @@ import rootReducer from './reducers';
 import * as UnitActions from './actions/UnitActions';
 
 import './index.css';
+import UnitItem from "./components/UnitItem";
 
 // Material UI
 injectTapEventPlugin();
@@ -48,6 +49,7 @@ render(
                 <Switch>
                     <Route exact path="/" component={App}/>
                     <Route path="/home" component={Home}/>
+                    <Route path="/units/:id" component={UnitItem}/>
                 </Switch>
             </ConnectedRouter>
         </Provider>

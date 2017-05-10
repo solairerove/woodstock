@@ -15,8 +15,7 @@ export default class UnitItem extends Component {
             <Card>
                 <CardHeader
                     title={unit.label}
-                    subtitle="Some subtitle"
-                    avatar={unit.avatar}/>
+                    subtitle="Some subtitle"/>
                 <CardMedia overlay={
                     <CardTitle title="title" subtitle="overlay subtitle"/>
                 }>
