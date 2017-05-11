@@ -19,7 +19,7 @@ export default class UnitItem extends Component {
                 <CardMedia overlay={
                     <CardTitle title="title" subtitle="overlay subtitle"/>
                 }>
-                    <img src={unit.avatar} width="240" height="320"/>
+                    <img src={unit.avatar} width="240" height="320" alt=""/>
                 </CardMedia>
 
                 <CardText>
