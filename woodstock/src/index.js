@@ -15,7 +15,7 @@ import ligthBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import App from './containers/App';
+import UnitPage from './containers/UnitPage';
 import Home from './components/Home';
 import rootReducer from './reducers';
 
@@ -47,7 +47,7 @@ render(
         <Provider store={store}>
             <ConnectedRouter history={history}>
                 <Switch>
-                    <Route exact path="/" component={App}/>
+                    <Route exact path="/" component={UnitPage}/>
                     <Route path="/home" component={Home}/>
                     <Route path="/units/:id" component={UnitItem}/>
                 </Switch>

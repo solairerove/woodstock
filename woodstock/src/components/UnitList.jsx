@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {} from 'react-router';
 import {GridList, GridTile} from "material-ui/GridList";
@@ -20,39 +20,37 @@ const styles = {
     }
 };
 
-export default class UnitList extends Component {
-    static propTypes = {
-        units: PropTypes.array.isRequired
-    };
+const UnitList = ({units}) => {
+    return (
+        <div style={styles.root}>
+            <Paper zDepth={2}>
+                <GridList
+                    cols={2}
+                    cellHeight={200}
+                    style={styles.gridList}
+                    padding={0}>
+                    {units.map(unit => (
+                            <GridTile key={unit.id}
+                                      title={unit.label}
+                                      actionIcon={
+                                          <IconButton>
+                                              <BookAction color="white"/>
+                                          </IconButton>
+                                      }
+                                      cols={unit.featured ? 2 : 1}
+                                      rows={unit.featured ? 2 : 1}>
+                                <img src={unit.avatar} alt=""/>
+                            </GridTile>
+                        )
+                    )}
+                </GridList>
+            </Paper>
+        </div>
+    );
+};
 
-    render() {
-        const {units} = this.props;
+UnitList.propTypes = {
+    units: PropTypes.array.isRequired
+};
 
-        return (
-            <div style={styles.root}>
-                <Paper zDepth={2}>
-                    <GridList
-                        cols={2}
-                        cellHeight={200}
-                        style={styles.gridList}
-                        padding={0}>
-                        {units.map(unit => (
-                                <GridTile key={unit.id}
-                                          title={unit.label}
-                                          actionIcon={
-                                              <IconButton>
-                                                  <BookAction color="white"/>
-                                              </IconButton>
-                                          }
-                                          cols={unit.featured ? 2 : 1}
-                                          rows={unit.featured ? 2 : 1}>
-                                    <img src={unit.avatar} alt=""/>
-                                </GridTile>
-                            )
-                        )}
-                    </GridList>
-                </Paper>
-            </div>
-        );
-    }
-}
+export default UnitList;
