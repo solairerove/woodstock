@@ -10,8 +10,8 @@ export const fetchUnitsSuccess = (units) => {
 
 export const fetchUnits = () => {
     return (dispatch) => {
-        return FetchUnits.fetchUnits().then(units => {
-            dispatch(fetchUnitsSuccess(units));
-        }).catch(error => console.log(error));
+        return FetchUnits.fetchUnits()
+            .then(units => dispatch(fetchUnitsSuccess(units)))
+            .catch(error => console.log(error));
     }
 };
