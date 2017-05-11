@@ -4,19 +4,17 @@ import {connect} from 'react-redux';
 import AppBarHeader from '../components/AppBarHeader';
 import UnitList from '../components/UnitList';
 
-const UnitPage = ({units}) => (
+const UnitsContainer = ({units}) => (
     <div>
         <AppBarHeader/>
         <UnitList units={units}/>
     </div>
 );
 
-UnitPage.propTypes = {
+UnitsContainer.propTypes = {
     units: PropTypes.array.isRequired
 };
 
-const mapStateToProps = state => ({
-    units: state.rootReducer.units
-});
+const mapStateToProps = state => ({units: state.rootReducer.units});
 
-export default connect(mapStateToProps)(UnitPage)
+export default connect(mapStateToProps)(UnitsContainer)
