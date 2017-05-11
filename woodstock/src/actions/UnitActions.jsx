@@ -1,7 +1,5 @@
 import * as types from '../constants/ActionTypes';
-import axios from 'axios';
-
-const API_URL = 'http://localhost:9090/api';
+import FetchUnits from '../http/FetchUnits';
 
 export const fetchUnitsSuccess = (units) => {
     return {
@@ -12,11 +10,8 @@ export const fetchUnitsSuccess = (units) => {
 
 export const fetchUnits = () => {
     return (dispatch) => {
-        return axios
-            .get(`${API_URL}/units`)
-            .then(res => {
-                dispatch(fetchUnitsSuccess(res.data));
-            })
-            .catch(error => console.log(error));
+        return FetchUnits.fetchUnits().then(units => {
+            dispatch(fetchUnitsSuccess(units));
+        }).catch(error => console.log(error));
     }
 };
