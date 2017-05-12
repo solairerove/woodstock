@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import AppBarHeader from '../components/AppBarHeader';
 import UnitList from '../components/UnitList';
+import * as UnitActions from '../actions/UnitActions';
 
 const UnitsContainer = ({units}) => (
     <div>
@@ -17,4 +18,14 @@ UnitsContainer.propTypes = {
 
 const mapStateToProps = state => ({units: state.rootReducer.units});
 
-export default connect(mapStateToProps)(UnitsContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fethPosts: () => {
+            dispatch(UnitActions.fetchUnits()).then((response) => {
+                dispatch(UnitActions.fetchUnitsSuccess(response.data))
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UnitsContainer)

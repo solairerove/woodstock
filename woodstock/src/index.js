@@ -36,7 +36,7 @@ const reduxRouteMiddleware = routerMiddleware(history);
 const store = createStore(combineReducers({rootReducer, router: routerReducer}), applyMiddleware(thunk, logger, reduxRouteMiddleware));
 
 store.dispatch(UnitActions.fetchUnits());
-
+console.log(store.getState());
 render(
     <MuiThemeProvider muiTheme={getMuiTheme(ligthBaseTheme)}>
     <Provider store={store}>
