@@ -9,4 +9,11 @@ export default class FetchUnits {
             .then(res => res.data)
             .catch(error => error);
     }
+
+    static fetchUnit(id) {
+        return axios
+            .get(`${API_URL}/units/${id}`)
+            .then(res => res.data)
+            .catch(error => error)
+    }
 }

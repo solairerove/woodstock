@@ -1,4 +1,4 @@
-import {FETCH_UNITS_SUCCESS} from  '../constants/ActionTypes';
+import {FETCH_UNITS_SUCCESS, FETCH_UNIT_SUCCESS} from '../constants/ActionTypes';
 
 const initState = [
     {
@@ -15,6 +15,9 @@ const unitReducer = (state = initState, action) => {
     switch (action.type) {
         case FETCH_UNITS_SUCCESS:
             return action.units;
+
+        case FETCH_UNIT_SUCCESS:
+            return action.unit;
 
         default:
             return state

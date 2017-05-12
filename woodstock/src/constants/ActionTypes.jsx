@@ -1,2 +1,5 @@
 export const FETCH_UNITS = 'FETCH_UNITS';
 export const FETCH_UNITS_SUCCESS = 'FETCH_UNITS_SUCCESS';
+
+export const FETCH_UNIT = 'FETCH_UNI';
+export const FETCH_UNIT_SUCCESS = 'FETCH_UNIT_SUCCES';
