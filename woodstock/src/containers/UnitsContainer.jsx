@@ -17,7 +17,9 @@ UnitsContainer.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({units: state.rootReducer.units});
+const mapStateToProps = (state, ownProps) => {
+    return {id: ownProps.params.id, units: state.rootReducer.units};
+}
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(UnitActions, dispatch)

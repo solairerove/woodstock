@@ -20,7 +20,7 @@ const styles = {
     }
 };
 
-const UnitList = ({units}) => {
+const UnitList = ({units, actions}) => {
     return (
         <div style={styles.root}>
             <Paper zDepth={2}>
@@ -50,7 +50,12 @@ const UnitList = ({units}) => {
 };
 
 UnitList.propTypes = {
-    units: PropTypes.array.isRequired
+    units: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
+};
+
+const activePost = (id) => {
+    this.actions.fetchUnit(id);
 };
 
 export default UnitList;
