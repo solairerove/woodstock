@@ -33,7 +33,7 @@ export default class AppBarHeader extends Component {
                     width={200}
                     open={this.state.open}
                     onRequestChange={open => this.setState({open})}>
-                    <MenuItem onTouchTap={this.handleClose}>Close</MenuItem>
+                    <MenuItem onTouchTap={this.handleClose}>Units</MenuItem>
                 </Drawer>
             </div>
         )

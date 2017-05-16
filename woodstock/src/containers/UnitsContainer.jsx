@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import AppBarHeader from '../components/AppBarHeader';
 import UnitList from '../components/UnitList';
@@ -8,7 +9,7 @@ import * as UnitActions from '../actions/UnitActions';
 const UnitsContainer = ({units, actions}) => (
     <div>
         <AppBarHeader/>
-        <UnitList units={units}/>
+        <UnitList units={units} actions={actions}/>
     </div>
 );
 
@@ -18,8 +19,8 @@ UnitsContainer.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return {id: ownProps.params.id, units: state.rootReducer.units};
-}
+    return {units: state.rootReducer.units};
+};
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(UnitActions, dispatch)
