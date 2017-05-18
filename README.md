@@ -1,6 +1,6 @@
-# Woodstock
+# Woodstock (DEAD)
 
-* You should see [hrms](https://github.com/vlsidlyarevich/unity) module. 
+It's dead too. It's dead course work. 
 ___
 
 ## Env:

@@ -40,7 +40,6 @@ relationship OneToMany {
 }
 
 // Set pagination options
-paginate Unit, Module with infinite-scroll
 paginate Unit, Module with pagination
 
 dto * with mapstruct
