@@ -1,0 +1,39 @@
+
+<div *ngIf="answer">
+    <h2><span jhiTranslate="woodstockApp.answer.detail.title">Answer</span> {{answer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="woodstockApp.answer.answer">Answer</span></dt>
+        <dd>
+            <span>{{answer.answer}}</span>
+        </dd>
+        <dt><span jhiTranslate="woodstockApp.answer.correct">Correct</span></dt>
+        <dd>
+            <span>{{answer.correct}}</span>
+        </dd>
+        <dt><span jhiTranslate="woodstockApp.answer.enable">Enable</span></dt>
+        <dd>
+            <span>{{answer.enable}}</span>
+        </dd>
+        <dt><span jhiTranslate="woodstockApp.answer.question">Question</span></dt>
+        <dd>
+            <div *ngIf="answer.questionId">
+                <a [routerLink]="['/question-my-suffix', answer.questionId]">{{answer.questionId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'answer-my-suffix/'+ answer.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

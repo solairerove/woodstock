@@ -1,0 +1,24 @@
+{
+    "woodstockApp": {
+        "answer" : {
+            "home": {
+                "title": "Answers",
+                "createLabel": "Создать новый Answer",
+                "createOrEditLabel": "Создать или отредактировать Answer"
+            },
+            "created": "Новый Answer создан с идентификатором {{ param }}",
+            "updated": "Answer обновлен с идентификатором {{ param }}",
+            "deleted": "Answer удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Answer {{ id }}?"
+            },
+            "detail": {
+                "title": "Answer"
+            },
+            "answer": "Answer",
+            "correct": "Correct",
+            "enable": "Enable",
+            "question": "Question"
+        }
+    }
+}

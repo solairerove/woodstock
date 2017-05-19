@@ -1,0 +1,24 @@
+{
+    "woodstockApp": {
+        "reference" : {
+            "home": {
+                "title": "References",
+                "createLabel": "Reference erstellen",
+                "createOrEditLabel": "Reference erstellen oder bearbeiten"
+            },
+            "created": "Reference erstellt mit ID {{ param }}",
+            "updated": "Reference aktualisiert mit ID {{ param }}",
+            "deleted": "Reference gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Reference {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Reference"
+            },
+            "title": "Title",
+            "version": "Version",
+            "chapters": "Chapters",
+            "module": "Module"
+        }
+    }
+}

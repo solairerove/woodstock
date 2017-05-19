@@ -1,0 +1,23 @@
+{
+    "woodstockApp": {
+        "chapter" : {
+            "home": {
+                "title": "Chapters",
+                "createLabel": "Создать новый Chapter",
+                "createOrEditLabel": "Создать или отредактировать Chapter"
+            },
+            "created": "Новый Chapter создан с идентификатором {{ param }}",
+            "updated": "Chapter обновлен с идентификатором {{ param }}",
+            "deleted": "Chapter удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Chapter {{ id }}?"
+            },
+            "detail": {
+                "title": "Chapter"
+            },
+            "title": "Title",
+            "content": "Content",
+            "reference": "Reference"
+        }
+    }
+}

@@ -1,42 +1,128 @@
-# Woodstock (DEAD)
+# woodstock
 
-It's dead too. It's dead course work. 
-___
+## Development
 
-## Env:
+Before you can build this project, you must install and configure the following dependencies on your machine:
 
-``` bash
-✗ java -version
-java version "1.8.0_121"
-Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
-Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
+1. [Node.js][]: We use Node to run a development web server and build the project.
+   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
+2. [Yarn][]: We use Yarn to manage Node dependencies.
+   Depending on your system, you can install Yarn either from source or as a pre-packaged bundle.
 
-✗ mvn -v
-Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T19:41:47+03:00)
-Maven home: /usr/local/Cellar/maven/3.3.9/libexec
-Java version: 1.8.0_121, vendor: Oracle Corporation
-Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre
-Default locale: en_US, platform encoding: UTF-8
-OS name: "mac os x", version: "10.12.1", arch: "x86_64", family: "mac"
+After installing Node, you should be able to run the following command to install development tools.
+You will only need to run this command when dependencies change in [package.json](package.json).
 
-✗ create-react-app -V 
-1.3.0
+    yarn install
 
-✗ node -v
-v7.7.3
+We use yarn scripts and [Webpack][] as our build system.
 
-✗ npm -v
-4.1.2
-```
 
-## Generate stub in mongo:
+Run the following commands in two separate terminals to create a blissful development experience where your browser
+auto-refreshes when files change on your hard drive.
 
-* `mvn clean install -T 4 && java -jar -Dspring.profiles.active=generate *.jar`
+    ./mvnw
+    yarn start
 
-## Invoke tests:
+[Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+specifying a newer version in [package.json](package.json). You can also run `yarn update` and `yarn install` to manage dependencies.
+Add the `help` flag on any command to see how you can use it. For example, `yarn help update`.
 
-* `mvn clean install -Ptest -T 4`
+The `yarn run` command will list all of the scripts available to run for this project.
 
-## Start backend:
+### Managing dependencies
 
-* `mvn clean install -T 4 && java -jar *.jar`
+For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
+
+    yarn add --exact leaflet
+
+To benefit from TypeScript type definitions from [DefinitelyTyped][] repository in development, you would run following command:
+
+    yarn add --dev --exact @types/leaflet
+
+Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
+
+Edit [src/main/webapp/app/vendor.ts](src/main/webapp/app/vendor.ts) file:
+~~~
+import 'leaflet/dist/leaflet.js';
+~~~
+
+Edit [src/main/webapp/content/css/vendor.css](src/main/webapp/content/css/vendor.css) file:
+~~~
+@import '~leaflet/dist/leaflet.css';
+~~~
+
+Note: there are still few other things remaining to do for Leaflet that we won't detail here.
+
+For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
+
+### Using angular-cli
+
+You can also use [Angular CLI][] to generate some custom client code.
+
+For example, the following command:
+
+    ng generate component my-component
+
+will generate few files:
+
+    create src/main/webapp/app/my-component/my-component.component.html
+    create src/main/webapp/app/my-component/my-component.component.ts
+    update src/main/webapp/app/app.module.ts
+
+## Building for production
+
+To optimize the woodstock application for production, run:
+
+    ./mvnw -Pprod clean package
+
+This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
+To ensure everything worked, run:
+
+    java -jar target/*.war
+
+Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
+
+## Testing
+
+To launch your application's tests, run:
+
+    ./mvnw clean test
+
+### Client tests
+
+Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
+
+    yarn test
+
+For more information, refer to the [Running tests page][].
+
+## Using Docker to simplify development (optional)
+
+You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
+For example, to start a mysql database in a docker container, run:
+
+    docker-compose -f src/main/docker/mysql.yml up -d
+
+To stop it and remove the container, run:
+
+    docker-compose -f src/main/docker/mysql.yml down
+
+You can also fully dockerize your application and all the services that it depends on.
+To achieve this, first build a docker image of your app by running:
+
+    ./mvnw package -Pprod docker:build
+
+Then run:
+
+    docker-compose -f src/main/docker/app.yml up -d
+
+[Node.js]: https://nodejs.org/
+[Yarn]: https://yarnpkg.org/
+[Webpack]: https://webpack.github.io/
+[Angular CLI]: https://cli.angular.io/
+[BrowserSync]: http://www.browsersync.io/
+[Karma]: http://karma-runner.github.io/
+[Jasmine]: http://jasmine.github.io/2.0/introduction.html
+[Protractor]: https://angular.github.io/protractor/
+[Leaflet]: http://leafletjs.com/
+[DefinitelyTyped]: http://definitelytyped.org/

@@ -1,0 +1,26 @@
+{
+    "woodstockApp": {
+        "module" : {
+            "home": {
+                "title": "Modules",
+                "createLabel": "Создать новый Module",
+                "createOrEditLabel": "Создать или отредактировать Module"
+            },
+            "created": "Новый Module создан с идентификатором {{ param }}",
+            "updated": "Module обновлен с идентификатором {{ param }}",
+            "deleted": "Module удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Module {{ id }}?"
+            },
+            "detail": {
+                "title": "Module"
+            },
+            "name": "Name",
+            "avatar": "Avatar",
+            "description": "Description",
+            "unit": "Unit",
+            "references": "References",
+            "question": "Question"
+        }
+    }
+}

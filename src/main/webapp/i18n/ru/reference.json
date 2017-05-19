@@ -1,0 +1,24 @@
+{
+    "woodstockApp": {
+        "reference" : {
+            "home": {
+                "title": "References",
+                "createLabel": "Создать новый Reference",
+                "createOrEditLabel": "Создать или отредактировать Reference"
+            },
+            "created": "Новый Reference создан с идентификатором {{ param }}",
+            "updated": "Reference обновлен с идентификатором {{ param }}",
+            "deleted": "Reference удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Reference {{ id }}?"
+            },
+            "detail": {
+                "title": "Reference"
+            },
+            "title": "Title",
+            "version": "Version",
+            "chapters": "Chapters",
+            "module": "Module"
+        }
+    }
+}

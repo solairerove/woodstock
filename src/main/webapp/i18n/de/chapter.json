@@ -1,0 +1,23 @@
+{
+    "woodstockApp": {
+        "chapter" : {
+            "home": {
+                "title": "Chapters",
+                "createLabel": "Chapter erstellen",
+                "createOrEditLabel": "Chapter erstellen oder bearbeiten"
+            },
+            "created": "Chapter erstellt mit ID {{ param }}",
+            "updated": "Chapter aktualisiert mit ID {{ param }}",
+            "deleted": "Chapter gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Chapter {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Chapter"
+            },
+            "title": "Title",
+            "content": "Content",
+            "reference": "Reference"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "woodstockApp": {
+        "unit" : {
+            "home": {
+                "title": "Units",
+                "createLabel": "Unit erstellen",
+                "createOrEditLabel": "Unit erstellen oder bearbeiten"
+            },
+            "created": "Unit erstellt mit ID {{ param }}",
+            "updated": "Unit aktualisiert mit ID {{ param }}",
+            "deleted": "Unit gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Unit {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Unit"
+            },
+            "label": "Label",
+            "avatar": "Avatar",
+            "description": "Description",
+            "featured": "Featured",
+            "modules": "Modules"
+        }
+    }
+}

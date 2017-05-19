@@ -1,0 +1,37 @@
+
+<div *ngIf="unit">
+    <h2><span jhiTranslate="woodstockApp.unit.detail.title">Unit</span> {{unit.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="woodstockApp.unit.label">Label</span></dt>
+        <dd>
+            <span>{{unit.label}}</span>
+        </dd>
+        <dt><span jhiTranslate="woodstockApp.unit.avatar">Avatar</span></dt>
+        <dd>
+            <span>{{unit.avatar}}</span>
+        </dd>
+        <dt><span jhiTranslate="woodstockApp.unit.description">Description</span></dt>
+        <dd>
+            <span>{{unit.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="woodstockApp.unit.featured">Featured</span></dt>
+        <dd>
+            <span>{{unit.featured}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'unit-my-suffix/'+ unit.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

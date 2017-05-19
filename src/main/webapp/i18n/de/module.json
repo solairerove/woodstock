@@ -1,0 +1,26 @@
+{
+    "woodstockApp": {
+        "module" : {
+            "home": {
+                "title": "Modules",
+                "createLabel": "Module erstellen",
+                "createOrEditLabel": "Module erstellen oder bearbeiten"
+            },
+            "created": "Module erstellt mit ID {{ param }}",
+            "updated": "Module aktualisiert mit ID {{ param }}",
+            "deleted": "Module gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Module {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Module"
+            },
+            "name": "Name",
+            "avatar": "Avatar",
+            "description": "Description",
+            "unit": "Unit",
+            "references": "References",
+            "question": "Question"
+        }
+    }
+}
