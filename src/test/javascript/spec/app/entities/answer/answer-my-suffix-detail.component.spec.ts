@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Rx';
 import { DateUtils, DataUtils, EventManager } from 'ng-jhipster';
 import { WoodstockTestModule } from '../../../test.module';
 import { MockActivatedRoute } from '../../../helpers/mock-route.service';
-import { AnswerMySuffixDetailComponent } from '../../../../../../main/webapp/app/entities/answer/answer-my-suffix-detail.component';
-import { AnswerMySuffixService } from '../../../../../../main/webapp/app/entities/answer/answer-my-suffix.service';
-import { AnswerMySuffix } from '../../../../../../main/webapp/app/entities/answer/answer-my-suffix.model';
+import { AnswerMySuffixDetailComponent } from '../../../../../../main/webapp/app/components/answer/answer-my-suffix-detail.component';
+import { AnswerMySuffixService } from '../../../../../../main/webapp/app/components/answer/answer-my-suffix.service';
+import { AnswerMySuffix } from '../../../../../../main/webapp/app/components/answer/answer-my-suffix.model';
 
 describe('Component Tests', () => {
 
