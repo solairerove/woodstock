@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class UnitServiceImpl implements UnitService{
 
     private final Logger log = LoggerFactory.getLogger(UnitServiceImpl.class);
-    
+
     private final UnitRepository unitRepository;
 
     private final UnitMapper unitMapper;
@@ -45,13 +45,12 @@ public class UnitServiceImpl implements UnitService{
         log.debug("Request to save Unit : {}", unitDTO);
         Unit unit = unitMapper.toEntity(unitDTO);
         unit = unitRepository.save(unit);
-        UnitDTO result = unitMapper.toDto(unit);
-        return result;
+        return unitMapper.toDto(unit);
     }
 
     /**
      *  Get all the units.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -60,7 +59,7 @@ public class UnitServiceImpl implements UnitService{
     public Page<UnitDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Units");
         Page<Unit> result = unitRepository.findAll(pageable);
-        return result.map(unit -> unitMapper.toDto(unit));
+        return result.map(unitMapper::toDto);
     }
 
     /**
@@ -74,8 +73,7 @@ public class UnitServiceImpl implements UnitService{
     public UnitDTO findOne(Long id) {
         log.debug("Request to get Unit : {}", id);
         Unit unit = unitRepository.findOne(id);
-        UnitDTO unitDTO = unitMapper.toDto(unit);
-        return unitDTO;
+        return unitMapper.toDto(unit);
     }
 
     /**

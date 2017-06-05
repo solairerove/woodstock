@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class ModuleServiceImpl implements ModuleService{
 
     private final Logger log = LoggerFactory.getLogger(ModuleServiceImpl.class);
-    
+
     private final ModuleRepository moduleRepository;
 
     private final ModuleMapper moduleMapper;
@@ -45,13 +45,12 @@ public class ModuleServiceImpl implements ModuleService{
         log.debug("Request to save Module : {}", moduleDTO);
         Module module = moduleMapper.toEntity(moduleDTO);
         module = moduleRepository.save(module);
-        ModuleDTO result = moduleMapper.toDto(module);
-        return result;
+        return moduleMapper.toDto(module);
     }
 
     /**
      *  Get all the modules.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -60,7 +59,7 @@ public class ModuleServiceImpl implements ModuleService{
     public Page<ModuleDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Modules");
         Page<Module> result = moduleRepository.findAll(pageable);
-        return result.map(module -> moduleMapper.toDto(module));
+        return result.map(moduleMapper::toDto);
     }
 
     /**
@@ -74,8 +73,7 @@ public class ModuleServiceImpl implements ModuleService{
     public ModuleDTO findOne(Long id) {
         log.debug("Request to get Module : {}", id);
         Module module = moduleRepository.findOne(id);
-        ModuleDTO moduleDTO = moduleMapper.toDto(module);
-        return moduleDTO;
+        return moduleMapper.toDto(module);
     }
 
     /**

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class ChapterServiceImpl implements ChapterService{
 
     private final Logger log = LoggerFactory.getLogger(ChapterServiceImpl.class);
-    
+
     private final ChapterRepository chapterRepository;
 
     private final ChapterMapper chapterMapper;
@@ -45,13 +45,12 @@ public class ChapterServiceImpl implements ChapterService{
         log.debug("Request to save Chapter : {}", chapterDTO);
         Chapter chapter = chapterMapper.toEntity(chapterDTO);
         chapter = chapterRepository.save(chapter);
-        ChapterDTO result = chapterMapper.toDto(chapter);
-        return result;
+        return chapterMapper.toDto(chapter);
     }
 
     /**
      *  Get all the chapters.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -60,7 +59,7 @@ public class ChapterServiceImpl implements ChapterService{
     public Page<ChapterDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Chapters");
         Page<Chapter> result = chapterRepository.findAll(pageable);
-        return result.map(chapter -> chapterMapper.toDto(chapter));
+        return result.map(chapterMapper::toDto);
     }
 
     /**
@@ -74,8 +73,7 @@ public class ChapterServiceImpl implements ChapterService{
     public ChapterDTO findOne(Long id) {
         log.debug("Request to get Chapter : {}", id);
         Chapter chapter = chapterRepository.findOne(id);
-        ChapterDTO chapterDTO = chapterMapper.toDto(chapter);
-        return chapterDTO;
+        return chapterMapper.toDto(chapter);
     }
 
     /**

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class AnswerServiceImpl implements AnswerService{
 
     private final Logger log = LoggerFactory.getLogger(AnswerServiceImpl.class);
-    
+
     private final AnswerRepository answerRepository;
 
     private final AnswerMapper answerMapper;
@@ -45,13 +45,12 @@ public class AnswerServiceImpl implements AnswerService{
         log.debug("Request to save Answer : {}", answerDTO);
         Answer answer = answerMapper.toEntity(answerDTO);
         answer = answerRepository.save(answer);
-        AnswerDTO result = answerMapper.toDto(answer);
-        return result;
+        return answerMapper.toDto(answer);
     }
 
     /**
      *  Get all the answers.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -60,7 +59,7 @@ public class AnswerServiceImpl implements AnswerService{
     public Page<AnswerDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Answers");
         Page<Answer> result = answerRepository.findAll(pageable);
-        return result.map(answer -> answerMapper.toDto(answer));
+        return result.map(answerMapper::toDto);
     }
 
     /**
@@ -74,8 +73,7 @@ public class AnswerServiceImpl implements AnswerService{
     public AnswerDTO findOne(Long id) {
         log.debug("Request to get Answer : {}", id);
         Answer answer = answerRepository.findOne(id);
-        AnswerDTO answerDTO = answerMapper.toDto(answer);
-        return answerDTO;
+        return answerMapper.toDto(answer);
     }
 
     /**

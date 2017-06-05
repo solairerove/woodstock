@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class ReferenceServiceImpl implements ReferenceService{
 
     private final Logger log = LoggerFactory.getLogger(ReferenceServiceImpl.class);
-    
+
     private final ReferenceRepository referenceRepository;
 
     private final ReferenceMapper referenceMapper;
@@ -45,13 +45,12 @@ public class ReferenceServiceImpl implements ReferenceService{
         log.debug("Request to save Reference : {}", referenceDTO);
         Reference reference = referenceMapper.toEntity(referenceDTO);
         reference = referenceRepository.save(reference);
-        ReferenceDTO result = referenceMapper.toDto(reference);
-        return result;
+        return referenceMapper.toDto(reference);
     }
 
     /**
      *  Get all the references.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -60,7 +59,7 @@ public class ReferenceServiceImpl implements ReferenceService{
     public Page<ReferenceDTO> findAll(Pageable pageable) {
         log.debug("Request to get all References");
         Page<Reference> result = referenceRepository.findAll(pageable);
-        return result.map(reference -> referenceMapper.toDto(reference));
+        return result.map(referenceMapper::toDto);
     }
 
     /**
@@ -74,8 +73,7 @@ public class ReferenceServiceImpl implements ReferenceService{
     public ReferenceDTO findOne(Long id) {
         log.debug("Request to get Reference : {}", id);
         Reference reference = referenceRepository.findOne(id);
-        ReferenceDTO referenceDTO = referenceMapper.toDto(reference);
-        return referenceDTO;
+        return referenceMapper.toDto(reference);
     }
 
     /**

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class QuestionServiceImpl implements QuestionService{
 
     private final Logger log = LoggerFactory.getLogger(QuestionServiceImpl.class);
-    
+
     private final QuestionRepository questionRepository;
 
     private final QuestionMapper questionMapper;
@@ -45,13 +45,12 @@ public class QuestionServiceImpl implements QuestionService{
         log.debug("Request to save Question : {}", questionDTO);
         Question question = questionMapper.toEntity(questionDTO);
         question = questionRepository.save(question);
-        QuestionDTO result = questionMapper.toDto(question);
-        return result;
+        return questionMapper.toDto(question);
     }
 
     /**
      *  Get all the questions.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -60,7 +59,7 @@ public class QuestionServiceImpl implements QuestionService{
     public Page<QuestionDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Questions");
         Page<Question> result = questionRepository.findAll(pageable);
-        return result.map(question -> questionMapper.toDto(question));
+        return result.map(questionMapper::toDto);
     }
 
     /**
@@ -74,8 +73,7 @@ public class QuestionServiceImpl implements QuestionService{
     public QuestionDTO findOne(Long id) {
         log.debug("Request to get Question : {}", id);
         Question question = questionRepository.findOne(id);
-        QuestionDTO questionDTO = questionMapper.toDto(question);
-        return questionDTO;
+        return questionMapper.toDto(question);
     }
 
     /**
