@@ -63,10 +63,7 @@ module.exports = function (options) {
                     test: /app.constants.ts$/,
                     loader: StringReplacePlugin.replace({
                         replacements: [{
-                            pattern: /\/\* @toreplace (\w*?) \*\//ig,
-                            replacement: function (match, p1, offset, string) {
-                                return `_${p1} = ${DATAS[p1]};`;
-                            }
+                            pattern: /\/\* @toreplace (\w*?) \*\//ig
                         }]
                     })
                 }
