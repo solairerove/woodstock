@@ -10,6 +10,7 @@ import { ChapterMySuffix } from './chapter-my-suffix.model';
 import { ChapterMySuffixPopupService } from './chapter-my-suffix-popup.service';
 import { ChapterMySuffixService } from './chapter-my-suffix.service';
 import { ReferenceMySuffix, ReferenceMySuffixService } from '../reference';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-chapter-my-suffix-dialog',
@@ -35,8 +36,8 @@ export class ChapterMySuffixDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.referenceService.query().subscribe(
-            (res: Response) => { this.references = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.referenceService.query()
+            .subscribe((res: ResponseWrapper) => { this.references = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');
@@ -46,19 +47,24 @@ export class ChapterMySuffixDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.chapter.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.chapterService.update(this.chapter));
+                this.chapterService.update(this.chapter), false);
         } else {
             this.subscribeToSaveResponse(
-                this.chapterService.create(this.chapter));
+                this.chapterService.create(this.chapter), true);
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<ChapterMySuffix>) {
+    private subscribeToSaveResponse(result: Observable<ChapterMySuffix>, isCreated: boolean) {
         result.subscribe((res: ChapterMySuffix) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: ChapterMySuffix) {
+    private onSaveSuccess(result: ChapterMySuffix, isCreated: boolean) {
+        this.alertService.success(
+            isCreated ? 'woodstockApp.chapter.created'
+            : 'woodstockApp.chapter.updated',
+            { param : result.id }, null);
+
         this.eventManager.broadcast({ name: 'chapterListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

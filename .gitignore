@@ -1,7 +1,7 @@
 ######################
 # Project Specific
 ######################
-/target/www/**
+/build/www/**
 /src/test/javascript/coverage/
 /src/test/javascript/PhantomJS*/
 
@@ -58,7 +58,7 @@ local.properties
 *.ipr
 *.ids
 *.orig
-.jhipster
+classes/
 
 ######################
 # Visual Studio Code

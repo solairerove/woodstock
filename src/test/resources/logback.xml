@@ -3,7 +3,7 @@
 <configuration scan="true">
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <logger name="com.github.solairerove.woodstock.hipster" level="INFO"/>
+    <logger name="com.github.solairerove" level="INFO"/>
 
     <logger name="io.github.jhipster" level="WARN"/>
 

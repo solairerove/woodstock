@@ -10,6 +10,7 @@ import { QuestionMySuffix } from './question-my-suffix.model';
 import { QuestionMySuffixPopupService } from './question-my-suffix-popup.service';
 import { QuestionMySuffixService } from './question-my-suffix.service';
 import { ModuleMySuffix, ModuleMySuffixService } from '../module';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-question-my-suffix-dialog',
@@ -35,8 +36,8 @@ export class QuestionMySuffixDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.moduleService.query().subscribe(
-            (res: Response) => { this.modules = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.moduleService.query()
+            .subscribe((res: ResponseWrapper) => { this.modules = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');
@@ -46,19 +47,24 @@ export class QuestionMySuffixDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.question.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.questionService.update(this.question));
+                this.questionService.update(this.question), false);
         } else {
             this.subscribeToSaveResponse(
-                this.questionService.create(this.question));
+                this.questionService.create(this.question), true);
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<QuestionMySuffix>) {
+    private subscribeToSaveResponse(result: Observable<QuestionMySuffix>, isCreated: boolean) {
         result.subscribe((res: QuestionMySuffix) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: QuestionMySuffix) {
+    private onSaveSuccess(result: QuestionMySuffix, isCreated: boolean) {
+        this.alertService.success(
+            isCreated ? 'woodstockApp.question.created'
+            : 'woodstockApp.question.updated',
+            { param : result.id }, null);
+
         this.eventManager.broadcast({ name: 'questionListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

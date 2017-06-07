@@ -22,7 +22,7 @@
     </appender>
 -->
 
-    <logger name="com.github.solairerove.woodstock.hipster" level="#logback.loglevel#"/>
+    <logger name="com.github.solairerove" level="#logback.loglevel#"/>
 
     <logger name="io.github.jhipster" level="DEBUG"/>
 

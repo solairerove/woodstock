@@ -10,6 +10,7 @@ import { ModuleMySuffix } from './module-my-suffix.model';
 import { ModuleMySuffixPopupService } from './module-my-suffix-popup.service';
 import { ModuleMySuffixService } from './module-my-suffix.service';
 import { UnitMySuffix, UnitMySuffixService } from '../unit';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-module-my-suffix-dialog',
@@ -35,8 +36,8 @@ export class ModuleMySuffixDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.unitService.query().subscribe(
-            (res: Response) => { this.units = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.unitService.query()
+            .subscribe((res: ResponseWrapper) => { this.units = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');
@@ -46,19 +47,24 @@ export class ModuleMySuffixDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.module.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.moduleService.update(this.module));
+                this.moduleService.update(this.module), false);
         } else {
             this.subscribeToSaveResponse(
-                this.moduleService.create(this.module));
+                this.moduleService.create(this.module), true);
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<ModuleMySuffix>) {
+    private subscribeToSaveResponse(result: Observable<ModuleMySuffix>, isCreated: boolean) {
         result.subscribe((res: ModuleMySuffix) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: ModuleMySuffix) {
+    private onSaveSuccess(result: ModuleMySuffix, isCreated: boolean) {
+        this.alertService.success(
+            isCreated ? 'woodstockApp.module.created'
+            : 'woodstockApp.module.updated',
+            { param : result.id }, null);
+
         this.eventManager.broadcast({ name: 'moduleListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

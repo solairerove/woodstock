@@ -16,9 +16,7 @@
                 "title": "Unit"
             },
             "label": "Label",
-            "avatar": "Avatar",
             "description": "Description",
-            "featured": "Featured",
             "modules": "Modules"
         }
     }

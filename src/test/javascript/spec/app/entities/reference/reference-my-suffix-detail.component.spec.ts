@@ -32,11 +32,8 @@ describe('Component Tests', () => {
                     ReferenceMySuffixService,
                     EventManager
                 ]
-            }).overrideComponent(ReferenceMySuffixDetailComponent, {
-                set: {
-                    template: ''
-                }
-            }).compileComponents();
+            }).overrideTemplate(ReferenceMySuffixDetailComponent, '')
+            .compileComponents();
         }));
 
         beforeEach(() => {

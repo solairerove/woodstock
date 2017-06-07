@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager } from 'ng-jhipster';
+import { AlertService, EventManager } from 'ng-jhipster';
 
 import { ChapterMySuffix } from './chapter-my-suffix.model';
 import { ChapterMySuffixPopupService } from './chapter-my-suffix-popup.service';
@@ -19,6 +19,7 @@ export class ChapterMySuffixDeleteDialogComponent {
     constructor(
         private chapterService: ChapterMySuffixService,
         public activeModal: NgbActiveModal,
+        private alertService: AlertService,
         private eventManager: EventManager
     ) {
     }
@@ -35,6 +36,7 @@ export class ChapterMySuffixDeleteDialogComponent {
             });
             this.activeModal.dismiss(true);
         });
+        this.alertService.success('woodstockApp.chapter.deleted', { param : id }, null);
     }
 }
 

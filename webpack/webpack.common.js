@@ -78,7 +78,7 @@ module.exports = function (options) {
             }),
             new webpack.DllReferencePlugin({
                 context: './',
-                manifest: require(path.resolve('./target/www/vendor.json'))
+                manifest: require(path.resolve('./build/www/vendor.json'))
             }),
             new CopyWebpackPlugin([
                 { from: './node_modules/core-js/client/shim.min.js', to: 'core-js-shim.min.js' },
@@ -95,11 +95,11 @@ module.exports = function (options) {
             new MergeJsonWebpackPlugin({
                 output: {
                     groupBy: [
-                        { pattern: "./src/main/webapp/i18n/en/*.json", fileName: "./target/www/i18n/en/all.json" },
-                        { pattern: "./src/main/webapp/i18n/de/*.json", fileName: "./target/www/i18n/de/all.json" },
-                        { pattern: "./src/main/webapp/i18n/ru/*.json", fileName: "./target/www/i18n/ru/all.json" }
+                        { pattern: "./src/main/webapp/i18n/en/*.json", fileName: "./build/www/i18n/en/all.json" },
+                        { pattern: "./src/main/webapp/i18n/de/*.json", fileName: "./build/www/i18n/de/all.json" },
+                        { pattern: "./src/main/webapp/i18n/ru/*.json", fileName: "./build/www/i18n/ru/all.json" }
                         // jhipster-needle-i18n-language-webpack - JHipster will add/remove languages in this array
-                 ]
+                    ]
                 }
             }),
             new HtmlWebpackPlugin({
@@ -108,7 +108,7 @@ module.exports = function (options) {
                 inject: 'body'
             }),
             new AddAssetHtmlPlugin([
-                { filepath: path.resolve('./target/www/vendor.dll.js'), includeSourcemap: false }
+                { filepath: path.resolve('./build/www/vendor.dll.js'), includeSourcemap: false }
             ]),
             new StringReplacePlugin(),
             new WebpackNotifierPlugin({

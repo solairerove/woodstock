@@ -10,6 +10,7 @@ import { ReferenceMySuffix } from './reference-my-suffix.model';
 import { ReferenceMySuffixPopupService } from './reference-my-suffix-popup.service';
 import { ReferenceMySuffixService } from './reference-my-suffix.service';
 import { ModuleMySuffix, ModuleMySuffixService } from '../module';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-reference-my-suffix-dialog',
@@ -35,8 +36,8 @@ export class ReferenceMySuffixDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.moduleService.query().subscribe(
-            (res: Response) => { this.modules = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.moduleService.query()
+            .subscribe((res: ResponseWrapper) => { this.modules = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');
@@ -46,19 +47,24 @@ export class ReferenceMySuffixDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.reference.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.referenceService.update(this.reference));
+                this.referenceService.update(this.reference), false);
         } else {
             this.subscribeToSaveResponse(
-                this.referenceService.create(this.reference));
+                this.referenceService.create(this.reference), true);
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<ReferenceMySuffix>) {
+    private subscribeToSaveResponse(result: Observable<ReferenceMySuffix>, isCreated: boolean) {
         result.subscribe((res: ReferenceMySuffix) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: ReferenceMySuffix) {
+    private onSaveSuccess(result: ReferenceMySuffix, isCreated: boolean) {
+        this.alertService.success(
+            isCreated ? 'woodstockApp.reference.created'
+            : 'woodstockApp.reference.updated',
+            { param : result.id }, null);
+
         this.eventManager.broadcast({ name: 'referenceListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

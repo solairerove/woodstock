@@ -10,6 +10,7 @@ import { AnswerMySuffix } from './answer-my-suffix.model';
 import { AnswerMySuffixPopupService } from './answer-my-suffix-popup.service';
 import { AnswerMySuffixService } from './answer-my-suffix.service';
 import { QuestionMySuffix, QuestionMySuffixService } from '../question';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-answer-my-suffix-dialog',
@@ -35,8 +36,8 @@ export class AnswerMySuffixDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.questionService.query().subscribe(
-            (res: Response) => { this.questions = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.questionService.query()
+            .subscribe((res: ResponseWrapper) => { this.questions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');
@@ -46,19 +47,24 @@ export class AnswerMySuffixDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.answer.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.answerService.update(this.answer));
+                this.answerService.update(this.answer), false);
         } else {
             this.subscribeToSaveResponse(
-                this.answerService.create(this.answer));
+                this.answerService.create(this.answer), true);
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<AnswerMySuffix>) {
+    private subscribeToSaveResponse(result: Observable<AnswerMySuffix>, isCreated: boolean) {
         result.subscribe((res: AnswerMySuffix) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: AnswerMySuffix) {
+    private onSaveSuccess(result: AnswerMySuffix, isCreated: boolean) {
+        this.alertService.success(
+            isCreated ? 'woodstockApp.answer.created'
+            : 'woodstockApp.answer.updated',
+            { param : result.id }, null);
+
         this.eventManager.broadcast({ name: 'answerListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

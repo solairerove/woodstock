@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager } from 'ng-jhipster';
+import { AlertService, EventManager } from 'ng-jhipster';
 
 import { UnitMySuffix } from './unit-my-suffix.model';
 import { UnitMySuffixPopupService } from './unit-my-suffix-popup.service';
@@ -19,6 +19,7 @@ export class UnitMySuffixDeleteDialogComponent {
     constructor(
         private unitService: UnitMySuffixService,
         public activeModal: NgbActiveModal,
+        private alertService: AlertService,
         private eventManager: EventManager
     ) {
     }
@@ -35,6 +36,7 @@ export class UnitMySuffixDeleteDialogComponent {
             });
             this.activeModal.dismiss(true);
         });
+        this.alertService.success('woodstockApp.unit.deleted', { param : id }, null);
     }
 }
 

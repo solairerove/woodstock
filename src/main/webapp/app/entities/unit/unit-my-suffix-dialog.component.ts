@@ -40,19 +40,24 @@ export class UnitMySuffixDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.unit.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.unitService.update(this.unit));
+                this.unitService.update(this.unit), false);
         } else {
             this.subscribeToSaveResponse(
-                this.unitService.create(this.unit));
+                this.unitService.create(this.unit), true);
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<UnitMySuffix>) {
+    private subscribeToSaveResponse(result: Observable<UnitMySuffix>, isCreated: boolean) {
         result.subscribe((res: UnitMySuffix) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: UnitMySuffix) {
+    private onSaveSuccess(result: UnitMySuffix, isCreated: boolean) {
+        this.alertService.success(
+            isCreated ? 'woodstockApp.unit.created'
+            : 'woodstockApp.unit.updated',
+            { param : result.id }, null);
+
         this.eventManager.broadcast({ name: 'unitListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

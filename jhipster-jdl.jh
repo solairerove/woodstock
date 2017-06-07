@@ -1,0 +1,47 @@
+entity Unit {
+	label String
+    description String
+}
+
+entity Reference {
+	title String
+    version String
+}
+
+entity Chapter {
+	title String
+    content String
+}
+
+entity Module {
+	name String
+    description String
+}
+
+entity Question {
+	question String
+}
+
+entity Answer {
+	answer String
+    correct Boolean
+    enable Boolean
+}
+
+relationship OneToMany {
+	Unit{modules} to Module,
+    Module{references} to Reference,
+    Module{question} to Question,
+    Reference{chapters} to Chapter,
+    Question{answers} to Answer
+}
+
+// Set pagination options
+paginate Unit, Module, Question, Answer, Reference, Chapter with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mySuffix

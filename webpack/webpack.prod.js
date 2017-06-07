@@ -9,7 +9,7 @@ const ENV = 'prod';
 module.exports = webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'source-map',
     output: {
-        path: path.resolve('./target/www'),
+        path: path.resolve('./build/www'),
         filename: '[hash].[name].bundle.js',
         chunkFilename: '[hash].[id].chunk.js'
     },

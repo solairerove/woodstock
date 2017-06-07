@@ -4,7 +4,7 @@ import { ProfileInfo } from './profile-info.model';
 
 @Component({
     selector: 'jhi-page-ribbon',
-    template: `<div></div>`,
+    template: ``,
     styleUrls: [
         'page-ribbon.css'
     ]

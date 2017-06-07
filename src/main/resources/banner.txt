@@ -1,1 +1,1 @@
-
+Running Spring Boot ${spring-boot.version}

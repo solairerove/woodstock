@@ -18,7 +18,6 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="name"><span jhiTranslate="woodstockApp.module.name">Name</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="avatar"><span jhiTranslate="woodstockApp.module.avatar">Avatar</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="woodstockApp.module.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="unitId"><span jhiTranslate="woodstockApp.module.unit">Unit</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -28,7 +27,6 @@
             <tr *ngFor="let module of modules ;trackBy: trackId">
                 <td><a [routerLink]="['../module-my-suffix', module.id ]">{{module.id}}</a></td>
                 <td>{{module.name}}</td>
-                <td>{{module.avatar}}</td>
                 <td>{{module.description}}</td>
                 <td>
                     <div *ngIf="module.unitId">

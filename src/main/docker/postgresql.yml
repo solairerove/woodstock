@@ -1,0 +1,11 @@
+version: '2'
+services:
+    woodstock-postgresql:
+        image: postgres:9.6.2
+        # volumes:
+        #     - ~/volumes/jhipster/woodstock/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=woodstock
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

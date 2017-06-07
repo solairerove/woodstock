@@ -8,7 +8,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ENV = 'dev';
 const execSync = require('child_process').execSync;
 const fs = require('fs');
-const ddlPath = './target/www/vendor.json';
+const ddlPath = './build/www/vendor.json';
 
 if (!fs.existsSync(ddlPath)) {
     execSync('webpack --config webpack/webpack.vendor.js');
@@ -17,7 +17,7 @@ if (!fs.existsSync(ddlPath)) {
 module.exports = webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './target/www',
+        contentBase: './build/www',
         proxy: [{
             context: [
                 /* jhipster-needle-add-entity-to-webpack - JHipster will add entity api paths here */
@@ -32,7 +32,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
         }]
     },
     output: {
-        path: path.resolve('target/www'),
+        path: path.resolve('build/www'),
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js'
     },
