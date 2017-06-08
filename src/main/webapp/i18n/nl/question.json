@@ -1,0 +1,23 @@
+{
+    "woodstock24App": {
+        "question" : {
+            "home": {
+                "title": "Questions",
+                "createLabel": "Maak een nieuwe Question",
+                "createOrEditLabel": "Maak of wijzig een Question"
+            },
+            "created": "A new Question is created with identifier {{ param }}",
+            "updated": "A Question is updated with identifier {{ param }}",
+            "deleted": "A Question is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Question {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Question"
+            },
+            "question": "Question",
+            "module": "Module",
+            "answers": "Answers"
+        }
+    }
+}

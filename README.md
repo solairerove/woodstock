@@ -1,4 +1,4 @@
-# woodstock
+# woodstock24
 
 ## Development
 
@@ -14,38 +14,23 @@ You will only need to run this command when dependencies change in [package.json
 
     yarn install
 
-We use yarn scripts and [Webpack][] as our build system.
+We use [Gulp][] as our build system. Install the Gulp command-line tool globally with:
 
+    yarn global add gulp-cli
 
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
 
     ./gradlew
-    yarn start
+    gulp
 
-[Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
-specifying a newer version in [package.json](package.json). You can also run `yarn update` and `yarn install` to manage dependencies.
-Add the `help` flag on any command to see how you can use it. For example, `yarn help update`.
-
-The `yarn run` command will list all of the scripts available to run for this project.
-
-### Using angular-cli
-
-You can also use [Angular CLI][] to generate some custom client code.
-
-For example, the following command:
-
-    ng generate component my-component
-
-will generate few files:
-
-    create src/main/webapp/app/my-component/my-component.component.html
-    create src/main/webapp/app/my-component/my-component.component.ts
-    update src/main/webapp/app/app.module.ts
+[Bower][] is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+specifying a newer version in [bower.json](bower.json). You can also run `bower update` and `bower install` to manage dependencies.
+Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
 
 ## Building for production
 
-To optimize the woodstock application for production, run:
+To optimize the woodstock24 application for production, run:
 
     ./gradlew -Pprod clean bootRepackage
 
@@ -66,7 +51,7 @@ To launch your application's tests, run:
 
 Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
 
-    yarn test
+    gulp test
 
 
 
@@ -74,6 +59,7 @@ For more information, refer to the [Running tests page][].
 
 ## Using Docker to simplify development (optional)
 
+You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 For example, to start a postgresql database in a docker container, run:
 
     docker-compose -f src/main/docker/postgresql.yml up -d
@@ -90,3 +76,4 @@ To achieve this, first build a docker image of your app by running:
 Then run:
 
     docker-compose -f src/main/docker/app.yml up -d
+

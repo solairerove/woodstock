@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "Woodstock",
+        "title": "Woodstock24",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
             "home": "Home",
@@ -51,15 +51,8 @@
         },
         "messages": {
             "info": {
-                "authenticated": {
-                    "prefix": "If you want to ",
-                    "link": "sign in",
-                    "suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
-                },
-                "register": {
-                    "noaccount": "You don't have an account yet?",
-                    "link": "Register a new account"
-                }
+                "authenticated": "If you want to <a class=\"alert-link\" href=\"\" ng-click=\"vm.login()\">sign in</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
+                "register": "You don't have an account yet? <a class=\"alert-link\" href=\"\" ng-click=\"vm.register()\">Register a new account</a>"
             },
             "error": {
                 "dontmatch": "The password and its confirmation do not match!"
@@ -134,5 +127,5 @@
         "emailexists": "Email is already in use!",
         "idexists": "A new {{ entityName }} cannot already have an ID"
     },
-    "footer": "This is your footer"
+    "footer": "Woodstock v24"
 }

@@ -1,6 +1,6 @@
 package com.github.solairerove.web.rest;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 import com.github.solairerove.config.audit.AuditEventConverter;
 import com.github.solairerove.domain.PersistentAuditEvent;
 import com.github.solairerove.repository.PersistenceAuditEventRepository;
@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AuditResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 @Transactional
 public class AuditResourceIntTest {
 

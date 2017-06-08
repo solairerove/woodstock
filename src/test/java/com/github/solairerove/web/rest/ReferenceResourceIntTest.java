@@ -1,6 +1,6 @@
 package com.github.solairerove.web.rest;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 
 import com.github.solairerove.domain.Reference;
 import com.github.solairerove.repository.ReferenceRepository;
@@ -37,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ReferenceResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 public class ReferenceResourceIntTest {
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";

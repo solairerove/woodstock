@@ -1,0 +1,23 @@
+{
+    "woodstock24App": {
+        "unit" : {
+            "home": {
+                "title": "Units",
+                "createLabel": "Maak een nieuwe Unit",
+                "createOrEditLabel": "Maak of wijzig een Unit"
+            },
+            "created": "A new Unit is created with identifier {{ param }}",
+            "updated": "A Unit is updated with identifier {{ param }}",
+            "deleted": "A Unit is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Unit {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Unit"
+            },
+            "label": "Label",
+            "description": "Description",
+            "modules": "Modules"
+        }
+    }
+}

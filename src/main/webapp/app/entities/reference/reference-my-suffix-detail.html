@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="woodstock24App.reference.detail.title">Reference</span> {{vm.reference.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="woodstock24App.reference.title">Title</span></dt>
+        <dd>
+            <span>{{vm.reference.title}}</span>
+        </dd>
+        <dt><span data-translate="woodstock24App.reference.version">Version</span></dt>
+        <dd>
+            <span>{{vm.reference.version}}</span>
+        </dd>
+        <dt><span data-translate="woodstock24App.reference.module">Module</span></dt>
+        <dd>
+            <a ui-sref="module-my-suffix-detail({id:vm.reference.moduleId})">{{vm.reference.moduleId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="reference-my-suffix-detail.edit({id:vm.reference.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

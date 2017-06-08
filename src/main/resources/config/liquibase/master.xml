@@ -5,17 +5,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214402_added_entity_Unit.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214403_added_entity_Reference.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214404_added_entity_Chapter.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214405_added_entity_Module.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214406_added_entity_Question.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214407_added_entity_Answer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071548_added_entity_Unit.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071549_added_entity_Reference.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071550_added_entity_Chapter.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071551_added_entity_Module.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071552_added_entity_Question.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071553_added_entity_Answer.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="classpath:config/liquibase/changelog/20170607214403_added_entity_constraints_Reference.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214404_added_entity_constraints_Chapter.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214405_added_entity_constraints_Module.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214406_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170607214407_added_entity_constraints_Answer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071549_added_entity_constraints_Reference.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071550_added_entity_constraints_Chapter.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071551_added_entity_constraints_Module.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071552_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170608071553_added_entity_constraints_Answer.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

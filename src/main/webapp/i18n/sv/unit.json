@@ -1,0 +1,23 @@
+{
+    "woodstock24App": {
+        "unit" : {
+            "home": {
+                "title": "Units",
+                "createLabel": "Skapa en ny Unit",
+                "createOrEditLabel": "Skapa eller ändra en Unit"
+            },
+            "created": "En ny Unit är skapad med id {{ param }}",
+            "updated": "En Unit är uppdaterad med id  {{ param }}",
+            "deleted": "En Unit är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Unit {{ id }}?"
+            },
+            "detail": {
+                "title": "Unit"
+            },
+            "label": "Label",
+            "description": "Description",
+            "modules": "Modules"
+        }
+    }
+}

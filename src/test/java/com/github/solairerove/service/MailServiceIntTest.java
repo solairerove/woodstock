@@ -1,6 +1,6 @@
 package com.github.solairerove.service;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 import com.github.solairerove.domain.User;
 import io.github.jhipster.config.JHipsterProperties;
 import org.junit.Before;
@@ -29,7 +29,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 public class MailServiceIntTest {
 
     @Autowired

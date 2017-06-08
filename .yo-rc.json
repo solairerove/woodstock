@@ -5,7 +5,7 @@
       "nativeLanguage": "en"
     },
     "jhipsterVersion": "4.5.2",
-    "baseName": "woodstock",
+    "baseName": "woodstock24",
     "packageName": "com.github.solairerove",
     "packageFolder": "com/github/solairerove",
     "serverPort": "8080",
@@ -21,8 +21,8 @@
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSocialSignIn": false,
-    "jwtSecretKey": "6247278a27c1b8ad5eafb1e30e2b2549d34ffc23",
-    "clientFramework": "angular2",
+    "jwtSecretKey": "f81c1b13554c4006c6cd3cb227cf3f2dfc014086",
+    "clientFramework": "angular1",
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
@@ -32,8 +32,10 @@
     "nativeLanguage": "en",
     "languages": [
       "en",
+      "nl",
       "de",
-      "ru"
+      "ru",
+      "sv"
     ]
   }
 }

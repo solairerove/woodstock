@@ -1,6 +1,6 @@
 package com.github.solairerove.web.rest;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 
 import com.github.solairerove.domain.Answer;
 import com.github.solairerove.repository.AnswerRepository;
@@ -37,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AnswerResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 public class AnswerResourceIntTest {
 
     private static final String DEFAULT_ANSWER = "AAAAAAAAAA";

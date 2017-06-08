@@ -1,0 +1,24 @@
+{
+    "woodstock24App": {
+        "answer" : {
+            "home": {
+                "title": "Answers",
+                "createLabel": "Skapa en ny Answer",
+                "createOrEditLabel": "Skapa eller ändra en Answer"
+            },
+            "created": "En ny Answer är skapad med id {{ param }}",
+            "updated": "En Answer är uppdaterad med id  {{ param }}",
+            "deleted": "En Answer är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Answer {{ id }}?"
+            },
+            "detail": {
+                "title": "Answer"
+            },
+            "answer": "Answer",
+            "correct": "Correct",
+            "enable": "Enable",
+            "question": "Question"
+        }
+    }
+}

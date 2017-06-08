@@ -1,0 +1,25 @@
+{
+    "woodstock24App": {
+        "module" : {
+            "home": {
+                "title": "Modules",
+                "createLabel": "Maak een nieuwe Module",
+                "createOrEditLabel": "Maak of wijzig een Module"
+            },
+            "created": "A new Module is created with identifier {{ param }}",
+            "updated": "A Module is updated with identifier {{ param }}",
+            "deleted": "A Module is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Module {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Module"
+            },
+            "name": "Name",
+            "description": "Description",
+            "unit": "Unit",
+            "references": "References",
+            "question": "Question"
+        }
+    }
+}

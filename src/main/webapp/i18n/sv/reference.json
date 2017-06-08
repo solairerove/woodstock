@@ -1,0 +1,24 @@
+{
+    "woodstock24App": {
+        "reference" : {
+            "home": {
+                "title": "References",
+                "createLabel": "Skapa en ny Reference",
+                "createOrEditLabel": "Skapa eller ändra en Reference"
+            },
+            "created": "En ny Reference är skapad med id {{ param }}",
+            "updated": "En Reference är uppdaterad med id  {{ param }}",
+            "deleted": "En Reference är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Reference {{ id }}?"
+            },
+            "detail": {
+                "title": "Reference"
+            },
+            "title": "Title",
+            "version": "Version",
+            "chapters": "Chapters",
+            "module": "Module"
+        }
+    }
+}

@@ -1,6 +1,6 @@
 package com.github.solairerove.web.rest;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 import com.github.solairerove.web.rest.vm.LoggerVM;
 import ch.qos.logback.classic.AsyncAppender;
 import ch.qos.logback.classic.LoggerContext;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see LogsResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 public class LogsResourceIntTest {
 
     private MockMvc restLogsMockMvc;

@@ -1,6 +1,6 @@
 package com.github.solairerove.web.rest;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 import com.github.solairerove.domain.Authority;
 import com.github.solairerove.domain.User;
 import com.github.solairerove.repository.UserRepository;
@@ -47,7 +47,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see UserResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 public class UserResourceIntTest {
 
     private static final Long DEFAULT_ID = 1L;

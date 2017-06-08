@@ -1,0 +1,48 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myAnswerLabel" data-translate="woodstock24App.answer.home.createOrEditLabel">Create or edit a Answer</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.answer.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.answer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="woodstock24App.answer.answer" for="field_answer">Answer</label>
+            <input type="text" class="form-control" name="answer" id="field_answer"
+                    ng-model="vm.answer.answer"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="woodstock24App.answer.correct" for="field_correct">Correct</label>
+                <input type="checkbox" name="correct" id="field_correct"
+                          ng-model="vm.answer.correct"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="woodstock24App.answer.enable" for="field_enable">Enable</label>
+                <input type="checkbox" name="enable" id="field_enable"
+                          ng-model="vm.answer.enable"/>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="woodstock24App.answer.question" for="field_question">Question</label>
+            <select class="form-control" id="field_question" name="question" ng-model="vm.answer.questionId" ng-options="question.id as question.id for question in vm.questions"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

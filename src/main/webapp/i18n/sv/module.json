@@ -1,0 +1,25 @@
+{
+    "woodstock24App": {
+        "module" : {
+            "home": {
+                "title": "Modules",
+                "createLabel": "Skapa en ny Module",
+                "createOrEditLabel": "Skapa eller ändra en Module"
+            },
+            "created": "En ny Module är skapad med id {{ param }}",
+            "updated": "En Module är uppdaterad med id  {{ param }}",
+            "deleted": "En Module är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Module {{ id }}?"
+            },
+            "detail": {
+                "title": "Module"
+            },
+            "name": "Name",
+            "description": "Description",
+            "unit": "Unit",
+            "references": "References",
+            "question": "Question"
+        }
+    }
+}

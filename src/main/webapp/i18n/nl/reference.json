@@ -1,0 +1,24 @@
+{
+    "woodstock24App": {
+        "reference" : {
+            "home": {
+                "title": "References",
+                "createLabel": "Maak een nieuwe Reference",
+                "createOrEditLabel": "Maak of wijzig een Reference"
+            },
+            "created": "A new Reference is created with identifier {{ param }}",
+            "updated": "A Reference is updated with identifier {{ param }}",
+            "deleted": "A Reference is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Reference {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Reference"
+            },
+            "title": "Title",
+            "version": "Version",
+            "chapters": "Chapters",
+            "module": "Module"
+        }
+    }
+}

@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "Woodstock",
+        "title": "Woodstock24",
         "browsehappy": "Ваш браузер <strong>устарел</strong>. Пожалуйста <a href=\"http://browsehappy.com/?locale=ru\">обновите ваш браузер</a>.",
         "menu": {
             "home": "Главная",
@@ -51,15 +51,8 @@
         },
         "messages": {
             "info": {
-                "authenticated": {
-                    "prefix": "Если вы хотите ",
-                    "link": "авторизироваться",
-                    "suffix": ", вы можете попробовать аккаунты по умолчанию:<br/>- Администратор (логин=\"admin\" и пароль=\"admin\") <br/>- Пользователь (логин=\"user\" и пароль=\"user\")."
-                },
-                "register": {
-                    "noaccount": "У вас нет аккаунта?",
-                    "link": "Создать новый аккаунт"
-                }
+                "authenticated": "Если вы хотите <a class=\"alert-link\" href=\"\" ng-click=\"vm.login()\">авторизироваться</a>, вы можете попробовать аккаунты по умолчанию:<br/>- Администратор (логин=\"admin\" и пароль=\"admin\") <br/>- Пользователь (логин=\"user\" и пароль=\"user\").",
+                "register": "У вас нет аккаунта? <a class=\"alert-link\" href=\"\" ng-click=\"vm.register()\">Создать новый аккаунт</a>"
             },
             "error": {
                 "dontmatch": "Пароль и его подтверждение не совпадают!"
@@ -134,5 +127,5 @@
         "emailexists": "Эл. почта уже используется!!",
         "idexists": "Новый {{entityName}} не может иметь данный ID"
     },
-    "footer": "Это ваш футтер"
+    "footer": "Woodstock v24"
 }

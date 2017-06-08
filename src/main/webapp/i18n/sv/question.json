@@ -1,0 +1,23 @@
+{
+    "woodstock24App": {
+        "question" : {
+            "home": {
+                "title": "Questions",
+                "createLabel": "Skapa en ny Question",
+                "createOrEditLabel": "Skapa eller ändra en Question"
+            },
+            "created": "En ny Question är skapad med id {{ param }}",
+            "updated": "En Question är uppdaterad med id  {{ param }}",
+            "deleted": "En Question är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Question {{ id }}?"
+            },
+            "detail": {
+                "title": "Question"
+            },
+            "question": "Question",
+            "module": "Module",
+            "answers": "Answers"
+        }
+    }
+}

@@ -1,6 +1,6 @@
 package com.github.solairerove.service;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 import com.github.solairerove.domain.User;
 import com.github.solairerove.config.Constants;
 import com.github.solairerove.repository.UserRepository;
@@ -29,7 +29,7 @@ import static org.assertj.core.api.Assertions.*;
  * @see UserService
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 @Transactional
 public class UserServiceIntTest {
 

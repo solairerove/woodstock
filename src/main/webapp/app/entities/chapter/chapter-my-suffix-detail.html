@@ -1,0 +1,31 @@
+<div>
+    <h2><span data-translate="woodstock24App.chapter.detail.title">Chapter</span> {{vm.chapter.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="woodstock24App.chapter.title">Title</span></dt>
+        <dd>
+            <span>{{vm.chapter.title}}</span>
+        </dd>
+        <dt><span data-translate="woodstock24App.chapter.content">Content</span></dt>
+        <dd>
+            <div btf-markdown="vm.chapter.content"></div>
+            <!--<btf-markdown>{{vm.chapter.content}}</btf-markdown>-->
+        </dd>
+        <dt><span data-translate="woodstock24App.chapter.reference">Reference</span></dt>
+        <dd>
+            <a ui-sref="reference-my-suffix-detail({id:vm.chapter.referenceId})">{{vm.chapter.referenceId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="chapter-my-suffix-detail.edit({id:vm.chapter.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

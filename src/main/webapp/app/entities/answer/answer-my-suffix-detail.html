@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="woodstock24App.answer.detail.title">Answer</span> {{vm.answer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="woodstock24App.answer.answer">Answer</span></dt>
+        <dd>
+            <span>{{vm.answer.answer}}</span>
+        </dd>
+        <dt><span data-translate="woodstock24App.answer.correct">Correct</span></dt>
+        <dd>
+            <span>{{vm.answer.correct}}</span>
+        </dd>
+        <dt><span data-translate="woodstock24App.answer.enable">Enable</span></dt>
+        <dd>
+            <span>{{vm.answer.enable}}</span>
+        </dd>
+        <dt><span data-translate="woodstock24App.answer.question">Question</span></dt>
+        <dd>
+            <a ui-sref="question-my-suffix-detail({id:vm.answer.questionId})">{{vm.answer.questionId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="answer-my-suffix-detail.edit({id:vm.answer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

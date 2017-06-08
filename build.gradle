@@ -29,11 +29,12 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 apply plugin: 'propdeps'
 apply plugin: 'com.moowork.node'
+apply plugin: 'com.moowork.gulp'
 apply plugin: 'io.spring.dependency-management'
 defaultTasks 'bootRun'
 
 bootRepackage {
-   mainClass = 'com.github.solairerove.WoodstockApp'
+   mainClass = 'com.github.solairerove.Woodstock24App'
 }
 
 war {
@@ -41,7 +42,7 @@ war {
 }
 
 springBoot {
-    mainClass = 'com.github.solairerove.WoodstockApp'
+    mainClass = 'com.github.solairerove.Woodstock24App'
     executable = true
     buildInfo()
 }
@@ -88,6 +89,7 @@ task testReport(type: TestReport) {
     reportOn test
 }
 
+apply from: 'gradle/yeoman.gradle'
 apply from: 'gradle/sonar.gradle'
 apply from: 'gradle/liquibase.gradle'
 apply from: 'gradle/mapstruct.gradle'

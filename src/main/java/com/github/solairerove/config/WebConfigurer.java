@@ -95,7 +95,11 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
     private void setLocationForStaticAssets(ConfigurableEmbeddedServletContainer container) {
         File root;
         String prefixPath = resolvePathPrefix();
-        root = new File(prefixPath + "build/www/");
+        if (env.acceptsProfiles(JHipsterConstants.SPRING_PROFILE_PRODUCTION)) {
+            root = new File(prefixPath + "build/www/");
+        } else {
+            root = new File(prefixPath + "src/main/webapp/");
+        }
         if (root.exists() && root.isDirectory()) {
             container.setDocumentRoot(root);
         }

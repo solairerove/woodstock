@@ -1,0 +1,23 @@
+{
+    "woodstock24App": {
+        "chapter" : {
+            "home": {
+                "title": "Chapters",
+                "createLabel": "Maak een nieuwe Chapter",
+                "createOrEditLabel": "Maak of wijzig een Chapter"
+            },
+            "created": "A new Chapter is created with identifier {{ param }}",
+            "updated": "A Chapter is updated with identifier {{ param }}",
+            "deleted": "A Chapter is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Chapter {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Chapter"
+            },
+            "title": "Title",
+            "content": "Content",
+            "reference": "Reference"
+        }
+    }
+}

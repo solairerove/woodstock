@@ -16,14 +16,14 @@
 
 spring:
     application:
-        name: woodstock
+        name: woodstock24
     jackson:
         serialization.write_dates_as_timestamps: false
     cache:
         type: none
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:woodstock;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:woodstock24;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -88,7 +88,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: 6247278a27c1b8ad5eafb1e30e2b2549d34ffc23
+                secret: f81c1b13554c4006c6cd3cb227cf3f2dfc014086
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

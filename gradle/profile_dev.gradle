@@ -2,6 +2,7 @@ import org.gradle.internal.os.OperatingSystem
 
 apply plugin: 'org.springframework.boot'
 apply plugin: 'com.moowork.node'
+apply plugin: 'com.moowork.gulp'
 
 ext {
     logbackLoglevel = "DEBUG"
@@ -20,8 +21,8 @@ bootRun {
     args = []
 }
 
-task webpackBuildDev(type: YarnTask) {
-    args = ["run", "webpack:build:dev"]
+task gulpConstantDev(type: GulpTask) {
+    args = ["ngconstant:dev", "--no-notification"]
 }
 
 war {
@@ -44,5 +45,4 @@ processResources {
     }
 }
 
-processResources.dependsOn webpackBuildDev
-webpackBuildDev.onlyIf { project.hasProperty('webpack') }
+processResources.dependsOn gulpConstantDev

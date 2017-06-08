@@ -1,0 +1,23 @@
+{
+    "woodstock24App": {
+        "chapter" : {
+            "home": {
+                "title": "Chapters",
+                "createLabel": "Skapa en ny Chapter",
+                "createOrEditLabel": "Skapa eller ändra en Chapter"
+            },
+            "created": "En ny Chapter är skapad med id {{ param }}",
+            "updated": "En Chapter är uppdaterad med id  {{ param }}",
+            "deleted": "En Chapter är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Chapter {{ id }}?"
+            },
+            "detail": {
+                "title": "Chapter"
+            },
+            "title": "Title",
+            "content": "Content",
+            "reference": "Reference"
+        }
+    }
+}

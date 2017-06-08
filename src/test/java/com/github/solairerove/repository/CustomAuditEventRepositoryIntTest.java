@@ -1,6 +1,6 @@
 package com.github.solairerove.repository;
 
-import com.github.solairerove.WoodstockApp;
+import com.github.solairerove.Woodstock24App;
 import com.github.solairerove.config.Constants;
 import com.github.solairerove.config.audit.AuditEventConverter;
 import com.github.solairerove.domain.PersistentAuditEvent;
@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @see CustomAuditEventRepository
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WoodstockApp.class)
+@SpringBootTest(classes = Woodstock24App.class)
 @Transactional
 public class CustomAuditEventRepositoryIntTest {
 
