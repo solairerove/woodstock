@@ -20,7 +20,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="title"><span data-translate="woodstock24App.chapter.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="content"><span data-translate="woodstock24App.chapter.content">Content</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="content"><span data-translate="woodstock24App.chapter.content">Content</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th jh-sort-by="referenceId"><span data-translate="woodstock24App.chapter.reference">Reference</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -29,7 +29,7 @@
                 <tr ng-repeat="chapter in vm.chapters track by chapter.id">
                     <td><a ui-sref="chapter-my-suffix-detail({id:chapter.id})">{{chapter.id}}</a></td>
                     <td>{{chapter.title}}</td>
-                    <td>{{chapter.content}}</td>
+                    <!--<td>{{chapter.content}}</td>-->
                     <td>
                         <a ui-sref="reference-my-suffix-detail({id:chapter.referenceId})">{{chapter.referenceId}}</a>
                     </td>
